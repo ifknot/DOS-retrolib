@@ -71,6 +71,8 @@
     <ClInclude Include="ABM\abm_constants.h" />
     <ClInclude Include="ABM\abm_popcnt.h" />
     <ClInclude Include="ABM\abm_types.h" />
+    <ClInclude Include="ABM\test_abm.h" />
+    <ClInclude Include="DEBUG\debug_tools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
