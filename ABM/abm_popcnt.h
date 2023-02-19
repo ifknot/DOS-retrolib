@@ -35,20 +35,57 @@ namespace abm { // 8086 advanced bit manipulation
             lds     si, ptr_value   ; DS:SI points to 64bit quad word value
             cld                     ; clear direction flag to increment DS : SI chain instructions
 
-    WORD0:  lodsb                   ; load AX the first word of the qword value
-            //cmp     ax, 0xFFFF
-            //jne     EMPTY
-            //mov     bl, 16          ; it's all 1s
-            //jmp     WORD1           ; fast path the full bitset
-    EMPTY:  mov     cl, al          ; fast path the empty bitset
+    WORD0:  lodsw                   ; load AX the first word of the qword value
+            cmp     ax, 0xFFFF
+            jne     EMPTY0
+            mov     bl, 16          ; it's all 1s
+            jmp     WORD1           ; fast path the full bitset
+    EMPTY0: mov     cx, ax          ; fast path the empty bitset
     LOOP0:  jcxz    WORD1           ; while not 0
-            mov     al, cl          ; Wegner algorithm
-            dec     al              ; subtract 1
-            and     cl, al          ; mask off
+            mov     ax, cx          ; Wegner algorithm
+            dec     ax              ; subtract 1
+            and     cx, ax          ; mask off
             inc     bl              ; count bit
             jmp     LOOP0
 
-    WORD1:
+    WORD1:  lodsw                   ; load AX the next word of the qword value
+            cmp     ax, 0xFFFF
+            jne     EMPTY1
+            add     bl, 16          ; it's all 1s
+            jmp     WORD2           ; fast path the full bitset
+    EMPTY1: mov     cx, ax          ; fast path the empty bitset
+    LOOP1:  jcxz    WORD2           ; while not 0
+            mov     ax, cx          ; Wegner algorithm
+            dec     ax              ; subtract 1
+            and     cx, ax          ; mask off
+            inc     bl              ; count bit
+            jmp     LOOP1
+
+    WORD2:  lodsw                   ; load AX the next word of the qword value
+            cmp     ax, 0xFFFF
+            jne     EMPTY2
+            add     bl, 16          ; it's all 1s
+            jmp     WORD3           ; fast path the full bitset
+    EMPTY2: mov     cx, ax          ; fast path the empty bitset
+    LOOP2:  jcxz    WORD3           ; while not 0
+            mov     ax, cx          ; Wegner algorithm
+            dec     ax              ; subtract 1
+            and     cx, ax          ; mask off
+            inc     bl              ; count bit
+            jmp     LOOP2
+
+    WORD3:  lodsw                   ; load AX the next word of the qword value
+            cmp     ax, 0xFFFF
+            jne     EMPTY3
+            add     bl, 16          ; it's all 1s
+            jmp     END             ; fast path the full bitset
+    EMPTY3: mov     cx, ax          ; fast path the empty bitset
+    LOOP3:  jcxz    END             ; while not 0
+            mov     ax, cx          ; Wegner algorithm
+            dec     ax              ; subtract 1
+            and     cx, ax          ; mask off
+            inc     bl              ; count bit
+            jmp     LOOP3
 
     END:    mov     hamming_weight, bx
 
@@ -57,7 +94,8 @@ namespace abm { // 8086 advanced bit manipulation
     }
 
     /**
-     * \brief Uses a 64K lookup table to count the number of 1 bits (population count aka Hamming Weight) in a 64-bit unsigned integer.
+     * \brief Uses a 256 byte lookup table to count the number of 1 bits (population count aka Hamming Weight) in a 64-bit unsigned integer.
+     * Alternative to sacrificing 64K for 16 bit lookup table instead use 256 byte table for byte by byte lookup
      * \url https://en.wikipedia.org/wiki/Hamming_weight
      * \param ptr_value - the 64-bit unsigned integer for which we want the population count.
      * \return - the number of 1 bits in the quad word of memory pointed to.
@@ -68,6 +106,26 @@ namespace abm { // 8086 advanced bit manipulation
             //.8086
         }
         return hamming_weight;
+    }
+
+    uint64_t c1 = 0x5555555555555555;
+    uint64_t c2 = 0x3333333333333333;
+    uint64_t c4 = 0x0F0F0F0F0F0F0F0F;
+
+    /**
+     * A fast and widely used tree-of-adder function to compute the population count.
+     * Attributed by Knuth [1] to a 1957 textbook by Wilkes, Wheeler and Gill [2].
+     * [1] Knuth, D. E. (2009) Bitwise Tricks & Techniques, The Art of Computer Programming.
+     * [2] Wilkes, M. V., Wheeler, D. J., and Gill, S. (1957) The Preparation of Programs for an Electronic Digital Computer, second edition.
+     * \param x
+     * \return 
+     */
+    uint16_t hamming_wilkes_wheeler_gill(uint64_t x) {
+        x -= (x >> 1) & c1;
+        x = ((x >> 2) & c2) + (x & c2);
+        x = (x + (x >> 4)) & c4;
+        x *= 0x0101010101010101;
+        return x >> 56;
     }
 
 }
