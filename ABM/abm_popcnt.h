@@ -29,7 +29,7 @@ namespace abm { // 8086 advanced bit manipulation
     uint16_t hamming_wegner_64(uint64_t* ptr_value) {
         uint16_t hamming_weight;
         __asm {
-            //.8086
+            .8086
             sub     bx, bx          ; zero BX bit count
             sub     cx, cx
             lds     si, ptr_value   ; DS:SI points to 64bit quad word value
@@ -101,9 +101,18 @@ namespace abm { // 8086 advanced bit manipulation
      * \return - the number of 1 bits in the quad word of memory pointed to.
      */
     uint16_t hamming_lookup_64(uint64_t* ptr_value) {
+        static char table[2] = { 10,1 };
         uint16_t hamming_weight;
         __asm {
-            //.8086
+            .8086
+            lea     bx, table;
+            lds     si, ptr_value   ; DS:SI points to 64bit quad word value
+            cld                     ; clear direction flag to increment DS : SI chain instructions
+                
+            lodsw                   ; load AX the first word of the qword value
+            xlatb                   ; lookup the number of bits 
+
+            mov     hamming_weight, ax
         }
         return hamming_weight;
     }
