@@ -18,7 +18,7 @@ namespace abm { // 8086 advanced bit manipulation
      * Wegner[1] algorithm bitset cardinality algorithm optimised for the 8086 using fast paths for all 1s or as soon as all the 1s have been counted.
      * As well as being competitive when the population count is relatively low it offers a fast path for the Wegner worst case of all 1s.
      * Further, it proves not only faster than a naive function checking the values of each bit (ROR or LSR) but also
-     * + C implementation of the naive tree-of-adder approach and the 
+     * + C implementation of the naive tree-of-adder approach and the
      * + Wilkes-Wheeler-Gill function in C - due to the overhead of multiplication
      * \note if 64K of system memory can be sacrificed then a Hamming Weight lookup table is faster.
      * [1] Wegner, P. (1960) A technique for counting ones in a binary computer. Commun. ACM, 3, 322–.
@@ -29,20 +29,25 @@ namespace abm { // 8086 advanced bit manipulation
     uint16_t hamming_wegner_64(uint64_t* ptr_value) {
         uint16_t hamming_weight;
         __asm {
-            .8086
-            sub     bx, bx              ; zero BX bit count
-            lds     si, ptr_value       ; DS:SI points to 64bit quad word value
-            cld                         ; clear direction flag to increment DS:SI chain instructions
-            
-    WORD0:  lodsw                       ; load AX the first word of the qword value
-            cmp     ax, 0xFFFF          
-            jne     SHIFT0
-            mov     bl, 16              ; it's all 1s
-            jmp     WORD1               ; fast path the full word
-    LOOP0   mov     cx, ax              ; Wegner algorithm
-            jcxz    WORD1               ; while not 0
-            dec     ax                  ; subtract 1
-            and     cx, ax              ; mask off
+            //.8086
+            sub     bx, bx          ; zero BX bit count
+            sub     cx, cx
+            lds     si, ptr_value   ; DS:SI points to 64bit quad word value
+            cld                     ; clear direction flag to increment DS : SI chain instructions
+
+    WORD0:  lodsb                   ; load AX the first word of the qword value
+            //cmp     ax, 0xFFFF
+            //jne     EMPTY
+            //mov     bl, 16          ; it's all 1s
+            //jmp     WORD1           ; fast path the full bitset
+    EMPTY:  mov     cl, al          ; fast path the empty bitset
+    LOOP0:  jcxz    WORD1           ; while not 0
+            mov     al, cl          ; Wegner algorithm
+            dec     al              ; subtract 1
+            and     cl, al          ; mask off
+            inc     bl              ; count bit
+            jmp     LOOP0
+
     WORD1:
 
     END:    mov     hamming_weight, bx
@@ -60,9 +65,11 @@ namespace abm { // 8086 advanced bit manipulation
     uint16_t hamming_lookup_64(uint64_t* ptr_value) {
         uint16_t hamming_weight;
         __asm {
-            .8086
+            //.8086
         }
         return hamming_weight;
     }
+
+}
 
 #endif

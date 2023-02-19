@@ -1,0 +1,4 @@
+ABM/abm_popcnt.h(71): Warning! W726: col(5) no reference to formal parameter 'ptr_value'
+ABM/abm_popcnt.h(71): Note! N393: col(5) included from ABM/test_abm.h(9)
+ABM/abm_popcnt.h(71): Note! N393: col(5) included from main.cpp(3)
+ABM/abm_popcnt.h(65): Note! N392: col(42) definition: 'unsigned __int64 * ptr_value' in 'unsigned short abm::hamming_lookup_64( unsigned __int64 * )'
