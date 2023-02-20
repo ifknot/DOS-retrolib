@@ -3,13 +3,14 @@
 
 #include "abm_types.h"
 
-namespace abm {
 
-	const uint16_t BITS_PER_BYTE = 8;
-	const uint16_t BITS_PER_WORD = 16;
-	const uint16_t BITS_PER_DWORD = 32;
-	const uint16_t BITS_PER_QWORD = 64;
+#define BITS_PER_BYTE	8;
+#define BITS_PER_WORD	16;
+#define BITS_PER_DWORD	32;
+#define BITS_PER_QWORD	64;
 
-}
+#define BYTES_PER_QWORD	8;
+#define WORDS_PER_QWORD	4;
+
 
 #endif
