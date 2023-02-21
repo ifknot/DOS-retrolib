@@ -1,7 +1,0 @@
-ABM/abm_popcnt.h(155): Warning! W389: col(18) integral value may be truncated during assignment or initialization
-ABM/abm_popcnt.h(155): Note! N393: col(18) included from ABM/test_abm.h(9)
-ABM/abm_popcnt.h(155): Note! N393: col(18) included from main.cpp(3)
-ABM/abm_popcnt.h(155): Warning! W389: col(18) integral value may be truncated during assignment or initialization
-ABM/test_abm.h(30): Warning! W689: col(34) conditional expression is always true (non-zero)
-ABM/test_abm.h(30): Note! N815: col(34) range of possible values for type 'unsigned __int64' is 0 to 18446744073709551615
-ABM/test_abm.h(30): Note! N818: col(34) constant expression in comparison has value 18446744073709551615

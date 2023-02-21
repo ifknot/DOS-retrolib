@@ -73,6 +73,10 @@
     <ClInclude Include="ABM\abm_types.h" />
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="DEBUG\debug_macros.h" />
+    <ClInclude Include="RND\rnd_constants.h" />
+    <ClInclude Include="RND\rnd_splitmix64.h" />
+    <ClInclude Include="RND\rnd_types.h" />
+    <ClInclude Include="RND\test_rnd.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
