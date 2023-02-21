@@ -14,7 +14,8 @@ namespace test_rnd {
 		INFO(__FUNCTION__);
 		{
 			INFO("test splitmix64\nWAIT...");
-			
+			rnd::splitmix64<1234567> prng;
+			for(int i = 0; i < 5; ++i) LOG(prng());
 			INFO("PASS!\n");
 		}
 		return 0;
