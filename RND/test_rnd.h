@@ -21,7 +21,18 @@ namespace test_rnd {
 		{
 			INFO("test splitmix64\nWAIT...");
 			rnd::splitmix64<1234567> prng;
-			for(int i = 0; i < 5; ++i) LOG(prng());
+			uint64_t exp[5] = { // expected first five integers generated using the seed 1234567
+				6457827717110365317,
+				3203168211198807973,
+				9817491932198370423,
+				4593380528125082431,
+				16408922859458223821
+			};
+			for (int i = 0; i < 5; ++i) {
+				uint64_t r = prng();
+				ASSERT(r == exp[i], r, exp[i]);
+				LOG(r);
+			}
 			INFO("PASS!\n");
 		}
 		return 0;

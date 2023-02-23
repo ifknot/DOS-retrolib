@@ -56,22 +56,27 @@ namespace bios {
         *  @retval  - uint32_t
         */
         uint32_t read_system_clock_counter() {
-                uint16_t hi, lo;
-                uint32_t ticks_since_midnight;
-                __asm {
-                        .8086
+            uint32_t ticks_since_midnight;
+            __asm {
+                .8086
+                lea     bx, ticks_since_midnight    
+                mov     ah, READ_SYSTEM_CLOCK_COUNTER
+                int     BIOS_CLOCK_SERVICES
+                mov     [bx], dx
+                mov     [bx + 2], cx
+            }
+            return ticks_since_midnight;
+        }
 
-                        mov             ah, READ_SYSTEM_CLOCK_COUNTER
-                        int             BIOS_CLOCK_SERVICES
-                        mov             hi, cx
-                        mov             lo, dx
-                        // mov ticks_since_midnight, cx
-                        // mov ticks_since_midnight + 2, dx
-                }
-                ticks_since_midnight = hi;
-                ticks_since_midnight <<= 16;
-                ticks_since_midnight |= lo;
-                return ticks_since_midnight;
+        bool is_24_hours_since_reset() {
+            uint8_t midnight;
+            __asm {
+                .8086
+                mov     ah, READ_SYSTEM_CLOCK_COUNTER
+                int     BIOS_CLOCK_SERVICES
+                mov     midnight, al
+            }
+            return midnight;
         }
 
         /**
@@ -80,18 +85,15 @@ namespace bios {
         *  midnight multiplied by approximately 18.206
         */
         void set_system_clock_counter(uint32_t ticks_since_midnight) {
-                uint16_t hi, lo;
-                lo = static_cast<uint16_t>(ticks_since_midnight);
-                hi = static_cast<uint16_t>(ticks_since_midnight >> 16);
-                __asm {
-                        .8086
+            __asm {
+                .8086
+                lea     bx, ticks_since_midnight
+                mov     ah, SET_SYSTEM_CLOCK_COUNTER
+                mov     cx, [bx + 2];
+                mov     dx, [bx];
+                int     BIOS_CLOCK_SERVICES
 
-                        mov             ah, SET_SYSTEM_CLOCK_COUNTER
-                        mov             cx, lo // ticks_since_midnight
-                        mov             dx, hi // ticks_since_midnight + 2
-                        int             BIOS_CLOCK_SERVICES
-
-                }
+            }
 
         }
 

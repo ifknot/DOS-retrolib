@@ -72,14 +72,6 @@
     <ClInclude Include="ABM\abm_popcnt.h" />
     <ClInclude Include="ABM\abm_types.h" />
     <ClInclude Include="ABM\test_abm.h" />
-    <ClInclude Include="BIOS\bios_clock_services.h" />
-    <ClInclude Include="BIOS\bios_clock_services_constants.h" />
-    <ClInclude Include="BIOS\bios_memory_services.h" />
-    <ClInclude Include="BIOS\bios_memory_services_constants.h" />
-    <ClInclude Include="BIOS\bios_services.h" />
-    <ClInclude Include="BIOS\bios_video_services.h" />
-    <ClInclude Include="BIOS\bios_video_services_constants.h" />
-    <ClInclude Include="BIOS\bios_video_services_types.h" />
     <ClInclude Include="BIOS\test_bios.h" />
     <ClInclude Include="DEBUG\debug_macros.h" />
     <ClInclude Include="RND\rnd_constants.h" />

@@ -1,0 +1,3 @@
+BIOS/bios_clock_services.h(79): Warning! W389: col(20) integral value may be truncated during assignment or initialization
+BIOS/bios_clock_services.h(79): Note! N393: col(20) included from BIOS/test_bios.h(9)
+BIOS/bios_clock_services.h(79): Note! N393: col(20) included from main.cpp(5)

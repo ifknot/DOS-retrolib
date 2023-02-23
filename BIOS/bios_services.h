@@ -10,7 +10,7 @@
 #ifndef BIOS_SERVICES_H
 #define BIOS_SERVICES_H
 
-// #include "bios_clock_services.h"
+#include "bios_clock_services.h"
 // #include "bios_serial_services.h"
 // #include "bios_disk_services.h"
 // #include "bios_keyboard_services.h"

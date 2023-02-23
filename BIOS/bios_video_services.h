@@ -12,17 +12,18 @@
 #ifndef BIOS_VIDEO_SERVICES_H
 #define BIOS_VIDEO_SERVICES_H
 
+#include <iostream>
+#include <cassert>
 #include <stdint.h>
-#include <assert.h>
 #include <dos.h>
 
 #include "bios_video_services_constants.h"
 #include "bios_video_services_types.h"
 
-#include "../dos/dos_services_types.h"
-#include "../dos/dos_error_messages.h"
+#include "../DOS/dos_services_types.h"
+#include "../DOS/dos_error_messages.h"
 
-
+#include "../DEBUG/debug_macros.h"
 
 namespace bios {
 
