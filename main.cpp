@@ -1,18 +1,17 @@
 #include <iostream>
 
 //#include "ABM/test_abm.h"
-#include "RND/test_rnd.h"
+//#include "RND/test_rnd.h"
+#include "BIOS/test_bios.h"
 
-//TODO: timers
-//TODO: integer rand shifters
-// [ ] splitmix64 https://rosettacode.org/wiki/Pseudo-random_numbers/Splitmix64
-// [ ] xorshift32 (asm) https://en.wikipedia.org/wiki/Xorshift
-// [ ] xorshift64 https://stackoverflow.com/questions/53886131/how-does-xorshift32-works
+//TODO: 
+// [x] IBM BIOS timers
+// [x] integer rand shifters 
 
 int main() {
   
     std::cout << "DOS-retrolib\nurl: github.com/ifknot/DOS-retrolib\n";
 
-    return test_rnd::run();
+    return test_bios::run();
 
 }

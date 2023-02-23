@@ -77,7 +77,7 @@ namespace bios {
         /**
         *  @brief the BIOS Data Area address 40:6C Timer Counter DWord
         *  @param ticks_since_midnight - - should be set to the number of seconds past
-        * midnight multiplied by approximately 18.206
+        *  midnight multiplied by approximately 18.206
         */
         void set_system_clock_counter(uint32_t ticks_since_midnight) {
                 uint16_t hi, lo;
