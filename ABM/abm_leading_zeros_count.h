@@ -24,18 +24,6 @@ namespace abm {
 		return cnt;
 	}
 
-	uint16_t trailing_zeroes(uint64_t n) {
-		uint16_t bits = 0;
-		while (n >= 0 && !(n & 01)) {
-			++bits;
-			if (n != 0)
-				n >>= 1;
-			else
-				break;
-		}
-		return bits;
-	}
-
 	uint16_t leading_zeros(uint64_t n) {
 		uint64_t msb = 0x8000000000000000;
 		uint16_t bits = 0;
