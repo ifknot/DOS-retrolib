@@ -6,7 +6,7 @@
 
 #include "../DEBUG/debug_macros.h"
 
-#include "abm_popcnt.h"
+#include "abm_population_count.h"
 
 
 

@@ -69,8 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ABM\abm_constants.h" />
-    <ClInclude Include="ABM\abm_popcnt.h" />
+    <ClInclude Include="ABM\abm_population_count.h" />
     <ClInclude Include="ABM\abm_types.h" />
+    <ClInclude Include="ABM\abm_leading_zeros_count.h" />
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="BIOS\test_bios.h" />
     <ClInclude Include="DEBUG\debug_macros.h" />
