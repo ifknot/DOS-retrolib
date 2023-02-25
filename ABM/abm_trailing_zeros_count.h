@@ -36,15 +36,16 @@ namespace abm {
 
 	WLOOP:  lodsw                   ; load AX next word of the quadword value
             xlatb                   ; lookup the lo byte number of bits 
-			cmp		ax, 8			; found lsbit?
-			jne		END				; yes
+			cmp		al, 8			; found lsbit?
+			jne		LSB				; yes
             add     dl, 8			; update set bit count	
             xchg    al, ah          ; swap hi byte into AL 
             xlatb                   ; lookup the hi byte number of bits 
-			cmp		ax, 8			; found lsbit ?
-			jne		END				; yes
+			cmp		al, 8			; found lsbit ?
+			jne		LSB				; yes
             add     dl, 8			; update set bit count
 			loop    WLOOP
+			jmp		END				; 64bits zero
 
 	LSB:    add		dl, al
 	END:	mov     zeros, dl

@@ -6,6 +6,8 @@
 
 //TODO: 
 // [x] Hamming Code
+// [ ] trailing zeroes
+// [ ] leading zeroes
 // [x] IBM BIOS timers
 // [x] integer rand shifters 
 // [ ] hamming code performance
