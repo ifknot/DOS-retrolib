@@ -20,20 +20,19 @@ namespace test_abm {
 			while (b <=  0x00000000000000FF) { //0xFFFFFFFFFFFFFFFF) {
 				uint16_t exp = abm::leading_zeros(b);
 				uint16_t obs = abm::lzcnt_lookup_64(&b);
-				std::cout << "| " << obs << ' ' << exp << ", ";
-				//ASSERT(obs == exp, abm::lzcnt_lookup_64(&b), abm::leading_zeros(b));
+				//std::cout << "| " << obs << ' ' << exp << ", ";
+				ASSERT(obs == exp, abm::lzcnt_lookup_64(&b), abm::leading_zeros(b));
 				b += 1;
 			}
 			std::cout << "PASS!\n";
 		}
-		/*
 		{
 			INFO("test tzcnt_lookup_64\nWAIT...");
 			uint64_t b = 0x0;// 0xFFFFEEEEDDDD0000;
 			while (b <= 0xFFFFFF) { //0xFFFFFFFFFFFFFFFF) {
 				uint16_t exp = abm::trailing_zeroes(b);
 				uint16_t obs = abm::tzcnt_lookup_64(&b);
-				std::cout << "| " << obs << ' ' << exp << ", ";
+				//std::cout << "| " << obs << ' ' << exp << ", ";
 				ASSERT(obs == exp, abm::tzcnt_lookup_64(&b), abm::trailing_zeroes(b));
 				b += 0x8000;
 			}
@@ -64,7 +63,6 @@ namespace test_abm {
 			}
 			std::cout << "PASS!\n";
 		}
-		*/
 		return 0;
 	}
 
