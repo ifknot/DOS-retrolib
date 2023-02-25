@@ -52,7 +52,7 @@ namespace abm {
 		return zeros;
 	}
 
-	uint8_t trailing_zeroes(uint64_t n) {
+	uint8_t trailing_zeros(uint64_t n) {
 		uint8_t zeros = 0;
 		if (n == 0) return 64;
 		while (n >= 0 && !(n & 01)) {
