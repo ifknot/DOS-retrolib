@@ -16,7 +16,7 @@
 namespace abm {
 
 	uint8_t tzcnt_lookup_64(uint64_t* ptr_value) {
-		static char table[256] = {
+		static char tztable[256] = {
 			8,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,
 			5,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,
 			6,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,
@@ -28,17 +28,16 @@ namespace abm {
 		};
 		uint8_t zeros;
 		__asm {
-			lea     bx, table       ; setup lookup table DS:[BX]
+			lea     bx, tztable     ; setup lookup table DS:[BX]
             mov     cx, WORDS_PER_QWORD
-            sub     dl, dl          ; zero the set bit count in DL
+            sub     dl, dl          ; zero the count in DL
             lds     si, ptr_value   ; DS:SI points to 64bit quad word value
             cld                     ; clear direction flag to increment DS:SI chain instructions
-
 	WLOOP:  lodsw                   ; load AX next word of the quadword value
             xlatb                   ; lookup the lo byte number of bits 
 			cmp		al, 8			; found lsbit?
 			jne		LSB				; yes
-            add     dl, 8			; update set bit count	
+            add     dl, 8			; update zero bit count	
             xchg    al, ah          ; swap hi byte into AL 
             xlatb                   ; lookup the hi byte number of bits 
 			cmp		al, 8			; found lsbit ?
@@ -55,6 +54,7 @@ namespace abm {
 
 	uint8_t trailing_zeroes(uint64_t n) {
 		uint8_t zeros = 0;
+		if (n == 0) return 64;
 		while (n >= 0 && !(n & 01)) {
 			++zeros;
 			if (n != 0) n >>= 1;

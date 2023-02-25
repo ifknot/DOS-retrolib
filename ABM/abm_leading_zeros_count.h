@@ -17,11 +17,46 @@
 
 namespace abm {
 
-	uint16_t lzcnt_lookup_64(uint64_t* ptr_value) {
-		uint16_t cnt;
+	uint8_t lzcnt_lookup_64(uint64_t* ptr_value) {
+		static char lztable[256] = {
+			8,7,6,6,5,5,5,5,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+			2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+			1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+			1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+			0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+		};
+		uint8_t zeros;
 		__asm {
+			pushf					; preserve flags
+			lea     bx, lztable     ; setup lookup table DS:[BX]
+            mov     cx, WORDS_PER_QWORD
+            sub     dl, dl          ; zero the count in DL
+            lds     si, ptr_value   ; DS:SI points to 64bit quad word value
+			add		si, 6			; start at the hi word
+            std                     ; set direction flag to decrement DS:SI chain instructions
+			
+	WLOOP:  lodsw                   ; load AX next word of the quadword value
+            xchg	al, ah			; start with hi byte (x86 is little-endian)
+			xlatb                   ; lookup the hi byte number of bits 
+			cmp		al, 8			; found msbit?
+			jne		MSB				; yes
+            add     dl, 8			; update zero bit count	
+            xchg    al, ah          ; swap lo byte into AL 
+            xlatb                   ; lookup the lo byte number of bits 
+			cmp		al, 8			; found msbit ?
+			jne		MSB				; yes
+            add     dl, 8			; update set bit count
+			loop    WLOOP
+			jmp		END				; 64bits zero
+
+	MSB:    add		dl, al
+	END:	mov     zeros, dl
+			popf					; restore flags
 		}
-		return cnt;
+		return zeros;
 	}
 
 	uint16_t leading_zeros(uint64_t n) {
