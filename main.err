@@ -1,3 +1,4 @@
-BIOS/bios_clock_services.h(79): Warning! W389: col(20) integral value may be truncated during assignment or initialization
-BIOS/bios_clock_services.h(79): Note! N393: col(20) included from BIOS/test_bios.h(9)
-BIOS/bios_clock_services.h(79): Note! N393: col(20) included from main.cpp(5)
+ABM/abm_population_count.h(161): Warning! W389: col(18) integral value may be truncated during assignment or initialization
+ABM/abm_population_count.h(161): Note! N393: col(18) included from ABM/test_abm.h(9)
+ABM/abm_population_count.h(161): Note! N393: col(18) included from main.cpp(3)
+ABM/abm_population_count.h(161): Warning! W389: col(18) integral value may be truncated during assignment or initialization

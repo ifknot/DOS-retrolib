@@ -34,11 +34,11 @@ namespace abm {
      * \param ptr_value - the 64-bit unsigned integer for which we want the population count.
      * \return - the number of 1 bits in the quad word of memory pointed to.
      */
-    uint16_t hamming_wegner_64(uint64_t* ptr_value) {
-        uint16_t hamming_weight;
+    uint8_t hamming_wegner_64(uint64_t* ptr_value) {
+        uint8_t hamming_weight;
         __asm {
             .8086
-            sub     bx, bx          ; zero BX bit count
+            sub     bl, bl          ; zero BX bit count
             sub     cx, cx          ; zero CX intermediate result
             lds     si, ptr_value   ; DS:SI points to 64bit quad word value
             cld                     ; clear direction flag to increment DS:SI chain instructions
@@ -95,7 +95,7 @@ namespace abm {
             inc     bl              ; count bit
             jmp     LOOP3
 
-    END:    mov     hamming_weight, bx
+    END:    mov     hamming_weight, bl
 
         }
         return hamming_weight;
@@ -108,7 +108,7 @@ namespace abm {
      * \param ptr_value - the 64-bit unsigned integer for which we want the population count.
      * \return - the number of 1 bits in the quad word of memory pointed to.
      */
-    uint16_t hamming_lookup_64(uint64_t* ptr_value) {
+    uint8_t hamming_lookup_64(uint64_t* ptr_value) {
         static char table[256] = {
             0,1,1,2,1,2,2,3,1,2,2,3,2,3,3,4,1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,
             1,2,2,3,2,3,3,4,2,3,3,4,3,4,4,5,2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,
@@ -119,12 +119,12 @@ namespace abm {
             2,3,3,4,3,4,4,5,3,4,4,5,4,5,5,6,3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7,
             3,4,4,5,4,5,5,6,4,5,5,6,5,6,6,7,4,5,5,6,5,6,6,7,5,6,6,7,6,7,7,8
         };
-        uint16_t hamming_weight;
+        uint8_t hamming_weight;
         __asm {
             .8086
             lea     bx, table       ; setup lookup table DS:[BX]
             mov     cx, WORDS_PER_QWORD
-            sub     dx, dx          ; zero the set bit count in DX
+            sub     dl, dl          ; zero the set bit count in DL
             lds     si, ptr_value   ; DS:SI points to 64bit quad word value
             cld                     ; clear direction flag to increment DS:SI chain instructions
       
@@ -136,7 +136,7 @@ namespace abm {
             add     dl, al          ; update set bit count
             loop    WLOOP
 
-            mov     hamming_weight, dx
+            mov     hamming_weight, dl
         }
         return hamming_weight;
     }
@@ -153,7 +153,7 @@ namespace abm {
      * \param x
      * \return 
      */
-    uint16_t hamming_wilkes_wheeler_gill(uint64_t x) {
+    uint8_t hamming_wilkes_wheeler_gill(uint64_t x) {
         x -= (x >> 1) & c1;
         x = ((x >> 2) & c2) + (x & c2);
         x = (x + (x >> 4)) & c4;

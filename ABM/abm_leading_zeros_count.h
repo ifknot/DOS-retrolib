@@ -26,12 +26,12 @@ namespace abm {
 
 	uint16_t leading_zeros(uint64_t n) {
 		uint64_t msb = 0x8000000000000000;
-		uint16_t bits = 0;
+		uint16_t zeros = 0;
 		for (uint16_t i = 0; i < 64; ++i) {
 			if ((n << i) & msb) break; // leading set bit found	
-			++bits;
+			++zeros;
 		}
-		return bits;
+		return zeros;
 	}
 
 }
