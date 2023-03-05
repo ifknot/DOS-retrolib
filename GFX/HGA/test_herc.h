@@ -12,6 +12,8 @@
 #include "hga_video_mode.h"
 #include "hga_swap_buffers.h"
 #include "hga_cls.h"
+#include "hga_glyph.h"
+#include "hga_default_font_8x8.h"
 
 using namespace hga;
 
@@ -29,18 +31,15 @@ namespace test_herc {
 				if (YESNO("graphics mode? ")) {
 					graphics_full_mode();
 				}
+				uint8_t a[8] = { // letter A
+					0, 0x38, 0x44, 0x44, 0x44, 0x7C, 0x44, 0x44
+				};
+				cls();
+				draw_glyph_8x8(10, 10, a);
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
 				}
-				if (YESNO("cls? ")) {
-					cls();
-				}
-				if (YESNO("swap buffers? ")) {
-					swap_buffers();
-				}
-				if (YESNO("cls? ")) {
-					cls();
-				}
+				draw_glyph_8x8(11, 10, a);
 				if (YESNO("text mode? ")) {
 					text_half_mode();
 				}

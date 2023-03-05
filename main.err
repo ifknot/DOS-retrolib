@@ -1,2 +1,4 @@
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
 GFX/HGA/hga_constants.h(145): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'default_font'
+GFX/HGA/hga_default_font_8x8.h(37): Note! N392: col(19) definition: 'unsigned char const hga::default_font[256][8]'
