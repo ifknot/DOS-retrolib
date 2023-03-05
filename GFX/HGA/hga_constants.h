@@ -132,9 +132,9 @@ namespace hga {
     typedef uint16_t size_type;
 
     /**
-        * Hercules Graphics Adapter video modes.
-        * NB high bit is set
-        */
+    * Hercules Graphics Adapter video modes.
+    * NB high bit is set
+    */
     enum video_mode_t {
         TEXT_MONOCHROME_80X25 = 0x80,       // TEXT_MONOCHROME_80X25 ie BIOS MODE 7 (MDA)
         HERCULES_GRAPHICS,                  // Hercules 720x348 pixel-addressable graphics mode (1982)

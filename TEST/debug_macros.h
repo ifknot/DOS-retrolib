@@ -48,8 +48,23 @@ define DISPLAY std::cout << '.';
 						} while(false)
 #endif
 
+#ifdef NDEBUG
+#define YESNO(msg)
+#else
+#define YESNO(msg) test::__yesno(msg)
+#endif
+
+#ifndef NDEBUG
 namespace test {
 
+	bool __yesno(char* msg) {
+		std::cout << msg << " Y/N\t";
+		char ch;
+		std::cin >> ch;
+		return (ch == 'Y' || ch == 'y') ? true : false;
+	}
+
 }
+#endif
 
 #endif
