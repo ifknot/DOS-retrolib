@@ -16,7 +16,7 @@
 
 namespace hga {
 
-    void cls(uint8_t buffer = 0) {
+    void cls(uint8_t buffer = GLOBAL::active_buffer) {
         __asm {
             .8086
             pushf

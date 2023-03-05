@@ -32,6 +32,9 @@ namespace test_herc {
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
 				}
+				if (YESNO("cls? ")) {
+					cls();
+				}
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
 				}
