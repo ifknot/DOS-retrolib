@@ -17,8 +17,8 @@
 //  [ ] board_state_t
 //  [ ] print_board
 // TODO: gfx::
-//  [ ] herc::enter_graphics_mode
-//  [ ] herc::leave_graphics_mode
+//  [x] herc card type primitives
+//  [ ] herc::graphics_mode
 //  [ ] herc::bitmap_union
 //  [ ] herc::load_bitmap
 //  [ ] herc::save_bitmap

@@ -1,4 +1,4 @@
-﻿/**
+/**
  *
  *  @file      hga_constants.h
  *  @brief     HGA macro definitions for assembly
@@ -13,7 +13,7 @@
  * This advantage dwindles on the 286 (2:5) and 386 (2:4), vanishing on the 486(1:1) and beyond
  *  @author    Jeremy Thornton
  *  @date      11.04.2022
- *  @copyright © Jeremy Thornton, 2022. All right reserved.
+ *  @copyright Jeremy Thornton, 2022. All right reserved.
  *
  */
 #ifndef HGA_CONSTANTS_H
@@ -33,7 +33,7 @@
 #define SCREEN_Y_MIN 0
 #define SCREEN_Y_MAX 348
 #define SCREEN_Y_SCALE 0.483
-#define PIXELS_PER_BYTE	8
+#define PIXELS_PER_BYTE 8
 #define BYTES_PER_LINE 90
 
  /**
@@ -125,7 +125,7 @@
 #define CRTC_DATA_PORT          3B5h
 
 // HGA Status Register at I/O address (same as CGA)
-#define HGA_STATUS_REG			3DAh
+#define HGA_STATUS_REG                  3DAh
 
 namespace hga {
 
@@ -136,8 +136,8 @@ namespace hga {
         * NB high bit is set
         */
     enum video_mode_t {
-        TEXT_MONOCHROME_80X25 = 0x80,       // TEXT_MONOCHROME_80X25 ie BIOS MODE 7 (MDA) 
-        HERCULES_GRAPHICS,                  // Hercules 720x348 pixel-addressable graphics mode (1982) 
+        TEXT_MONOCHROME_80X25 = 0x80,       // TEXT_MONOCHROME_80X25 ie BIOS MODE 7 (MDA)
+        HERCULES_GRAPHICS,                  // Hercules 720x348 pixel-addressable graphics mode (1982)
         HERCULES_GRAPHICS_PLUS,             // Support for redefinable fonts called RAMFONT in MDA compatible text mode (1986)
         HERCULES_GRAPHICS_IN_COLOR          // Colour capabilities similar to the EGA, with 16 colors from a palette of 64 (1987)
     };

@@ -23,8 +23,6 @@
 #include "../DOS/dos_services_types.h"
 #include "../DOS/dos_error_messages.h"
 
-#include "../DEBUG/debug_macros.h"
-
 namespace bios {
 
     void set_video_mode(video_mode_t mode) {
@@ -49,30 +47,30 @@ namespace bios {
     /**
     *  @brief read Video Display Data Area from BIOS data area (segment 40h)
     *  @details
-    *		40:49	byte	Current video mode
-    *		40:4A	word	Number of screen columns
-    *		40:4C	word	Size of current video regen buffer in bytes
-    *		40:4E	word	Offset of current video page in video regen buffer
-    *		40:50  8 words	Cursor position of pages 1-8, high order byte=row low order byte=column; changing this data isn't reflected immediately on the display
-    *		40:60	byte	Cursor ending (bottom) scan line (don't modify)
-    *		40:61	byte	Cursor starting (top) scan line (don't modify)
-    *		40:62	byte	Active display page number
-    *		40:63	word	Base port address for active 6845 CRT controller 3B4h = mono, 3D4h = color
-    *		40:65	byte	6845 CRT mode control register value (port 3x8h) EGA/VGA values emulate those of the MDA/CGA
-    *		40:66	byte	CGA current color palette mask setting (port 3d9h) EGA and VGA values emulate the CGA
+    *           40:49   byte    Current video mode
+    *           40:4A   word    Number of screen columns
+    *           40:4C   word    Size of current video regen buffer in bytes
+    *           40:4E   word    Offset of current video page in video regen buffer
+    *           40:50  8 words  Cursor position of pages 1-8, high order byte=row low order byte=column; changing this data isn't reflected immediately on the display
+    *           40:60   byte    Cursor ending (bottom) scan line (don't modify)
+    *           40:61   byte    Cursor starting (top) scan line (don't modify)
+    *           40:62   byte    Active display page number
+    *           40:63   word    Base port address for active 6845 CRT controller 3B4h = mono, 3D4h = color
+    *           40:65   byte    6845 CRT mode control register value (port 3x8h) EGA/VGA values emulate those of the MDA/CGA
+    *           40:66   byte    CGA current color palette mask setting (port 3d9h) EGA and VGA values emulate the CGA
     *  @param vdda - target array for data copy
     */
     void read_VDDA_into(char* vdda) {
         __asm {
             .8086
-            mov		ax, BIOS_DATA_AREA_SEGMENT
-            mov		ds, ax
-            mov		si, BIOS_VDDA_OFFSET    ; DS:SI = 0040:0049 (BIOS Data Area)
+            mov         ax, BIOS_DATA_AREA_SEGMENT
+            mov         ds, ax
+            mov         si, BIOS_VDDA_OFFSET    ; DS:SI = 0040:0049 (BIOS Data Area)
             les     di, vdda                ; ES:DI = array to copy data
 
             cld                             ; increment
-            mov		cx, BIOS_VDDA_SIZE      ; 30 bytes of VDDA data
-            rep		movsb                   ; copy VDDA bytes to array
+            mov         cx, BIOS_VDDA_SIZE      ; 30 bytes of VDDA data
+            rep         movsb                   ; copy VDDA bytes to array
 
         }
     }
@@ -303,26 +301,23 @@ namespace bios {
     * + a pattern of 001 indicates a Hercules Graphics Card Plus
     * + a pattern of 101 indicates a Hercules In-Color Card
     * + any other pattern is a Hercules Graphics Card.
-    * 
+    *
     * Reading from port 03BAh returns vertical sync in bit 7, and a card ID in bits 6-4:
     * 000: Hercules
     * 001: Hercules Plus
     * 101: Hercules InColor
-    * 111: Unknown clone 
-    * 
+    * 111: Unknown clone
+    *
     * @note Only trust this ID once you've checked that there's a vertical sync present; if bit 7 is the same for 32768 reads in succession, then there isn't.
     * @note Some Hercules cards support a light pen. Bit 1 of port 3BAh returns the lightpen sensor status; any write to port 3BBh resets the light pen status.
     *
     * \return enum video_adapter_t
     */
     video_adapter_t detect_HGA_adapter_type() {
-        video_adapter_t type = UNKNOWN;
+        video_adapter_t adapter = UNKNOWN;
         if (detect_CRTC_at_port(MDA_crtc_port)) {
             __asm {
                 .8086
-                push ax
-                push cx
-                push dx
 
                 mov     dx, 3BAh    ; DX: = 3BAh(MDA/Hercules status port)
                 in      al, dx      ; read status port
@@ -336,7 +331,7 @@ namespace bios {
                 loope   L1          ; no sample again yes leave loop
 
                 jne     HGA         ; bit 7 changed, it's a Hercules
-                mov     type, 1     ; MDA
+                mov     adapter, 1  ; MDA
                 jmp     EXIT
 
         HGA:    in      al, dx      ; read status port again
@@ -344,27 +339,26 @@ namespace bios {
 
                 cmp     al, 70h     ; Unknown clone bit pattern
                 jne     L2
-                mov     type, 0     ; UKNOWN
+                mov     adapter, 0  ; UKNOWN
                 jmp     exit
 
         L2:     cmp     al, 50h     ; Hercules InColor bit pattern
                 jne     L3
-                mov     type, 4     ; HGC_INCOLOR
+                mov     adapter, 4  ; HGC_INCOLOR
                 jmp     exit
 
         L3:     cmp     al, 10h     ; Hercules Plus bit pattern
                 jne     L4
-                mov     type, 3     ; HGC_PLUS
+                mov     adapter, 3  ; HGC_PLUS
                 jmp     exit
 
-        L4:     mov     type, 2     ; HGC
+        L4:     mov     adapter, 2  ; HGC
 
-        EXIT:   pop dx
-                pop cx
-                pop ax
+        EXIT:   
+
             }
         }
-        return type;
+        return adapter;
     }
 
     /**

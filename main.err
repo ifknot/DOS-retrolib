@@ -1,0 +1,2 @@
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
+GFX/HGA/hga_constants.h(145): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'

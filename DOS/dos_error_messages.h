@@ -21,17 +21,6 @@ namespace dos {
 
         namespace error {
 
-#ifdef NDEBUG
-
-    #define LOG( msg ) ((void)0)
-
-#else
-
-    #define LOG( msg ) std::cerr  << __DATE__ << ' ' << __TIME__ << '\t' << __FUNCTION__  << msg << '\n';
-
-#endif // NDEBUG
-
-
                 /**
                  * Useful for user code to raise first classic 12h codes
                  */
