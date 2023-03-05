@@ -70,9 +70,11 @@
   <ItemGroup>
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="BIOS\test_bios.h" />
+    <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_environment.h" />
     <ClInclude Include="GFX\HGA\hga_read_light_pen_registers.h" />
+    <ClInclude Include="GFX\HGA\hga_swap_buffers.h" />
     <ClInclude Include="GFX\HGA\hga_video_mode.h" />
     <ClInclude Include="GFX\HGA\test_herc.h" />
     <ClInclude Include="RND\test_rnd.h" />

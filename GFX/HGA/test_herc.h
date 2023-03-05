@@ -10,6 +10,7 @@
 
 #include "hga_read_light_pen_registers.h"
 #include "hga_video_mode.h"
+#include "hga_swap_buffers.h"
 
 using namespace hga;
 
@@ -24,10 +25,16 @@ namespace test_herc {
 			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
 			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
 				LOG(read_light_pen_registers());
-				if (YESNO("graphics mode ? ")) {
+				if (YESNO("graphics mode? ")) {
 					graphics_full_mode();
 				}
-				if (YESNO("text mode ? ")) {
+				if (YESNO("swap buffers? ")) {
+					swap_buffers();
+				}
+				if (YESNO("swap buffers? ")) {
+					swap_buffers();
+				}
+				if (YESNO("text mode? ")) {
 					text_half_mode();
 				}
 			}
