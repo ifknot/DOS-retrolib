@@ -72,6 +72,7 @@
     <ClInclude Include="BIOS\test_bios.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_graphics_environment.h" />
+    <ClInclude Include="GFX\HGA\hga_read_light_pen_registers.h" />
     <ClInclude Include="GFX\HGA\test_herc.h" />
     <ClInclude Include="RND\test_rnd.h" />
   </ItemGroup>
