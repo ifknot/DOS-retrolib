@@ -17,6 +17,15 @@
 
 using namespace hga;
 
+void fill_screen() {
+	int i = 0;
+	for (int y = 0; y < 43; ++y) {
+		for (int x = 0; x < 90; ++x) {
+			write_glyph_8x8(x, y, default_font[i++ % 256]);
+		}
+	}
+}
+
 namespace test_herc {
 
 	int run() {
@@ -31,15 +40,12 @@ namespace test_herc {
 				if (YESNO("graphics mode? ")) {
 					graphics_full_mode();
 				}
-				uint8_t a[8] = { // letter A
-					0, 0x38, 0x44, 0x44, 0x44, 0x7C, 0x44, 0x44
-				};
 				cls();
-				draw_glyph_8x8(10, 10, a);
+				fill_screen();
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
 				}
-				draw_glyph_8x8(11, 10, a);
+				fill_screen();
 				if (YESNO("text mode? ")) {
 					text_half_mode();
 				}

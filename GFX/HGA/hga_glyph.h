@@ -36,7 +36,7 @@ namespace hga {
     * An 8x8 font is small but readable as 90 characters per line but unfortunately the vertical 
     * screen size of 348 is not evenly divisible by 8 (320/8 = 43.5 vertical char positions)
     */
-	void draw_glyph_8x8(uint16_t x, uint16_t y, const uint8_t* bytes, uint8_t buffer = GLOBAL::active_buffer) {
+	void write_glyph_8x8(uint16_t x, uint16_t y, const uint8_t* bytes, uint8_t buffer = GLOBAL::active_buffer) {
                 __asm {
 		            .8086
                     shl     x, 1                    ; convert x glyph column to pixel location
