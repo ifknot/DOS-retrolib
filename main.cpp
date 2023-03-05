@@ -3,7 +3,7 @@
 //#include "ABM/test_abm.h"
 //#include "RND/test_rnd.h"
 //#include "BIOS/test_bios.h"
-#include "GFX/HERC/test_herc.h"
+#include "GFX/HGA/test_herc.h"
 
 // TODO: 
 //  [x] Hamming Code

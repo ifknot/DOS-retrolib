@@ -70,7 +70,8 @@
   <ItemGroup>
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="BIOS\test_bios.h" />
-    <ClInclude Include="GFX\HERC\test_herc.h" />
+    <ClInclude Include="GFX\HGA\hga_graphics_environment.h" />
+    <ClInclude Include="GFX\HGA\test_herc.h" />
     <ClInclude Include="RND\test_rnd.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
