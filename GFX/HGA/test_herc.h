@@ -11,6 +11,7 @@
 #include "hga_read_light_pen_registers.h"
 #include "hga_video_mode.h"
 #include "hga_swap_buffers.h"
+#include "hga_cls.h"
 
 using namespace hga;
 
@@ -33,6 +34,9 @@ namespace test_herc {
 				}
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
+				}
+				if (YESNO("cls? ")) {
+					cls();
 				}
 				if (YESNO("text mode? ")) {
 					text_half_mode();

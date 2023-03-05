@@ -16,26 +16,22 @@
 
 namespace hga {
 
-    namespace graphics {
-
-        void cls(uint8_t buffer = 0) {
-            __asm {
-                .8086
-                puhsf
-                mov     ax, HGA_VIDEO_RAM_SEGMENT
-                test    buffer, 1                   ; which buffer ?
-                jz      J0
-                add     ax, 800h                    ; second buffer
-    J0:         mov     es, ax
-                xor     di, di
-                mov     cx, 4000h                   ; 16K words VRAM buffer 32K bytes
-                xor     ax, ax                      ; zero ax
-                cld                                 ; increment mode
-                rep     stosw                       ; clear VRAM buffer
-                popf
-            }
+    void cls(uint8_t buffer = 0) {
+        __asm {
+            .8086
+            pushf
+            mov     ax, HGA_VIDEO_RAM_SEGMENT
+            test    buffer, 1                   ; which buffer ?
+            jz      J0
+            add     ax, 800h                    ; second buffer
+J0:         mov     es, ax
+            xor     di, di
+            mov     cx, 4000h                   ; 16K words VRAM buffer 32K bytes
+            xor     ax, ax                      ; zero ax
+            cld                                 ; increment mode
+            rep     stosw                       ; clear VRAM buffer
+            popf
         }
-
     }
 
 }
