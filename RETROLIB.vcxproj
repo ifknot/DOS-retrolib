@@ -68,17 +68,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ABM\abm_constants.h" />
-    <ClInclude Include="ABM\abm_population_count.h" />
-    <ClInclude Include="ABM\abm_trailing_zeros_count.h" />
-    <ClInclude Include="ABM\abm_types.h" />
-    <ClInclude Include="ABM\abm_leading_zeros_count.h" />
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="BIOS\test_bios.h" />
-    <ClInclude Include="DEBUG\debug_macros.h" />
-    <ClInclude Include="RND\rnd_constants.h" />
-    <ClInclude Include="RND\rnd_splitmix64.h" />
-    <ClInclude Include="RND\rnd_types.h" />
+    <ClInclude Include="GFX\HERC\test_herc.h" />
     <ClInclude Include="RND\test_rnd.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

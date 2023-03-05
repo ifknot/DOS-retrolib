@@ -4,7 +4,7 @@
 #include <cassert>
 #include <iostream>
 
-#include "../DEBUG/debug_macros.h"
+#include "../TEST/debug_macros.h"
 
 #include "../RND/rnd_splitmix64.h"
 
