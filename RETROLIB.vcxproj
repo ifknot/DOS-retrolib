@@ -74,6 +74,7 @@
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_default_font_8x8.h" />
     <ClInclude Include="GFX\HGA\hga_environment.h" />
+    <ClInclude Include="GFX\HGA\hga_monospaced_font_t.h" />
     <ClInclude Include="GFX\HGA\hga_glyph.h" />
     <ClInclude Include="GFX\HGA\hga_read_light_pen_registers.h" />
     <ClInclude Include="GFX\HGA\hga_swap_buffers.h" />

@@ -34,7 +34,22 @@
 
 namespace hga {
 
-    const uint8_t default_font[256][8] = {
+    /**
+    * Original header:
+
+    ; Summary: font8_8.asm
+    ; 8x8 monochrome bitmap fonts for rendering
+    ;
+    ; Author:
+    ;     Marcel Sondaar
+    ;     International Business Machines (public domain VGA fonts)
+    ;
+    ; License:
+    ;     Public Domain
+    ;
+
+    */
+    const uint8_t default_font_data[256][8] = {
         // unicode points U+0000 - U+007F (basic latin)
         { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},	// U+0000 (NUL)
         { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},	// U+0001 (SOH)

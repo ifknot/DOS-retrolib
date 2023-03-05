@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Nov  1 2017 20:56:49 (64-bit)
 Copyright (c) 2002-2017 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/03/05 17:42:25
+Created on:       23/03/05 21:19:47
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -272,8 +272,8 @@ Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
 0a7c:0df0+     char __far bios::video_mode_names[][64]
 0a7c:0ce0+     int unsigned const __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::npos
 0000:1a00+     char __far * __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::alloc( int unsigned, int unsigned __far & )
-0000:1344+     int __far test_herc::run()
-0000:1610      main_
+0000:1348+     int __far test_herc::run()
+0000:1616      main_
 0a7c:1ce8+     char __far bios::video_display_names[][255]
 0a7c:23e8+     char __far dos::error::messages[][64]
 0a7c:3928+     char __far dos::error::classes[][64]
@@ -764,4 +764,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  f940 (63808.)
 Entry point address: 0000:1ff8
-Link time: 00:00.17
+Link time: 00:00.22

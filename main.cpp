@@ -19,8 +19,10 @@
 // TODO: gfx::herc
 //  [x] card type primitives
 //  [x] graphics_mode
-//  [ ] swap_buffers
-//  [ ] cls
+//  [x] swap_buffers
+//  [x] cls
+//  [x] glyph
+//  [x] default font ascii 0-255
 //  [ ] bitmap_union
 //  [ ] load_bitmap
 //  [ ] save_bitmap

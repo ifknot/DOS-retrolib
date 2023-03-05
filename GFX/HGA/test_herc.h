@@ -13,15 +13,17 @@
 #include "hga_swap_buffers.h"
 #include "hga_cls.h"
 #include "hga_glyph.h"
-#include "hga_default_font_8x8.h"
+#include "hga_environment.h"
 
 using namespace hga;
 
 void fill_screen() {
+	monospaced_font_t<8> f;
+	f.data = default_font_data;
 	int i = 0;
 	for (int y = 0; y < 43; ++y) {
 		for (int x = 0; x < 90; ++x) {
-			write_glyph_8x8(x, y, default_font[i++ % 256]);
+			write_glyph_8x8(x, y, f.data[i++ % 256]);
 		}
 	}
 }
@@ -37,15 +39,20 @@ namespace test_herc {
 			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
 			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
 				LOG(read_light_pen_registers());
+
+				//std::cout << GLOBAL::default_font.name.c_str() << std::endl;
+
 				if (YESNO("graphics mode? ")) {
 					graphics_full_mode();
+					cls();
+					fill_screen();
 				}
-				cls();
-				fill_screen();
+				
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
+					fill_screen();
 				}
-				fill_screen();
+				
 				if (YESNO("text mode? ")) {
 					text_half_mode();
 				}

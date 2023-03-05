@@ -11,6 +11,8 @@
 #define HGA_ENVIRONMENT_H
 
 #include <stdint.h>
+#include "hga_default_font_8x8.h"
+#include "hga_monospaced_font_t.h"
 
 namespace hga {
 
@@ -18,6 +20,7 @@ namespace hga {
 
 		static uint8_t active_buffer = 0;	// 0 = default B000:000 1 = B000:8000 second display page buffer
 
+		
 	}
 
 }
