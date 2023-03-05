@@ -16,12 +16,14 @@
 //  [ ] bitboard_t
 //  [ ] board_state_t
 //  [ ] print_board
-// TODO: gfx::
-//  [x] herc card type primitives
-//  [ ] herc::graphics_mode
-//  [ ] herc::bitmap_union
-//  [ ] herc::load_bitmap
-//  [ ] herc::save_bitmap
+// TODO: gfx::herc
+//  [x] card type primitives
+//  [x] graphics_mode
+//  [ ] swap_buffers
+//  [ ] cls
+//  [ ] bitmap_union
+//  [ ] load_bitmap
+//  [ ] save_bitmap
 
 int main() {
   
