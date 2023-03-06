@@ -46,6 +46,7 @@
   *  B000:8000 - B000:FFFF   Second Page
   */
 #define HGA_VIDEO_RAM_SEGMENT   0B000h
+#define HGA_PAGE_2_OFFSET       800h
 
   /**
    *  @def   HGA_CONFIG_REGISTER
