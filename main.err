@@ -1,9 +1,6 @@
-GFX/HGA/hga_write_glyph_8x6.h(44): Warning! W726: col(5) no reference to formal parameter 'buffer'
-GFX/HGA/hga_write_glyph_8x6.h(44): Note! N393: col(5) included from GFX/HGA/hga_glyph.h(29)
-GFX/HGA/hga_write_glyph_8x6.h(44): Note! N393: col(5) included from GFX/HGA/test_herc.h(15)
-GFX/HGA/hga_write_glyph_8x6.h(44): Note! N393: col(5) included from main.cpp(6)
-GFX/HGA/hga_write_glyph_8x6.h(27): Note! N392: col(80) definition: 'unsigned char buffer' in 'void hga::write_glyph_8x6( unsigned short, unsigned short, unsigned char const *, unsigned char )'
 GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'width'
+GFX/HGA/hga_glyph.h(41): Note! N393: col(9) included from GFX/HGA/test_herc.h(15)
+GFX/HGA/hga_glyph.h(41): Note! N393: col(9) included from main.cpp(6)
 GFX/HGA/hga_glyph.h(39): Note! N392: col(35) definition: 'unsigned short width' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
 GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'height'
 GFX/HGA/hga_glyph.h(39): Note! N392: col(51) definition: 'unsigned short height' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
@@ -16,4 +13,4 @@ GFX/HGA/hga_glyph.h(39): Note! N392: col(98) definition: 'unsigned char const * 
 GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'buffer'
 GFX/HGA/hga_glyph.h(39): Note! N392: col(113) definition: 'unsigned char buffer' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
-GFX/HGA/hga_constants.h(145): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
+GFX/HGA/hga_constants.h(146): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'

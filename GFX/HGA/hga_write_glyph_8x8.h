@@ -18,41 +18,32 @@ namespace hga {
 	/**
     * An 8x8 font is small but readable as 90 characters per line but unfortunately the vertical 
     * screen size of 348 is not evenly divisible by 8 (320/8 = 43.5 vertical char positions)
+    * @note uses partial x,y values to take advantage of cancel out shl and shr 
+    * for convert up to pixel location and then down to memory location
     */
 	void write_glyph_8x8(uint16_t x, uint16_t y, const uint8_t* bytes, uint8_t buffer = GLOBAL::active_buffer) {
         __asm {
 		    .8086
-
-            shl     x, 1            ; convert x glyph column to pixel locationx*8
-            shl     x, 1            ; 8086 limited to single step shifts, but...
-            shl     x, 1            ; 3 x mem with 1 shift is 3 x 15 = 45 clock cycles, MUL 16 bit mem is 139 clock cycles(!)
-                    
-            shl     y, 1            ; convert y glyph row to pixel location
-            shl     y, 1            ; 
-            shl     y, 1            ; another 45 clock cycles, taking 45+45 / 278 or 32% the time of 2 MULS
-
-		    lds     si, bytes		; ds:[si] points to list of 8 glyph data bytes to write
+   
+            shl     y, 1                    ; convert y glyph row to partial (x2) pixel location
+		    lds     si, bytes		        ; ds:[si] points to list of 8 glyph data bytes to write
 
 		    mov     ax, HGA_VIDEO_RAM_SEGMENT
             test    buffer, 1               ; which buffer ?
             jz      J0                      ; B000:0000 - B000 : 7FFF   First Page
             add     ax, HGA_PAGE_2_OFFSET   ; B000:8000 - B000 : FFFF   Second Page
     J0:     mov     es, ax			        ; es points to screen segment
-
+ 
 		    mov     ax, y                   ; load y into ax then perform screen clipping
-		    cmp     ax, SCREEN_Y_MAX        ; compare ax with y maximum boundry
-            jge     END                     ; nothing to plot                
-		    shr     ax, 1                   ; calculate y / 4
-            shr     ax, 1                   ; 8086 limited to single step shifts
+		    cmp     ax, SCREEN_Y_MAX / 4    ; compare ax with partial y maximum boundry / 4
+            jge     END                     ; nothing to plot   
+           
             mov     cl, BYTES_PER_LINE
-            mul     cl                      ; calculate(y / 4) * 90
+            mul     cl                      ; calculate(y / 4) * 90 nb 133 cycles 
 		        
 		    mov     di, x                   ; load x into di and clip to screen bounds
-            cmp     di, SCREEN_X_MAX        ; compare di with x maximum boundry
+            cmp     di, SCREEN_X_MAX / 8    ; compare di with partial x maximum boundry / 8
             jge     END                     ; nothing to plot
-            shr     di, 1                   ; calculate column byte x / 8
-            shr     di, 1                   ; 8086 limited to single step shifts
-            shr     di, 1                   ; x / 8
             add     di, ax                  ; + (y / 4) * 90
 
 #ifdef SYNCHRONISED                    

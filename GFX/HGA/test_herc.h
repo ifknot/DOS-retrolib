@@ -20,11 +20,11 @@ using namespace hga;
 void fill_screen() {
 	monospaced_font_t<8> f((uint8_t(*)[8])default_font_data);
 	int i = 0;
-	for (int y = 0; y < 58; ++y) {
+	for (int y = 0; y < 43; ++y) { //58 or 43
 		for (int x = 0; x < 90; ++x) {
-			write_glyph_8x6(x, y, f.data[i++ % 256]);
+			write_glyph_8x8(x, y, f.data[i++ % 256]);
 		}
-		std::cout << '\n' << std::endl;
+		//std::cout << '\n' << std::endl;
 	}
 }
 
@@ -39,9 +39,9 @@ namespace test_herc {
 			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
 			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
 				LOG(read_light_pen_registers());
-				fill_screen();
+				//fill_screen();
 				//std::cout << GLOBAL::default_font.name.c_str() << std::endl;
-				/*
+				
 				if (YESNO("graphics mode? ")) {
 					graphics_full_mode();
 					cls();
@@ -49,13 +49,14 @@ namespace test_herc {
 				}
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
+					cls();
 					fill_screen();
 				}
 				
 				if (YESNO("text mode? ")) {
 					text_half_mode();
 				}
-				*/
+				
 			}
 		}
 		return 0;
