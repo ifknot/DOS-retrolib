@@ -16,12 +16,12 @@
 namespace rnd {
 
 	/**
-	 * \brief splitmix64 functor a fast PRNG, with 64 bits of state, that can be used to initialize the state of other generators.
+	 * @brief splitmix64 functor a fast PRNG, with 64 bits of state, that can be used to initialize the state of other generators.
 	 * It uses a fairly simple algorithm[1] that, though it is considered to be poor for cryptographic purposes, is very fast to calculate.
 	 * Considered good enough for "every day"[1] random number needs.
 	 * [1] Guy L. Steele, Jr., Doug Lea, and Christine H. Flood. 2014. Fast splittable pseudorandom number generators. In Proceedings of the 2014 ACM International Conference on Object Oriented Programming Systems Languages & Applications (OOPSLA '14). ACM, New York, NY, USA, 453-472. 
-	 * \url https://doi.org/10.1145/2660193.2660195
-	 * \note It passes several fairly rigorous PRNG "fitness" tests that some more complex algorithms fail..
+	 * @url https://doi.org/10.1145/2660193.2660195
+	 * @note It passes several fairly rigorous PRNG "fitness" tests that some more complex algorithms fail..
 	 */
 	template<uint64_t SEED>
 	class splitmix64 {
