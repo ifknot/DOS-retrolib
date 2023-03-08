@@ -1,3 +1,12 @@
+/**
+ *
+ *  @brief     
+ *  @details   ~
+ *  @author    Jeremy Thornton
+ *  @date      8.03.2023
+ *  @copyright © Jeremy Thornton, 2023. All right reserved.
+ *
+ */
 #ifndef RND_SPLITMIX64_H
 #define RND_SPLITMIX64_H
 

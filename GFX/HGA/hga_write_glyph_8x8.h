@@ -47,7 +47,7 @@ namespace hga {
             add     di, ax                  ; + (y / 4) * 90
 
 #ifdef SYNCHRONISED                    
-            mov     dx, HGA_STATUS_REG      ; CGA status reg
+            mov     dx, HGA_STATUS_REG      ; HGA status reg 
     S0:     in      al, dx                  ; read status
             test    al, 1000b               ; is bit 3 set ? (in a vertical retrace interval)
             jnz     S0                      ; yes, keep waiting

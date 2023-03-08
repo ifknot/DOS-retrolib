@@ -82,6 +82,7 @@
     <ClInclude Include="GFX\HGA\hga_write_glyph_8x6.h" />
     <ClInclude Include="GFX\HGA\hga_write_glyph_8x8.h" />
     <ClInclude Include="GFX\HGA\test_herc.h" />
+    <ClInclude Include="RND\rnd.h" />
     <ClInclude Include="RND\test_rnd.h" />
     <ClInclude Include="TEST\debug_macros.h" />
   </ItemGroup>

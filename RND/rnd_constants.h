@@ -1,3 +1,12 @@
+/**
+ *
+ *  @brief     
+ *  @details   ~
+ *  @author    Jeremy Thornton
+ *  @date      8.03.2023
+ *  @copyright © Jeremy Thornton, 2023. All right reserved.
+ *
+ */
 #ifndef RND_CONSTANTS_H
 #define RND_CONSTANTS_H
 

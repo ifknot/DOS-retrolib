@@ -31,8 +31,10 @@
 // TODO:
 // [x] fast 8x8 glyph 
 // [ ] fast 8x6 glyph
-// [ ] fast 4x4 glyph
+// [?] fast 4x4 glyph
 // [ ] slower general purpose width x height glyphs
+// [ ] load glyph map (data[][])
+// [ ] save glyph map (data[][])
 
 namespace hga {
 
