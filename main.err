@@ -1,16 +1,4 @@
-GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'width'
-GFX/HGA/hga_glyph.h(41): Note! N393: col(9) included from GFX/HGA/test_herc.h(15)
-GFX/HGA/hga_glyph.h(41): Note! N393: col(9) included from main.cpp(6)
-GFX/HGA/hga_glyph.h(39): Note! N392: col(35) definition: 'unsigned short width' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
-GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'height'
-GFX/HGA/hga_glyph.h(39): Note! N392: col(51) definition: 'unsigned short height' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
-GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'x'
-GFX/HGA/hga_glyph.h(39): Note! N392: col(68) definition: 'unsigned short x' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
-GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'y'
-GFX/HGA/hga_glyph.h(39): Note! N392: col(80) definition: 'unsigned short y' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
-GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'bytes'
-GFX/HGA/hga_glyph.h(39): Note! N392: col(98) definition: 'unsigned char const * bytes' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
-GFX/HGA/hga_glyph.h(41): Warning! W726: col(9) no reference to formal parameter 'buffer'
-GFX/HGA/hga_glyph.h(39): Note! N392: col(113) definition: 'unsigned char buffer' in 'void hga::write_glyph( unsigned short, unsigned short, unsigned short, unsigned short, unsigned char const *, unsigned char )'
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
-GFX/HGA/hga_constants.h(146): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
+IMG/PBM/pbm_P4_file_loader.h(46): Warning! W726: col(17) no reference to formal parameter 'img'
+IMG/PBM/pbm_P4_file_loader.h(46): Note! N393: col(17) included from IMG/PBM/test_pbm.h(18)
+IMG/PBM/pbm_P4_file_loader.h(46): Note! N393: col(17) included from main.cpp(7)
+IMG/PBM/pbm_P4_file_loader.h(26): Note! N392: col(80) definition: 'pbm::__1g2nlfbitmap_t * img' in 'dos::error::codes pbm::P4::read_bitmap( std::basic_string<char,std::char_traits<char>,std::allocator<char>>, pbm::__1g2nlfbitmap_t * )'

@@ -22,6 +22,14 @@
 #endif
 
 #ifdef NDEBUG
+#define LOG_AS(var, base)
+#else
+#define LOG_AS(var, base) do { \
+					std::cout << #var << '=' << base << var << std::endl; \
+				} while(false)
+#endif
+
+#ifdef NDEBUG
 #define INFO(msg)
 #else
 #define INFO(msg) do { \

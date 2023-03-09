@@ -65,11 +65,14 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IMG\PBM\pbm.h" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="BIOS\test_bios.h" />
+    <ClInclude Include="FILESYS\filesys.h" />
+    <ClInclude Include="FILESYS\file_extension.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_default_font_8x8.h" />
@@ -82,6 +85,10 @@
     <ClInclude Include="GFX\HGA\hga_write_glyph_8x6.h" />
     <ClInclude Include="GFX\HGA\hga_write_glyph_8x8.h" />
     <ClInclude Include="GFX\HGA\test_herc.h" />
+    <ClInclude Include="IMG\PBM\pbm_constants.h" />
+    <ClInclude Include="IMG\PBM\pbm_P4_file_loader.h" />
+    <ClInclude Include="IMG\PBM\pbm_types.h" />
+    <ClInclude Include="IMG\PBM\test_pbm.h" />
     <ClInclude Include="RND\test_rnd.h" />
     <ClInclude Include="TEST\debug_macros.h" />
   </ItemGroup>
