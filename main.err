@@ -1,8 +1,7 @@
 IMG/PBM/../../FILESYS/file_stream_size.h(19): Warning! W389: col(26) integral value may be truncated during assignment or initialization
 IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/../../FILESYS/filesys.h(18)
-IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/pbm_P4_file_loader.h(16)
+IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/pbm_create_ifstream.h(16)
+IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/pbm.h(26)
 IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/test_pbm.h(17)
 IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from main.cpp(7)
-IMG/PBM/pbm_P4_file_loader.h(61): Warning! W389: col(42) integral value may be truncated during assignment or initialization
-IMG/PBM/pbm_P4_file_loader.h(72): Warning! W726: col(17) no reference to formal parameter 'img'
-IMG/PBM/pbm_P4_file_loader.h(26): Note! N392: col(82) definition: 'pbm::bitmap * img' in 'dos::error::codes pbm::P4::read_pbm_header( std::basic_string<char,std::char_traits<char>,std::allocator<char>>, pbm::bitmap * )'
+IMG/PBM/pbm_P4_read_header.h(57): Warning! W389: col(42) integral value may be truncated during assignment or initialization

@@ -87,7 +87,8 @@
     <ClInclude Include="GFX\HGA\hga_write_glyph_8x8.h" />
     <ClInclude Include="GFX\HGA\test_herc.h" />
     <ClInclude Include="IMG\PBM\pbm_constants.h" />
-    <ClInclude Include="IMG\PBM\pbm_P4_file_loader.h" />
+    <ClInclude Include="IMG\PBM\pbm_create_ifstream.h" />
+    <ClInclude Include="IMG\PBM\pbm_P4_read_header.h" />
     <ClInclude Include="IMG\PBM\pbm_types.h" />
     <ClInclude Include="IMG\PBM\test_pbm.h" />
     <ClInclude Include="RND\test_rnd.h" />

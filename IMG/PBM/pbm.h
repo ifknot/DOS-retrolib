@@ -21,6 +21,11 @@
 // [ ] P1 loader
 // [ ] P4 loader
 
+#include "pbm_constants.h"
+#include "pbm_types.h"
+#include "pbm_create_ifstream.h"
+#include "pbm_P4_read_header.h"
+
 /**
  *  @namespace pbm
  *  @brief     

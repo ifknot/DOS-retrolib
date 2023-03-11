@@ -14,7 +14,7 @@
 #include <iostream>
 
 #include "../../TEST/debug_macros.h"
-#include "pbm_P4_file_loader.h"
+#include "pbm.h"
 
 namespace test_pbm {
 
@@ -23,7 +23,13 @@ namespace test_pbm {
 		{
 			INFO("test Hercules graphics mode\n");
 			pbm::bitmap bmp;
-			LOG(dos::error::messages[pbm::P4::read_pbm_header("CHESS/WSQ1.pbm", &bmp)]);
+			bmp.header.file_path = "CHESS/WSQ12.pbm";
+			std::ifstream* f = pbm::create_ifstream(bmp.header.file_path);
+			if(!f) std::cout << bmp.header;
+			//*f >> bmp.header;
+			delete f;
+			//LOG(dos::error::messages[pbm::P4::read_pbm_header("CHESS/WSQ1.pbm", &bmp)]);
+			std::cout << bmp.header;
 		}
 		return 0;
 	}
