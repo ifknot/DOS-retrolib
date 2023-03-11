@@ -23,13 +23,15 @@ namespace pbm {
 	 */
 	struct header_t {			
 		uint16_t magic_number;
-		uint16_t width;
-		uint16_t height;
+		uint16_t width;		// pixels
+		uint16_t height;	// pixels
+		uint16_t size;		// bytes of data
+		uint16_t offset;	// start of data in file
 	};
 
 	struct bitmap {
 		header_t header;
-		uint8_t* data;
+		char* data;
 
 		/*
 		bitmap(std::string file_path) {
@@ -41,6 +43,8 @@ namespace pbm {
 		}
 		*/
 	};
+
+	
 
 }
 

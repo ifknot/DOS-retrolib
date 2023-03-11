@@ -14,7 +14,6 @@
 #include <iostream>
 
 #include "../../TEST/debug_macros.h"
-
 #include "pbm_P4_file_loader.h"
 
 namespace test_pbm {
@@ -24,7 +23,7 @@ namespace test_pbm {
 		{
 			INFO("test Hercules graphics mode\n");
 			pbm::bitmap bmp;
-			LOG(dos::error::messages[pbm::P4::read_bitmap("white_queen.pbm", &bmp)]);
+			LOG(dos::error::messages[pbm::P4::read_pbm_header("CHESS/WSQ1.pbm", &bmp)]);
 		}
 		return 0;
 	}

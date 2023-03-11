@@ -11,7 +11,11 @@
 #define FILE_SYSTEM_H
 
 // TODO:
-// [ ] file extension utility
+// [x] file extension utility
+// [x] file size utility
+
+#include "file_extension.h"
+#include "file_stream_size.h"
 
 namespace filesys {
 
