@@ -22,14 +22,10 @@ namespace test_pbm {
 		INFO(__FUNCTION__);
 		{
 			INFO("test Hercules graphics mode\n");
-			pbm::bitmap bmp;
-			bmp.header.file_path = "CHESS/WSQ12.pbm";
-			std::ifstream* f = pbm::create_ifstream(bmp.header.file_path);
-			if(!f) std::cout << bmp.header;
-			//*f >> bmp.header;
-			delete f;
-			//LOG(dos::error::messages[pbm::P4::read_pbm_header("CHESS/WSQ1.pbm", &bmp)]);
-			std::cout << bmp.header;
+			pbm::bitmap bmp("CHESS/WSQ1.pbm");
+			
+			
+			std::cout << bmp;
 		}
 		return 0;
 	}

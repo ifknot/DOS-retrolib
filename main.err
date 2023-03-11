@@ -1,7 +1,8 @@
-IMG/PBM/../../FILESYS/file_stream_size.h(19): Warning! W389: col(26) integral value may be truncated during assignment or initialization
-IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/../../FILESYS/filesys.h(18)
-IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/pbm_create_ifstream.h(16)
-IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/pbm.h(26)
-IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from IMG/PBM/test_pbm.h(17)
-IMG/PBM/../../FILESYS/file_stream_size.h(19): Note! N393: col(26) included from main.cpp(7)
-IMG/PBM/pbm_P4_read_header.h(57): Warning! W389: col(42) integral value may be truncated during assignment or initialization
+IMG/PBM/../../FILESYS/file_stream_size.h(23): Warning! W389: col(40) integral value may be truncated during assignment or initialization
+IMG/PBM/../../FILESYS/file_stream_size.h(23): Note! N393: col(40) included from IMG/PBM/../../FILESYS/filesys.h(18)
+IMG/PBM/../../FILESYS/file_stream_size.h(23): Note! N393: col(40) included from IMG/PBM/pbm_bitmap.h(34)
+IMG/PBM/../../FILESYS/file_stream_size.h(23): Note! N393: col(40) included from IMG/PBM/pbm.h(26)
+IMG/PBM/../../FILESYS/file_stream_size.h(23): Note! N393: col(40) included from IMG/PBM/test_pbm.h(17)
+IMG/PBM/../../FILESYS/file_stream_size.h(23): Note! N393: col(40) included from main.cpp(7)
+IMG/PBM/pbm_bitmap.h(109): Warning! W389: col(50) integral value may be truncated during assignment or initialization
+IMG/PBM/pbm_bitmap.h(111): Warning! W389: col(48) integral value may be truncated during assignment or initialization
