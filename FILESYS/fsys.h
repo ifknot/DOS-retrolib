@@ -18,6 +18,7 @@
 #include "fsys_fpeek.h"
 #include "fsys_extension.h"
 #include "fsys_stream_size.h"
+#include "fsys_ignore.h"
 
 namespace fsys {
 

@@ -17,8 +17,14 @@ namespace fsys {
 	*  @param	file_path
 	*  @retval  string file extension or empty string if not found
 	*/
-	void extension() {
-		
+	const char* extension(const char* file_path) {
+		const char* dot = strrchr(file_path, '.');
+		if (!dot || dot == file_path) {
+			return "";
+		}
+		else {
+			return ++dot;
+		}
 	}
 
 }

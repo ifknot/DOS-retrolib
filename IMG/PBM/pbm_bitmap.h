@@ -40,7 +40,7 @@
 // TODO:
 // [ ] copy_bitmap
 // [ ] make_bitmap
-// [ ] release_bitmap
+// [ ] free_bitmap
 
 namespace pbm {
 
@@ -69,6 +69,7 @@ namespace pbm {
     void load_bitmap(const char* file_path, bitmap_t* bmp, int type = MAGIC_P4) {
         char line[MAX_LINE_SIZE];
         bmp->header = (header_t*)malloc(sizeof(struct header_t));
+        assert(bmp->header);
         bmp->header->file_path = file_path;
         bmp->header->magic_number = 0;
         bmp->header->width = bmp->header->height = bmp->header->bytes = bmp->header->offset = bmp->header->file_size = 0;
@@ -94,13 +95,20 @@ namespace pbm {
                 bmp->header->file_path = dos::error::messages[dos::error::INVALID_DATA];
                 return;
             }
-            bmp->header->bytes = (uint16_t)bmp->header->width / 8;             // convert width to bytes
-            bmp->header->bytes += (bmp->header->width & 7) == 0 ? 0 : 1;  // need an extra byte for width remainder < 8?
-            bmp->header->bytes *= bmp->header->height;                    // expected number bytes
-            bmp->header->offset = (uint16_t)ftell(fptr) + 1;                       // data should start on next line
+            bmp->header->bytes = (uint16_t)bmp->header->width / 8;              // convert width to bytes
+            bmp->header->bytes += (bmp->header->width & 7) == 0 ? 0 : 1;        // need an extra byte for width remainder < 8?
+            bmp->header->bytes *= bmp->header->height;                          // expected number bytes
+            fsys::ignore_line(fptr);
+            bmp->header->offset = (uint16_t)ftell(fptr);                        // data should start on next line
+            if (bmp->header->file_size - bmp->header->offset != bmp->header->bytes) { // 4. expected amount data?
+                bmp->header->file_path = dos::error::messages[dos::error::INVALID_DATA];
+                bmp->header->bytes = 0;
+                return;
+            }
             // 5. process the data
-            bmp->data = (char*)malloc(sizeof(uint8_t) * bmp->header->bytes); // allocate data memory
-
+            bmp->data = (char*)malloc(sizeof(uint8_t) * bmp->header->bytes);    // allocate data memory
+            assert(bmp->data);
+            assert(fgets(bmp->data, 1 + bmp->header->bytes, fptr)); // NB "Reads at most count - 1 characters"(!!!) 
             fclose(fptr);
         }
         else {
