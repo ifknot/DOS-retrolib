@@ -10,7 +10,11 @@
 #ifndef FSYS_CONSTANTS_H
 #define FSYS_CONSTANTS_H
 
+#include <cassert>
+
 #include <stdio.h>
+
+#define STDIO_FAIL -1L
 
 namespace fsys {
 

@@ -1,4 +1,0 @@
-IMG/PBM/pbm_bitmap.h(78): Warning! W389: col(37) integral value may be truncated during assignment or initialization
-IMG/PBM/pbm_bitmap.h(78): Note! N393: col(37) included from IMG/PBM/pbm.h(26)
-IMG/PBM/pbm_bitmap.h(78): Note! N393: col(37) included from IMG/PBM/test_pbm.h(14)
-IMG/PBM/pbm_bitmap.h(78): Note! N393: col(37) included from main.cpp(7)

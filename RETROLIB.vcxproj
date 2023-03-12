@@ -74,6 +74,7 @@
     <ClInclude Include="FILESYS\fsys_constants.h" />
     <ClInclude Include="FILESYS\fsys.h" />
     <ClInclude Include="FILESYS\fsys_extension.h" />
+    <ClInclude Include="FILESYS\fsys_fignore.h" />
     <ClInclude Include="FILESYS\fsys_stream_size.h" />
     <ClInclude Include="FILESYS\fsys_fpeek.h" />
     <ClInclude Include="FILESYS\fsys_types.h" />

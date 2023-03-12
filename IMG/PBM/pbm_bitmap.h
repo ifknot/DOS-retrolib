@@ -40,6 +40,7 @@
 // TODO:
 // [ ] copy_bitmap
 // [ ] make_bitmap
+// [ ] release_bitmap
 
 namespace pbm {
 
@@ -55,51 +56,55 @@ namespace pbm {
         uint16_t height;        // pixels
         uint16_t bytes;         // bytes of data
         uint16_t offset;        // start of data in file
-        uint16_t size;          // file size
+        uint16_t file_size;          // file size
     };
 
     struct bitmap_t {
 
-        header_t header;
+        struct header_t* header;
         char* data;
 
     };
 
     void load_bitmap(const char* file_path, bitmap_t* bmp, int type = MAGIC_P4) {
         char line[MAX_LINE_SIZE];
+        bmp->header = (header_t*)malloc(sizeof(struct header_t));
+        bmp->header->file_path = file_path;
+        bmp->header->magic_number = 0;
+        bmp->header->width = bmp->header->height = bmp->header->bytes = bmp->header->offset = bmp->header->file_size = 0;
+        bmp->data = NULL;
 
-        bmp->header.file_path = file_path;
-        bmp->header.magic_number = 0;
-        bmp->header.width = bmp->header.height = bmp->header.bytes = bmp->header.offset = bmp->header.size = 0;
-
-        FILE* fptr = fopen(bmp->header.file_path, "r");
+        FILE* fptr = fopen(bmp->header->file_path, "r");
         if (fptr) {
-            fseek(fptr, 0L, SEEK_END);
-            bmp->header.size = ftell(fptr);
-            rewind(fptr);
-            if (bmp->header.size < MIN_HEADER_SIZE) { // 1. is there at least a header in the file?
-                bmp->header.file_path = dos::error::messages[dos::error::INVALID_DATA];
+            bmp->header->file_size = (uint16_t)fsys::stream_size(fptr);
+            if (bmp->header->file_size < MIN_HEADER_SIZE) { // 1. is there at least a header in the file?
+                bmp->header->file_path = dos::error::messages[dos::error::INVALID_DATA];
                 return;
             }
-            
             fgets(line, sizeof(line), fptr);
             if (*(uint16_t*)line != type) { // 2. is it a valid magic number?
-                bmp->header.file_path = dos::error::messages[dos::error::INVALID_FORMAT];
+                bmp->header->file_path = dos::error::messages[dos::error::INVALID_FORMAT];
                 return;
             }
             while (fsys::fpeek(fptr) == '#') { // 3. skip any comments
                 fgets(line, sizeof(line), fptr);
-                std::cout << line << std::endl;
             }
-            if (fscanf(fptr, "%d %d", &(bmp->header.width), &(bmp->header.height)) == 0) {
-                bmp->header.file_path = dos::error::messages[dos::error::INVALID_DATA];
+            // 4. process the header
+            if (fscanf(fptr, "%d %d", (int*)&bmp->header->width, (int*)&bmp->header->height) == 0) {  // get the bitmap dimensions
+                bmp->header->file_path = dos::error::messages[dos::error::INVALID_DATA];
                 return;
             }
-            
+            bmp->header->bytes = (uint16_t)bmp->header->width / 8;             // convert width to bytes
+            bmp->header->bytes += (bmp->header->width & 7) == 0 ? 0 : 1;  // need an extra byte for width remainder < 8?
+            bmp->header->bytes *= bmp->header->height;                    // expected number bytes
+            bmp->header->offset = (uint16_t)ftell(fptr) + 1;                       // data should start on next line
+            // 5. process the data
+            bmp->data = (char*)malloc(sizeof(uint8_t) * bmp->header->bytes); // allocate data memory
+
             fclose(fptr);
         }
         else {
-            bmp->header.file_path = strerror(errno);
+            bmp->header->file_path = strerror(errno);
         }
     }
 
@@ -107,23 +112,25 @@ namespace pbm {
 
 std::ostream& operator<<(std::ostream& os, const pbm::bitmap_t& bmp) {
     // print header
-    os << bmp.header.file_path << ' '
-        << std::hex << bmp.header.magic_number << std::dec << ' '
-        << bmp.header.width << ' '
-        << bmp.header.height << ' '
-        << bmp.header.bytes << ' '
-        << bmp.header.offset << ' '
-        << bmp.header.size << '\n';
+    os << bmp.header->file_path << ' '
+        << std::hex << bmp.header->magic_number << std::dec << ' '
+        << bmp.header->width << ' '
+        << bmp.header->height << ' '
+        << bmp.header->bytes << ' '
+        << bmp.header->offset << ' '
+        << bmp.header->file_size << '\n';
     // print data
-    int byte_width = bmp.header.width >> 3;
-    byte_width += (bmp.header.width & 7) == 0 ? 0 : 1;
-    char binalpha[8];
-    for (int i = 0; i < bmp.header.bytes; ++i) {
-        if (i % byte_width == 0) {
-            std::cout << '\n';
+    if (bmp.data) {
+        int byte_width = bmp.header->width >> 3;
+        byte_width += (bmp.header->width & 7) == 0 ? 0 : 1;
+        char binalpha[8];
+        for (int i = 0; i < bmp.header->bytes; ++i) {
+            if (i % byte_width == 0) {
+                std::cout << '\n';
+            }
+            assert(str::bits_to_binary(bmp.data[i], binalpha, 8) == 0);
+            std::cout << binalpha;
         }
-        std::cout << str::bits_to_binary(bmp.data[i], binalpha, 8);
-
     }
     return os;
 }
@@ -137,31 +144,31 @@ std::ostream& operator<<(std::ostream& os, const pbm::bitmap_t& bmp) {
 
             void read(std::istream& is) {
                 is.seekg(0, is.end);                            // seek to the end
-                header.size = is.tellg();                       // position of the current character ie the end character
+                header->size = is.tellg();                       // position of the current character ie the end character
                 is.seekg(0, is.beg);                            // return to the beginning
-                if (header.size < MIN_HEADER_SIZE) {     // 1. is there at least a header in the file?
-                    header.file_path += dos::error::messages[dos::error::INVALID_DATA];
+                if (header->size < MIN_HEADER_SIZE) {     // 1. is there at least a header in the file?
+                    header->file_path += dos::error::messages[dos::error::INVALID_DATA];
                     return;
                 }
                 char line[MAX_LINE_SIZE];
                 is.getline(line, MAX_LINE_SIZE);
                 if (*(uint16_t*)line != MAGIC_P4) { // 2. is it a valid magic number?
-                    header.file_path += dos::error::messages[dos::error::INVALID_FORMAT];
+                    header->file_path += dos::error::messages[dos::error::INVALID_FORMAT];
                     return;
                 }
-                header.magic_number = MAGIC_P4;
+                header->magic_number = MAGIC_P4;
                 while (is.peek() == '#') is.ignore(MAX_LINE_SIZE, '\n');        // skip any comments
-                is >> header.width >> header.height;
-                header.bytes = (int)header.width / 8;                                   // convert width to bytes
-                header.bytes += (header.width & 7) == 0 ? 0 : 1;                // need an extra byte for width remainder < 8?
-                header.bytes *= header.height;                                                  // expected number bytes
+                is >> header->width >> header->height;
+                header->bytes = (int)header->width / 8;                                   // convert width to bytes
+                header->bytes += (header->width & 7) == 0 ? 0 : 1;                // need an extra byte for width remainder < 8?
+                header->bytes *= header->height;                                                  // expected number bytes
                 is.ignore(MAX_LINE_SIZE, '\n');                                                         // data should start on next line
-                header.offset = is.tellg();                                                             // data starts here
-                if (header.offset + header.bytes != header.size) {      // expected amount of data?
-                    header.file_path += dos::error::messages[dos::error::INVALID_DATA];
+                header->offset = is.tellg();                                                             // data starts here
+                if (header->offset + header->bytes != header->size) {      // expected amount of data?
+                    header->file_path += dos::error::messages[dos::error::INVALID_DATA];
                     return;
                 }
-                data = (uint8_t*)malloc(sizeof(uint8_t) * header.bytes);
+                data = (uint8_t*)malloc(sizeof(uint8_t) * header->bytes);
                 if (data == NULL) {
                     printf("\nError! memory not allocated.");
                     exit(0);
@@ -169,7 +176,7 @@ std::ostream& operator<<(std::ostream& os, const pbm::bitmap_t& bmp) {
 
                 is.read((char*)data, 8);
                 if (is.fail()) {
-                    header.file_path += dos::error::messages[dos::error::INVALID_DATA];
+                    header->file_path += dos::error::messages[dos::error::INVALID_DATA];
                 }
             }
 */
