@@ -10,6 +10,8 @@
 #ifndef FSYS__EXTENSION_H
 #define FSYS__EXTENSION_H
 
+#include <string.h>
+
 namespace fsys {
 
 	/**

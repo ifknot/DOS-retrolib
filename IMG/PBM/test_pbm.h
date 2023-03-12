@@ -20,10 +20,25 @@ namespace test_pbm {
 		{
 			INFO("test Portable Bit Map\n");
 
-			pbm::bitmap_t bmp;
-			pbm::load_bitmap("CHESS/BN1.pbm", &bmp);
-			std::cout << bmp;
-			
+			const char pieces[6][80] = {
+				"CHESS/BN1.pbm",
+				"CHESS/BR.pbm",
+				"CHESS/BSQ.pbm",
+				"CHESS/WSQ.pbm",
+				"CHESS/WSQ1.pbm",
+				"CHESS/WSQ2.pbm",
+			};
+
+			pbm::bitmap_t bmp[6];
+			for (int i = 0; i < 6; ++i) {
+				pbm::load_bitmap(pieces[i], &bmp[i]);
+			}
+			for (int i = 0; i < 6; ++i) {
+				std::cout << bmp[i];
+			}
+			for (int i = 0; i < 6; ++i) {
+				pbm::free_bitmap(&bmp[i]);
+			}
 		}
 		return 0;
 	}

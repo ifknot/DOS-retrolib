@@ -116,6 +116,13 @@ namespace pbm {
         }
     }
 
+    void free_bitmap(bitmap_t* bmp) {
+        if (bmp) {
+            free(bmp->header);
+            free(bmp->data);
+        }
+    }
+
 }
 
 std::ostream& operator<<(std::ostream& os, const pbm::bitmap_t& bmp) {
