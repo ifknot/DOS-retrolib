@@ -16,6 +16,7 @@
 #define MAGIC_P4 0x3450		// "P4" the little endian word would be reversed
 #define VALID_PBM_EXT "pbm"	// important to use file extension for consitency
 #define MAX_LINE_SIZE 256	// 256 bytes
+
 namespace pbm {
 
 }

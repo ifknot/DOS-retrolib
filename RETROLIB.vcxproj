@@ -88,10 +88,14 @@
     <ClInclude Include="GFX\HGA\test_herc.h" />
     <ClInclude Include="IMG\PBM\pbm_bitmap.h" />
     <ClInclude Include="IMG\PBM\pbm_constants.h" />
-    <ClInclude Include="IMG\PBM\pbm_create_ifstream.h" />
     <ClInclude Include="IMG\PBM\pbm_types.h" />
     <ClInclude Include="IMG\PBM\test_pbm.h" />
     <ClInclude Include="RND\test_rnd.h" />
+    <ClInclude Include="STR\str.h" />
+    <ClInclude Include="STR\str_bits_to_binary.h" />
+    <ClInclude Include="STR\str_constants.h" />
+    <ClInclude Include="STR\str_types.h" />
+    <ClInclude Include="STR\test_str.h" />
     <ClInclude Include="TEST\debug_macros.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,6 +5,7 @@
 //#include "BIOS/test_bios.h"
 //#include "GFX/HGA/test_herc.h"
 #include "IMG/PBM/test_pbm.h"
+//#include "STR/test_str.h"
 
 int main() {
   

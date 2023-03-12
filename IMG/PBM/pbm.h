@@ -24,7 +24,6 @@
 #include "pbm_constants.h"
 #include "pbm_types.h"
 #include "pbm_bitmap.h"
-#include "pbm_create_ifstream.h"
 
 /**
  *  @namespace pbm
