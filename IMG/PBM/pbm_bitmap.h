@@ -66,14 +66,36 @@ namespace pbm {
     };
 
     void load_bitmap(const char* file_path, bitmap_t* bmp, int type = MAGIC_P4) {
+        char line[MAX_LINE_SIZE];
+
         bmp->header.file_path = file_path;
-        bmp->header.magic_number = type;
+        bmp->header.magic_number = 0;
         bmp->header.width = bmp->header.height = bmp->header.bytes = bmp->header.offset = bmp->header.size = 0;
 
         FILE* fptr = fopen(bmp->header.file_path, "r");
         if (fptr) {
             fseek(fptr, 0L, SEEK_END);
-            bmp->header.size = 
+            bmp->header.size = ftell(fptr);
+            rewind(fptr);
+            if (bmp->header.size < MIN_HEADER_SIZE) { // 1. is there at least a header in the file?
+                bmp->header.file_path = dos::error::messages[dos::error::INVALID_DATA];
+                return;
+            }
+            
+            fgets(line, sizeof(line), fptr);
+            if (*(uint16_t*)line != type) { // 2. is it a valid magic number?
+                bmp->header.file_path = dos::error::messages[dos::error::INVALID_FORMAT];
+                return;
+            }
+            while (filesys::fpeek(fptr) == '#') { // 3. skip any comments
+                fgets(line, sizeof(line), fptr);
+                std::cout << line << std::endl;
+            }
+            if (fscanf(fptr, "%d %d", &(bmp->header.width), &(bmp->header.height)) == 0) {
+                bmp->header.file_path = dos::error::messages[dos::error::INVALID_DATA];
+                return;
+            }
+            
             fclose(fptr);
         }
         else {

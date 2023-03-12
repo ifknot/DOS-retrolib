@@ -21,7 +21,7 @@ namespace test_pbm {
 			INFO("test Portable Bit Map\n");
 
 			pbm::bitmap_t bmp;
-			pbm::load_bitmap("CHESS/BNR1.pbm", &bmp);
+			pbm::load_bitmap("CHESS/BNR.pbm", &bmp);
 			std::cout << bmp;
 			
 		}

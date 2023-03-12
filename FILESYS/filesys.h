@@ -14,6 +14,7 @@
 // [x] file extension utility
 // [x] file size utility
 
+#include "fpeek.h"
 #include "file_extension.h"
 #include "file_stream_size.h"
 
