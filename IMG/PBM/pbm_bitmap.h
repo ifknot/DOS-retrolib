@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../FILESYS/filesys.h"
+#include "../../FILESYS/fsys.h"
 #include "../../DOS/dos_error_messages.h"
 #include "../../STR/str.h"
 
@@ -87,7 +87,7 @@ namespace pbm {
                 bmp->header.file_path = dos::error::messages[dos::error::INVALID_FORMAT];
                 return;
             }
-            while (filesys::fpeek(fptr) == '#') { // 3. skip any comments
+            while (fsys::fpeek(fptr) == '#') { // 3. skip any comments
                 fgets(line, sizeof(line), fptr);
                 std::cout << line << std::endl;
             }

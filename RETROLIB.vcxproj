@@ -71,10 +71,12 @@
   <ItemGroup>
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="BIOS\test_bios.h" />
-    <ClInclude Include="FILESYS\filesys.h" />
-    <ClInclude Include="FILESYS\file_extension.h" />
-    <ClInclude Include="FILESYS\file_stream_size.h" />
-    <ClInclude Include="FILESYS\fpeek.h" />
+    <ClInclude Include="FILESYS\fsys_constants.h" />
+    <ClInclude Include="FILESYS\fsys.h" />
+    <ClInclude Include="FILESYS\fsys_extension.h" />
+    <ClInclude Include="FILESYS\fsys_stream_size.h" />
+    <ClInclude Include="FILESYS\fsys_fpeek.h" />
+    <ClInclude Include="FILESYS\fsys_types.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_default_font_8x8.h" />
