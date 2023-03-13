@@ -31,7 +31,10 @@ namespace test_pbm {
 
 			pbm::bitmap_t bmp[6];
 			for (int i = 0; i < 6; ++i) {
-				pbm::load_bitmap(pieces[i], &bmp[i]);
+				if (pbm::load_bitmap(pieces[i], &bmp[i]) == STDIO_FAIL) {
+					std::cout << strerror(errno) << std::endl;
+					exit(EXIT_FAILURE);
+				}
 			}
 			for (int i = 0; i < 6; ++i) {
 				std::cout << bmp[i];

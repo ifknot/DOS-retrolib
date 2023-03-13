@@ -10,10 +10,12 @@
 #ifndef FSYS_CONSTANTS_H
 #define FSYS_CONSTANTS_H
 
-#include <cassert>
-
+#include <assert.h>
+#include <stdint.h>
 #include <stdio.h>
+#include <errno.h>
 
+#define MAX_LINE_SIZE 256	
 #define STDIO_FAIL -1L
 
 namespace fsys {

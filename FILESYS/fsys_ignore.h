@@ -28,7 +28,7 @@ namespace fsys {
 
 	int ignore_line(FILE* fptr) {
 		int e = fscanf(fptr, "%*[^\n]\n"); // ignore line
-		getc(fptr); // consume eol
+		assert(getc(fptr)); // consume eol
 		return e;
 	}
 
