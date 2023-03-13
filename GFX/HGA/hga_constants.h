@@ -21,6 +21,8 @@
 
 #include <stdint.h>
 
+#include "../../TEST/debug_macros.h"
+
 #define ENABLE_MUL
 //#define SYNCHRONISED
 

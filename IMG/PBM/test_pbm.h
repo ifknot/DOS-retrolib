@@ -21,7 +21,7 @@ namespace test_pbm {
 			INFO("test Portable Bit Map\n");
 
 			const char pieces[6][80] = {
-				"CHESS/BN1.pbm",
+				"CHESS/BNR.pbm",
 				"CHESS/BR.pbm",
 				"CHESS/BSQ.pbm",
 				"CHESS/WSQ.pbm",

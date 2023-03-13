@@ -67,7 +67,7 @@ namespace pbm {
 
     };
 
-    int load_bitmap(const char* file_path, bitmap_t* bmp, int valid_magic = MAGIC_P1) {
+    int load_bitmap(const char* file_path, bitmap_t* bmp, int valid_magic = MAGIC_P4) {
         char line[MAX_LINE_SIZE];
         bmp->header = (header_t*)malloc(sizeof(struct header_t));
         assert(bmp->header);
@@ -94,7 +94,7 @@ namespace pbm {
         bmp->header->bytes = (uint16_t)bmp->header->width / 8;              // convert width to bytes
         bmp->header->bytes += (bmp->header->width & 7) == 0 ? 0 : 1;        // need an extra byte for width remainder < 8?
         bmp->header->bytes *= bmp->header->height;                          // expected number bytes
-        assert(fsys::ignore_line(fptr));
+        fsys::ignore_line(fptr);
         bmp->header->offset = (uint16_t)ftell(fptr);                        // data should start on next line
         assert(bmp->header->file_size - bmp->header->offset == bmp->header->bytes);    // 4. expected amount data?
         // process the data

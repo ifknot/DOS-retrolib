@@ -16,6 +16,7 @@ namespace fsys {
 
 	uint16_t read_csv(const char* file_path, char strings[], uint16_t count) {
 		FILE* fptr = fopen(file_path, "r");
+		LOG(bmp->header->file_path);
 		if (!fptr) return STDIO_FAIL;
 	}
 

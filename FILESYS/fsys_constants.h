@@ -15,6 +15,8 @@
 #include <stdio.h>
 #include <errno.h>
 
+#include "../TEST/debug_macros.h"
+
 #define MAX_LINE_SIZE 256	
 #define STDIO_FAIL -1L
 
