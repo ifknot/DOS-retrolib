@@ -35,6 +35,7 @@ namespace test_pbm {
 			}
 			for (int i = 0; i < 6; ++i) {
 				std::cout << bmp[i];
+				getchar();
 			}
 			for (int i = 0; i < 6; ++i) {
 				pbm::free_bitmap(&bmp[i]);

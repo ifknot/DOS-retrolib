@@ -146,6 +146,7 @@ std::ostream& operator<<(std::ostream& os, const pbm::bitmap_t& bmp) {
             assert(str::bits_to_binary(bmp.data[i], binalpha, 8) == 0);
             std::cout << binalpha;
         }
+        std::cout << std::endl;
     }
     return os;
 }
