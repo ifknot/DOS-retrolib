@@ -17,8 +17,11 @@
 
 #include "../TEST/debug_macros.h"
 
-#define MAX_LINE_SIZE 256	
+#define MAX_LINE_SIZE 80
+#define MAX_LINE_COUNT 25
 #define STDIO_FAIL -1L
+#define LFEED 10
+#define CRETURN 13
 
 namespace fsys {
 

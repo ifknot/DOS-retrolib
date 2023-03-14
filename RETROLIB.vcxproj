@@ -75,11 +75,11 @@
     <ClInclude Include="FILESYS\fsys.h" />
     <ClInclude Include="FILESYS\fsys_extension.h" />
     <ClInclude Include="FILESYS\fsys_ignore.h" />
-    <ClInclude Include="FILESYS\fsys_read_csv.h" />
+    <ClInclude Include="FILESYS\fsys_read_dsv.h" />
     <ClInclude Include="FILESYS\fsys_stream_size.h" />
     <ClInclude Include="FILESYS\fsys_fpeek.h" />
     <ClInclude Include="FILESYS\fsys_types.h" />
-    <ClInclude Include="FILESYS\testfsys.h" />
+    <ClInclude Include="FILESYS\test_fsys.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_default_font_8x8.h" />

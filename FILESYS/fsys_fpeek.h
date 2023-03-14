@@ -14,13 +14,13 @@
 
 namespace fsys {
 
-        char fpeek(FILE* fptr) {
-                int chr;
-                chr = getc(fptr);       // read one byte from the stream
-                assert(chr != EOF); // the special value EOF, which indicates failure
-                assert(fseek(fptr, -1, SEEK_CUR) != STDIO_FAIL);        // step back one byte in the stream
-                return (char)chr;
-        }
+    int fpeek(FILE* fptr) {
+        int chr;
+        chr = getc(fptr);   // read one byte from the stream
+        assert(chr != EOF); // NB the special value EOF indicates failure
+        assert(fseek(fptr, -1, SEEK_CUR) != STDIO_FAIL);    // step back one byte in the stream
+        return chr;         
+    }
 
 }
 
