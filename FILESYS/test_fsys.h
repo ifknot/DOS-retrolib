@@ -23,7 +23,7 @@ namespace test_fsys {
 			INFO("test read_csv\n");
 			const char data_path[] = "CHESS/FILES.csv";
 			char fpaths[19][MAX_LINE_SIZE];
-			if (fsys::read_dsv(data_path, fpaths, 19,',') == STDIO_FAIL) {
+			if (fsys::read_csv(data_path, fpaths, 19) == STDIO_FAIL) {
 				LOG(data_path);
 				LOG(strerror(errno));
 			}

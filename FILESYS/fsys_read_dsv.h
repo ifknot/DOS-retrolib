@@ -1,7 +1,7 @@
 /**
  *
- *  @brief     Layout agnostic functions to read DSV files - with convenience for CSV and TSV
- *  @details   Formats that use delimiter-separated values (DSV) store two-dimensional arrays of data by separating the values in each row with specific delimiter characters. 
+ *  @brief     Layout agnostic functions to read DSV files - with convenience for CSV and TSV 
+ *  @details   Formats that use delimiter-separated values (DSV) store two-dimensional arrays of data by separating the values in each row with specific delimiter characters.
  *			   Simple functions convert the DSV data into a single column table of tokens.
  *			   This can then be subdivided by the caller with domain specific information and sanitized.
  *  @author    Jeremy Thornton
@@ -16,14 +16,15 @@
 
 namespace fsys {
 
+	// TODO: the scan set does not limit the char count to max line size
 	int read_dsv(const char* file_path, char data_table[][MAX_LINE_SIZE], uint16_t row_count, const char delim, bool is_strip = true) {
-		int i = 0;	
+		int i = 0;
 		char row[MAX_LINE_SIZE];
 		char* token;
 
 		FILE* fptr = fopen(file_path, "r");
 		if (!fptr) return STDIO_FAIL;
-		
+
 		while (fgets(row, MAX_LINE_SIZE, fptr)) {	// read each line
 			token = strtok(row, &delim);			// split out the first token
 			while (i < row_count					// do not overrun the data table			
@@ -42,6 +43,14 @@ namespace fsys {
 
 		fclose(fptr);
 		return i;
+	}
+
+	int read_csv(const char* file_path, char data_table[][MAX_LINE_SIZE], uint16_t row_count, bool is_strip = true) {
+		return read_dsv(file_path, data_table, row_count, ',', is_strip);
+	}
+
+	int read_tsv(const char* file_path, char data_table[][MAX_LINE_SIZE], uint16_t row_count, bool is_strip = true) {
+		return read_dsv(file_path, data_table, row_count, '\t', is_strip);
 	}
 
 }
