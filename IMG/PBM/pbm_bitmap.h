@@ -32,7 +32,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include "../../FILESYS/fsys.h"
+#include "../../FSYS/fsys.h"
 #include "../../DOS/dos_error_messages.h"
 #include "../../STR/str.h"
 

@@ -11,6 +11,7 @@
 #define TEST_PBM
 
 #include "../../TEST/debug_macros.h"
+#include "../../FSYS/fsys_read_dsv.h"
 #include "pbm.h"
 
 namespace test_pbm {
@@ -20,27 +21,27 @@ namespace test_pbm {
 		{
 			INFO("test Portable Bit Map\n");
 
-			const char pieces[6][80] = {
-				"CHESS/BNR.pbm",
-				"CHESS/BR.pbm",
-				"CHESS/BSQ.pbm",
-				"CHESS/WSQ.pbm",
-				"CHESS/WSQ1.pbm",
-				"CHESS/WSQ2.pbm",
-			};
+			const int n = 20; 
 
-			pbm::bitmap_t bmp[6];
-			for (int i = 0; i < 6; ++i) {
-				if (pbm::load_bitmap(pieces[i], &bmp[i]) == STDIO_FAIL) {
+			const char data_path[] = "CHESS/FILES.csv";
+			char fpaths[20][MAX_LINE_SIZE];
+			if (fsys::read_csv(data_path, fpaths, n) == STDIO_FAIL) {
+				LOG(data_path);
+				LOG(strerror(errno));
+			}
+
+			pbm::bitmap_t bmp[n];
+			for (int i = 0; i < n; ++i) {
+				if (pbm::load_bitmap(fpaths[i], &bmp[i]) == STDIO_FAIL) {
 					std::cout << strerror(errno) << std::endl;
 					exit(EXIT_FAILURE);
 				}
 			}
-			for (int i = 0; i < 6; ++i) {
+			for (int i = 0; i < n; ++i) {
 				std::cout << bmp[i];
 				getchar();
 			}
-			for (int i = 0; i < 6; ++i) {
+			for (int i = 0; i < n; ++i) {
 				pbm::free_bitmap(&bmp[i]);
 			}
 		}
