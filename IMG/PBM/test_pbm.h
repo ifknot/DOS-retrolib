@@ -12,7 +12,18 @@
 
 #include "../../TEST/debug_macros.h"
 #include "../../FSYS/fsys_read_dsv.h"
+#include "../../BIOS/bios_video_services.h"
+#include "../../GFX/HGA/hga.h"
+
 #include "pbm.h"
+
+void fill_screen(pbm::bitmap_t bmp[20]) {
+	int i = 0;
+	for (int x = 0; x < 20; ++x) {
+		hga::write_glyph_8x8(10 + x, 10, bmp[i++ % 20].data);
+	}
+
+}
 
 namespace test_pbm {
 
@@ -37,9 +48,34 @@ namespace test_pbm {
 					exit(EXIT_FAILURE);
 				}
 			}
+			/*
 			for (int i = 0; i < n; ++i) {
 				std::cout << bmp[i];
 				getchar();
+			}
+			*/
+			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
+			LOG(bios::video_adapter_names[adapter]);
+			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
+			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
+				LOG(hga::read_light_pen_registers());
+				//fill_screen();
+				//std::cout << GLOBAL::default_font.name.c_str() << std::endl;
+
+				if (YESNO("graphics mode? ")) {
+					hga::graphics_full_mode();
+					hga::cls();
+					fill_screen(bmp);
+				}
+				if (YESNO("swap buffers? ")) {
+					hga::swap_buffers();
+					hga::cls();
+					fill_screen(bmp);
+				}
+
+				if (YESNO("text mode? ")) {
+					hga::text_half_mode();
+				}
 			}
 			for (int i = 0; i < n; ++i) {
 				pbm::free_bitmap(&bmp[i]);

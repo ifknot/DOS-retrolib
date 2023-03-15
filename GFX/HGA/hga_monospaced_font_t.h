@@ -9,11 +9,11 @@ namespace hga {
 	template<int BYTES, int CHAR_COUNT = 256>
 	struct monospaced_font_t {
 
-		monospaced_font_t(uint8_t(*font_data)[BYTES]) : data(font_data) {
+		monospaced_font_t(char(*font_data)[BYTES]) : data(font_data) {
 			//data = new uint8_t[CHAR_COUNT][BYTES];
 		}
 
-		const uint8_t(*data)[BYTES];
+		const char(*data)[BYTES];
 
 	};
 

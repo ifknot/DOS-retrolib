@@ -72,6 +72,7 @@
     <ClInclude Include="ABM\test_abm.h" />
     <ClInclude Include="BIOS\test_bios.h" />
     <ClInclude Include="FILESYS\test_fsys.h" />
+    <ClInclude Include="GFX\HGA\hga.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_default_font_8x8.h" />

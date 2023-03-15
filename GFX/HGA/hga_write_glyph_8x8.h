@@ -21,7 +21,7 @@ namespace hga {
     * @note uses partial x,y values to take advantage of cancel out shl and shr 
     * for convert up to pixel location and then down to memory location
     */
-	void write_glyph_8x8(uint16_t x, uint16_t y, const uint8_t* bytes, uint8_t buffer = GLOBAL::active_buffer) {
+	void write_glyph_8x8(uint16_t x, uint16_t y, const char* bytes, uint8_t buffer = GLOBAL::active_buffer) {
         __asm {
 		    .8086
    

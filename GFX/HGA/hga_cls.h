@@ -13,6 +13,7 @@
 #include <stdint.h>
 
 #include "hga_constants.h"
+#include "hga_environment.h"
 
 namespace hga {
 

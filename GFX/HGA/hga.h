@@ -17,9 +17,20 @@
  //  [x] cls
  //  [x] glyph
  //  [x] default font ascii 0-255
- //  [ ] bitmap_union
- //  [ ] load_bitmap
+ //  [x] bitmap_union
+ //  [x] load_bitmap
  //  [ ] save_bitmap
+
+#include "hga_cls.h"
+#include "hga_constants.h"
+#include "hga_default_font_8x8.h"
+#include "hga_environment.h"
+#include "hga_glyph.h"
+#include "hga_monospaced_font_t.h"
+#include "hga_read_light_pen_registers.h"
+#include "hga_swap_buffers.h"
+#include "hga_video_mode.h"
+#include "hga_write_glyph_8x8.h"
 
 /**
  *  @namespace hga

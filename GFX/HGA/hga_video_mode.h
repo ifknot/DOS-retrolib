@@ -36,8 +36,8 @@
 
 #include <stdint.h>
 
-#include "hga_environment.h"
 #include "hga_constants.h"
+#include "hga_environment.h"
 #include "hga_read_light_pen_registers.h"
 
 namespace hga {
