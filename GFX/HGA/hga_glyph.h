@@ -26,20 +26,21 @@
 #include "hga_environment.h"
 
 #include "hga_write_glyph_8x8.h"
-#include "hga_write_glyph_8x6.h"
-
-// TODO:
-// [x] fast 8x8 glyph 
-// [ ] fast 8x6 glyph
-// [?] fast 4x4 glyph
-// [ ] slower general purpose width x height glyphs
-// [ ] load glyph map (data[][])
-// [ ] save glyph map (data[][])
+#include "../../IMG/PBM/pbm_bitmap.h"
 
 namespace hga {
 
-	void write_glyph(uint16_t width, uint16_t height, uint16_t x, uint16_t y, const uint8_t* bytes, uint8_t buffer = GLOBAL::active_buffer) {
-	
+	void write_glyph(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
+		int h = y + 2;
+		int w = x + 2;
+		char* p = bmp->data;
+		for (int y_ = y; y_ < h; ++y_) {
+			for (int x_ = x; x_ < w; ++x_) {
+				write_glyph_8x8(x_, y_, p);
+				p += 8;
+			}
+
+		}
 	}
 
 }

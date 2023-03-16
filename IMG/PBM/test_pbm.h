@@ -48,12 +48,13 @@ namespace test_pbm {
 					exit(EXIT_FAILURE);
 				}
 			}
-			/*
-			for (int i = 0; i < n; ++i) {
-				std::cout << bmp[i];
-				getchar();
+			
+			pbm::bitmap_t skull;
+			if (pbm::load_bitmap("WDINGS/SKULL2.pbm", &skull) == STDIO_FAIL) {
+				std::cout << strerror(errno) << std::endl;
+				exit(EXIT_FAILURE);
 			}
-			*/
+
 			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
 			LOG(bios::video_adapter_names[adapter]);
 			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
@@ -66,11 +67,13 @@ namespace test_pbm {
 					hga::graphics_full_mode();
 					hga::cls();
 					fill_screen(bmp);
+					hga::write_glyph(20, 20, &skull);
 				}
 				if (YESNO("swap buffers? ")) {
 					hga::swap_buffers();
 					hga::cls();
 					fill_screen(bmp);
+					hga::write_glyph(20, 20, &skull);
 				}
 
 				if (YESNO("text mode? ")) {
@@ -80,6 +83,7 @@ namespace test_pbm {
 			for (int i = 0; i < n; ++i) {
 				pbm::free_bitmap(&bmp[i]);
 			}
+			pbm::free_bitmap(&skull);
 		}
 		return 0;
 	}

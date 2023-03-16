@@ -18,7 +18,7 @@
 using namespace hga;
 
 void fill_screen() {
-	monospaced_font_t<8> f((uint8_t(*)[8])default_font_data);
+	monospaced_font_t<8> f((char(*)[8])default_font_data);
 	int i = 0;
 	for (int y = 0; y < 43; ++y) { //58 or 43
 		for (int x = 0; x < 90; ++x) {

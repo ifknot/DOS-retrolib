@@ -15,7 +15,9 @@
  //  [x] graphics_mode
  //  [x] swap_buffers
  //  [x] cls
- //  [x] glyph
+ //  [x] write_glyph
+ //  [ ] glyphmap
+ //  [ ] write_glyphmap
  //  [x] default font ascii 0-255
  //  [x] bitmap_union
  //  [x] load_bitmap
