@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ABM\test_abm.h" />
+    <ClInclude Include="BIOS\bios_clock_services_types.h" />
     <ClInclude Include="BIOS\test_bios.h" />
     <ClInclude Include="FILESYS\test_fsys.h" />
     <ClInclude Include="GFX\HGA\hga.h" />

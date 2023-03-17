@@ -26,9 +26,8 @@
 #ifndef BIOS_CLOCK_SERVICES_H
 #define BIOS_CLOCK_SERVICES_H
 
-#include <stdint.h>
-
 #include "bios_clock_services_constants.h"
+#include "bios_clock_services_types.h"
 
 namespace bios {
 
@@ -55,8 +54,8 @@ namespace bios {
         * at midnight CX:DX is zero
         *  @retval  - uint32_t
         */
-        uint32_t read_system_clock_counter() {
-            uint32_t ticks_since_midnight;
+        tick_count_t read_system_clock_counter() {
+            tick_count_t ticks_since_midnight;
             __asm {
                 .8086
                 lea     bx, ticks_since_midnight    
@@ -84,7 +83,7 @@ namespace bios {
         *  @param ticks_since_midnight - - should be set to the number of seconds past
         *  midnight multiplied by approximately 18.206
         */
-        void set_system_clock_counter(uint32_t ticks_since_midnight) {
+        void set_system_clock_counter(tick_count_t ticks_since_midnight) {
             __asm {
                 .8086
                 lea     bx, ticks_since_midnight

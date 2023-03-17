@@ -31,8 +31,8 @@
 namespace hga {
 
 	void write_glyph(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
-		int h = y + 2;
-		int w = x + 2;
+		int h = y + 4;
+		int w = x + 1;
 		char* p = bmp->data;
 		for (int y_ = y; y_ < h; ++y_) {
 			for (int x_ = x; x_ < w; ++x_) {

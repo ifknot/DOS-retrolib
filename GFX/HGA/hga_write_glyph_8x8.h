@@ -24,9 +24,21 @@ namespace hga {
 	void write_glyph_8x8(uint16_t x, uint16_t y, const char* bytes, uint8_t buffer = GLOBAL::active_buffer) {
         __asm {
 		    .8086
-   
-            shl     y, 1                    ; convert y glyph row to partial (x2) pixel location
+                   
 		    lds     si, bytes		        ; ds:[si] points to list of 8 glyph data bytes to write
+
+            mov     ax, y                   ; load y into ax then perform screen clipping
+            shl     ax, 1                   ; convert y glyph row to partial (x2) pixel location
+            cmp     ax, SCREEN_Y_MAX / 4    ; compare ax with partial y maximum boundry / 4
+            jge     END                     ; nothing to plot   
+
+            mov     di, x                   ; load x into diand clip to screen bounds
+            cmp     di, SCREEN_X_MAX / 8    ; compare di with partial x maximum boundry / 8
+            jge     END                     ; nothing to plot
+            
+            mov     cl, BYTES_PER_LINE
+            mul     cl                      ; calculate(y / 4) * 90 nb 133 cycles
+            add     di, ax                  ; +(y / 4) * 90
 
 		    mov     ax, HGA_VIDEO_RAM_SEGMENT
             test    buffer, 1               ; which buffer ?
@@ -34,17 +46,7 @@ namespace hga {
             add     ax, HGA_PAGE_2_OFFSET   ; B000:8000 - B000 : FFFF   Second Page
     J0:     mov     es, ax			        ; es points to screen segment
  
-		    mov     ax, y                   ; load y into ax then perform screen clipping
-		    cmp     ax, SCREEN_Y_MAX / 4    ; compare ax with partial y maximum boundry / 4
-            jge     END                     ; nothing to plot   
-           
-            mov     cl, BYTES_PER_LINE
-            mul     cl                      ; calculate(y / 4) * 90 nb 133 cycles 
-		        
-		    mov     di, x                   ; load x into di and clip to screen bounds
-            cmp     di, SCREEN_X_MAX / 8    ; compare di with partial x maximum boundry / 8
-            jge     END                     ; nothing to plot
-            add     di, ax                  ; + (y / 4) * 90
+		    
 
 #ifdef SYNCHRONISED                    
             mov     dx, HGA_STATUS_REG      ; HGA status reg 

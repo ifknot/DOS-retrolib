@@ -7,6 +7,7 @@
 #include "../../TEST/debug_macros.h"
 
 #include "../../BIOS/bios_video_services.h"
+#include "../../BIOS/bios_clock_services.h"
 
 #include "hga_read_light_pen_registers.h"
 #include "hga_video_mode.h"
@@ -24,7 +25,6 @@ void fill_screen() {
 		for (int x = 0; x < 90; ++x) {
 			write_glyph_8x8(x, y, f.data[i++ % 256]);
 		}
-		//std::cout << '\n' << std::endl;
 	}
 }
 
@@ -42,21 +42,29 @@ namespace test_herc {
 				//fill_screen();
 				//std::cout << GLOBAL::default_font.name.c_str() << std::endl;
 				
+				bios::tick_count_t t, t1, t2;
+				bios::set_system_clock_counter(0);
 				if (YESNO("graphics mode? ")) {
 					graphics_full_mode();
 					cls();
+					t = bios::read_system_clock_counter();
 					fill_screen();
+					t1 = bios::read_system_clock_counter() - t;
 				}
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
 					cls();
+					t = bios::read_system_clock_counter();
 					fill_screen();
+					t2 = bios::read_system_clock_counter() - t;
 				}
 				
 				if (YESNO("text mode? ")) {
 					text_half_mode();
 				}
 				
+				std::cout << "perf = " << t1 << ' ' << t2 << '\n';
+
 			}
 		}
 		return 0;

@@ -11,8 +11,6 @@
 #ifndef BIOS_CLOCK_SERVICES_CONSTANTS_H
 #define BIOS_CLOCK_SERVICES_CONSTANTS_H
 
-
-
 namespace bios {
 
 #define BIOS_CLOCK_SERVICES			1Ah
