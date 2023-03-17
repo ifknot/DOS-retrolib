@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Nov  1 2017 20:56:49 (64-bit)
 Copyright (c) 2002-2017 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/03/17 20:55:24
+Created on:       23/03/17 21:31:27
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -270,28 +270,28 @@ Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
 0000:126c+     void __far bios::set_system_clock_counter( long unsigned )
 0000:1296+     void __far hga::cls( char unsigned )
 0000:12cc+     void __far hga::write_glyph_8x8( short unsigned, short unsigned, char const __far *, char unsigned )
-0000:1348+     int __far fsys::fpeek( __iobuf __far * )
-0000:140e+     char const __far * __far fsys::extension( char const __far * )
-0000:1492+     long __far fsys::stream_size( __iobuf __far * )
-0000:15d8+     int __far fsys::ignore( __iobuf __far *, long, int )
-0000:1626+     int __far fsys::ignore_line( __iobuf __far * )
-0000:16ac+     int __far fsys::read_dsv( char const __far *, char (__far *)[80], short unsigned, char, bool )
-0000:18b4+     int __far fsys::read_csv( char const __far *, char (__far *)[80], short unsigned, bool )
-0000:1912+     int __far fsys::read_tsv( char const __far *, char (__far *)[80], short unsigned, bool )
-0000:1970+     short unsigned __far str::bits_to_binary( __int64 unsigned, char __far *, int )
-0000:1a3c+     int __far pbm::load_bitmap( char const __far *, pbm::bitmap_t __far *, int )
-0000:1ffa+     void __far pbm::free_bitmap( pbm::bitmap_t __far * )
-0000:2054+     std::ostream __far & __far operator <<( std::ostream __far &, pbm::bitmap_t const __far & )
-0000:24e4+     void __far hga::write_glyph( short unsigned, short unsigned, pbm::bitmap_t const __far *, char unsigned )
+0000:1352+     int __far fsys::fpeek( __iobuf __far * )
+0000:1418+     char const __far * __far fsys::extension( char const __far * )
+0000:149c+     long __far fsys::stream_size( __iobuf __far * )
+0000:15e2+     int __far fsys::ignore( __iobuf __far *, long, int )
+0000:1630+     int __far fsys::ignore_line( __iobuf __far * )
+0000:16b6+     int __far fsys::read_dsv( char const __far *, char (__far *)[80], short unsigned, char, bool )
+0000:18be+     int __far fsys::read_csv( char const __far *, char (__far *)[80], short unsigned, bool )
+0000:191c+     int __far fsys::read_tsv( char const __far *, char (__far *)[80], short unsigned, bool )
+0000:197a+     short unsigned __far str::bits_to_binary( __int64 unsigned, char __far *, int )
+0000:1a46+     int __far pbm::load_bitmap( char const __far *, pbm::bitmap_t __far *, int )
+0000:2004+     void __far pbm::free_bitmap( pbm::bitmap_t __far * )
+0000:205e+     std::ostream __far & __far operator <<( std::ostream __far &, pbm::bitmap_t const __far & )
+0000:24ee+     void __far hga::write_glyph( short unsigned, short unsigned, pbm::bitmap_t const __far *, char unsigned )
 0000:2b20+     __far std::allocator<char __far >::~allocator()
 0000:2b50+     __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::basic_string( std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far > const __far & )
 0000:2cc0+     __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::~basic_string()
 0ec3:0e00+     char __far bios::video_mode_names[][64]
 0ec3:0ce0+     int unsigned const __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::npos
 0000:2dc0+     char __far * __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::alloc( int unsigned, int unsigned __far & )
-0000:2574+     void __far fill_screen()
-0000:2618+     int __far test_herc::run()
-0000:29ca      main_
+0000:257e+     void __far fill_screen()
+0000:2622+     int __far test_herc::run()
+0000:29d4      main_
 0ec3:1cf8+     char __far bios::video_display_names[][255]
 0ec3:23f8+     char __far dos::error::messages[][64]
 0ec3:3938+     char __far dos::error::classes[][64]
@@ -879,4 +879,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  00013de0 (81376.)
 Entry point address: 0000:3f82
-Link time: 00:00.19
+Link time: 00:00.17

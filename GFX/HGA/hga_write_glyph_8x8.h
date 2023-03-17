@@ -57,6 +57,34 @@ namespace hga {
             test    al, 1000b               ; is bit 3 set ? (just started a vertical retrace interval)
             jnz     S1                      ; no, keep waiting              
 #endif
+            movsb 				            ; movsb row 0 bank 0 as guaranteed bank 0 start in glyph space coords
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 1 to bank 1
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 2 to bank 2
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            movsb 				            ; glyph pxiel row 3 to bank 3
+
+            sub 	  di, 5FA7h			    ; 6000h - 89 to get DI back to next bank
+
+            movsb 				            ; glyph pixel row 4 to bank 0
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 5 to bank 1
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 6 to bank 2
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            movsb 				            ; glyph pxiel row 7 to bank 3
+
+		    END:
+		}
+	}
+
+}
+
+#endif
+
+/*
+
             lodsb                           ; load 8 pixels strip glyph row 0 into al
             mov     es:[di], al             ; store row 0 bank 0 as guaranteed bank zero start in glyph space coords
             lodsb                           ; load 8 pixels strip glyph row 1 into al
@@ -77,10 +105,29 @@ namespace hga {
             lodsb                           ; load 8 pixels strip glyph row 7 into al
             mov     es : [di + 6000h], al   ; store row 7 bank 3
 
-		    END:
-		}
-	}
 
-}
+            movsb 				            ; movsb row 0 bank 0 as guaranteed bank 0 start in glyph space coords
 
-#endif
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 1 to bank 1
+
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 2 to bank 2
+
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            movsb 				            ; glyph pxiel row 3 to bank 3
+
+            sub 	  di, 5FA7h			    ; 6000h - 89 to get DI back to next bank
+
+            movsb 				            ; glyph pixel row 4 to bank 0
+
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 5 to bank 1
+
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            movsb 				            ; glyph pixel row 6 to bank 2
+
+            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            movsb 				            ; glyph pxiel row 7 to bank 3
+
+*/

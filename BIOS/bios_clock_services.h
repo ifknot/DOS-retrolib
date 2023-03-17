@@ -75,7 +75,7 @@ namespace bios {
                 int     BIOS_CLOCK_SERVICES
                 mov     midnight, al
             }
-            return midnight;
+            return midnight != 0;
         }
 
         /**
