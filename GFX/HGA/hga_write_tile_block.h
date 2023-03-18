@@ -35,41 +35,42 @@ namespace hga {
         __asm {
             .8086
 
+            mov     bx, tile_offset
+
             mov     cx, h
 ROWS:       push    cx                          ; save rows loop counter
 
-            mov     bx, x   
+            mov     dx, x
+            
             mov     cx, w 
 COLS:       push    cx                          ; save columns loop counter
             
-            call    VRAM                        ; calculate source DS:[SI] and destination ES:[DI]
-            //call    TILE                        ; write source to destination
+            call    TILE                        ; write source to destination
 
-            inc     bx                          ; next column
-            inc     tile_offset                 ; next tile
+            inc     dx                          ; next column
+            inc     bx                          ; next tile
             pop     cx                          ; retrieve columns loop counter
             loop    COLS
 
             inc     y                           ; next row
-            mov     ax, step
-            add     tile_offset, ax
+            add     bx, step
             pop     cx                          ; retrieve rows loop counter
             loop    ROWS
 
             jmp     END
 
-VRAM:       mov     ax, y                       ; load y into ax then perform screen clipping
+TILE:       mov     ax, y                       ; load y into ax then perform screen clipping
             shl     ax, 1                       ; convert y tile row to partial(x2) pixel location
             cmp     ax, SCREEN_Y_MAX / 4        ; compare ax with partial y maximum boundry / 4
             jge     END                         ; nothing to plot
 
-            mov     di, bx                      ; load x into diand clip to screen bounds
+            mov     di, dx                      ; load x into diand clip to screen bounds
             cmp     di, SCREEN_X_MAX / 8        ; compare di with partial x maximum boundry / 8
             jge     END                         ; nothing to plot
 
             mov     cl, BYTES_PER_LINE
             mul     cl                          ; calculate(y / 4) * 90 nb 133 cycles
-            add     di                          , ax; +(y / 4) * 90
+            add     di, ax                      ; +(y / 4) * 90
 
             mov     ax, HGA_VIDEO_RAM_SEGMENT
             test    buffer, 1                   ; which buffer ?
@@ -78,40 +79,40 @@ VRAM:       mov     ax, y                       ; load y into ax then perform sc
 J0:         mov     es, ax                      ; es points to screen segment
 
             lds     si, bytes                   ; DS:[SI] points to list of 8 tile data bytes to write
-            add 	si, tile_offset             ; DS:[sI] points to the specific list of 8 tile bytes
-            mov 	dx, w                       ; the width in *tiles* of the bitmap will step to correct column byte
-            dec 	dx                          ; compensate for MOVSB auto increment
+            add 	si, bx                      ; DS:[sI] points to the specific list of 8 tile bytes
+            mov 	cx, w                       ; the width in *tiles* of the bitmap will step to correct column byte
+            dec 	cx                          ; compensate for MOVSB auto increment
 
- TILE:      lodsb                               ; load 8 pixels strip tile row 0 into al
+            lodsb                               ; load 8 pixels strip tile row 0 into al
             mov     es:[di] , al                ; store row 0 bank 0 as guaranteed bank zero start in tile space coords
 
-            add     si, dx
+            add     si, cx
             lodsb                               ; load 8 pixels strip tile row 1 into al
             mov     es:[di + 2000h] , al        ; store row 1 bank 1
 
-            add     si, dx
+            add     si, cx
             lodsb                               ; load 8 pixels strip tile row 2 into al
             mov     es:[di + 4000h] , al        ; store row 2 bank 2
 
-            add     si, dx
+            add     si, cx
             lodsb                               ; load 8 pixels strip tile row 3 into al
             mov     es:[di + 6000h] , al        ; store row 3 bank 3
 
             add     di, 90                      ; add 90 bytes next line for all 4 banks
 
-            add     si, dx
+            add     si, cx
             lodsb                               ; load 8 pixels strip tile row 4 into al
             mov     es:[di] , al                ; store row 4 bank 0
 
-            add     si, dx
+            add     si, cx
             lodsb                               ; load 8 pixels strip tile row 5 into al
             mov     es:[di + 2000h] , al        ; store row 5 bank 1
 
-            add     si, dx
+            add     si, cx
             lodsb                               ; load 8 pixels strip tile row 6 into al
             mov     es:[di + 4000h] , al        ; store row 6 bank 2
 
-            add     si, dx
+            add     si, cx
             lodsb                               ; load 8 pixels strip tile row 7 into al
             mov     es:[di + 6000h] , al        ; store row 7 bank 3
 
