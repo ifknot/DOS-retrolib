@@ -7,8 +7,8 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef HGA_WRITE_TILE_STRIP_H
-#define HGA_WRITE_TILE_STRIP_H
+#ifndef HGA_WRITE_TILE_BLOCK_H
+#define HGA_WRITE_TILE_BLOCK_H
 
 #include "hga_constants.h"
 #include "hga_environment.h"
@@ -43,7 +43,7 @@ ROWS:       push    cx                          ; save rows loop counter
 COLS:       push    cx                          ; save columns loop counter
             
             call    VRAM                        ; calculate source DS:[SI] and destination ES:[DI]
-            call    TILE                        ; write source to destination
+            //call    TILE                        ; write source to destination
 
             inc     bx                          ; next column
             inc     tile_offset                 ; next tile
@@ -81,8 +81,6 @@ J0:         mov     es, ax                      ; es points to screen segment
             add 	si, tile_offset             ; DS:[sI] points to the specific list of 8 tile bytes
             mov 	dx, w                       ; the width in *tiles* of the bitmap will step to correct column byte
             dec 	dx                          ; compensate for MOVSB auto increment
-
-            ret
 
  TILE:      lodsb                               ; load 8 pixels strip tile row 0 into al
             mov     es:[di] , al                ; store row 0 bank 0 as guaranteed bank zero start in tile space coords
