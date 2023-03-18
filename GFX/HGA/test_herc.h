@@ -9,12 +9,7 @@
 #include "../../BIOS/bios_video_services.h"
 #include "../../BIOS/bios_clock_services.h"
 
-#include "hga_read_light_pen_registers.h"
-#include "hga_video_mode.h"
-#include "hga_swap_buffers.h"
-#include "hga_cls.h"
-#include "hga_glyph.h"
-#include "hga_environment.h"
+#include "hga.h"
 
 using namespace hga;
 

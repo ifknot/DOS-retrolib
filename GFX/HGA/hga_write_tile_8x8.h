@@ -17,9 +17,13 @@
 
 namespace hga {
 
-	/**
-    * Special case for 8x8 source bitmap data (14% x faster on XT)
-    * @note uses partial x,y values to take advantage of cancel out shl and shr for convert up to pixel location and then down to memory location
+    /**
+    *  @brief writes a single tile to vram 
+    *  @note special case (14% x faster on XT) for 8x8 source bitmap data 
+    *  @param x           - screen tile column position 0..89
+    *  @param y           - screen tile row position 0..42
+    *  @param bytes       - the bitmap data
+    *  @param buffer      - the buffer to write to
     */
 	void write_tile_8x8(uint16_t x, uint16_t y, const char* bytes, uint8_t buffer = GLOBAL::active_buffer) {
         __asm {

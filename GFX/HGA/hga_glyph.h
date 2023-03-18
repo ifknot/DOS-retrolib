@@ -25,7 +25,7 @@
 #include "hga_constants.h"
 #include "hga_environment.h"
 
-#include "hga_write_glyph_8x8.h"
+#include "hga_write_tile_strip.h"
 #include "../../IMG/PBM/pbm_bitmap.h"
 
 namespace hga {
@@ -36,13 +36,13 @@ namespace hga {
 		int w = x + 2;
 		int off;
 		char* p = bmp->data;
-		for (int y_ = y; y_ < h; ++y_) {
-			off = 0;
-			for (int x_ = x; x_ < w; ++x_) {
-				write_glyph_8x8(x_, y_,off++,step, p);
-			}
-			p += bmp->header->width;
-		}
+		//for (int y_ = y; y_ < h; ++y_) {
+			write_tile_strip(x, y, 2, 2, p);
+			//write_tile_strip(x + 1, y, 1, 2, p);
+			//p += bmp->header->width;
+			//write_tile_strip(x, y + 1, 2, 2, p);
+			//write_tile_strip(x + 1, y + 1, 1, 2, p);
+		//}
 	}
 
 }
