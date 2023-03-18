@@ -13,6 +13,8 @@
 #include "hga_constants.h"
 #include "hga_environment.h"
 
+#include "../../IMG/PBM/pbm_bitmap.h"
+
 namespace hga {
 
     /**
@@ -25,16 +27,18 @@ namespace hga {
      *  @param bytes       - 
      *  @param buffer      - 
      */
-    void write_tile_strip(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const char* bytes, uint16_t tile_offset = 0, uint8_t buffer = GLOBAL::active_buffer) {
+    void write_tile_block(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint16_t tile_offset = 0, uint8_t buffer = GLOBAL::active_buffer) {
+        uint16_t w = bmp->header->width >> 3;
+        uint16_t h = bmp->header->height >> 3;
+        uint16_t step = bmp->header->width;
+        const char* bytes = bmp->data;
         __asm {
             .8086
-
-            call    INIT                        ; scale bitmap width and height to tile dimensions
 
             mov     cx, h
 ROWS:       push    cx                          ; save rows loop counter
 
-            mov     bx, x                       ; BX stores x       
+            mov     bx, x   
             mov     cx, w 
 COLS:       push    cx                          ; save columns loop counter
             
@@ -46,14 +50,13 @@ COLS:       push    cx                          ; save columns loop counter
             pop     cx                          ; retrieve columns loop counter
             loop    COLS
 
+            inc     y                           ; next row
+            mov     ax, step
+            add     tile_offset, ax
             pop     cx                          ; retrieve rows loop counter
+            loop    ROWS
 
             jmp     END
-
-INIT:       mov     cl, 3                                               
-            shr     w, cl                       ; divide width by 8
-            shr     h, cl                       ; divide height by 8
-            ret
 
 VRAM:       mov     ax, y                       ; load y into ax then perform screen clipping
             shl     ax, 1                       ; convert y tile row to partial(x2) pixel location
@@ -74,8 +77,8 @@ VRAM:       mov     ax, y                       ; load y into ax then perform sc
             add     ax, HGA_PAGE_2_OFFSET       ; B000:8000 - B000 : FFFF   Second Page
 J0:         mov     es, ax                      ; es points to screen segment
 
-            lds     si, bytes                   ; DS: [SI] points to list of 8 tile data bytes to write
-            add 	si, tile_offset             ; DS: [sI] points to the specific list of 8 tile bytes
+            lds     si, bytes                   ; DS:[SI] points to list of 8 tile data bytes to write
+            add 	si, tile_offset             ; DS:[sI] points to the specific list of 8 tile bytes
             mov 	dx, w                       ; the width in *tiles* of the bitmap will step to correct column byte
             dec 	dx                          ; compensate for MOVSB auto increment
 
@@ -116,7 +119,8 @@ J0:         mov     es, ax                      ; es points to screen segment
 
             ret
 
-END:
+END:       
+
         }
     }
 
