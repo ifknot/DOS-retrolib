@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Nov  1 2017 20:56:49 (64-bit)
 Copyright (c) 2002-2017 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/03/18 23:41:21
+Created on:       23/03/18 23:57:57
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -291,9 +291,9 @@ Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
 0f01:4248+     char __far dos::error::locus[][64]
 0000:2fa0+     char __far * __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::alloc( int unsigned, int unsigned __far & )
 0000:243e+     void __far hga::write_tile_block( short unsigned, short unsigned, pbm::bitmap_t const __far *, short unsigned, char unsigned )
-0000:2544+     void __far fill_screen( pbm::bitmap_t __far * )
-0000:25ac+     int __far test_pbm::run()
-0000:2bb0      main_
+0000:2546+     void __far fill_screen( pbm::bitmap_t __far * )
+0000:25ae+     int __far test_pbm::run()
+0000:2bb2      main_
 Module: C:\WATCOM\lib286\plbxl.lib(ioicout.cpp)
 0f01:4b78      std::ostream __near std::cout
 0000:308e+     __far cout_initfini::cout_initfini()
@@ -883,4 +883,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  00014680 (83584.)
 Entry point address: 0000:4290
-Link time: 00:00.19
+Link time: 00:00.20

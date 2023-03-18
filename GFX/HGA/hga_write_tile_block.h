@@ -29,7 +29,7 @@ namespace hga {
      */
     void write_tile_block(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint16_t tile_offset = 0, uint8_t buffer = GLOBAL::active_buffer) {
         uint16_t w = bmp->header->width >> 3;
-        uint16_t h = bmp->header->height >> 3;
+        uint16_t h = bmp->header->height;
         uint16_t step = bmp->header->width;
         const char* bytes = bmp->data;
         __asm {
@@ -43,7 +43,10 @@ J0:         mov     es, ax                      ; es points to screen segment
 
             mov     bx, tile_offset             ; use a reg better performance
 
-            mov     cx, h
+            mov     cx, h                       ; load CX bitmap height in pixels
+            shr     cx, 1                       ; convert to height in tiles
+            shr     cx, 1                       ; pixels height / 8
+            shr     cx, 1                       ; 8086 limited to 1 shift at a time
 ROWS:       push    cx                          ; save rows loop counter
 
             mov     dx, x                       ; use a reg better performance
