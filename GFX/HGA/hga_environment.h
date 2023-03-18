@@ -25,6 +25,9 @@
  */
 #define TILE_HEIGHT 8;
 
+#define SCREEN_TILE_WIDTH 90;
+#define SCREEN_TILE_HEIGHT 43;
+
 namespace hga {
 
 	namespace GLOBAL {

@@ -67,13 +67,13 @@ namespace test_pbm {
 					hga::graphics_full_mode();
 					hga::cls();
 					fill_screen(bmp);
-					hga::write_tile_block(20, 20, &skull);
+					hga::write_tile_block(20, 42, &skull);
 				}
 				if (YESNO("swap buffers? ")) {
 					hga::swap_buffers();
 					hga::cls();
 					fill_screen(bmp);
-					hga::write_tile_block(20, 20, &skull);
+					hga::write_tile_block(89, 20, &skull);
 				}
 
 				if (YESNO("text mode? ")) {

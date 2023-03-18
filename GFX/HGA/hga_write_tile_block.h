@@ -35,12 +35,18 @@ namespace hga {
         __asm {
             .8086
 
-            mov     bx, tile_offset
+            mov     ax, HGA_VIDEO_RAM_SEGMENT
+            test    buffer, 1                   ; which buffer ?
+            jz      J0                          ; B000:0000 - B000 : 7FFF   First Page
+            add     ax, HGA_PAGE_2_OFFSET       ; B000:8000 - B000 : FFFF   Second Page
+J0:         mov     es, ax                      ; es points to screen segment
+
+            mov     bx, tile_offset             ; use a reg better performance
 
             mov     cx, h
 ROWS:       push    cx                          ; save rows loop counter
 
-            mov     dx, x
+            mov     dx, x                       ; use a reg better performance
             
             mov     cx, w 
 COLS:       push    cx                          ; save columns loop counter
@@ -59,24 +65,18 @@ COLS:       push    cx                          ; save columns loop counter
 
             jmp     END
 
-TILE:       mov     ax, y                       ; load y into ax then perform screen clipping
-            shl     ax, 1                       ; convert y tile row to partial(x2) pixel location
-            cmp     ax, SCREEN_Y_MAX / 4        ; compare ax with partial y maximum boundry / 4
-            jge     END                         ; nothing to plot
+TILE:       mov     ax, y                       ; load y into AX then perform screen clipping
+            cmp     ax, SCREEN_TILE_HEIGHT
+            jge     END                         ; no more rows to plot
 
             mov     di, dx                      ; load x into diand clip to screen bounds
-            cmp     di, SCREEN_X_MAX / 8        ; compare di with partial x maximum boundry / 8
-            jge     END                         ; nothing to plot
+            cmp     di, SCREEN_TILE_WIDTH
+            jge     TEND                        ; no more columns on this row to plot
 
+            shl     ax, 1                       ; convert y tile row to partial(x2) pixel location
             mov     cl, BYTES_PER_LINE
             mul     cl                          ; calculate(y / 4) * 90 nb 133 cycles
             add     di, ax                      ; +(y / 4) * 90
-
-            mov     ax, HGA_VIDEO_RAM_SEGMENT
-            test    buffer, 1                   ; which buffer ?
-            jz      J0                          ; B000:0000 - B000 : 7FFF   First Page
-            add     ax, HGA_PAGE_2_OFFSET       ; B000:8000 - B000 : FFFF   Second Page
-J0:         mov     es, ax                      ; es points to screen segment
 
             lds     si, bytes                   ; DS:[SI] points to list of 8 tile data bytes to write
             add 	si, bx                      ; DS:[sI] points to the specific list of 8 tile bytes
@@ -116,7 +116,7 @@ J0:         mov     es, ax                      ; es points to screen segment
             lodsb                               ; load 8 pixels strip tile row 7 into al
             mov     es:[di + 6000h] , al        ; store row 7 bank 3
 
-            ret
+TEND:       ret
 
 END:       
 
