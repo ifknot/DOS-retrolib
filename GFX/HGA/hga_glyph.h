@@ -31,13 +31,10 @@
 namespace hga {
 
 	void write_glyph(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
-		int step = bmp->header->width >> 3;
-		int h = y + 2;
-		int w = x + 2;
-		int off;
-		char* p = bmp->data;
+		int yy = y + 2;
+		int xx = x + 2;
 		//for (int y_ = y; y_ < h; ++y_) {
-			write_tile_strip(x, y, 2, 2, p);
+			write_tile_strip(x, y, bmp->header->width, bmp->header->height, bmp->data);
 			//write_tile_strip(x + 1, y, 1, 2, p);
 			//p += bmp->header->width;
 			//write_tile_strip(x, y + 1, 2, 2, p);
