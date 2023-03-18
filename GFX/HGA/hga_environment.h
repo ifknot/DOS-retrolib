@@ -14,6 +14,17 @@
 #include "hga_default_font_8x8.h"
 #include "hga_monospaced_font_t.h"
 
+/**
+ *  @def   TILE_WIDTH
+ *  @brief HGA resolution of 720x348 using an 8x8 tile gives as screen 90 tiles wide
+ */
+#define TILE_WIDTH 8;
+/**
+ *  @def   TILE_HEIGHT
+ *  @brief however, HGA resolution of 720x348 using an 8x8 tile gives a screen 43.5 tiles high
+ */
+#define TILE_HEIGHT 8;
+
 namespace hga {
 
 	namespace GLOBAL {

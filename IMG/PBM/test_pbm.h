@@ -20,7 +20,7 @@
 void fill_screen(pbm::bitmap_t bmp[20]) {
 	int i = 0;
 	for (int x = 0; x < 20; ++x) {
-		hga::write_glyph_8x8(10 + x, 10, bmp[i++ % 20].data);
+		hga::write_tile_8x8(10 + x, 10, bmp[i++ % 20].data);
 	}
 
 }
@@ -50,7 +50,7 @@ namespace test_pbm {
 			}
 			
 			pbm::bitmap_t skull;
-			if (pbm::load_bitmap("WDINGS/SKULL2.pbm", &skull) == STDIO_FAIL) {
+			if (pbm::load_bitmap("WDINGS/circle16.pbm", &skull) == STDIO_FAIL) {
 				std::cout << strerror(errno) << std::endl;
 				exit(EXIT_FAILURE);
 			}

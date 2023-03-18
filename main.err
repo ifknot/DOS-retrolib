@@ -1,15 +1,18 @@
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'fptr'
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from GFX/HGA/../../IMG/PBM/../../FSYS/fsys.h(21)
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from GFX/HGA/../../IMG/PBM/pbm_bitmap.h(35)
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from GFX/HGA/hga_glyph.h(29)
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from GFX/HGA/test_herc.h(16)
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from main.cpp(6)
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(26) definition: '__iobuf * fptr' in 'int fsys::ignore( __iobuf *, long, int )'
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'size'
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(37) definition: 'long size' in 'int fsys::ignore( __iobuf *, long, int )'
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'delim'
-GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(51) definition: 'int delim' in 'int fsys::ignore( __iobuf *, long, int )'
-GFX/HGA/hga_glyph.h(44): Warning! W726: col(9) no reference to formal parameter 'buffer'
-GFX/HGA/hga_glyph.h(33): Note! N392: col(84) definition: 'unsigned char buffer' in 'void hga::write_glyph( unsigned short, unsigned short, pbm::bitmap_t const *, unsigned char )'
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'fptr'
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys.h(21)
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from IMG/PBM/../../GFX/HGA/../../IMG/PBM/pbm_bitmap.h(35)
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from IMG/PBM/../../GFX/HGA/hga_glyph.h(29)
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from IMG/PBM/../../GFX/HGA/hga.h(30)
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from IMG/PBM/test_pbm.h(16)
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Note! N393: col(9) included from main.cpp(7)
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(26) definition: '__iobuf * fptr' in 'int fsys::ignore( __iobuf *, long, int )'
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'size'
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(37) definition: 'long size' in 'int fsys::ignore( __iobuf *, long, int )'
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'delim'
+IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(51) definition: 'int delim' in 'int fsys::ignore( __iobuf *, long, int )'
+IMG/PBM/../../GFX/HGA/hga_glyph.h(46): Warning! W726: col(9) no reference to formal parameter 'buffer'
+IMG/PBM/../../GFX/HGA/hga_glyph.h(33): Note! N392: col(84) definition: 'unsigned char buffer' in 'void hga::write_glyph( unsigned short, unsigned short, pbm::bitmap_t const *, unsigned char )'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
-GFX/HGA/hga_constants.h(148): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
+IMG/PBM/../../GFX/HGA/hga_constants.h(148): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'default_font_data'
+IMG/PBM/../../GFX/HGA/hga_default_font_8x8.h(52): Note! N392: col(19) definition: 'unsigned char const hga::default_font_data[256][8]'

@@ -23,7 +23,8 @@ void fill_screen() {
 	int i = 0;
 	for (int y = 0; y < 43; ++y) { //58 or 43
 		for (int x = 0; x < 90; ++x) {
-			write_glyph_8x8(x, y, f.data[i++ % 256]);
+			write_tile_8x8(x, y, f.data[i++ % 256]);
+			//write_glyph_8x8(x, y, 1, 1, f.data[i++ % 256]);
 		}
 	}
 }
