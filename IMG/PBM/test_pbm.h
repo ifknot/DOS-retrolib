@@ -50,7 +50,7 @@ namespace test_pbm {
 			}
 			
 			pbm::bitmap_t skull; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm"
-			if (pbm::load_bitmap("CHESS/LEFTNUM.pbm", &skull) == STDIO_FAIL) {
+			if (pbm::load_bitmap("WDINGS/CIRCLE16.pbm", &skull) == STDIO_FAIL) {
 				std::cout << strerror(errno) << std::endl;
 				exit(EXIT_FAILURE);
 			}

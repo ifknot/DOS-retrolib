@@ -29,15 +29,15 @@ namespace hga {
         __asm {
 		    .8086    
 
-            mov     ax, y                   ; load y into AX then perform screen clipping
-            shl     ax, 1                   ; convert y tile row to partial (x2) pixel location
-            cmp     ax, SCREEN_Y_MAX / 4    ; compare AX with partial y maximum boundry / 4
+            mov     ax, y                   ; load y into AX then perform screen clipping        
+            cmp     ax, SCREEN_TILE_HEIGHT
             jge     END                     ; nothing to plot   
 
             mov     di, x                   ; load x into DI and clip to screen bounds
-            cmp     di, SCREEN_X_MAX / 8    ; compare DI with partial x maximum boundry / 8
+            cmp     di, SCREEN_TILE_WIDTH
             jge     END                     ; nothing to plot
             
+            shl     ax, 1                   ; convert y tile row to partial(x2) pixel location
             mov     cl, BYTES_PER_LINE
             mul     cl                      ; calculate(y / 4) * 90 nb 133 cycles
             add     di, ax                  ; +(y / 4) * 90

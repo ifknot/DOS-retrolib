@@ -38,7 +38,7 @@ J0:         mov     es, ax                      ; es points to screen segment
             shr     cx, 1                       ; convert to width in tiles
             shr     cx, 1                       ; pixels height / 8
             shr     cx, 1                       ; 8086 limited to 1 shift at a time
-            sub     step, cx                    ; compensate the step for the width
+            sub     step, cx                    ; compensate the step for the next tile inc
             mov     w, cx                       ; store back in w
 
             mov     cx, h                       ; load CX bitmap height in pixels
@@ -55,7 +55,7 @@ ROWS:       push    cx                          ; save rows loop counter
                     call    TILE                        ; write source to destination
 
                     inc     dx                          ; next column
-                    inc     bx                          ; next tile
+                    inc     bx                          ; next tile (compensate for this)
                     pop     cx                          ; retrieve columns loop counter
                 loop    COLS
 
