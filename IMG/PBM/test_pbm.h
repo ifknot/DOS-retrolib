@@ -50,7 +50,7 @@ namespace test_pbm {
 			}
 			
 			pbm::bitmap_t skull; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm"
-			if (pbm::load_bitmap("WDINGS/CIRCLE16.pbm", &skull) == STDIO_FAIL) {
+			if (pbm::load_bitmap("WDINGS/CIRCLE24.pbm", &skull) == STDIO_FAIL) {
 				std::cout << strerror(errno) << std::endl;
 				exit(EXIT_FAILURE);
 			}
@@ -66,17 +66,19 @@ namespace test_pbm {
 				if (YESNO("graphics mode? ")) {
 					hga::graphics_full_mode();
 					hga::cls();
-					fill_screen(bmp);
-					hga::write_tile_block(20, 20, &skull);
+					//fill_screen(bmp);
+					uint16_t step = skull.header->width >> 3;
+					hga::write_tile_block(20, 20, &skull, step);
 				}
 				if (YESNO("swap buffers? ")) {
 					hga::swap_buffers();
 					hga::cls();
-					fill_screen(bmp);
-					hga::write_tile_block(20, 20, &skull);
-					hga::write_tile_block(88, 20, &skull);
-					hga::write_tile_block(88, 41, &skull);
-					hga::write_tile_block(20, 41, &skull);
+					//fill_screen(bmp);
+					uint16_t step = skull.header->width >> 3;
+					hga::write_tile_block(20, 20, &skull, step);
+					hga::write_tile_block(88, 20, &skull, step);
+					hga::write_tile_block(88, 41, &skull, step);
+					hga::write_tile_block(20, 41, &skull, step);
 				}
 
 				if (YESNO("text mode? ")) {

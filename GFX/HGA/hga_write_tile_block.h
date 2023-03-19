@@ -15,10 +15,25 @@
 
 #include "../../IMG/PBM/pbm_bitmap.h"
 
+#include "hga_default_font_8x8.h"
+
 namespace hga {
 
-    
     void write_tile_block(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
+        int i, step = bmp->header->width >> 3;
+        int yy = (bmp->header->height >> 3) + y;
+        int xx = step + x;
+        char* p = bmp->data;
+        while(y++ < yy) {
+            i = 0;
+            for (int dx = x; dx < xx; ++dx) {
+                write_tile_step_8x8(dx, y, p + i++, step);
+            }
+            p += bmp->header->width;
+        }
+    }
+    
+    void __write_tile_block(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
         uint16_t w, h, step;
         w = step = bmp->header->width;
         h = bmp->header->height;

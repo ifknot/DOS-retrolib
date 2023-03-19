@@ -13,13 +13,13 @@
 
 using namespace hga;
 
+monospaced_font_t<8> f((char(*)[8])default_font_data);
+
 void fill_screen() {
-	monospaced_font_t<8> f((char(*)[8])default_font_data);
 	int i = 0;
 	for (int y = 0; y < 43; ++y) { //58 or 43
 		for (int x = 0; x < 90; ++x) {
 			write_tile_8x8(x, y, f.data[i++ % 256]);
-			//write_glyph_8x8(x, y, 1, 1, f.data[i++ % 256]);
 		}
 	}
 }
@@ -46,6 +46,15 @@ namespace test_herc {
 					t = bios::read_system_clock_counter();
 					fill_screen();
 					t1 = bios::read_system_clock_counter() - t;
+					/* bounds check 
+					write_tile_8x8(20, 20, f.data[250]);
+					write_tile_8x8(88, 20, f.data[250]);
+					write_tile_8x8(89, 20, f.data[250]);
+					write_tile_8x8(90, 20, f.data[250]);
+					write_tile_8x8(20, 41, f.data[250]);
+					write_tile_8x8(20, 42, f.data[250]);
+					write_tile_8x8(20, 43, f.data[250]);
+					*/
 				}
 				if (YESNO("swap buffers? ")) {
 					swap_buffers();
@@ -53,6 +62,7 @@ namespace test_herc {
 					t = bios::read_system_clock_counter();
 					fill_screen();
 					t2 = bios::read_system_clock_counter() - t;
+					//write_tile_8x8(20, 20, f.data[250]);
 				}
 				
 				if (YESNO("text mode? ")) {
