@@ -17,20 +17,11 @@
 
 namespace hga {
 
-    /**
-     *  @brief writes a horizontal strip of tile bitmaps to vram
-     *  @param x           - 
-     *  @param y           - 
-     *  @param w           - 
-     *  @param h           - 
-     *  @param tile_offset - 
-     *  @param bytes       - 
-     *  @param buffer      - 
-     */
-    void write_tile_block(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint16_t tile_offset = 0, uint8_t buffer = GLOBAL::active_buffer) {
-        uint16_t w = bmp->header->width >> 3;
-        uint16_t h = bmp->header->height;
-        uint16_t step = bmp->header->width;
+    
+    void write_tile_block(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
+        uint16_t w, h, step;
+        w = step = bmp->header->width;
+        h = bmp->header->height;
         const char* bytes = bmp->data;
         __asm {
             .8086
@@ -41,7 +32,14 @@ namespace hga {
             add     ax, HGA_PAGE_2_OFFSET       ; B000:8000 - B000 : FFFF   Second Page
 J0:         mov     es, ax                      ; es points to screen segment
 
-            mov     bx, tile_offset             ; use a reg better performance
+            sub     bx, bx                      ; zero column count
+
+            mov     cx, w                       ; load CX bitmap width in pixels
+            shr     cx, 1                       ; convert to width in tiles
+            shr     cx, 1                       ; pixels height / 8
+            shr     cx, 1                       ; 8086 limited to 1 shift at a time
+            sub     step, cx                    ; compensate the step for the width
+            mov     w, cx                       ; store back in w
 
             mov     cx, h                       ; load CX bitmap height in pixels
             shr     cx, 1                       ; convert to height in tiles
@@ -49,21 +47,21 @@ J0:         mov     es, ax                      ; es points to screen segment
             shr     cx, 1                       ; 8086 limited to 1 shift at a time
 ROWS:       push    cx                          ; save rows loop counter
 
-            mov     dx, x                       ; use a reg better performance
+                mov     dx, x                       ; use a reg better performance
             
-            mov     cx, w 
-COLS:       push    cx                          ; save columns loop counter
+                mov     cx, w 
+    COLS:       push    cx                          ; save columns loop counter
             
-            call    TILE                        ; write source to destination
+                    call    TILE                        ; write source to destination
 
-            inc     dx                          ; next column
-            inc     bx                          ; next tile
-            pop     cx                          ; retrieve columns loop counter
-            loop    COLS
+                    inc     dx                          ; next column
+                    inc     bx                          ; next tile
+                    pop     cx                          ; retrieve columns loop counter
+                loop    COLS
 
-            inc     y                           ; next row
-            add     bx, step
-            pop     cx                          ; retrieve rows loop counter
+                inc     y                           ; next row
+                add     bx, step
+                pop     cx                          ; retrieve rows loop counter
             loop    ROWS
 
             jmp     END
