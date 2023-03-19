@@ -76,7 +76,7 @@ namespace pbm {
         bmp->header->width = bmp->header->height = bmp->header->bytes = bmp->header->offset = bmp->header->file_size = 0;
         bmp->data = NULL;
 
-        FILE* fptr = fopen(bmp->header->file_path, "r");
+        FILE* fptr = fopen(bmp->header->file_path, "rb");
         if (!fptr) {
             LOG(bmp->header->file_path);
             return STDIO_FAIL;
@@ -100,7 +100,7 @@ namespace pbm {
         // process the data
         bmp->data = (char*)malloc(sizeof(uint8_t) * bmp->header->bytes);    // allocate data memory
         assert(bmp->data);
-        if(!fgets(bmp->data, bmp->header->bytes + 1, fptr)) {   // NB "Reads at most count - 1 characters"(!!!) 
+        if(!fgets(bmp->data, bmp->header->bytes, fptr)) {  
             fclose(fptr);
             return STDIO_FAIL;
         }

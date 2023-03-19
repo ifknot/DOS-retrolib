@@ -63,6 +63,7 @@ namespace test_pbm {
 				//fill_screen();
 				//std::cout << GLOBAL::default_font.name.c_str() << std::endl;
 				
+				std::cout << "bytes = " << testbmp.header->bytes << '\n';
 
 				if (YESNO("graphics mode? ")) {
 					hga::graphics_full_mode();
