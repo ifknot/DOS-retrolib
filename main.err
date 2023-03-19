@@ -10,10 +10,7 @@ IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726:
 IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(37) definition: 'long size' in 'int fsys::ignore( __iobuf *, long, int )'
 IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'delim'
 IMG/PBM/../../GFX/HGA/../../IMG/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(51) definition: 'int delim' in 'int fsys::ignore( __iobuf *, long, int )'
-IMG/PBM/test_pbm.h(20): Error! E926: col(23) syntax error: 'pbm::bitmap_t' has not been declared as a member
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
 IMG/PBM/../../GFX/HGA/hga_constants.h(148): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'default_font_data'
 IMG/PBM/../../GFX/HGA/hga_default_font_8x8.h(52): Note! N392: col(19) definition: 'unsigned char const hga::default_font_data[256][8]'
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'video_adapter_names'
-IMG/PBM/../../BIOS/bios_video_services_constants.h(224): Note! N392: col(21) definition: 'char bios::video_adapter_names[10][255]'

@@ -20,7 +20,7 @@
 void fill_screen(pbm::bitmap_t bmp[20]) {
 	int i = 0;
 	for (int x = 0; x < 20; ++x) {
-		hga::write_tile_8x8(21, 10 + x, bmp[i++ % 20].data);
+		hga::write_tile_8x8(20 + x, 21, bmp[i++ % 20].data);
 	}
 
 }
@@ -49,8 +49,8 @@ namespace test_pbm {
 				}
 			}
 			
-			pbm::bitmap_t skull; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm"
-			if (pbm::load_bitmap("CHESS/LEFTNUM.pbm", &skull) == STDIO_FAIL) {
+			pbm::bitmap_t testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm"
+			if (pbm::load_bitmap("CHESS/E4MOVE.pbm", &testbmp) == STDIO_FAIL) {
 				std::cout << strerror(errno) << std::endl;
 				exit(EXIT_FAILURE);
 			}
@@ -68,18 +68,20 @@ namespace test_pbm {
 					hga::graphics_full_mode();
 					hga::cls();
 					fill_screen(bmp);
-					uint16_t step = skull.header->width >> 3;
+					uint16_t step = testbmp.header->width >> 3;
 
-					hga::write_tile_column(20,20, &skull);
+					hga::write_tile_block(20,20, &testbmp);
 					
 				}
 				if (YESNO("swap buffers? ")) {
 					hga::swap_buffers();
 					hga::cls();
 					fill_screen(bmp);
-					uint16_t step = skull.header->width >> 3;
+					uint16_t step = testbmp.header->width >> 3;
 
-					hga::write_tile_column(20, 20, &skull);
+					for (int i = 0; i < 10; ++i) {
+						hga::write_tile_step_8x8(20, 10 + i, testbmp.data + (i * 80), 10);
+					}
 					
 				}
 
@@ -91,7 +93,7 @@ namespace test_pbm {
 			for (int i = 0; i < n; ++i) {
 				pbm::free_bitmap(&bmp[i]);
 			}
-			pbm::free_bitmap(&skull);
+			pbm::free_bitmap(&testbmp);
 		}
 		return 0;
 	}
