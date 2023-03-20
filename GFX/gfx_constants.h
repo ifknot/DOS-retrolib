@@ -12,12 +12,6 @@
 
 #include <stdint.h>
 
-/**
- *  @def   IHDR_LENGTH
- *  @brief size bytes of the bitmap_t ihdr chunk
- */
-#define IHDR_LENGTH 8
-
 namespace gfx {
 
 }

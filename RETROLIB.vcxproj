@@ -73,8 +73,10 @@
     <ClInclude Include="BIOS\bios_clock_services_types.h" />
     <ClInclude Include="BIOS\test_bios.h" />
     <ClInclude Include="FILESYS\test_fsys.h" />
+    <ClInclude Include="GFX\gfx.h" />
     <ClInclude Include="GFX\gfx_bitmap_t.h" />
     <ClInclude Include="GFX\gfx_constants.h" />
+    <ClInclude Include="GFX\gfx_types.h" />
     <ClInclude Include="GFX\HGA\hga.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
@@ -88,6 +90,7 @@
     <ClInclude Include="GFX\HGA\hga_write_tile_block.h" />
     <ClInclude Include="GFX\HGA\hga_write_tile_column.h" />
     <ClInclude Include="GFX\HGA\test_herc.h" />
+    <ClInclude Include="GFX\test_gfx.h" />
     <ClInclude Include="IMG\PBM\pbm_bitmap.h" />
     <ClInclude Include="IMG\PBM\pbm_constants.h" />
     <ClInclude Include="IMG\PBM\pbm_types.h" />
