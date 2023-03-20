@@ -39,11 +39,14 @@
 #include "pbm_constants.h"
 
 // TODO:
+// [ ] construct smaller within larger
 // [ ] copy_bitmap
 // [ ] make_bitmap
-// [ ] free_bitmap
+// [x] free_bitmap
 
 namespace pbm {
+
+
 
     /**
     *  @struct header_t
@@ -55,14 +58,33 @@ namespace pbm {
         uint16_t magic_number;
         uint16_t width;         // pixels
         uint16_t height;        // pixels
-        uint16_t bytes;         // bytes of data
+        uint16_t bytes;         // number bytes of image data
         uint16_t offset;        // start of data in file
-        uint16_t file_size;          // file size
+        uint16_t file_size;     // file size
     };
 
+    /**
+     *  @struct tile_t
+     *  @brief  a tile is a uniform sized bitmap that completely tiles the parent bitmap
+     *  Usually 8x8 pixels 
+     */
+    struct tile_t {
+
+        uint16_t xscale;        // x axis tile size
+        uint16_t yscale;        // y axis tile size
+        uint16_t width;         // bitmap width in tiles
+        uint16_t height;        // bitmap height in tiles
+    
+    };
+
+    /**
+     *  @struct bitmap_t
+     *  @brief  A device independant 1 bit monochrome bitmap data structure
+     */
     struct bitmap_t {
 
         struct header_t* header;
+        struct tile_t* tile;
         char* data;
 
     };
@@ -100,7 +122,7 @@ namespace pbm {
         // process the data
         bmp->data = (char*)malloc(sizeof(uint8_t) * bmp->header->bytes);    // allocate data memory
         assert(bmp->data);
-        if(!fgets(bmp->data, bmp->header->bytes, fptr)) {  
+        if(!fgets(bmp->data, bmp->header->bytes + 1, fptr)) {  
             fclose(fptr);
             return STDIO_FAIL;
         }

@@ -20,7 +20,7 @@
 void fill_screen(pbm::bitmap_t bmp[20]) {
 	int i = 0;
 	for (int x = 0; x < 20; ++x) {
-		hga::write_tile_8x8(20 + x, 21, bmp[i++ % 20].data);
+		hga::write_tile_8x8(10 + x, 10, bmp[i++ % 20].data);
 	}
 
 }
@@ -50,7 +50,7 @@ namespace test_pbm {
 			}
 			
 			pbm::bitmap_t testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm"
-			if (pbm::load_bitmap("CHESS/E4MOVE.pbm", &testbmp) == STDIO_FAIL) {
+			if (pbm::load_bitmap("CHESS/SPRITES0.pbm", &testbmp) == STDIO_FAIL) {
 				std::cout << strerror(errno) << std::endl;
 				exit(EXIT_FAILURE);
 			}
@@ -80,9 +80,7 @@ namespace test_pbm {
 					fill_screen(bmp);
 					uint16_t step = testbmp.header->width >> 3;
 
-					for (int i = 0; i < 10; ++i) {
-						hga::write_tile_step_8x8(20, 10 + i, testbmp.data + (i * 80), 10);
-					}
+					hga::write_tile_block(20, 20, &testbmp);
 					
 				}
 
