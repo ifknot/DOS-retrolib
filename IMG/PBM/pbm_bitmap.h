@@ -122,9 +122,8 @@ namespace pbm {
         // process the data
         bmp->data = (char*)malloc(sizeof(uint8_t) * bmp->header->bytes);    // allocate data memory
         assert(bmp->data);
-        if(!fgets(bmp->data, bmp->header->bytes + 1, fptr)) {  
-            fclose(fptr);
-            return STDIO_FAIL;
+        for (int i = 0; i < bmp->header->bytes; ++i) {
+            bmp->data[i] = fgetc(fptr);
         }
         fclose(fptr);
         return EXIT_SUCCESS;
