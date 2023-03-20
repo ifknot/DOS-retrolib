@@ -39,7 +39,8 @@
 #include "pbm_constants.h"
 
 // TODO:
-// [ ] construct smaller within larger
+// [x] load_bitmap
+// [ ] link_bitmap 
 // [ ] copy_bitmap
 // [ ] make_bitmap
 // [x] free_bitmap

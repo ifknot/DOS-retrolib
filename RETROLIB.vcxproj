@@ -73,6 +73,8 @@
     <ClInclude Include="BIOS\bios_clock_services_types.h" />
     <ClInclude Include="BIOS\test_bios.h" />
     <ClInclude Include="FILESYS\test_fsys.h" />
+    <ClInclude Include="GFX\gfx_bitmap_t.h" />
+    <ClInclude Include="GFX\gfx_constants.h" />
     <ClInclude Include="GFX\HGA\hga.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
