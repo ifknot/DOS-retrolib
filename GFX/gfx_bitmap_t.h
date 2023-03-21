@@ -74,6 +74,17 @@ namespace gfx {
                 rgb_t* data;
         };
 
+        /**
+         *  @struct bitmap_t
+         *  @brief  The most basic Device Independent bitmap built from chunks ideal for HGA CGA monochrome and CGA 4 colour
+         */
+        struct simple_bitmap_t {
+
+            struct IHDR* ihdr;
+            struct IDAT* idat;
+
+        };
+
 }
 
 #endif

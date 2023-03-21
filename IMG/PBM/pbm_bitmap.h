@@ -39,6 +39,7 @@
 #include "pbm_constants.h"
 
 // TODO:
+// [ ] use gfx::bitmap and offer these as pbm_bitmap_services
 // [x] load_bitmap
 // [ ] link_bitmap 
 // [ ] copy_bitmap
@@ -80,7 +81,7 @@ namespace pbm {
 
     /**
      *  @struct bitmap_t
-     *  @brief  A device independant 1 bit monochrome bitmap data structure
+     *  @brief  An HGA 1 bit monochrome bitmap data structure
      */
     struct bitmap_t {
 
