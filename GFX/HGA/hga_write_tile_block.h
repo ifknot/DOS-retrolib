@@ -13,7 +13,7 @@
 #include "hga_constants.h"
 #include "hga_environment.h"
 
-#include "../../IMG/PBM/pbm_bitmap.h"
+#include "../../GFX/PBM/pbm_bitmap.h"
 
 namespace hga {
     

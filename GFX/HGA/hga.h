@@ -32,7 +32,6 @@
 #include "hga_swap_buffers.h"
 #include "hga_video_mode.h"
 #include "hga_write_tile_8x8.h"
-#include "hga_write_tile_column.h"
 #include "hga_write_tile_block.h"
 
 /**

@@ -13,7 +13,7 @@
 #include "../../TEST/debug_macros.h"
 #include "../../FSYS/fsys_read_dsv.h"
 #include "../../BIOS/bios_video_services.h"
-#include "../../GFX/HGA/hga.h"
+#include "../HGA/hga.h"
 
 #include "pbm.h"
 
