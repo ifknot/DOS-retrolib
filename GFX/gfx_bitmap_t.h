@@ -9,9 +9,9 @@
  *
  *  The critical chunks are:
  *      + IHDR - image header *must* appear first
- *  + IDAT - image data as a rectangular pixel array, left-to-right pixels per line and top-to-bottom lines
+ *      + IDAT - image data as a rectangular pixel array, left-to-right pixels per line and top-to-bottom lines
  *
- *      The optional chunks are (as of 20.03.2023):
+ *  The optional chunks are (as of 20.03.2023):
  *      + PLTE - palette of 1 to 256 indexed entries of 3 byte RGB tuples
  *
  *  @note 1. The chunk names are case sensitive with the same case meaning as the PNG specification
@@ -42,6 +42,19 @@ namespace gfx {
           *  + height (2 bytes)
           *  + bit depth (1 byte, values 1, 2, 4, 8, or 16)
           *  + colour type (1 byte, values 0, 2, 3, 4, or 6)
+          * 
+          * Valid bit depth - colour type combinations:
+          * 
+          * Color    Allowed    Interpretation
+          * Type    Bit Depths
+          * 0       1,2,4,8,16  Each pixel is a grayscale sample.
+          * 2       8,16        Each pixel is an R,G,B triple.
+          * 3       1,2,4,8     Each pixel is a palette index;
+          *                     a PLTE chunk must appear.
+          * 4       8,16        Each pixel is a grayscale sample,
+          *                     followed by an alpha sample.
+          * 6       8,16        Each pixel is an R,G,B triple,
+          *                     followed by an alpha sample.
           */
         struct IHDR {
                 static const uint16_t length = 6;
