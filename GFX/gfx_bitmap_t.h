@@ -35,7 +35,7 @@
 namespace gfx {
 
          /**
-          *  @struct IHDR
+          *  @struct ihdr_t
           *  @brief  The IHDR chunk is always the first chunk and contains critical image metrics
           *  @details
           *  + width (2 bytes)
@@ -56,7 +56,7 @@ namespace gfx {
           * 6       8,16        Each pixel is an R,G,B triple,
           *                     followed by an alpha sample.
           */
-        struct IHDR {
+        struct ihdr_t {
                 static const uint16_t length = 6;
                 static const uint32_t type = IHDR_TAG;
                 uint16_t width;
@@ -66,35 +66,43 @@ namespace gfx {
         };
 
          /**
-          *  @struct IDAT
+          *  @struct idat_t 
           *  @brief  The IDAT chunk contains the actual image data
-          *  @details There can be multiple IDAT chunks
+          *  @note There is a hard limit of 64K bytes image size for retrolib
+          *  @details There can be multiple IDAT chunks - except simple_bitmap_t
           *  + data (length bytes of image data as left-to-right pixels per line and top-to-bottom lines)
           */
-        struct IDAT {
+        struct idat_t {
                 uint16_t length;
                 static const uint32_t type = IDAT_TAG;    
                 char* data;
         };
 
         /**
-         *  @struct PLTE
+         *  @struct plte_t
          *  @brief  The PLTE chunk contains a at least 1 rgb_t RGB tuple but no more than 256
+         *  @note   There is a hard limit of 64K bytes palette size for retrolib
          */
-        struct PLTE {
-                uint16_t length;
+        struct plte_t {
+                uint16_t length;   
                 static const uint32_t type = PLTE_TAG;
                 rgb_t* data;
         };
 
         /**
          *  @struct bitmap_t
-         *  @brief  The most basic Device Independent bitmap built from chunks ideal for HGA CGA monochrome and CGA 4 colour
+         *  @brief  The most basic Device Independent Bitmap built from chunks, suitable for
+         *  + HGA monochrome
+         *  + CGA monochrome
+         *  + CGA colour
+         *  + EGA colour
+         *  @note   Only 1 IDAT chunk and it must be the last chunk
          */
         struct simple_bitmap_t {
 
-            struct IHDR* ihdr;
-            struct IDAT* idat;
+            struct ihdr_t* ihdr;
+            struct plte_t* plte;
+            struct idat_t* idat;
 
         };
 

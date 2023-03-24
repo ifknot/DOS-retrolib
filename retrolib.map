@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Nov  1 2017 20:56:49 (64-bit)
 Copyright (c) 2002-2017 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/03/21 19:47:14
+Created on:       23/03/21 21:46:30
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -886,4 +886,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  00014710 (83728.)
 Entry point address: 0000:4522
-Link time: 00:00.29
+Link time: 00:00.19
