@@ -39,6 +39,30 @@ namespace test_pbm {
 		std::cout << bmp << std::endl;
 		p = gfx::create_simple_bitmap(2, 3, 1, 0, rgb, 1);
 		std::cout << *p<< std::endl;
+
+		bios::video_adapter_t adapter = bios::detect_video_adapter_type();
+		LOG(bios::video_adapter_names[adapter]);
+		LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
+		if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
+			if (YESNO("graphics mode? ")) {
+				hga::graphics_full_mode();
+				hga::cls();
+				hga::write_tile_8x8(10, 10, bmp.idat.data);
+
+			}
+			if (YESNO("swap buffers? ")) {
+				hga::swap_buffers();
+				hga::cls();
+				hga::write_tile_8x8(20, 20, bmp.idat.data);
+
+			}
+
+			if (YESNO("text mode? ")) {
+				hga::text_half_mode();
+			}
+		}
+
+		gfx::free_simple_bitmap(p);
 		
 		return 0;
 	}

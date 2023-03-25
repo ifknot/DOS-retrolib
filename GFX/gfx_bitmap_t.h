@@ -157,13 +157,17 @@ namespace gfx {
             simple_bitmap_t* bmp = new simple_bitmap_t;
             assert(bmp);
             init_simple_bitmap(bmp, width, height, bit_depth, colour_type, palette_data, palette_length, image_data, image_length);
-
             return bmp;
         }
 
-        
 
-        //void copy_simple_bitmap(gfx::simple_bitmap_t bmp, gfx::simple_bitmap_t other) {}
+
+        /*void copy_simple_bitmap(gfx::simple_bitmap_t bmp, gfx::simple_bitmap_t other) {
+            copy over the ihdr metrics and plte and idat lengths
+            free plte data and idat data 
+            malloc new mem same as other
+            copy over plte and idat data
+        }*/
 
 }
 

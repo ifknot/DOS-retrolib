@@ -33,15 +33,12 @@
 
 namespace pbm {
 
-    int load_bitmap(const char* file_path, gfx::simple_bitmap_t* bmp, int valid_magic = MAGIC_P4) {    
+    gfx::simple_bitmap_t* create_simple_bitmap(const char* file_path, int valid_magic = MAGIC_P4) {
         long file_size;
         char line[MAX_LINE_SIZE];
-        // attempt to open file
+        // attempt to open file with sanity checks 
         FILE* fptr = fopen(file_path, "rb");
-        if (!fptr) {
-            LOG(file_path);
-            return STDIO_FAIL;
-        }
+        assert(fptr);
         file_size = fsys::stream_size(fptr);
         assert(file_size > MIN_HEADER_SIZE);                    // is there at least a header in the file?
         assert(fgets(line, sizeof(line), fptr));                // is there a line to read?
@@ -49,22 +46,22 @@ namespace pbm {
         while (fsys::fpeek(fptr) == '#') {                      // skip any comments
             assert(fgets(line, sizeof(line), fptr));
         }
-       
+        gfx::simple_bitmap_t* p = gfx::create_simple_bitmap();
         // process the header
-        assert(fscanf(fptr, "%d %d", (int*)&bmp->ihdr->width, (int*)&bmp->ihdr->height)); // get the bitmap dimensions
-        bmp->idat->length = (uint16_t)bmp->ihdr->width / 8;     // convert width to bytes
-        bmp->idat->length += (bmp->ihdr->width & 7) == 0 ? 0 : 1;   // need an extra byte for width remainder < 8?
-        bmp->idat->length *= bmp->ihdr->height;                 // expected number bytes
+        assert(fscanf(fptr, "%d %d", (int*)&p->ihdr.width, (int*)&p->ihdr.height)); // get the bitmap dimensions
+        p->idat.length = (uint16_t)p->ihdr.width / 8;     // convert width to bytes
+        p->idat.length += (p->ihdr.width & 7) == 0 ? 0 : 1;   // need an extra byte for width remainder < 8?
+        p->idat.length *= p->ihdr.height;                 // expected number bytes
         fsys::ignore_line(fptr);                                
-        assert(file_size - ftell(fptr) == bmp->idat->length);   // expected amount data?
+        assert(file_size - ftell(fptr) == p->idat.length);   // expected amount data?
         // process the data
-        bmp->idat->data = (char*)malloc(sizeof(char) * bmp->idat->length);    // allocate data memory
-        assert(bmp->idat->data);
-        for (int i = 0; i < bmp->idat->length; ++i) {
-            bmp->idat->data[i] = fgetc(fptr);
+        p->idat.data = (char*)malloc(sizeof(char) * p->idat.length);    // allocate data memory
+        assert(p->idat.data);
+        for (int i = 0; i < p->idat.length; ++i) {
+            p->idat.data[i] = fgetc(fptr);
         }
         fclose(fptr);
-        return EXIT_SUCCESS;
+        return p;
     }
 
 }
