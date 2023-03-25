@@ -31,11 +31,13 @@ namespace test_pbm {
 		std::cout << bmp.ihdr << std::endl;
 		std::cout << p->ihdr << std::endl;
 
-		gfx::rgb_t rgb[1] = { {128,127,126} };
+		gfx::rgb_t rgb[1] = { {128,127,12} };
 
-		gfx::init_simple_bitmap(&bmp, 4, 4, 1, 0, rgb, 1);
+		char img[8] = { 0x30, 0x78, 0xcc, 0xcc, 0xfc, 0xcc, 0xcc, 0x00 };	// U+0041 (A)
+
+		gfx::init_simple_bitmap(&bmp, 8, 8, 1, 0, rgb, 1, img, 8);
 		std::cout << bmp << std::endl;
-		p = gfx::create_simple_bitmap();
+		p = gfx::create_simple_bitmap(2, 3, 1, 0, rgb, 1);
 		std::cout << *p<< std::endl;
 		
 		return 0;

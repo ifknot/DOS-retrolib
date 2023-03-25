@@ -179,10 +179,10 @@ std::ostream& operator<< (std::ostream& os, const gfx::plte_t& plte) {
     os << plte.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
     gfx::rgb_t rgb;
     if (plte.data) {
-        os << '\n' << std::hex;
+        os << '\n' << std::hex << std::setfill('0');
         for (uint16_t i = 0; i < plte.length; ++i) {
             os << '{' << std::setw(2) << (int)(plte.data + i)->r << ',' << std::setw(2) << (int)(plte.data + i)->g << ',' << std::setw(2) << (int)(plte.data + i)->b << "} ";
-            if (i % 7 == 0) os << '\n';
+            if (i % 7 == 7) os << '\n';
         }
     }
     return os;
@@ -192,10 +192,10 @@ std::ostream& operator<< (std::ostream& os, const gfx::idat_t& idat) {
     char* name = (char*)&idat.type;
     os << idat.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
     if (idat.data) {
-        os << '\n' << std::hex;
+        os << '\n' << std::hex << std::setfill('0');
         for (uint16_t i = 0; i < idat.length; ++i) {
-            os <<(int)(*(idat.data + i)) << ' ';
-            if (i % 15 == 0) os << '\n';
+            os << std::setw(2) << (int)(*(idat.data + i)) << ' ';
+            if (i % 15 == 15) os << '\n';
         }
     }
     return os;
