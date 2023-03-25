@@ -29,10 +29,38 @@ namespace test_pbm {
 
 	int run() {
 		INFO(__FUNCTION__);
+		while (YESNO("loop again?")) {
+			if (YESNO("graphics mode? ")) {
+				hga::graphics_full_mode();
+			}
+			if (YESNO("cls? ")) {
+				hga::cls();
+			}
+			if (YESNO("swap buffers? ")) {
+				hga::swap_buffers();
+			}
+			if (YESNO("cls? ")) {
+				hga::cls();
+			}
+			if (YESNO("text mode? ")) {
+				hga::text_half_mode();
+			}
+			if (YESNO("cls? ")) {
+				hga::cls();
+			}
+		}
+		return 0;
+	}
+
+}
+
+#endif
+
+/*
 		{
 			INFO("test Portable Bit Map\n");
 
-			const int n = 20; 
+			const int n = 20;
 
 			const char data_path[] = "CHESS/FILES.csv";
 			char fpaths[20][MAX_LINE_SIZE];
@@ -48,7 +76,7 @@ namespace test_pbm {
 					exit(EXIT_FAILURE);
 				}
 			}
-			
+
 			pbm::bitmap_t testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm"
 			if (pbm::load_bitmap("CHESS/SPRITES0.pbm", &testbmp) == STDIO_FAIL) {
 				std::cout << strerror(errno) << std::endl;
@@ -62,7 +90,7 @@ namespace test_pbm {
 				LOG(hga::read_light_pen_registers());
 				//fill_screen();
 				//std::cout << GLOBAL::default_font.name.c_str() << std::endl;
-				
+
 				std::cout << "bytes = " << testbmp.header->bytes << '\n';
 
 				if (YESNO("graphics mode? ")) {
@@ -72,7 +100,7 @@ namespace test_pbm {
 					uint16_t step = testbmp.header->width >> 3;
 
 					hga::write_tile_block(20,20, &testbmp);
-					
+
 				}
 				if (YESNO("swap buffers? ")) {
 					hga::swap_buffers();
@@ -81,22 +109,16 @@ namespace test_pbm {
 					uint16_t step = testbmp.header->width >> 3;
 
 					hga::write_tile_block(20, 20, &testbmp);
-					
+
 				}
 
 				if (YESNO("text mode? ")) {
 					hga::text_half_mode();
 				}
-				
+
 			}
 			for (int i = 0; i < n; ++i) {
 				pbm::free_bitmap(&bmp[i]);
 			}
 			pbm::free_bitmap(&testbmp);
-		}
-		return 0;
-	}
-
-}
-
-#endif
+		}*/

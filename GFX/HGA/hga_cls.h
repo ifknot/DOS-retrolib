@@ -17,6 +17,16 @@
 
 namespace hga {
 
+    /**
+     *  @brief Clear the current active page Hercules VRAM starts at B000:0000
+     *  @note When switching back to text mode use mda::text_cls to ensure that the attribute bytes are set to visible text 
+     *  @details The Hercules display adapter displays in both text mode and graphics mode,
+     *  with a graphics resolution of 720x348 pixels, and contains enough RAM for 2 page displays.
+     *  Each display page is 32K, having the capacity to host a 4K text page and a graphics page.
+     *  B000:0000 - B000:7FFF   First Page
+     *  B000:8000 - B000:FFFF   Second Page
+     *  @param buffer - select the offset of the current active page 
+     */
     void cls(uint8_t buffer = GLOBAL::active_buffer) {
         __asm {
             .8086
@@ -24,7 +34,7 @@ namespace hga {
             mov     ax, HGA_VIDEO_RAM_SEGMENT
             test    buffer, 1                   ; which buffer ?
             jz      J0
-            add     ax, 800h                    ; second buffer
+            add     ax, HGA_PAGE_2_OFFSET       ; second buffer
 J0:         mov     es, ax
             xor     di, di
             mov     cx, 4000h                   ; 16K words VRAM buffer 32K bytes

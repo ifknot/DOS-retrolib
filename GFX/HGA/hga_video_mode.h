@@ -99,6 +99,16 @@ namespace hga {
             out     dx, ax                      ; write data to 6845 register
             loop    L0
 
+            // restore the text attributes to ensure text is visible and not any VRAM carry over from hi res mode 
+            mov     ax, HGA_VIDEO_RAM_SEGMENT
+            mov     es, ax                      ; ES:DI will point to x, y screen byte
+            xor     di, di
+            mov     ah, 02h                     ; 'normal' attribute
+            mov     al, 32                      ; ascii space                
+            mov     cx, 2000                    ; 80 columns x 25 rows = 2000 characters per screen
+            cld                                 ; increment mode
+            rep     stosw                       ; fill screen
+
             // screen on
             mov     dx, HGA_CONTROL_REGISTER
             mov     al, 00001000b               ; bit 3 = 0 screen on text mode page 1

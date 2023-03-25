@@ -14,3 +14,5 @@ C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_nam
 GFX/PBM/../HGA/hga_constants.h(148): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'default_font_data'
 GFX/PBM/../HGA/hga_default_font_8x8.h(52): Note! N392: col(19) definition: 'unsigned char const hga::default_font_data[256][8]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'video_adapter_names'
+GFX/PBM/../../BIOS/bios_video_services_constants.h(224): Note! N392: col(21) definition: 'char bios::video_adapter_names[10][255]'
