@@ -54,25 +54,24 @@ namespace test_pbm {
 					hga::cls();
 					hga::write_tile_8x8(10, 10, bmp.idat.data);
 					hga::write_tile_block(11, 11, &bmp);
-				}
-				if (YESNO("swap buffers? ")) {
-					hga::swap_buffers();
-					hga::cls();
-					hga::write_tile_8x8(10, 10, bmp.idat.data);
-					hga::write_tile_block(11, 11, &bmp);
-				}
 
-				if (YESNO("text mode? ")) {
-					hga::text_half_mode();
+					if (YESNO("swap buffers? ")) {
+						hga::swap_buffers();
+						hga::cls();
+						hga::write_tile_8x8(10, 10, bmp.idat.data);
+						hga::write_tile_block(11, 11, &bmp);
+					}
+
+					if (YESNO("text mode? ")) {
+						hga::text_half_mode();
+					}
 				}
 			}
 			gfx::free_simple_bitmap(p);
 		}
 		{
 			INFO("test Portable Bit Map\n");
-
 			const int n = 20;
-
 			const char data_path[] = "CHESS/FILES.csv";
 			char fpaths[20][MAX_LINE_SIZE];
 			if (fsys::read_csv(data_path, fpaths, n) == STDIO_FAIL) {
@@ -93,11 +92,6 @@ namespace test_pbm {
 			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
 			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
 				LOG(hga::read_light_pen_registers());
-				//fill_screen();
-				//std::cout << GLOBAL::default_font.name.c_str() << std::endl;
-
-				std::cout << "bytes = " << testbmp->idat.length << '\n';
-
 				if (YESNO("graphics mode? ")) {
 					hga::graphics_full_mode();
 					hga::cls();
@@ -105,20 +99,19 @@ namespace test_pbm {
 
 					hga::write_tile_block(20, 20, testbmp);
 
-				}
-				if (YESNO("swap buffers? ")) {
-					hga::swap_buffers();
-					hga::cls();
-					fill_screen(bmp);					
+					if (YESNO("swap buffers? ")) {
+						hga::swap_buffers();
+						hga::cls();
+						fill_screen(bmp);
 
-					hga::write_tile_block(20, 20, testbmp);
+						hga::write_tile_block(20, 20, testbmp);
 
-				}
+					}
 
-				if (YESNO("text mode? ")) {
-					hga::text_half_mode();
-				}
-
+					if (YESNO("text mode? ")) {
+						hga::text_half_mode();
+					}
+				}		
 			}
 			for (int i = 0; i < n; ++i) {
 				gfx::free_simple_bitmap(bmp[i]);

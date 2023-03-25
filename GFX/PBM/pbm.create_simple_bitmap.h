@@ -7,28 +7,15 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef PBM_BITMAP_SERVICES_H
-#define PBM_BITMAP_SERVICES_H
+#ifndef PBM_CREATE_SIMPLE_BITMAP_H
+#define PBM_CREATE_SIMPLE_BITMAP_H
 
-#include <iostream>
-
-#include <stdio.h>
 #include <stdlib.h>
 
 #include "../../FSYS/fsys.h"
-#include "../../DOS/dos_error_messages.h"
-#include "../../STR/str.h"
 #include "../gfx_bitmap_t.h"
 
 #include "pbm_constants.h"
-
- // TODO:
- // [ ] use gfx::bitmap and offer these as pbm_bitmap_services
- // [ ] load_bitmap
- // [ ] link_bitmap 
- // [ ] copy_bitmap
- // [ ] make_bitmap
- // [ ] free_bitmap
 
 namespace pbm {
 
