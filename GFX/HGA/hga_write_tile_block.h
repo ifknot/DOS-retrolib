@@ -13,15 +13,15 @@
 #include "hga_constants.h"
 #include "hga_environment.h"
 
-#include "../../GFX/PBM/pbm_bitmap.h"
+#include "../gfx_bitmap_t.h"
 
 namespace hga {
-    
-    void write_tile_block(uint16_t x, uint16_t y, const pbm::bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
+
+    void write_tile_block(uint16_t x, uint16_t y, const gfx::simple_bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
         uint16_t w, h, step;
-        w = step = bmp->header->width;
-        h = bmp->header->height;
-        const char* bytes = bmp->data;
+        w = step = bmp->ihdr.width;
+        h = bmp->ihdr.height;
+        const char* bytes = bmp->idat.data;
         __asm {
             .8086
 
@@ -35,7 +35,7 @@ J0:         mov     es, ax                      ; es points to screen segment
 
             mov     cx, w                       ; load CX bitmap width in pixels
             shr     cx, 1                       ; convert to width in tiles
-            shr     cx, 1                       ; pixels height / 8
+            shr     cx, 1                       ; pixels width / 8
             shr     cx, 1                       ; 8086 limited to 1 shift at a time
             sub     step, cx                    ; compensate the step for the next tile inc
             mov     w, cx                       ; store back in w
@@ -122,9 +122,6 @@ END:
 
         }
     }
-
-
-
 
 }
 

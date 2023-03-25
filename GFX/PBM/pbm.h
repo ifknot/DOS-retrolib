@@ -23,7 +23,7 @@
 
 #include "pbm_constants.h"
 #include "pbm_types.h"
-#include "pbm_bitmap.h"
+#include "pbm_bitmap_services.h"
 
 /**
  *  @namespace pbm

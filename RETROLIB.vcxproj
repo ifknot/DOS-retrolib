@@ -84,7 +84,6 @@
     <ClInclude Include="GFX\HGA\hga_write_tile_8x8.h" />
     <ClInclude Include="GFX\HGA\hga_write_tile_block.h" />
     <ClInclude Include="GFX\PBM\pbm.h" />
-    <ClInclude Include="GFX\PBM\pbm_bitmap.h" />
     <ClInclude Include="GFX\PBM\pbm_bitmap_services.h" />
     <ClInclude Include="GFX\PBM\pbm_constants.h" />
     <ClInclude Include="GFX\PBM\pbm_types.h" />

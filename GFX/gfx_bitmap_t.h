@@ -27,6 +27,8 @@
 
 #include <iomanip>
 
+#include <stdlib.h>
+
 #include "gfx_constants.h"
 #include "gfx_types.h"
 

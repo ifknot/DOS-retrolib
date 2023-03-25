@@ -14,7 +14,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
 
 #include "../../FSYS/fsys.h"
 #include "../../DOS/dos_error_messages.h"
@@ -49,16 +48,17 @@ namespace pbm {
         gfx::simple_bitmap_t* p = gfx::create_simple_bitmap();
         // process the header
         assert(fscanf(fptr, "%d %d", (int*)&p->ihdr.width, (int*)&p->ihdr.height)); // get the bitmap dimensions
-        p->idat.length = (uint16_t)p->ihdr.width / 8;     // convert width to bytes
-        p->idat.length += (p->ihdr.width & 7) == 0 ? 0 : 1;   // need an extra byte for width remainder < 8?
-        p->idat.length *= p->ihdr.height;                 // expected number bytes
+        p->idat.length = (uint16_t)p->ihdr.width / 8;           // convert width to bytes
+        p->idat.length += (p->ihdr.width & 7) == 0 ? 0 : 1;     // need an extra byte for width remainder < 8?
+        p->idat.length *= p->ihdr.height;                       // expected number bytes
         fsys::ignore_line(fptr);                                
-        assert(file_size - ftell(fptr) == p->idat.length);   // expected amount data?
+        assert(file_size - ftell(fptr) == p->idat.length);      // expected amount data?
         // process the data
-        p->idat.data = (char*)malloc(sizeof(char) * p->idat.length);    // allocate data memory
-        assert(p->idat.data);
-        for (int i = 0; i < p->idat.length; ++i) {
-            p->idat.data[i] = fgetc(fptr);
+        p->idat.data = (char*)malloc(sizeof(char) * p->idat.length);    
+        assert(p->idat.data);                                   // allocated data memory?
+        for (int i = 0; i < p->idat.length; ++i) {          
+            assert(!feof(fptr));                                // unexpected end of file?
+            p->idat.data[i] = (char)fgetc(fptr);
         }
         fclose(fptr);
         return p;
