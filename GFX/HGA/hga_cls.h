@@ -37,7 +37,7 @@ namespace hga {
             add     ax, HGA_PAGE_2_OFFSET       ; second buffer
 J0:         mov     es, ax
             xor     di, di
-            mov     cx, 4000h                   ; 16K words VRAM buffer 32K bytes
+            mov     cx, WORDS_PER_PAGE          ; 16K words VRAM buffer 32K bytes
             xor     ax, ax                      ; zero ax
             cld                                 ; increment mode
             rep     stosw                       ; clear VRAM buffer

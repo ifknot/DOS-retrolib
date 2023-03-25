@@ -14,41 +14,30 @@
 #include "../../FSYS/fsys_read_dsv.h"
 #include "../../BIOS/bios_video_services.h"
 #include "../HGA/hga.h"
+#include "../gfx.h"
 
 #include "pbm.h"
 
-void fill_screen(pbm::bitmap_t bmp[20]) {
-	int i = 0;
-	for (int x = 0; x < 20; ++x) {
-		hga::write_tile_8x8(10 + x, 10, bmp[i++ % 20].data);
-	}
 
-}
 
 namespace test_pbm {
 
 	int run() {
 		INFO(__FUNCTION__);
-		while (YESNO("loop again?")) {
-			if (YESNO("graphics mode? ")) {
-				hga::graphics_full_mode();
-			}
-			if (YESNO("cls? ")) {
-				hga::cls();
-			}
-			if (YESNO("swap buffers? ")) {
-				hga::swap_buffers();
-			}
-			if (YESNO("cls? ")) {
-				hga::cls();
-			}
-			if (YESNO("text mode? ")) {
-				hga::text_half_mode();
-			}
-			if (YESNO("cls? ")) {
-				hga::cls();
-			}
-		}
+
+		gfx::simple_bitmap_t bmp;
+		gfx::simple_bitmap_t* p = new gfx::simple_bitmap_t;
+
+		std::cout << bmp.ihdr << std::endl;
+		std::cout << p->ihdr << std::endl;
+
+		gfx::rgb_t rgb[1] = { {128,127,126} };
+
+		gfx::init_simple_bitmap(&bmp, 4, 4, 1, 0, rgb, 1);
+		std::cout << bmp << std::endl;
+		p = gfx::create_simple_bitmap();
+		std::cout << *p<< std::endl;
+		
 		return 0;
 	}
 
@@ -57,6 +46,15 @@ namespace test_pbm {
 #endif
 
 /*
+
+		void fill_screen(pbm::bitmap_t bmp[20]) {
+			int i = 0;
+			for (int x = 0; x < 20; ++x) {
+				hga::write_tile_8x8(10 + x, 10, bmp[i++ % 20].data);
+			}
+
+		}
+		
 		{
 			INFO("test Portable Bit Map\n");
 

@@ -49,20 +49,7 @@ namespace pbm {
         while (fsys::fpeek(fptr) == '#') {                      // skip any comments
             assert(fgets(line, sizeof(line), fptr));
         }
-        // setup the bitmap
-        bmp->ihdr = (gfx::ihdr_t*)malloc(sizeof(struct gfx::ihdr_t));
-        assert(bmp->ihdr);
-        bmp->plte = (gfx::plte_t*)malloc(sizeof(struct gfx::plte_t));   // PBM format is 1bit monochrome *but* CGA monochrome can have a single palette entry for one of the 16 colours
-        assert(bmp->plte);
-        bmp->idat = (gfx::idat_t*)malloc(sizeof(struct gfx::idat_t));
-        assert(bmp->idat);
-        // set chunk default values
-        bmp->ihdr->width = bmp->ihdr->height = 0;
-        bmp->ihdr->bit_depth = bmp->ihdr->colour_type = 0;
-        bmp->plte->length = 0;
-        bmp->plte->data = NULL;
-        bmp->idat->length = 0;
-        bmp->idat->data = NULL;
+       
         // process the header
         assert(fscanf(fptr, "%d %d", (int*)&bmp->ihdr->width, (int*)&bmp->ihdr->height)); // get the bitmap dimensions
         bmp->idat->length = (uint16_t)bmp->ihdr->width / 8;     // convert width to bytes
@@ -80,20 +67,8 @@ namespace pbm {
         return EXIT_SUCCESS;
     }
 
-    void free_bitmap(gfx::simple_bitmap_t* bmp) {
-        if (bmp) {
-            if (bmp->idat) {
-                free(bmp->idat->data);  // free the image data
-                free(bmp->idat);        // free the IDAT chunk
-            }
-            if (bmp->plte) {
-                free(bmp->plte->data);  // free the palette data
-                free(bmp->plte);        // free the PLTE chunk
-            }
-            free(bmp->ihdr);            // free the IHDR chunk
-        }
-    }
-
 }
+
+
 
 #endif

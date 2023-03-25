@@ -95,7 +95,7 @@ namespace hga {
             mov     cx, 16                      ; 16 registers of the 6845
             mov     dx, CRTC_ADDRESS_PORT
 
-            L0 : lodsw                          ; al = register ah = data
+    L0:     lodsw                               ; al = register ah = data
             out     dx, ax                      ; write data to 6845 register
             loop    L0
 
@@ -105,9 +105,9 @@ namespace hga {
             xor     di, di
             mov     ah, 02h                     ; 'normal' attribute
             mov     al, 32                      ; ascii space                
-            mov     cx, 2000                    ; 80 columns x 25 rows = 2000 characters per screen
+            mov     cx, CHARS_PER_PAGE          ; 80 columns x 25 rows = 2000 characters per screen
             cld                                 ; increment mode
-            rep     stosw                       ; fill screen
+            rep     stosw                       ; fill screen with atrribute:ascii word
 
             // screen on
             mov     dx, HGA_CONTROL_REGISTER

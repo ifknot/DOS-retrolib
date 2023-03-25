@@ -25,6 +25,8 @@
 #ifndef GFX_BITMAP_H
 #define GFX_BITMAP_H
 
+#include <iomanip>
+
 #include "gfx_constants.h"
 #include "gfx_types.h"
 
@@ -100,12 +102,110 @@ namespace gfx {
          */
         struct simple_bitmap_t {
 
-            struct ihdr_t* ihdr;
-            struct plte_t* plte;
-            struct idat_t* idat;
+            struct ihdr_t ihdr;
+            struct plte_t plte;
+            struct idat_t idat;
 
         };
 
+        void free_simple_bitmap(gfx::simple_bitmap_t* bmp) {
+            if (bmp) {
+                if (bmp->idat.data) free(bmp->idat.data);  // free the image data
+                if (bmp->plte.data) free(bmp->plte.data);  // free the palette data                   
+                delete bmp;            
+            }
+        }
+
+        void init_simple_bitmap(
+            simple_bitmap_t* bmp,
+            uint16_t width = 0,
+            uint16_t height = 0,
+            uint8_t bit_depth = 1,
+            uint8_t colour_type = 0,
+
+            rgb_t* palette_data = NULL,
+            uint16_t palette_length = 0,
+
+            char* image_data = NULL,
+            uint16_t image_length = 0
+        ) {
+            assert(bmp);
+            // set chunk default values
+            bmp->ihdr.width = width;
+            bmp->ihdr.height = height;
+            bmp->ihdr.bit_depth = bit_depth;
+            bmp->ihdr.colour_type = colour_type;
+            bmp->plte.data = palette_data;
+            bmp->plte.length = palette_length;
+            bmp->idat.data = image_data;
+            bmp->idat.length = image_length;
+        }
+
+        gfx::simple_bitmap_t* create_simple_bitmap(
+                uint16_t width = 0,
+                uint16_t height = 0,
+                uint8_t bit_depth = 1,
+                uint8_t colour_type = 0,
+            
+                rgb_t* palette_data = NULL,
+                uint16_t palette_length = 0,
+
+                char* image_data = NULL,
+                uint16_t image_length = 0
+            ) { 
+            // create bitmap and sanity check
+            simple_bitmap_t* bmp = new simple_bitmap_t;
+            assert(bmp);
+            init_simple_bitmap(bmp, width, height, bit_depth, colour_type, palette_data, palette_length, image_data, image_length);
+
+            return bmp;
+        }
+
+        
+
+        //void copy_simple_bitmap(gfx::simple_bitmap_t bmp, gfx::simple_bitmap_t other) {}
+
+}
+
+std::ostream& operator<<(std::ostream& os, const gfx::ihdr_t& ihdr) {
+    char* name = (char*)&ihdr.type;
+    os << ihdr.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' '
+        << ihdr.width << ' ' << ihdr.height << ' ' << (int)ihdr.bit_depth << ' ' << (int)ihdr.colour_type;
+    return os;
+}
+
+std::ostream& operator<< (std::ostream& os, const gfx::plte_t& plte) {
+    char* name = (char*)&plte.type;
+    os << plte.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
+    gfx::rgb_t rgb;
+    if (plte.data) {
+        os << '\n' << std::hex;
+        for (uint16_t i = 0; i < plte.length; ++i) {
+            os << '{' << std::setw(2) << (int)(plte.data + i)->r << ',' << std::setw(2) << (int)(plte.data + i)->g << ',' << std::setw(2) << (int)(plte.data + i)->b << "} ";
+            if (i % 7 == 0) os << '\n';
+        }
+    }
+    return os;
+}
+
+std::ostream& operator<< (std::ostream& os, const gfx::idat_t& idat) {
+    char* name = (char*)&idat.type;
+    os << idat.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
+    if (idat.data) {
+        os << '\n' << std::hex;
+        for (uint16_t i = 0; i < idat.length; ++i) {
+            os <<(int)(*(idat.data + i)) << ' ';
+            if (i % 15 == 0) os << '\n';
+        }
+    }
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const gfx::simple_bitmap_t& bmp) {
+    os << bmp.ihdr << '\n';
+    os << bmp.plte << '\n';
+    os << bmp.idat;
+    return os;
 }
 
 #endif
