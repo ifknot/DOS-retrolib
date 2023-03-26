@@ -78,14 +78,14 @@ namespace test_pbm {
 				LOG(data_path);
 				LOG(strerror(errno));
 			}
-
+			INFO("Loading image files...");
 			gfx::simple_bitmap_t* bmp[n];
 			for (int i = 0; i < n; ++i) {
 				bmp[i] = pbm::create_simple_bitmap(fpaths[i]);
 			}
 
-			gfx::simple_bitmap_t* testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm"
-			testbmp = pbm::create_simple_bitmap("CHESS/SPRITES0.pbm");
+			gfx::simple_bitmap_t* testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm" "CHESS/SPRITES0.pbm"
+			testbmp = pbm::create_simple_bitmap("CHESS/16x16set.pbm");
 
 			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
 			LOG(bios::video_adapter_names[adapter]);

@@ -15,12 +15,6 @@
 #ifndef PORTABLE_BITMAP_FORMAT_H
 #define PORTABLE_BITMAP_FORMAT_H
 
-// TODO
-// [ ] constants
-// [ ] types
-// [ ] P1 loader
-// [ ] P4 loader
-
 #include "pbm_constants.h"
 #include "pbm_types.h"
 #include "pbm.create_simple_bitmap.h"
