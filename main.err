@@ -1,8 +1,7 @@
-GFX/PBM/../HGA/hga_cls.h(30): Warning! W389: col(39) integral value may be truncated during assignment or initialization
-GFX/PBM/../HGA/hga_cls.h(30): Note! N393: col(39) included from GFX/PBM/../HGA/hga.h(26)
-GFX/PBM/../HGA/hga_cls.h(30): Note! N393: col(39) included from GFX/PBM/test_pbm.h(16)
-GFX/PBM/../HGA/hga_cls.h(30): Note! N393: col(39) included from main.cpp(7)
 GFX/PBM/../HGA/hga_write_tile_8x8.h(82): Warning! W389: col(117) integral value may be truncated during assignment or initialization
+GFX/PBM/../HGA/hga_write_tile_8x8.h(82): Note! N393: col(117) included from GFX/PBM/../HGA/hga.h(35)
+GFX/PBM/../HGA/hga_write_tile_8x8.h(82): Note! N393: col(117) included from GFX/PBM/test_pbm.h(16)
+GFX/PBM/../HGA/hga_write_tile_8x8.h(82): Note! N393: col(117) included from main.cpp(7)
 GFX/PBM/../HGA/../gfx_bitmap_t.h(196): Warning! W014: col(1) no reference to symbol 'rgb'
 GFX/PBM/../HGA/../gfx_bitmap_t.h(187): Note! N392: col(16) definition: 'gfx::rgb_t rgb' in 'std::ostream & operator <<( std::ostream &, gfx::plte_t const & )'
 GFX/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'fptr'

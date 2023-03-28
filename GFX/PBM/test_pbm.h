@@ -100,12 +100,9 @@ namespace test_pbm {
 					hga::write_tile_block(20, 20, testbmp);
 
 					if (YESNO("swap buffers? ")) {
+						hga::cls(0x800);						
+						hga::write_tile_block(20, 20, testbmp, 0x800);
 						hga::vsync_swap_buffers();
-						hga::cls();
-						fill_screen(bmp);
-
-						hga::write_tile_block(20, 20, testbmp);
-
 					}
 
 					if (YESNO("text mode? ")) {

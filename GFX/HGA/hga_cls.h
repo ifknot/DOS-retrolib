@@ -27,7 +27,7 @@ namespace hga {
      *  B000:8000 - B000:FFFF   Second Page
      *  @param buffer - select the offset of the current active page 
      */
-    void cls(uint8_t buffer = GLOBAL::active_buffer) {
+    void cls(uint16_t buffer = GLOBAL::active_buffer) {
         __asm {
             .8086
             pushf
