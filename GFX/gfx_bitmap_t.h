@@ -26,6 +26,7 @@
 #define GFX_BITMAP_H
 
 #include <iomanip>
+#include <ostream>
 
 #include <stdlib.h>
 
@@ -90,7 +91,7 @@ namespace gfx {
         struct plte_t {
                 uint16_t length;   
                 static const uint32_t type = PLTE_TAG;
-                rgb_t* data;
+                gfx::rgb_t* data;
         };
 
         /**

@@ -17,7 +17,7 @@
 
 namespace hga {
 
-    void write_tile_block(uint16_t x, uint16_t y, const gfx::simple_bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
+    void write_tile_block(uint16_t x, uint16_t y, const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
         uint16_t w, h, step;
         w = step = bmp->ihdr.width;
         h = bmp->ihdr.height;
@@ -26,10 +26,8 @@ namespace hga {
             .8086
 
             mov     ax, HGA_VIDEO_RAM_SEGMENT
-            test    buffer, 1                   ; which buffer ?
-            jz      J0                          ; B000:0000 - B000 : 7FFF   First Page
-            add     ax, HGA_PAGE_2_OFFSET       ; B000:8000 - B000 : FFFF   Second Page
-J0:         mov     es, ax                      ; es points to screen segment
+            add     ax, buffer                  ; 0000h or 0B000h for first or second VRAM buffer
+            mov     es, ax                      ; es points to screen segment
 
             sub     bx, bx                      ; zero column count
 

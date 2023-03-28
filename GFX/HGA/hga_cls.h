@@ -32,10 +32,9 @@ namespace hga {
             .8086
             pushf
             mov     ax, HGA_VIDEO_RAM_SEGMENT
-            test    buffer, 1                   ; which buffer ?
-            jz      J0
-            add     ax, HGA_PAGE_2_OFFSET       ; second buffer
-J0:         mov     es, ax
+            add     ax, buffer                  ; 0000h or 0B000h for first or second VRAM buffer
+            mov     es, ax                      ; es points to screen segment
+
             xor     di, di
             mov     cx, WORDS_PER_PAGE          ; 16K words VRAM buffer 32K bytes
             xor     ax, ax                      ; zero ax

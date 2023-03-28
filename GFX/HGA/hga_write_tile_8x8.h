@@ -25,7 +25,7 @@ namespace hga {
     *  @param bytes       - the bitmap data
     *  @param buffer      - the buffer to write to
     */
-	void write_tile_8x8(uint16_t x, uint16_t y, const char* bytes, uint8_t buffer = GLOBAL::active_buffer) {
+	void write_tile_8x8(uint16_t x, uint16_t y, const char* bytes, uint16_t buffer = GLOBAL::active_buffer) {
         __asm {
 		    .8086    
 
@@ -43,29 +43,27 @@ namespace hga {
             add     di, ax                  ; +(y / 4) * 90
 
 		    mov     ax, HGA_VIDEO_RAM_SEGMENT
-            test    buffer, 1               ; which buffer ?
-            jz      J0                      ; B000:0000 - B000 : 7FFF   First Page
-            add     ax, HGA_PAGE_2_OFFSET   ; B000:8000 - B000 : FFFF   Second Page
-    J0:     mov     es, ax			        ; ES points to screen segment
+            add     ax, buffer              ; 0000h or 0B000h for first or second VRAM buffer
+            mov     es, ax			        ; ES points to screen segment
 
             lds     si, bytes               ; DS: [SI] points to list of 8 tile data bytes to write
 
             movsb 				            ; movsb row 0 bank 0 as guaranteed bank 0 start in tile space coords
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            add     di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
             movsb 				            ; tile pixel row 1 to bank 1
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
             movsb 				            ; tile pixel row 2 to bank 2
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
             movsb 				            ; tile pxiel row 3 to bank 3
             
-            sub 	  di, 5FA7h			    ; 6000h - 89 to get DI back to next bank
+            sub 	di, 5FA7h			    ; 6000h - 89 to get DI back to next bank
 
             movsb 				            ; tile pixel row 4 to bank 0
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
             movsb 				            ; tile pixel row 5 to bank 1
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
             movsb 				            ; tile pixel row 6 to bank 2
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
             movsb 				            ; tile pxiel row 7 to bank 3
 
 		    END:

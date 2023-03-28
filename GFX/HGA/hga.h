@@ -31,6 +31,7 @@
 #include "hga_read_light_pen_registers.h"
 #include "hga_swap_buffers.h"
 #include "hga_video_mode.h"
+#include "hga_vsync.h"
 #include "hga_write_tile_8x8.h"
 #include "hga_write_tile_block.h"
 

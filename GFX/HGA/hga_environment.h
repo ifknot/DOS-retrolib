@@ -32,8 +32,7 @@ namespace hga {
 
 	namespace GLOBAL {
 
-		static uint8_t active_buffer = 0;	// 0 = default B000:000 1 = B000:8000 second display page buffer
-
+		static uint16_t active_buffer = 0;	// default B000:000 whilst B000:8000 second display page buffer
 		
 	}
 

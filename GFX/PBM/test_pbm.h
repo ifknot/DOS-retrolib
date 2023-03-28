@@ -100,7 +100,7 @@ namespace test_pbm {
 					hga::write_tile_block(20, 20, testbmp);
 
 					if (YESNO("swap buffers? ")) {
-						hga::swap_buffers();
+						hga::vsync_swap_buffers();
 						hga::cls();
 						fill_screen(bmp);
 
@@ -109,6 +109,7 @@ namespace test_pbm {
 					}
 
 					if (YESNO("text mode? ")) {
+						
 						hga::text_half_mode();
 					}
 				}		
