@@ -113,8 +113,10 @@ namespace test_pbm {
 			}
 			for (int i = 0; i < n; ++i) {
 				gfx::free_simple_bitmap(bmp[i]);
+				delete bmp[i];
 			}
 			gfx::free_simple_bitmap(testbmp);
+			delete testbmp;
 		}
 		return 0;
 	}

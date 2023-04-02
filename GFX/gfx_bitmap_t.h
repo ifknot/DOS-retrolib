@@ -22,8 +22,8 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef GFX_BITMAP_H
-#define GFX_BITMAP_H
+#ifndef GFX_BITMAP_T_H
+#define GFX_BITMAP_T_H
 
 #include <iomanip>
 #include <ostream>
@@ -110,15 +110,19 @@ namespace gfx {
             struct idat_t idat;
 
         };
-
-        void free_simple_bitmap(gfx::simple_bitmap_t* bmp) {
-            if (bmp) {
-                if (bmp->idat.data) free(bmp->idat.data);  // free the image data
-                if (bmp->plte.data) free(bmp->plte.data);  // free the palette data                   
-                delete bmp;            
-            }
-        }
-
+       
+        /**
+         *  @brief Initialise a gfx::simple_bitmap_t
+         *  @param bmp            - 
+         *  @param width          - 
+         *  @param height         - 
+         *  @param bit_depth      - 
+         *  @param colour_type    - 
+         *  @param palette_data   - 
+         *  @param palette_length - 
+         *  @param image_data     - 
+         *  @param image_length   - 
+         */
         void init_simple_bitmap(
             simple_bitmap_t* bmp,
             uint16_t width = 0,
@@ -163,14 +167,24 @@ namespace gfx {
             return bmp;
         }
 
-
-
         /*void copy_simple_bitmap(gfx::simple_bitmap_t bmp, gfx::simple_bitmap_t other) {
             copy over the ihdr metrics and plte and idat lengths
             free plte data and idat data 
             malloc new mem same as other
             copy over plte and idat data
         }*/
+
+        /**
+         *  @brief Free any malloc'd memory used by a simple bitmap.
+         *  @note  The simple bitmap structure itself is *not* deleted.
+         *  @param bmp - pointer to an extant gfx::simple_bitmap_t
+         */
+        void free_simple_bitmap(gfx::simple_bitmap_t* bmp) {
+            if (bmp) {
+                if (bmp->idat.data) free(bmp->idat.data);  // free the image data
+                if (bmp->plte.data) free(bmp->plte.data);  // free the palette data                           
+            }
+        }
 
 }
 

@@ -70,10 +70,10 @@
   <ItemGroup>
     <ClInclude Include="GFX\gfx.h" />
     <ClInclude Include="GFX\gfx_bitmap_t.h" />
-    <ClInclude Include="GFX\gfx_blit_bitmap.h" />
     <ClInclude Include="GFX\gfx_constants.h" />
     <ClInclude Include="GFX\gfx_types.h" />
     <ClInclude Include="GFX\HGA\hga.h" />
+    <ClInclude Include="GFX\HGA\hga_bitmap_t.h" />
     <ClInclude Include="GFX\HGA\hga_blit_bitmap.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
@@ -86,6 +86,7 @@
     <ClInclude Include="GFX\HGA\hga_vsync.h" />
     <ClInclude Include="GFX\HGA\hga_write_tile_8x8.h" />
     <ClInclude Include="GFX\HGA\hga_write_tile_block.h" />
+    <ClInclude Include="GFX\HGA\test_herc.h" />
     <ClInclude Include="GFX\PBM\pbm.h" />
     <ClInclude Include="GFX\PBM\pbm.create_simple_bitmap.h" />
     <ClInclude Include="GFX\PBM\pbm_constants.h" />
