@@ -25,7 +25,7 @@ namespace hga {
   *  @param bmp    - screen sized bitmap
   *  @param buffer - the vram buffer 
   */
-	void blit_bitmap(const gfx::simple_bitmap_t* bmp, uint8_t buffer = GLOBAL::active_buffer) {
+	void blit_bitmap(const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
 
 	}
 

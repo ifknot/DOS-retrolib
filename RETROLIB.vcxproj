@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClInclude Include="GFX\gfx.h" />
     <ClInclude Include="GFX\gfx_bitmap_t.h" />
+    <ClInclude Include="GFX\gfx_blit_bitmap.h" />
     <ClInclude Include="GFX\gfx_constants.h" />
     <ClInclude Include="GFX\gfx_types.h" />
     <ClInclude Include="GFX\HGA\hga.h" />
