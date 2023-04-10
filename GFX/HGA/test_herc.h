@@ -36,7 +36,7 @@ namespace test_herc {
 			gfx::rgb_t rgb[1] = { {128,127,12} };
 
 			gfx::simple_bitmap_t bmp;
-			gfx::init_simple_bitmap(&bmp, 16, 1, 1, 0, rgb, 1, img, 2);
+			gfx::init_simple_bitmap(&bmp, 8, 8, 1, 0, rgb, 1, img, 8);
 			std::cout << bmp << std::endl;
 			std::cout << "make hmp from bmp\n";
 			hga::bitmap_t* hmp = hga::create_bitmap(&bmp);

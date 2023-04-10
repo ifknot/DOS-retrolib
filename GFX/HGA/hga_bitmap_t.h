@@ -79,17 +79,23 @@ namespace hga {
 
 	void interleave(char* src, char* dst, uint16_t byte_width, uint16_t height) {
 
-		//uint32_t stack = (uint32_t)src;
+		uint32_t stack = (uint32_t)src;
 		uint16_t bx = byte_width;
+		std::cout << " bx " << bx;
 		--bx;			// lose the spare byte it shoudl not be part of the multiplication
+		std::cout << " bx " << bx;
 		uint16_t step = bx;
+		
+		step <<= 2;
+		std::cout << " step " << step;
+		--step;
+		std::cout << " step " << step << '\n';
 
 		uint16_t dx = height;
-		dx &= 3; // height MOD 4 leaves
-		++dx;
+		//dx >>= 2; // height MOD 4 leaves
+		//dx += height & 3;
 
-		uint16_t bp = height;
-		bp >>= 2; // height DIV 4 leaves
+		uint16_t bp = 0;
 
 		uint16_t cx = dx;
 
@@ -98,16 +104,22 @@ namespace hga {
 	ROWS:
 		dx = cx;
 
-		//src = (char*)stack;
+		bp = dx;
+		--bp;
+		bp >>= 2; // height DIV 4 leaves
+		//bp &= 3;
+
+		src = (char*)stack;
 
 		std::cout << "row step = " << dx << " row leaves = " << bp << '\n';
 		cx = bx;
+		
 		std::cout << "R0 cols = " << cx << '\n';
 	REP0:
 		*dst++ = *src++;
 		LOOP REP0;	
 		*dst++ = 0xF0; // skip slide byte
-		//stack = (uint32_t)src;
+		stack = (uint32_t)src;
 		//--bp;
 		if (bp == 0) goto SKIP;
 		--bp;
@@ -145,10 +157,8 @@ namespace hga {
 		if (bp == 0) goto SKIP;
 		--bp;
 		src += step;
-
+	
 	SKIP:
-		std::cout << "BP = " << bp;
-		std::cout << '\n';
 		cx = dx;
 		//JCXZ END;
 		LOOP ROWS;

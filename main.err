@@ -1,8 +1,8 @@
-GFX/HGA/hga_bitmap_t.h(159): Warning! W017: col(9) label 'END' has not been referenced by a goto
-GFX/HGA/hga_bitmap_t.h(159): Note! N393: col(9) included from GFX/HGA/hga.h(26)
-GFX/HGA/hga_bitmap_t.h(159): Note! N393: col(9) included from GFX/HGA/test_herc.h(12)
-GFX/HGA/hga_bitmap_t.h(159): Note! N393: col(9) included from main.cpp(6)
-GFX/HGA/hga_bitmap_t.h(159): Note! N574: col(9) label defined in: GFX/HGA/hga_bitmap_t.h(156) (col 12)
+GFX/HGA/hga_bitmap_t.h(169): Warning! W017: col(9) label 'END' has not been referenced by a goto
+GFX/HGA/hga_bitmap_t.h(169): Note! N393: col(9) included from GFX/HGA/hga.h(26)
+GFX/HGA/hga_bitmap_t.h(169): Note! N393: col(9) included from GFX/HGA/test_herc.h(12)
+GFX/HGA/hga_bitmap_t.h(169): Note! N393: col(9) included from main.cpp(6)
+GFX/HGA/hga_bitmap_t.h(169): Note! N574: col(9) label defined in: GFX/HGA/hga_bitmap_t.h(166) (col 12)
 GFX/HGA/hga_write_tile_8x8.h(82): Warning! W389: col(117) integral value may be truncated during assignment or initialization
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
 GFX/HGA/hga_constants.h(151): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
