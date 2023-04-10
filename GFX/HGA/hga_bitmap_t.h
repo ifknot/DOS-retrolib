@@ -80,14 +80,13 @@ namespace hga {
 	void interleave(char* src, char* dst, uint16_t byte_width, uint16_t height) {
 
 		uint32_t stack = (uint32_t)src;
+		--byte_width;	// lose the spare byte
 		uint16_t bx = byte_width;
-		std::cout << " bx " << bx;
-		--bx;			// lose the spare byte it shoudl not be part of the multiplication
-		std::cout << " bx " << bx;
-		uint16_t step = bx;
+		uint16_t step = 0;
 		
 		step <<= 2;
 		std::cout << " step " << step;
+		// fix this something to do w leaves
 		--step;
 		std::cout << " step " << step << '\n';
 
@@ -108,6 +107,11 @@ namespace hga {
 		--bp;
 		bp >>= 2; // height DIV 4 leaves
 		//bp &= 3;
+
+		step = byte_width;
+		step <<= 2; // bytes per row * 4 leaves
+		--step; 
+		step -= bp;
 
 		src = (char*)stack;
 
