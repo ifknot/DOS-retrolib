@@ -14,11 +14,24 @@
 
 #include "../../GFX/gfx_bitmap_t.h"
 
+#define HGA_BITMAP_DATA_BLOCKS 8
+#define HGA_BITMAP_MAX_IMG_SIZE 8192
+#define HGA_BITMAP_INTERLEAVE 4
+
+#define LOOP if (--cx != 0) goto 
+
+#define JCXZ if(cx == 0) goto 
+
+#define JZ(r) if(r == 0) goto 
+
+#define DUMP	std::cout << std::hex << "src = " << (uint32_t)src << ' ' << "dst = " << (uint32_t)dst << '\n'; \
+				std::cout << std::dec << "bx = " << bx << " dx = " << dx << " bp = " << bp << " step = " << step << " cx = " << cx << '\n'
+
 namespace hga {
 
  /**
   *  @struct bitmap_t
-  *  @brief  A very simple interleaved data structure for storing HGA bitmap data.
+  *  @brief  An HGA prepared bitmap optimized for fast blitting to VRAM.
   *  @details HGA VRAM has an unusual layout of 4 interleaved scan lines, packed pixel.
   *	 The 32K VRAM of each display page is divided into 4 x 8K blocks.
   *     +         Block 1 divisible by 4 then + 0 (0, 4, 8, 12..)
@@ -28,13 +41,18 @@ namespace hga {
   *
   *   Each scan line is 90-bytes long and there are 348 scan lines (2 lines unused in each block).
   *   Each byte contains 8 pixels ie 31,320 total pixel bytes.
+  *   Thus, the HGA bitmap has its data laid out in the same interleaved pattern.
+  *   Further, the data block has a further 7 blocks, each of which is bit shifted right by one pixel from its prior block.
+  *   In this way the bitmap has a preshifted bitmap for each x loctaion 0..7 lower 3 bits ready for fast blitting
+  *   @note This has the consequence that the *maximum* original image size is 8K (8192 bytes) as the total 8 shifted copies must fit inside an 8086 64K segment
   */
 	struct bitmap_t {
 		uint16_t width;			// image pixel width
 		uint16_t byte_width;	// number of bytes per image line (calculated fomr width and height)
 		uint16_t height;		// image pixel height
-		uint16_t size;			// total number of image data bytes
-		char* data;				// pointer to the image data bytes
+		uint16_t img_size;		// single image number of data bytes (max 8192 bytes)
+		uint16_t size;			// total number of bytes for all 8 shifted images (max 64K)
+		char* data;				// pointer to the image data bytes 8 blocks of shifted duplicates offset by img_size bytes
 	};
 
  /**
@@ -45,14 +63,99 @@ namespace hga {
   *  @param height - image pixel height
   *  @param data   - pointer to HGA interleaved image data bytes sufficient to satisfy calculated size as per width and height
   */
-	void init_bitmap(hga::bitmap_t* bmp, uint16_t width = 0, uint16_t height = 0, char* data = NULL) {
-		if (bmp) {
-			bmp->width = width;
-			bmp->byte_width = (width >> 3) + (width % 8 == 0) ? 0 : 1;	// width/8 + 1 byte if pixel width not evenly divisible by 8
-			bmp->height = height;
-			bmp->size = bmp->byte_width * bmp->height;
-			bmp->data = data;
+	void init_bitmap(hga::bitmap_t* hmp, uint16_t width = 0, uint16_t height = 0, char* data = NULL) {
+		if (hmp) {
+			hmp->width = width;
+			hmp->byte_width = (width >> 3);				// width / 8
+			hmp->byte_width += (width & 7) == 0 ?0 :1;	// extra byte if pixel width not evenly divisible by 8
+			hmp->byte_width++;							// finally add extra byte to right shift into for x 0..7
+			hmp->height = height;
+			hmp->img_size = hmp->byte_width * hmp->height;
+			assert(hmp->img_size < HGA_BITMAP_MAX_IMG_SIZE);
+			hmp->size = hmp->img_size; // *HGA_BITMAP_DATA_BLOCKS;
+			hmp->data = data;
 		}
+	}
+
+	void interleave(char* src, char* dst, uint16_t byte_width, uint16_t height) {
+
+		//uint32_t stack = (uint32_t)src;
+		uint16_t bx = byte_width;
+		--bx;			// lose the spare byte it shoudl not be part of the multiplication
+		uint16_t step = bx;
+
+		uint16_t dx = height;
+		dx &= 3; // height MOD 4 leaves
+		++dx;
+
+		uint16_t bp = height;
+		bp >>= 2; // height DIV 4 leaves
+
+		uint16_t cx = dx;
+
+		DUMP;
+
+	ROWS:
+		dx = cx;
+
+		//src = (char*)stack;
+
+		std::cout << "row step = " << dx << " row leaves = " << bp << '\n';
+		cx = bx;
+		std::cout << "R0 cols = " << cx << '\n';
+	REP0:
+		*dst++ = *src++;
+		LOOP REP0;	
+		*dst++ = 0xF0; // skip slide byte
+		//stack = (uint32_t)src;
+		//--bp;
+		if (bp == 0) goto SKIP;
+		--bp;
+		src += step;
+
+		cx = bx;
+		std::cout << "R1 cols = " << cx << '\n';
+	REP1:
+		*dst++ = *src++;
+		LOOP REP1;
+		*dst++ = 0xF1;
+		//--bp;
+		if (bp == 0) goto SKIP;
+		--bp;
+		src += step;
+
+		cx = bx;
+		std::cout << "R2 cols = " << cx << '\n';
+	REP2:
+		*dst++ = *src++;
+		LOOP REP2;
+		*dst++ = 0xF2;
+		//--bp;
+		if (bp == 0) goto SKIP;
+		--bp;
+		src += step;
+
+		cx = bx;
+		std::cout << "R3 cols = " << cx << '\n';
+	REP3:
+		*dst++ = *src++;
+		LOOP REP3;
+		*dst++ = 0xF3;
+		//--bp;
+		if (bp == 0) goto SKIP;
+		--bp;
+		src += step;
+
+	SKIP:
+		std::cout << "BP = " << bp;
+		std::cout << '\n';
+		cx = dx;
+		//JCXZ END;
+		LOOP ROWS;
+
+	END:
+		DUMP;
+		return;
 	}
 
  /**
@@ -60,17 +163,18 @@ namespace hga {
   *  @param  bmp - pointer to an extant gfx::simple_bitmap_t
   *  @retval     - pointer to the first bitmap newly created array of 8 hga::bitmap_t 
   */
-	hga::bitmap_t* create_bitmap(gfx::simple_bitmap_t* bmp) { // TODO:
+	hga::bitmap_t* create_bitmap(gfx::simple_bitmap_t* bmp) { 
+		// compatible bitmap?
+		assert(bmp->ihdr.bit_depth == 1);
+		// create hga bitmap and sanity check
+		hga::bitmap_t* hmp = new hga::bitmap_t;
+		assert(hmp);
+		init_bitmap(hmp, bmp->ihdr.width, bmp->ihdr.height);
+		hmp->data = (char*)calloc(sizeof(char), hmp->size);
 
-	}
-
- /**
-  *  @brief  create a byte aligned HGA interleaved bitmap composed of 8x8 pixel tiles from a DIB gfx::simple_bitmap_t
-  *  @param  bmp - pointer to an extant gfx::simple_bitmap_t
-  *  @retval     - pointer to the byte aligned HGA interleaved bitmap composed of 8x8 pixel tiles
-  */
-	hga::bitmap_t* create_tilemap(gfx::simple_bitmap_t* bmp) { // TODO:
-
+		interleave(bmp->idat.data, hmp->data, hmp->byte_width, hmp->height);
+		
+		return hmp;
 	}
 
  /**
@@ -78,10 +182,23 @@ namespace hga {
   *  @note  The bitmap structure itself is *not* deleted.
   *  @param bmp - pointer to an extant hga::bitmap_t
   */
-	void free_bitmap(hga::bitmap_t* bmp) {
-		if (bmp && bmp->data) free(bmp->data);
+	void free_bitmap(hga::bitmap_t* hmp) {
+		if (hmp && hmp->data) free(hmp->data);
 	}
 
+}
+
+std::ostream& operator<<(std::ostream& os, const hga::bitmap_t& hmp) {
+	os << std::dec << hmp.width << 'x' << hmp.height << ' '
+		<< hmp.byte_width << ' ' << hmp.img_size << ' ' << hmp.size << '\n';
+	if (hmp.data) {
+		os << std::hex << std::setfill('0');
+		for (uint16_t i = 0; i < hmp.size; ++i) {
+			if ((i & 0xF) == 0) os << '\n';
+			os << std::setw(2) << (int)(*(hmp.data + i)) << ' ';
+		}
+	}
+	return os;
 }
 
 #endif

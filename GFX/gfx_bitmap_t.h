@@ -62,7 +62,7 @@ namespace gfx {
           *                     followed by an alpha sample.
           */
         struct ihdr_t {
-                static const uint16_t length = 6;
+                static const uint16_t size = 6;
                 static const uint32_t type = IHDR_TAG;
                 uint16_t width;
                 uint16_t height;
@@ -78,7 +78,7 @@ namespace gfx {
           *  + data (length bytes of image data as left-to-right pixels per line and top-to-bottom lines)
           */
         struct idat_t {
-                uint16_t length;
+                uint16_t size;
                 static const uint32_t type = IDAT_TAG;    
                 char* data;
         };
@@ -89,7 +89,7 @@ namespace gfx {
          *  @note   There is a hard limit of 64K bytes palette size for retrolib
          */
         struct plte_t {
-                uint16_t length;   
+                uint16_t size;   
                 static const uint32_t type = PLTE_TAG;
                 gfx::rgb_t* data;
         };
@@ -131,10 +131,10 @@ namespace gfx {
             uint8_t colour_type = 0,
 
             rgb_t* palette_data = NULL,
-            uint16_t palette_length = 0,
+            uint16_t palette_size = 0,
 
             char* image_data = NULL,
-            uint16_t image_length = 0
+            uint16_t image_size = 0
         ) {
             assert(bmp);
             // set chunk default values
@@ -143,9 +143,9 @@ namespace gfx {
             bmp->ihdr.bit_depth = bit_depth;
             bmp->ihdr.colour_type = colour_type;
             bmp->plte.data = palette_data;
-            bmp->plte.length = palette_length;
+            bmp->plte.size = palette_size;
             bmp->idat.data = image_data;
-            bmp->idat.length = image_length;
+            bmp->idat.size = image_size;
         }
 
         gfx::simple_bitmap_t* create_simple_bitmap(
@@ -155,15 +155,15 @@ namespace gfx {
                 uint8_t colour_type = 0,
             
                 rgb_t* palette_data = NULL,
-                uint16_t palette_length = 0,
+                uint16_t palette_size = 0,
 
                 char* image_data = NULL,
-                uint16_t image_length = 0
+                uint16_t image_size = 0
             ) { 
             // create bitmap and sanity check
             simple_bitmap_t* bmp = new simple_bitmap_t;
             assert(bmp);
-            init_simple_bitmap(bmp, width, height, bit_depth, colour_type, palette_data, palette_length, image_data, image_length);
+            init_simple_bitmap(bmp, width, height, bit_depth, colour_type, palette_data, palette_size, image_data, image_size);
             return bmp;
         }
 
@@ -190,18 +190,17 @@ namespace gfx {
 
 std::ostream& operator<<(std::ostream& os, const gfx::ihdr_t& ihdr) {
     char* name = (char*)&ihdr.type;
-    os << ihdr.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' '
+    os << ihdr.size << ' ' << name[0] << name[1] << name[2] << name[3] << ' '
         << ihdr.width << ' ' << ihdr.height << ' ' << (int)ihdr.bit_depth << ' ' << (int)ihdr.colour_type;
     return os;
 }
 
 std::ostream& operator<< (std::ostream& os, const gfx::plte_t& plte) {
     char* name = (char*)&plte.type;
-    os << plte.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
-    gfx::rgb_t rgb;
+    os << plte.size << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
     if (plte.data) {
         os << '\n' << std::hex << std::setfill('0');
-        for (uint16_t i = 0; i < plte.length; ++i) {
+        for (uint16_t i = 0; i < plte.size; ++i) {
             os << '{' << std::setw(2) << (int)(plte.data + i)->r << ',' << std::setw(2) << (int)(plte.data + i)->g << ',' << std::setw(2) << (int)(plte.data + i)->b << "} ";
             if (i % 7 == 7) os << '\n';
         }
@@ -211,10 +210,10 @@ std::ostream& operator<< (std::ostream& os, const gfx::plte_t& plte) {
 
 std::ostream& operator<< (std::ostream& os, const gfx::idat_t& idat) {
     char* name = (char*)&idat.type;
-    os << idat.length << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
+    os << idat.size << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
     if (idat.data) {
         os << '\n' << std::hex << std::setfill('0');
-        for (uint16_t i = 0; i < idat.length; ++i) {
+        for (uint16_t i = 0; i < idat.size; ++i) {
             os << std::setw(2) << (int)(*(idat.data + i)) << ' ';
             if (i % 15 == 15) os << '\n';
         }

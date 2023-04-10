@@ -23,6 +23,7 @@
  //  [x] load_bitmap
  //  [ ] save_bitmap
 
+#include "hga_bitmap_t.h"
 #include "hga_cls.h"
 #include "hga_constants.h"
 #include "hga_default_font_8x8.h"
