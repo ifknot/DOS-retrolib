@@ -79,97 +79,70 @@ namespace hga {
 
 	void interleave(char* src, char* dst, uint16_t byte_width, uint16_t height) {
 
-		uint32_t stack = (uint32_t)src;
-		--byte_width;	// lose the spare byte
-		uint16_t bx = byte_width;
-		uint16_t step = 0;
+		uint32_t stack = (uint32_t)src;		// push SI
+
+		--byte_width;				// drop the spare rotate into byte
+		uint16_t bx = byte_width;	// BX is number of bytes per row
 		
-		step <<= 2;
-		std::cout << " step " << step;
-		// fix this something to do w leaves
-		--step;
-		std::cout << " step " << step << '\n';
+		uint16_t step = byte_width; // source memory stride = (w * 4) - w 
+		step <<= 2;					// * 4				
+		step -= byte_width;			// compensate for the rep instructions auto increment
 
-		uint16_t dx = height;
-		//dx >>= 2; // height MOD 4 leaves
-		//dx += height & 3;
-
-		uint16_t bp = 0;
-
-		uint16_t cx = dx;
-
-		DUMP;
-
+		uint16_t dx = height;		// DX is the number of rows
+		uint16_t bp = 0;			// BP is the interleaved bytes count
+			
+		uint16_t cx = dx;			// row counter
 	ROWS:
-		dx = cx;
+		dx = cx;					// push counter
 
-		bp = dx;
-		--bp;
-		bp >>= 2; // height DIV 4 leaves
-		//bp &= 3;
+		bp = dx;					// calculate the number of interleaved steps
+		--bp;						// zero base the height
+		bp >>= 2;					// divide by 4 interleaved VRAM lines
 
-		step = byte_width;
-		step <<= 2; // bytes per row * 4 leaves
-		--step; 
-		step -= bp;
+		src = (char*)stack;			// pop SI
 
-		src = (char*)stack;
-
-		std::cout << "row step = " << dx << " row leaves = " << bp << '\n';
-		cx = bx;
-		
-		std::cout << "R0 cols = " << cx << '\n';
-	REP0:
-		*dst++ = *src++;
+		cx = bx;					// interleave counter
+	REP0:	
+		*dst++ = *src++;			// REP MOVSB
 		LOOP REP0;	
-		*dst++ = 0xF0; // skip slide byte
-		stack = (uint32_t)src;
-		//--bp;
-		if (bp == 0) goto SKIP;
+		*dst++ = 0xF0;				// STOSB into spare byte
+		stack = (uint32_t)src;		// push SI
+
+		if (bp == 0) goto SKIP;		// more interleaved lines?
 		--bp;
-		src += step;
+		src += step;				// SI + stride
 
 		cx = bx;
-		std::cout << "R1 cols = " << cx << '\n';
 	REP1:
 		*dst++ = *src++;
 		LOOP REP1;
 		*dst++ = 0xF1;
-		//--bp;
 		if (bp == 0) goto SKIP;
 		--bp;
 		src += step;
 
 		cx = bx;
-		std::cout << "R2 cols = " << cx << '\n';
 	REP2:
 		*dst++ = *src++;
 		LOOP REP2;
 		*dst++ = 0xF2;
-		//--bp;
 		if (bp == 0) goto SKIP;
 		--bp;
 		src += step;
 
 		cx = bx;
-		std::cout << "R3 cols = " << cx << '\n';
 	REP3:
 		*dst++ = *src++;
 		LOOP REP3;
 		*dst++ = 0xF3;
-		//--bp;
 		if (bp == 0) goto SKIP;
 		--bp;
 		src += step;
 	
 	SKIP:
 		cx = dx;
-		//JCXZ END;
 		LOOP ROWS;
 
-	END:
-		DUMP;
-		return;
 	}
 
  /**
