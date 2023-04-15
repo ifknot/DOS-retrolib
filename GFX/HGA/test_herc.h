@@ -32,6 +32,34 @@ namespace test_herc {
 	int run() {
 		INFO(__FUNCTION__);
 		{
+			
+			INFO("test Hercules graphics mode\n");
+			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
+			LOG(bios::video_adapter_names[adapter]);
+			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
+			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
+				LOG(read_light_pen_registers());
+				if (YESNO("graphics mode? ")) {
+					graphics_full_mode();
+					cls();
+					int x = 0;
+					for (int y = 0; y < SCREEN_Y_MAX; ++y) {
+						//for (x = 0; x < SCREEN_X_MAX; ++x) {
+							hga::blit_copy(x++, y, 1, 1, 0);
+						//}
+					}	
+				}
+				if (YESNO("swap buffers? ")) {
+					swap_buffers();
+					cls();
+					hga::blit_copy(310, 150, 2, 8, 0);
+				}
+				if (YESNO("text mode? ")) {
+					text_half_mode();
+				}
+			}
+		}
+		/* {
 			char img[16] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};// { 0x30, 0x78, 0xcc, 0xcc, 0xfc, 0xcc, 0xcc, 0x00 };	// U+0041 (A)
 			gfx::rgb_t rgb[1] = { {128,127,12} };
 
@@ -42,7 +70,7 @@ namespace test_herc {
 			hga::bitmap_t* hmp = hga::create_bitmap(&bmp);
 			std::cout << "HGA bitmap " << *hmp << std::endl;
 			hga::free_bitmap(hmp);
-		}
+		}*/
 		/* {
 			INFO("test Hercules graphics mode\n");
 			bios::video_adapter_t adapter = bios::detect_video_adapter_type();

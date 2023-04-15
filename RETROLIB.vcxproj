@@ -74,7 +74,7 @@
     <ClInclude Include="GFX\gfx_types.h" />
     <ClInclude Include="GFX\HGA\hga.h" />
     <ClInclude Include="GFX\HGA\hga_bitmap_t.h" />
-    <ClInclude Include="GFX\HGA\hga_blit_bitmap.h" />
+    <ClInclude Include="GFX\HGA\hga_blit.h" />
     <ClInclude Include="GFX\HGA\hga_cls.h" />
     <ClInclude Include="GFX\HGA\hga_constants.h" />
     <ClInclude Include="GFX\HGA\hga_default_font_8x8.h" />
