@@ -38,144 +38,95 @@ namespace hga {
 		assert(byte_width > 0);
 		assert(height > 0);
 		//assert((height & 3) == 0);
+		uint16_t row, bank_height;
 		__asm {
 			.8086
-			// 1. load args
-			mov		ax, y
-			mov		dx, ax					; copy y (see 4.)
-			mov		di, x
-
-			// 2. use plot point calculation ES:[DI] = (x / 8) + ((y /4 ) * 90) + ((y mod 4) * 2000h)
-			mov     bx, ax                  ; copy y - BX is going to be the bank selector
-            shr     ax, 1                   ; calculate (y / 4)
+			// calculate row byte index	x / 8
+			mov		ax, x					; AX = x
+            shr     ax, 1                   ; calculate column byte (x / 8) 
             shr     ax, 1                   ; 8086 limited to single step shifts
-            mov     cl, BYTES_PER_LINE
-            mul     cl                      ; calculate AX = ((y / 4) * 90)  
-
-            and     bx, 00000011b           ; mask off only the bank select bits (y mod 4)
-            ror     bx, 1                   ; calculate 16-bit bank * 2000h (with that one clever rotate right trick)
-            ror     bx, 1                   ; 8086 limited to single step shifts
-            ror     bx, 1                   ; BX = ((y mod 4) * 2000h)
-
-            shr     di, 1                   ; calculate column byte (x / 8) 
-            shr     di, 1                   ; 8086 limited to single step shifts
-            shr     di, 1                   ; DI = (x / 8)
-			mov		cx, di					; copy line byte index (see 3.)
-            add     di, ax                  ; (x / 8) + ((y / 4) * 90)
-            add     di, bx                  ; (x / 8) + ((y / 4) * 90) + ((y mod 4) * 2000h)
-            
-			// 3. clip the bitmap width to fit on screen
-			mov		ax, cx					; AX = CX = line byte index
-			add		ax, byte_width 			; AX = line byte index + byte_width
+            shr     ax, 1                   ; AX = (x / 8)
+			mov		x, ax					; x >>= 3
+			// clip the bitmap width to fit on screen
+			add		ax, byte_width			; AX = (x / 8) + byte_width
 			cmp		ax, BYTES_PER_LINE		; fit on screen?
 			jle		J0						; less or equal no clip, otherwise...
 			sub		ax, BYTES_PER_LINE		; calculate the bytes overhang
 			sub		byte_width, ax			; subtract overhang from byte width to adjust
-
-	J0:		// 4. clip the bitmap height to fit on screen
-			mov		ax, dx					; AX = DX = y
-			mov		dx, height				; DX = height
-			add		ax, dx					; AX = y + height
+	J0:		// clip the bitmap height to fit on screen
+			mov		ax, y
+			add 	ax, height				; AX = y + height
 			cmp		ax, SCREEN_Y_MAX		; fit on screen?
 			jle		J1						; less or equal no clip, otherwise...
 			sub		ax, SCREEN_Y_MAX		; calculate the vertical pixel overhang
-			sub		dx, ax					; subtract vertical overhang from height
-			mov		height, dx
-
-	J1:		
-
-			// 5. finalse ES:[DI] to address destination bytes in chosen VRAM buffer
+			sub		height, ax				; subtract vertical overhang from height
+	J1:		// ES chosen VRAM buffer
 			mov     ax, HGA_VIDEO_RAM_SEGMENT
             add     ax, buffer              ; 0000h or 0B000h for first or second VRAM buffer
             mov     es, ax			        ; ES:[DI] points to first VRAM byte 
-
-			// 6. set up DS:[SI] to point to the bitmap data
+			// set up DS:[SI] to point to the bitmap data
 			lds     si, bytes               ; DS:[SI] points to first bitmap byte 
-			
-			// 7. calculate row jump in DX (90 - adjusted byte width)
-			mov		bx, BYTES_PER_LINE
-			sub		bx, byte_width
-			
-			mov		dx, height
+			// caluclate bytes to add for next row
+			mov		ax, BYTES_PER_LINE
+			sub		ax, byte_width
+			mov		row, ax
+			// calculate number of rows to copy into each bank in height and dx
+			mov		ax, height				; load height into AX
+			mov		dx, ax	
+			dec		ax						; zero base height
+			shr		ax, 1					; height / 4
+            shr     ax, 1                   ; 8086 limited to single step shifts
+			mov		bank_height, ax				; bank height ie height / 4	
+			and		dx, 3					;  
+			inc		dx
 
-			dec		dx						; zero base height
-			shr		dx, 1					; calculate DX = (height - ) / 4 (i.e. rows per bank)
-			shr		dx, 1					; 8086 limited to single step shifts
-			inc		dx						; do while 
+			mov		cx, height
+	L0:		call	BANK
+			inc		y
+			loop	L0
 
-			// bank 0
-			push	di
-			mov		cx, dx
-	B0:		push	cx
+			jmp		END
+			// ----------------------------------------- //
+	BANK:
+			push	cx
+			// calculate row offset
+			mov		ax, y					; AX = y
+			mov		bx, ax					; BX will be the bank offset
+			shr		ax, 1					; (y / 4)
+            shr     ax, 1                   ; 8086 limitediloveyou to single step shifts
+			mov     cl, BYTES_PER_LINE
+            mul     cl                      ; calculate AX = ((y / 4) * 90)  
+			// calculate bank offset
+			and     bx, 00000011b           ; mask off only the bank select bits (y mod 4)
+			ror     bx, 1                   ; calculate 16-bit bank * 2000h (with that one clever rotate right trick)
+            ror     bx, 1                   ; 8086 limited to single step shifts
+            ror     bx, 1                   ; BX = ((y mod 4) * 2000h)
+			// DI = (x / 8) + ((y / 4) * 90) + ((y % 4) * 2000h)
+			mov		di, x					; (x / 8)
+			add		di, ax					; + ((y / 4) * 90)
+			add		di, bx					; +((y % 4) * 2000h)
 
-			mov		ax, 0F1h
+			// test
+			mov		al, 0F1h
+
+			mov		cx, bank_height			; bank height
+			jcxz	Z0						; loop counter zero
+	B0:		push	cx						; copy bank height rows in bank 0 
 			mov		cx, byte_width
 			rep		stosb
-
-			dec		height
-			jz		END
-
-			add		di, bx
+			add		di, row
 			pop		cx
 			loop	B0
+	Z0:		mov		cx, dx
+			jcxz	DONE
+			mov		cx, byte_width
+			rep		stosb
+			dec		dx
 
-			pop		di
+	DONE:	pop		cx
+			ret
 			
-			// bank 1				                 
-			add		di, 2000h
-			push	di
-			mov		cx, dx
-	B1:		push	cx
-
-			mov		ax, 0F2h
-			mov		cx, byte_width
-			rep		stosb
-
-			dec		height
-			jz		END
-
-			add		di, bx
-			pop		cx
-			loop	B1
-
-			pop		di
-
-			// bank 2				                 
-			add		di, 2000h
-			push	di
-			mov		cx, dx
-	B2:		push	cx
-
-			mov		ax, 0F4h
-			mov		cx, byte_width
-			rep		stosb
-
-			dec		height
-			jz		END
-
-			add		di, bx
-			pop		cx
-			loop	B2
-
-			pop		di
-
-			// bank 3				                 
-			add		di, 2000h
 			
-			mov		cx, dx
-	B3:		push	cx
-
-			mov		ax, 0FFh
-			mov		cx, byte_width
-			rep		stosb
-
-			dec		height
-			jz		END
-
-			add		di, bx
-			pop		cx
-			loop	B3
-
 	END:
 		}
 	}
