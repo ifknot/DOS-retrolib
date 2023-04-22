@@ -45,18 +45,18 @@ namespace test_herc {
 					int x = 0;
 					hga::blit_copy(100, 0, 4, 1, 0);
 					hga::blit_copy(150, 0, 4, 2, 0);
-					//hga::blit_copy(200, 0, 4, 3, 0);
-					//hga::blit_copy(250, 0, 4, 4, 0);
-					//hga::blit_copy(300, 0, 4, 5, 0);
-					//hga::blit_copy(350, 0, 4, 6, 0);
-					//hga::blit_copy(400, 0, 4, 7, 0);
-					//hga::blit_copy(450, 0, 4, 8, 0);
+					hga::blit_copy(200, 0, 4, 3, 0);
+					hga::blit_copy(250, 0, 4, 4, 0);
+					hga::blit_copy(300, 0, 4, 5, 0);
+					hga::blit_copy(350, 0, 4, 6, 0);
+					hga::blit_copy(400, 0, 4, 7, 0);
+					hga::blit_copy(450, 0, 4, 8, 0);
 
 					hga::blit_copy(100, 150, 4, 1, 0);
 					hga::blit_copy(150, 150, 4, 2, 0);
-					//hga::blit_copy(200, 150, 4, 3, 0);
-					//hga::blit_copy(250, 150, 4, 4, 0);
-					//hga::blit_copy(300, 150, 4, 5, 0);
+					hga::blit_copy(200, 150, 4, 3, 0);
+					hga::blit_copy(250, 150, 4, 4, 0);
+					hga::blit_copy(300, 150, 4, 5, 0);
 					//for (int y = 0; y < SCREEN_Y_MAX; ++y) {
 						//for (x = 0; x < SCREEN_X_MAX; ++x) {
 							//hga::blit_copy(x++, y, 1, 1, 0);
@@ -72,11 +72,11 @@ namespace test_herc {
 					hga::blit_copy(250, 0, 4, 4, 0);
 					hga::blit_copy(300, 0, 4, 5, 0);
 
-					hga::blit_copy(100, 150, 4, 1, 0);
-					hga::blit_copy(150, 150, 4, 2, 0);
-					hga::blit_copy(200, 150, 4, 3, 0);
-					hga::blit_copy(250, 150, 4, 4, 0);
-					hga::blit_copy(300, 150, 4, 5, 0);
+					hga::blit_copy(100, 150, 4, 8, 0);
+					hga::blit_copy(150, 150, 4, 16, 0);
+					hga::blit_copy(200, 150, 4, 24, 0);
+					hga::blit_copy(250, 150, 4, 32, 0);
+					hga::blit_copy(300, 150, 4, 33, 0);
 				}
 				if (YESNO("text mode? ")) {
 					text_half_mode();
