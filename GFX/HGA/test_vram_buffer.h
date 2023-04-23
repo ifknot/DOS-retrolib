@@ -12,6 +12,15 @@
 #include "hga.h"
 #include "../gfx_bitmap_t.h"
 
+// TODO:
+// [ ] load splash.pbm 
+// [ ] vram splash
+// [ ] correctly vram splash
+// [ ] time 100 displays 1. XT timings 2. AT timings
+// [ ] vsync vram splash
+// [ ] time 100 displays 1. XT timings 2. AT timings
+// [ ] timings on real hardware XT V20 AT ALT286 ALT386
+
 namespace test_herc {
 
 	int run() {
@@ -23,8 +32,13 @@ namespace test_herc {
 			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
 				LOG(hga::read_light_pen_registers());
 				if (YESNO("graphics mode? ")) {
-					PRESSENTER("\t");
+					hga::graphics_full_mode();
+					hga::cls();
 					ANYKEY("");
+					hga::swap_buffers();
+					hga::cls();
+					ANYKEY("");
+					hga::text_half_mode();
 				}
 			}
 		}

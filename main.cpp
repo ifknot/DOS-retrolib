@@ -10,6 +10,9 @@
 //#include "GFX/test_gfx.h"
 #include "GFX/HGA/test_vram_buffer.h"
 
+// TODO
+// [ ] test vram buffer
+
 int main() {
 
     return test_herc::run();
