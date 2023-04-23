@@ -11,6 +11,7 @@
 #define HGA_ENVIRONMENT_H
 
 #include <stdint.h>
+
 #include "hga_default_font_8x8.h"
 #include "hga_monospaced_font_t.h"
 
@@ -32,7 +33,8 @@ namespace hga {
 
 	namespace GLOBAL {
 
-		static uint16_t active_buffer = 0;	// default B000:000 whilst B000:8000 second display page buffer
+		static uint16_t active_buffer = 0;		// default B000:000 first display page VRAM buffer
+		static uint16_t back_buffer = 0x800;	// whilst B000:8000 second display page VRAM buffer
 		
 	}
 

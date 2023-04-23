@@ -18,12 +18,12 @@
 namespace hga {
 
     /**
-    *  @brief writes a single tile to VRAM suing bank aligned and byte aligned Cartesian coordinates a.k.a. "tile space"
+    *  @brief writes a single 8x8 tile to VRAM using byte aligned (x) and bank aligned (y) Cartesian coordinates a.k.a. "tile space"
     *  @note special case (14% faster on XT compared to write_tile_block) for 8x8 source bitmap data 
     *  @param x           - screen tile column position 0..89
     *  @param y           - screen tile row position 0..42
     *  @param bytes       - the bitmap data
-    *  @param buffer      - the buffer to write to
+    *  @param buffer      - the VRAM buffer to write to
     */
 	void vram_tile_8x8(uint16_t x, uint16_t y, const char* bytes, uint16_t buffer = GLOBAL::active_buffer) {
         __asm {
@@ -71,7 +71,7 @@ namespace hga {
 	}
 
     /**
-    *  @brief writes a single tile *from a buffer* to VRAM using bank aligned and byte aligned Cartesian coordinates a.k.a. "tile space"
+    *  @brief writes a single 8x8 tile *from a buffer* to VRAM using byte aligned (x) and bank aligned (y) Cartesian coordinates a.k.a. "tile space"
     *  @note special case (14% faster on XT compared to write_tile_block) for 8x8 source bitmap data 
     *  @brief writes a single tile within the bitmap data to vram 
     *  @note special case (14% x faster on XT) for 8x8 source bitmap data 
@@ -79,7 +79,7 @@ namespace hga {
     *  @param y           - screen tile row position 0..42
     *  @param bytes       - the bitmap data
     *  @param step        - the offset in the data of tile bytes
-    *  @param buffer      - the buffer to write to
+    *  @param buffer      - the VRAM buffer to write to
     */
 	void vram_tile_8x8_from_buffer(uint16_t x, uint16_t y, const char* bytes, uint16_t step, uint8_t buffer = GLOBAL::active_buffer) {
         __asm {

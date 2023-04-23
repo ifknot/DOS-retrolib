@@ -8,8 +8,8 @@
 #ifndef DEBUG_MACROS_H
 #define DEBUG_MACROS_H
 
-#include <iostream>
 #include <cassert>
+#include "../BIOS/bios_keyboard_services.h"
 
 #define EXIT_SUCCESS 0
 
@@ -62,14 +62,41 @@ define DISPLAY std::cout << '.';
 #define YESNO(msg) test::__yesno(msg)
 #endif
 
+#ifdef NDEBUG
+#define PRESSENTER(msg)
+#else 
+#define PRESSENTER(msg) test::__pressenter(msg)
+#endif
+
+#ifdef NDEBUG
+#define ANYKEY(msg)
+#else
+#define ANYKEY(msg) test::__anykey(msg)
+#endif
+
 #ifndef NDEBUG
 namespace test {
 
 	bool __yesno(char* msg) {
-		std::cout << msg << " Y/N\t";
-		char ch;
-		std::cin >> ch;
-		return (ch == 'Y' || ch == 'y') ? true : false;
+		std::cout << msg << " Y/N" << std::endl;
+		uint8_t code;
+		do {
+			code = bios::wait_key_scan_code();
+		} while (code != SC_Y && code != SC_N);
+		return (code == SC_Y) ? true : false;
+	}
+
+	void __pressenter(char* msg) {
+		std::cout << msg << " Press <ENTER> " << std::endl;
+		uint8_t code;
+		do {
+			code = bios::wait_key_scan_code();
+		} while (code != SC_RTN);
+	}
+
+	void __anykey(char* msg) {
+		std::cout << msg << std::endl;
+		bios::wait_key_scan_code();
 	}
 
 }

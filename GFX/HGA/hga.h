@@ -23,8 +23,6 @@
  //  [x] load_bitmap
  //  [ ] save_bitmap
 
-#include "hga_bitmap_t.h"
-#include "hga_blit.h"
 #include "hga_cls.h"
 #include "hga_constants.h"
 #include "hga_default_font_8x8.h"
@@ -33,9 +31,10 @@
 #include "hga_read_light_pen_registers.h"
 #include "hga_swap_buffers.h"
 #include "hga_video_mode.h"
+#include "hga_vram_tile_8x8.h"
+#include "hga_vram_tile_block.h"
 #include "hga_vsync.h"
-#include "hga_write_tile_8x8.h"
-#include "hga_write_tile_block.h"
+#include "hga_vram_write_buffer.h"
 
 /**
  *  @namespace hga

@@ -22,6 +22,7 @@ namespace hga {
         __asm {
             .8086
             xor     active_buffer, HGA_PAGE_2_OFFSET    ; flip to other page  using xor 0 -> 800h and 800h -> 0
+            xor     back_buffer, HGA_PAGE_2_OFFSET      ; effectively exchaning active and back buffer VRAM addresses
             mov     dx, HGA_CONTROL_REGISTER
             mov     ax, active_buffer
             or      ah, ah

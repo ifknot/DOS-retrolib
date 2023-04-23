@@ -1,8 +1,37 @@
-GFX/HGA/hga_write_tile_8x8.h(82): Warning! W389: col(117) integral value may be truncated during assignment or initialization
-GFX/HGA/hga_write_tile_8x8.h(82): Note! N393: col(117) included from GFX/HGA/hga.h(37)
-GFX/HGA/hga_write_tile_8x8.h(82): Note! N393: col(117) included from GFX/HGA/test_herc.h(12)
-GFX/HGA/hga_write_tile_8x8.h(82): Note! N393: col(117) included from main.cpp(6)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from GFX/HGA/../../TEST/../BIOS/bios_keyboard_services.h(16)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from GFX/HGA/../../TEST/debug_macros.h(12)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from GFX/HGA/test_vram_buffer.h(7)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from main.cpp(11)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N851: col(14) macro 'SC_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(25) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Note! N851: col(14) macro 'SC_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Note! N851: col(14) macro 'SC_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(40) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Note! N851: col(14) macro 'SC_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(41) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Note! N851: col(14) macro 'SC_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(54) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Note! N851: col(14) macro 'SC_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(66) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Note! N851: col(14) macro 'SC_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(67) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(85) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(86) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(90) (col 9)
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94) (col 9)
+GFX/HGA/hga_vram_tile_8x8.h(84): Warning! W389: col(123) integral value may be truncated during assignment or initialization
+GFX/HGA/hga_vram_write_buffer.h(29): Warning! W726: col(9) no reference to formal parameter 'y'
+GFX/HGA/hga_vram_write_buffer.h(27): Note! N392: col(41) definition: 'unsigned short y' in 'void hga::vram_write_buffer( unsigned short, char const *, unsigned short )'
+GFX/HGA/hga_vram_write_buffer.h(29): Warning! W726: col(9) no reference to formal parameter 'data'
+GFX/HGA/hga_vram_write_buffer.h(27): Note! N392: col(56) definition: 'char const * data' in 'void hga::vram_write_buffer( unsigned short, char const *, unsigned short )'
+GFX/HGA/hga_vram_write_buffer.h(29): Warning! W726: col(9) no reference to formal parameter 'buffer'
+GFX/HGA/hga_vram_write_buffer.h(27): Note! N392: col(71) definition: 'unsigned short buffer' in 'void hga::vram_write_buffer( unsigned short, char const *, unsigned short )'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
-GFX/HGA/hga_constants.h(151): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
+GFX/HGA/hga_constants.h(147): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'default_font_data'
 GFX/HGA/hga_default_font_8x8.h(52): Note! N392: col(19) definition: 'unsigned char const hga::default_font_data[256][8]'

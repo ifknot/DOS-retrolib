@@ -17,6 +17,13 @@
 
 namespace hga {
 
+    /**
+     *  @brief writes a block of 8x8 tiles to VRAM using byte aligned (x) and bank aligned (y) Cartesian coordinates a.k.a. "tile space"
+     *  @param x           - screen tile column position 0..89
+     *  @param y           - screen tile row position 0..42
+     *  @param bytes       - the bitmap data
+     *  @param buffer - the VRAM buffer to write to
+     */
     void vram_tile_block(uint16_t x, uint16_t y, const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
         uint16_t w, h, step;
         w = step = bmp->ihdr.width;
