@@ -24,14 +24,22 @@ GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Warning! W086: col(17
 GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(90) (col 9)
 GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
 GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94) (col 9)
-GFX/HGA/hga_vram_tile_8x8.h(84): Warning! W389: col(123) integral value may be truncated during assignment or initialization
+GFX/HGA/../../TEST/debug_macros.h(100): Warning! W726: col(9) no reference to formal parameter 'msg'
+GFX/HGA/../../TEST/debug_macros.h(97): Note! N392: col(29) definition: 'char * msg' in 'void test::__anykey( char * )'
+GFX/HGA/hga_vram_tile_8x8.h(86): Warning! W389: col(123) integral value may be truncated during assignment or initialization
 GFX/HGA/hga_vram_write_buffer.h(29): Warning! W726: col(9) no reference to formal parameter 'y'
 GFX/HGA/hga_vram_write_buffer.h(27): Note! N392: col(41) definition: 'unsigned short y' in 'void hga::vram_write_buffer( unsigned short, char const *, unsigned short )'
 GFX/HGA/hga_vram_write_buffer.h(29): Warning! W726: col(9) no reference to formal parameter 'data'
 GFX/HGA/hga_vram_write_buffer.h(27): Note! N392: col(56) definition: 'char const * data' in 'void hga::vram_write_buffer( unsigned short, char const *, unsigned short )'
 GFX/HGA/hga_vram_write_buffer.h(29): Warning! W726: col(9) no reference to formal parameter 'buffer'
 GFX/HGA/hga_vram_write_buffer.h(27): Note! N392: col(71) definition: 'unsigned short buffer' in 'void hga::vram_write_buffer( unsigned short, char const *, unsigned short )'
+GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'fptr'
+GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(26) definition: '__iobuf * fptr' in 'int fsys::ignore( __iobuf *, long, int )'
+GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'size'
+GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(37) definition: 'long size' in 'int fsys::ignore( __iobuf *, long, int )'
+GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'delim'
+GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(51) definition: 'int delim' in 'int fsys::ignore( __iobuf *, long, int )'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
-GFX/HGA/hga_constants.h(147): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
+GFX/HGA/hga_constants.h(148): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'default_font_data'
 GFX/HGA/hga_default_font_8x8.h(52): Note! N392: col(19) definition: 'unsigned char const hga::default_font_data[256][8]'

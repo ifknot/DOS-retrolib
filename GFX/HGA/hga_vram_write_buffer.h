@@ -29,24 +29,94 @@ namespace hga {
 	}
 
 	/**
-	*  @brief fast writes screen width and height bitmap data to VRAM assuming (0,0) coordinates
+	*  @brief fast writes screen width and height bitmap to VRAM assuming (0,0) coordinates
 	*  @param bmp - a bitmap of 720 x 348 pixels i.e. HGA screen dimensions
 	*  @param buffer - the VRAM buffer to write to
 	*/
-	void vram_write_screen_buffer(const char* data, uint16_t buffer = GLOBAL::active_buffer) {
+	void vram_write_screen_buffer(const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
+		assert(bmp->ihdr.width == SCREEN_X_MAX);
+		assert(bmp->ihdr.height == SCREEN_Y_MAX);
+		const char* bytes = bmp->idat.data;
 		__asm {
 			.8086 
+			pushf
+			cld                                 ; increment mode
 
-			mov     ax, HGA_VIDEO_RAM_SEGMENT
+            mov     ax, HGA_VIDEO_RAM_SEGMENT
             add     ax, buffer                  ; 0000h or 0B000h for first or second VRAM buffer
-            mov     es, ax                      ; es points to screen segment
-			xor		di, di						; ES:[DI] points to the start of the chosen VRAM page
+            mov     es, ax                      ; ES points to screen segment
+            xor     di, di						; ES:[DI] points to top left of screen
+			lds     si, bytes                   ; DS:[SI] points to list of 8 tile data bytes to write
 
-			lds		si, data					; DS:[SI] points to the start of 720x348 pixel data
+			mov		cx, SCREEN_Y_MAX / 4
+	L0:		mov		bx, cx
 
-			mov		cx, WORDS_PER_PAGE			; 16K words of data
-			rep		movsw						
+            mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line to bank 0
+			
+			add     di, 1FA6h					; DI and SI auto inc by 2 so bank 1 is DI + 2000h - 90
+			mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line to bank 1
+			
+			add     di, 1FA6h					; DI and SI auto inc by 2 so bank 2 is DI + 2000h - 90
+			mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line to bank 2
 
+			add     di, 1FA6h					; DI and SI auto inc by 2 so bank 3 is DI + 2000h - 90
+			mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line  to bank 0
+
+			sub		di, 6000h 
+			mov		cx, bx
+			loop	L0
+			
+            popf                
+		}
+	}
+
+	/**
+	*  @brief Waits for the vertival sync beforefast writes screen width and height bitmap to VRAM assuming (0,0) coordinates
+	*  @param bmp - a bitmap of 720 x 348 pixels i.e. HGA screen dimensions
+	*  @param buffer - the VRAM buffer to write to
+	*/
+	void sync_vram_write_screen_buffer(const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
+		assert(bmp->ihdr.width == SCREEN_X_MAX);
+		assert(bmp->ihdr.height == SCREEN_Y_MAX);
+		const char* bytes = bmp->idat.data;
+		__asm {
+			.8086 
+			pushf
+			cld                                 ; increment mode
+
+            mov     ax, HGA_VIDEO_RAM_SEGMENT
+            add     ax, buffer                  ; 0000h or 0B000h for first or second VRAM buffer
+            mov     es, ax                      ; ES points to screen segment
+            xor     di, di						; ES:[DI] points to top left of screen
+			lds     si, bytes                   ; DS:[SI] points to list of 8 tile data bytes to write
+
+			mov		cx, SCREEN_Y_MAX / 4
+	L0:		mov		bx, cx
+
+            mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line to bank 0
+			
+			add     di, 1FA6h					; DI and SI auto inc by 2 so bank 1 is DI + 2000h - 90
+			mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line to bank 1
+			
+			add     di, 1FA6h					; DI and SI auto inc by 2 so bank 2 is DI + 2000h - 90
+			mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line to bank 2
+
+			add     di, 1FA6h					; DI and SI auto inc by 2 so bank 3 is DI + 2000h - 90
+			mov     cx, WORDS_PER_LINE          ; 45 words per line
+            rep     movsw                       ; copy a screen line  to bank 0
+
+			sub		di, 6000h 
+			mov		cx, bx
+			loop	L0
+			
+            popf                
 		}
 	}
 

@@ -28,6 +28,8 @@ namespace hga {
 	void vram_tile_8x8(uint16_t x, uint16_t y, const char* bytes, uint16_t buffer = GLOBAL::active_buffer) {
         __asm {
 		    .8086    
+            pushf
+            cld                             ; increment mode
 
             mov     ax, y                   ; load y into AX then perform screen clipping        
             cmp     ax, SCREEN_TILE_HEIGHT
@@ -66,7 +68,7 @@ namespace hga {
             add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
             movsb 				            ; tile pxiel row 7 to bank 3
 
-		    END:
+    END:    popf
 		}
 	}
 

@@ -11,11 +11,12 @@
 
 #include "hga.h"
 #include "../gfx_bitmap_t.h"
+#include "../PBM/pbm.h"
 
 // TODO:
-// [ ] load splash.pbm 
-// [ ] vram splash
-// [ ] correctly vram splash
+// [x] load splash.pbm 
+// [x] vram splash
+// [x] correctly vram splash
 // [ ] time 100 displays 1. XT timings 2. AT timings
 // [ ] vsync vram splash
 // [ ] time 100 displays 1. XT timings 2. AT timings
@@ -30,13 +31,21 @@ namespace test_herc {
 			LOG(bios::video_adapter_names[adapter]);
 			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
 			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
+
+				gfx::simple_bitmap_t* bmp = pbm::create_simple_bitmap("TEST/SPLASH.PBM");
+
 				LOG(hga::read_light_pen_registers());
 				if (YESNO("graphics mode? ")) {
 					hga::graphics_full_mode();
 					hga::cls();
+					hga::vram_tile_block(0, 0, bmp);
+					//hga::vram_write_screen_buffer(bmp->idat.data);
+					//hga::vram_tile_block(0, 0, bmp, hga::GLOBAL::back_buffer);
 					ANYKEY("");
 					hga::swap_buffers();
 					hga::cls();
+					//hga::vram_tile_block(0, 0, bmp);
+					hga::sync_vram_write_screen_buffer(bmp);
 					ANYKEY("");
 					hga::text_half_mode();
 				}

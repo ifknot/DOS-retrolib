@@ -95,7 +95,7 @@ namespace test {
 	}
 
 	void __anykey(char* msg) {
-		std::cout << msg << std::endl;
+		//std::cout << msg << std::endl;
 		bios::wait_key_scan_code();
 	}
 

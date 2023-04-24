@@ -26,7 +26,7 @@ namespace hga {
             mov     dx, HGA_CONTROL_REGISTER
             mov     ax, active_buffer
             or      ah, ah
-            jns     L0                          ; because Bh is 80b ie signed hence 800h is signed
+            js      L0                          ; because Bh is 80b ie signed hence 800h is signed
             mov     al, 00001010b               ; screen on buffer 0 default display page buffer B000:000
             out     dx, al
             jmp     END

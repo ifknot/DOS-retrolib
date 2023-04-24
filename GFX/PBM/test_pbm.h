@@ -20,7 +20,7 @@
 void fill_screen(gfx::simple_bitmap_t* bmp[20]) {
 	int i = 0;
 	for (int x = 0; x < 20; ++x) {
-		hga::write_tile_8x8(10 + x, 10, bmp[i++ % 20]->idat.data);
+		hga::vram_tile_8x8(10 + x, 10, bmp[i++ % 20]->idat.data);
 	}
 }
 
@@ -52,14 +52,14 @@ namespace test_pbm {
 				if (YESNO("graphics mode? ")) {
 					hga::graphics_full_mode();
 					hga::cls();
-					hga::write_tile_8x8(10, 10, bmp.idat.data);
-					hga::write_tile_block(11, 11, &bmp);
+					hga::vram_tile_8x8(10, 10, bmp.idat.data);
+					hga::vram_tile_block(11, 11, &bmp);
 
 					if (YESNO("swap buffers? ")) {
 						hga::swap_buffers();
 						hga::cls();
-						hga::write_tile_8x8(10, 10, bmp.idat.data);
-						hga::write_tile_block(11, 11, &bmp);
+						hga::vram_tile_8x8(10, 10, bmp.idat.data);
+						hga::vram_tile_block(11, 11, &bmp);
 					}
 
 					if (YESNO("text mode? ")) {
@@ -97,11 +97,11 @@ namespace test_pbm {
 					hga::cls();
 					fill_screen(bmp);
 
-					hga::write_tile_block(20, 20, testbmp);
+					hga::vram_tile_block(20, 20, testbmp);
 
 					if (YESNO("swap buffers? ")) {
 						hga::cls(0x800);						
-						hga::write_tile_block(20, 20, testbmp, 0x800);
+						hga::vram_tile_block(20, 20, testbmp, 0x800);
 						hga::vsync_swap_buffers();
 					}
 
@@ -130,7 +130,7 @@ namespace test_pbm {
 		void fill_screen(gfx::simple_bitmap_t bmp[20]) {
 			int i = 0;
 			for (int x = 0; x < 20; ++x) {
-				hga::write_tile_8x8(10 + x, 10, bmp[i++ % 20].data);
+				hga::vram_tile_8x8(10 + x, 10, bmp[i++ % 20].data);
 			}
 
 		}
@@ -177,7 +177,7 @@ namespace test_pbm {
 					fill_screen(bmp);
 					uint16_t step = testbmp.header->width >> 3;
 
-					hga::write_tile_block(20,20, &testbmp);
+					hga::vram_tile_block(20,20, &testbmp);
 
 				}
 				if (YESNO("swap buffers? ")) {
@@ -186,7 +186,7 @@ namespace test_pbm {
 					fill_screen(bmp);
 					uint16_t step = testbmp.header->width >> 3;
 
-					hga::write_tile_block(20, 20, &testbmp);
+					hga::vram_tile_block(20, 20, &testbmp);
 
 				}
 

@@ -31,6 +31,8 @@ namespace hga {
         const char* bytes = bmp->idat.data;
         __asm {
             .8086
+            pushf
+            cld                                 ; increment mode
 
             mov     ax, HGA_VIDEO_RAM_SEGMENT
             add     ax, buffer                  ; 0000h or 0B000h for first or second VRAM buffer
@@ -123,7 +125,7 @@ TILE:       mov     ax, y                       ; load y into AX then perform sc
 
 TEND:       ret
 
-END:       
+END:        popf
 
         }
     }
