@@ -80,8 +80,8 @@ namespace hga {
 	*  @param buffer - the VRAM buffer to write to
 	*/
 	void sync_vram_write_screen_buffer(const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
-		assert(bmp->ihdr.width == SCREEN_X_MAX);
-		assert(bmp->ihdr.height == SCREEN_Y_MAX);
+		//assert(bmp->ihdr.width == SCREEN_X_MAX);
+		//assert(bmp->ihdr.height == SCREEN_Y_MAX);
 		const char* bytes = bmp->idat.data;
 		__asm {
 			.8086 
@@ -95,6 +95,15 @@ namespace hga {
 			lds     si, bytes                   ; DS:[SI] points to list of 8 tile data bytes to write
 
 			mov		cx, SCREEN_Y_MAX / 4
+
+			mov     dx, CRTC_STATUS_PORT        ; read port 3BAh
+vWAIT0:     in      al, dx                      ; read status
+            test    al, 10000000b               ; is bit 7 clear ? (in a vertical retrace interval)
+            jz      VWAIT0                      ; yes, keep waiting
+VWAIT1:     in      al, dx                      ; read status again
+            test    al, 10000000b               ; is bit 7 clear ? (just started a vertical retrace interval)
+            jz      VWAIT1                      ; no, keep waiting
+
 	L0:		mov		bx, cx
 
             mov     cx, WORDS_PER_LINE          ; 45 words per line

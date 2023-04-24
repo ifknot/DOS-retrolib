@@ -17,12 +17,16 @@
 // [x] load splash.pbm 
 // [x] vram splash
 // [x] correctly vram splash
-// [ ] time 100 displays 1. XT timings 2. AT timings
-// [ ] vsync vram splash
-// [ ] time 100 displays 1. XT timings 2. AT timings
+// [ ] time 500 displays 1. XT = 592 ticks 2. AT timings
+// [x] vsync vram splash 1. XT = 592 ticks 2. AT = 
+// [ ] time 500 displays 1. XT timings 2. AT timings
 // [ ] timings on real hardware XT V20 AT ALT286 ALT386
+// 
+// [ ] speed up tile block
 
 namespace test_herc {
+
+	uint32_t t;
 
 	int run() {
 		{
@@ -45,9 +49,13 @@ namespace test_herc {
 					hga::swap_buffers();
 					hga::cls();
 					//hga::vram_tile_block(0, 0, bmp);
-					hga::sync_vram_write_screen_buffer(bmp);
+					bios::set_system_clock_counter(0);
+					//for (int i = 0; i < 500; ++i) {
+						hga::vram_write_screen_buffer(bmp);
+					//}
 					ANYKEY("");
 					hga::text_half_mode();
+					std::cout << bios::read_system_clock_counter();
 				}
 			}
 		}
