@@ -44,34 +44,38 @@ namespace hga {
         }
     }
 
-    /**
-     *  @brief Waits for the vertival sync before clearing the screen
-     *  @param buffer - 
-     */
-    void sync_cls(uint16_t buffer = GLOBAL::active_buffer) {
-        __asm {
-            .8086
-            pushf
-            mov     ax, HGA_VIDEO_RAM_SEGMENT
-            add     ax, buffer                  ; 0000h or 0B000h for first or second VRAM buffer
-            mov     es, ax                      ; es points to screen segment
+    namespace sync {
 
-            xor     di, di
-            mov     cx, WORDS_PER_PAGE          ; 16K words VRAM buffer 32K bytes
-            xor     ax, ax                      ; zero ax
-            cld                                 ; increment mode
+        /**
+         *  @brief Waits for the vertival sync before clearing the screen
+         *  @param buffer -
+         */
+        void cls(uint16_t buffer = GLOBAL::active_buffer) {
+            __asm {
+                .8086
+                pushf
+                mov     ax, HGA_VIDEO_RAM_SEGMENT
+                add     ax, buffer              ; 0000h or 0B000h for first or second VRAM buffer
+                mov     es, ax                  ; es points to screen segment
 
-            mov     dx, CRTC_STATUS_PORT        ; read port 3BAh
-vWAIT0:     in      al, dx                      ; read status
-            test    al, 10000000b               ; is bit 7 clear ? (in a vertical retrace interval)
-            jz      VWAIT0                      ; yes, keep waiting
-VWAIT1:     in      al, dx                      ; read status again
-            test    al, 10000000b               ; is bit 7 clear ? (just started a vertical retrace interval)
-            jz      VWAIT1                      ; no, keep waiting
+                xor     di, di
+                mov     cx, WORDS_PER_PAGE      ; 16K words VRAM buffer 32K bytes
+                cld                             ; increment mode
 
-            rep     stosw                       ; clear VRAM buffer
-            popf
+                mov     dx, CRTC_STATUS_PORT    ; read port 3BAh
+    VWAIT0:     in      al, dx                  ; read status
+                test    al, 10000000b           ; is bit 7 clear ? (in a vertical retrace interval)
+                jz      VWAIT0                  ; yes, keep waiting
+    VWAIT1:     in      al, dx                  ; read status again
+                test    al, 10000000b           ; is bit 7 clear ? (just started a vertical retrace interval)
+                jz      VWAIT1                  ; no, keep waiting
+
+                xor     ax, ax                  ; zero ax
+                rep     stosw                   ; clear VRAM buffer
+                popf
+            }
         }
+
     }
 
 }

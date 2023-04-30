@@ -34,14 +34,14 @@ namespace test_herc {
 			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
 			LOG(bios::video_adapter_names[adapter]);
 			LOG(bios::detect_CRTC_at_port(bios::MDA_crtc_port));
-			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
+			//if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
 
 				gfx::simple_bitmap_t* bmp = pbm::create_simple_bitmap("TEST/SPLASH.PBM");
 
 				LOG(hga::read_light_pen_registers());
 				if (YESNO("graphics mode? ")) {
 					hga::graphics_full_mode();
-					hga::cls();
+					hga::sync::cls();
 					hga::vram_tile_block(0, 0, bmp);
 					//hga::vram_write_screen_buffer(bmp->idat.data);
 					//hga::vram_tile_block(0, 0, bmp, hga::GLOBAL::back_buffer);
@@ -50,14 +50,14 @@ namespace test_herc {
 					hga::cls();
 					//hga::vram_tile_block(0, 0, bmp);
 					bios::set_system_clock_counter(0);
-					//for (int i = 0; i < 500; ++i) {
-						hga::vram_write_screen_buffer(bmp);
-					//}
-					ANYKEY("");
+					for (int i = 0; i < 100; ++i) {
+						hga::sync::vram_write_buffer(bmp);
+					}
+					//ANYKEY("");
 					hga::text_half_mode();
 					std::cout << bios::read_system_clock_counter();
 				}
-			}
+			//}
 		}
 		return EXIT_SUCCESS;
 	}
