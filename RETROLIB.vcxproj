@@ -84,6 +84,7 @@
     <ClInclude Include="GFX\HGA\hga_vram_tile_block.h" />
     <ClInclude Include="GFX\HGA\test_herc.h" />
     <ClInclude Include="GFX\HGA\test_vram_buffer.h" />
+    <ClInclude Include="GFX\HGA\hga_vram_tile_16x16.h" />
     <ClInclude Include="GFX\PBM\pbm.h" />
     <ClInclude Include="GFX\PBM\pbm.create_simple_bitmap.h" />
     <ClInclude Include="GFX\PBM\pbm_constants.h" />

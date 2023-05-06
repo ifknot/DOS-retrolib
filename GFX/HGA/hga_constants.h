@@ -49,6 +49,7 @@
   */
 #define HGA_VIDEO_RAM_SEGMENT   0B000h
 #define HGA_PAGE_2_OFFSET       800h
+#define HGA_BANK_OFFSET         2000h
 
   /**
    *  @def   HGA_CONFIG_REGISTER

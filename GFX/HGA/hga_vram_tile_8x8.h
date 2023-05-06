@@ -80,10 +80,10 @@ namespace hga {
     *  @param x           - screen tile column position 0..89
     *  @param y           - screen tile row position 0..42
     *  @param bytes       - the bitmap data
-    *  @param step        - the offset in the data of tile bytes
+    *  @param index       - the offset in the data of tile bytes
     *  @param buffer      - the VRAM buffer to write to
     */
-	void vram_tile_8x8_from_buffer(uint16_t x, uint16_t y, const char* bytes, uint16_t step, uint8_t buffer = GLOBAL::active_buffer) {
+	void vram_tile_8x8_from_buffer(uint16_t x, uint16_t y, const char* bytes, uint16_t index, uint8_t buffer = GLOBAL::active_buffer) {
         __asm {
 		    .8086    
 
@@ -95,10 +95,10 @@ namespace hga {
             cmp     di, SCREEN_TILE_WIDTH
             jge     END                     ; nothing to plot
             
-            shl     ax, 1                   ; convert y tile row to partial(x2) pixel location
+            shl     ax, 1                   ; convert y *tile row* to partial(x2) pixel location
             mov     cl, BYTES_PER_LINE
-            mul     cl                      ; calculate(y / 4) * 90 nb 133 cycles
-            add     di, ax                  ; +(y / 4) * 90
+            mul     cl                      ; calculate(pixel y / 4) * 90 nb 133 cycles
+            add     di, ax                  ; + ( pixel y / 4) * 90
 
 		    mov     ax, HGA_VIDEO_RAM_SEGMENT
             test    buffer, 1               ; which buffer ?
@@ -107,32 +107,32 @@ namespace hga {
     J0:     mov     es, ax			        ; ES points to screen segment
 
             lds     si, bytes               ; DS: [SI] points to list of 8 tile data bytes to write
-            mov     cx, step
+            mov     cx, index
             dec     cx                      ; compensate for MOVSB auto increment
 
             movsb 				            ; movsb row 0 bank 0 as guaranteed bank 0 start in tile space coords
-            add       si, cx
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            add     si, cx
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
             movsb 				            ; tile pixel row 1 to bank 1
-            add       si, cx
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            add     si, cx
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
             movsb 				            ; tile pixel row 2 to bank 2
-            add       si, cx
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            add     si, cx
+            add     di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
             movsb 				            ; tile pxiel row 3 to bank 3
-            add       si, cx
+            add     si, cx
 
-            sub 	  di, 5FA7h			    ; 6000h - 89 to get DI back to next bank
+            sub 	di, 5FA7h			    ; 6000h - 89 to get DI back to next bank
 
             movsb 				            ; tile pixel row 4 to bank 0
-            add       si, cx
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
+            add     si, cx
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 1 is DI + 2000h - 1
             movsb 				            ; tile pixel row 5 to bank 1
-            add       si, cx
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
+            add     si, cx
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 2 is DI + 2000h - 1
             movsb 				            ; tile pixel row 6 to bank 2
-            add       si, cx
-            add 	  di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
+            add     si, cx
+            add 	di, 1FFFh			    ; DI and SI auto inc by 1 so bank 3 is DI + 2000h - 1
             movsb 				            ; tile pxiel row 7 to bank 3
 
 		    END:
