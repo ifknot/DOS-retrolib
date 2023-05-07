@@ -33,8 +33,8 @@
 #include "hga_video_mode.h"
 #include "hga_vram_tile_8x8.h"
 #include "hga_vram_tile_block.h"
+#include "hga_vram_word_write_bitmap.h"
 #include "hga_vsync.h"
-#include "hga_vram_write_buffer.h"
 
 /**
  *  @namespace hga

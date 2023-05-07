@@ -45,14 +45,15 @@ namespace test_herc {
 			uint16_t h = 174;
 			if (YESNO("graphics mode? ")) {
 				hga::graphics_full_mode();
-				hga::sync::cls();
+				hga::cls();
 				hga::vram_word_write_bitmap(x,y,w,h,bmp);
 				ANYKEY("");
 				hga::swap_buffers();
 				
 				bios::set_system_clock_counter(0);
-				for (int i = 0; i < n; ++i) {
-					hga::sync::cls();
+				hga::cls();
+				for (int i = 0; i < n; ++i) {	
+					hga::vsync();
 					hga::vram_word_write_bitmap(x,y,w,h,bmp);
 					y++;
 				}
