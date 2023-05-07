@@ -36,7 +36,7 @@ namespace hga {
         __asm {
             .8086
             mov     dx, CRTC_STATUS_PORT    ; read port 3BAh
-vWAIT0:     in      al, dx                  ; read status
+VWAIT0:     in      al, dx                  ; read status
             test    al, 10000000b           ; is bit 7 clear ? (in a vertical retrace interval)
             jz      VWAIT0                  ; yes, keep waiting
 VWAIT1:     in      al, dx                  ; read status again

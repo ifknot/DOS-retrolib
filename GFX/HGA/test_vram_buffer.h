@@ -39,17 +39,22 @@ namespace test_herc {
 		{
 			INFO("\n1. test & time vram_write_buffer(bmp)\n");
 			gfx::simple_bitmap_t* bmp = pbm::create_simple_bitmap("TEST/SPLASH.PBM");	
-			//bmp->ihdr.height /= 2;
+			uint16_t x = 0;
+			uint16_t y = 0;
+			uint16_t w = 720;
+			uint16_t h = 174;
 			if (YESNO("graphics mode? ")) {
 				hga::graphics_full_mode();
 				hga::sync::cls();
-				hga::vram_write_buffer(0, bmp);
+				hga::vram_word_write_bitmap(x,y,w,h,bmp);
 				ANYKEY("");
 				hga::swap_buffers();
-				hga::cls();
+				
 				bios::set_system_clock_counter(0);
 				for (int i = 0; i < n; ++i) {
-					hga::vram_write_buffer(0, bmp);
+					hga::sync::cls();
+					hga::vram_word_write_bitmap(x,y,w,h,bmp);
+					y++;
 				}
 				
 				//ANYKEY("");

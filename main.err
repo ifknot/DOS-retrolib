@@ -27,6 +27,8 @@ GFX/HGA/../../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) m
 GFX/HGA/../../TEST/debug_macros.h(100): Warning! W726: col(9) no reference to formal parameter 'msg'
 GFX/HGA/../../TEST/debug_macros.h(97): Note! N392: col(29) definition: 'char * msg' in 'void test::__anykey( char * )'
 GFX/HGA/hga_vram_tile_8x8.h(86): Warning! W389: col(124) integral value may be truncated during assignment or initialization
+GFX/HGA/hga_vram_write_buffer.h(97): Warning! W726: col(9) no reference to formal parameter 'x'
+GFX/HGA/hga_vram_write_buffer.h(21): Note! N392: col(46) definition: 'unsigned short x' in 'void hga::vram_word_write_bitmap( unsigned short, unsigned short, unsigned short, unsigned short, gfx::simple_bitmap_t const *, unsigned short )'
 GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'fptr'
 GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(26) definition: '__iobuf * fptr' in 'int fsys::ignore( __iobuf *, long, int )'
 GFX/HGA/../PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'size'

@@ -78,7 +78,7 @@
     <ClInclude Include="GFX\HGA\hga_read_light_pen_registers.h" />
     <ClInclude Include="GFX\HGA\hga_swap_buffers.h" />
     <ClInclude Include="GFX\HGA\hga_video_mode.h" />
-    <ClInclude Include="GFX\HGA\hga_vram_write_buffer.h" />
+    <ClInclude Include="GFX\HGA\hga_vram_word_write_bitmap.h" />
     <ClInclude Include="GFX\HGA\hga_vsync.h" />
     <ClInclude Include="GFX\HGA\hga_vram_tile_8x8.h" />
     <ClInclude Include="GFX\HGA\hga_vram_tile_block.h" />
