@@ -18,9 +18,7 @@
 namespace hga {
 
 
-	void vram_word_write_bitmap(uint16_t x, uint16_t y, uint16_t w, uint16_t h, const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
-		
-		const char* bytes = bmp->idat.data;
+	void vram_splash_bitmap(uint16_t y, uint16_t w, uint16_t h, const char* bytes, uint16_t buffer = GLOBAL::active_buffer) {
 		// TODO: screen clip bmp.height
 		__asm {
 			.8086 
@@ -101,7 +99,7 @@ namespace hga {
 	*  @param bmp - a bitmap of 720 x 348 pixels i.e. HGA screen dimensions
 	*  @param buffer - the VRAM buffer to write to
 	*/
-	void vram_word_write_bitmap(const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
+	void vram_splash_bitmap(const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
 		assert(bmp->ihdr.width == SCREEN_X_MAX);
 		assert(bmp->ihdr.height == SCREEN_Y_MAX);
 		const char* bytes = bmp->idat.data;

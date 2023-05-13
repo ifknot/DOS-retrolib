@@ -41,12 +41,10 @@ namespace test_herc {
 			gfx::simple_bitmap_t* bmp = pbm::create_simple_bitmap("TEST/SPLASH.PBM");	
 			uint16_t x = 0;
 			uint16_t y = 0;
-			uint16_t w = 720;
-			uint16_t h = 174;
 			if (YESNO("graphics mode? ")) {
 				hga::graphics_full_mode();
 				hga::cls();
-				hga::vram_word_write_bitmap(x,y,w,h,bmp);
+				hga::vram_splash_bitmap(y, bmp->ihdr.width, bmp->ihdr.height / 2, bmp->idat.data);
 				ANYKEY("");
 				hga::swap_buffers();
 				
@@ -54,7 +52,7 @@ namespace test_herc {
 				hga::cls();
 				for (int i = 0; i < n; ++i) {	
 					hga::vsync();
-					hga::vram_word_write_bitmap(x,y,w,h,bmp);
+					hga::vram_splash_bitmap(y, bmp->ihdr.width, bmp->ihdr.height / 2, bmp->idat.data);
 					y++;
 				}
 				
