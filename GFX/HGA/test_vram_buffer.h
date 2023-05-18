@@ -17,9 +17,9 @@
 // [x] load splash.pbm 
 // [x] vram splash
 // [x] correctly vram splash
-// [ ] time 500 displays 1. XT = 592 ticks 2. AT timings
+// [x] time 500 displays 1. XT = 592 ticks 2. AT timings
 // [x] vsync vram splash 1. XT = 592 ticks 2. AT = 
-// [ ] time 500 displays 1. XT timings 2. AT timings
+// [x] time 500 displays 1. XT timings 2. AT timings
 // [ ] timings on real hardware XT V20 AT ALT286 ALT386
 // 
 // [ ] speed up tile block

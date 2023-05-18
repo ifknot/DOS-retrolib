@@ -2,19 +2,20 @@
 
 //#include "ABM/test_abm.h"
 //#include "RND/test_rnd.h"
+#include "MEM/test_mem.h"
 //#include "BIOS/test_bios.h"
 //#include "GFX/HGA/test_herc.h"
 //#include "GFX/PBM/test_pbm.h"
 //#include "STR/test_str.h"
 //#include "FILESYS/test_fsys.h"
 //#include "GFX/test_gfx.h"
-#include "GFX/HGA/test_vram_buffer.h"
+//#include "GFX/HGA/test_vram_buffer.h"
 
 // TODO
 // [ ] test vram buffer
 
 int main() {
 
-    return test_herc::run();
+    return test_mem::run();
 
 }
