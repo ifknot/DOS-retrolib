@@ -1,28 +1,29 @@
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from MEM/../TEST/../BIOS/bios_keyboard_services.h(16)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from MEM/../TEST/debug_macros.h(12)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from MEM/test_mem.h(7)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from main.cpp(5)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N851: col(14) macro 'SC_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(25) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Note! N851: col(14) macro 'SC_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(26) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Note! N851: col(14) macro 'SC_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(40) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Note! N851: col(14) macro 'SC_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(41) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Note! N851: col(14) macro 'SC_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(54) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Note! N851: col(14) macro 'SC_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(66) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Note! N851: col(14) macro 'SC_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(67) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Note! N851: col(17) macro 'SC_NP_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(85) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Note! N851: col(17) macro 'SC_NP_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(86) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Note! N851: col(17) macro 'SC_NP_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(90) (col 9)
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 'SC_NP_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(94) (col 9)
-MEM/../TEST/debug_macros.h(100): Warning! W726: col(9) no reference to formal parameter 'msg'
-MEM/../TEST/debug_macros.h(97): Note! N392: col(29) definition: 'char * msg' in 'void test::__anykey( char * )'
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from DOS/../TEST/../BIOS/bios_keyboard_services.h(16)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from DOS/../TEST/debug_macros.h(12)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from DOS/test_dos.h(7)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from main.cpp(10)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N851: col(14) macro 'SC_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(25) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Note! N851: col(14) macro 'SC_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(26) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Note! N851: col(14) macro 'SC_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(40) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Note! N851: col(14) macro 'SC_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(41) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Note! N851: col(14) macro 'SC_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(54) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Note! N851: col(14) macro 'SC_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(66) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Note! N851: col(14) macro 'SC_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(67) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Note! N851: col(17) macro 'SC_NP_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(85) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Note! N851: col(17) macro 'SC_NP_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(86) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Note! N851: col(17) macro 'SC_NP_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(90) (col 9)
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
+DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 'SC_NP_' defined in: DOS/../TEST/../BIOS/bios_keyboard_scan_codes.h(94) (col 9)
+DOS/../TEST/debug_macros.h(100): Warning! W726: col(9) no reference to formal parameter 'msg'
+DOS/../TEST/debug_macros.h(97): Note! N392: col(29) definition: 'char * msg' in 'void test::__anykey( char * )'
+main.cpp(26): Warning! W013: col(5) unreachable code

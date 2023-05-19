@@ -12,4 +12,10 @@
 
 #include <stdint.h>
 
+namespace mem {
+
+	typedef uint16_t size_t;
+
+}
+
 #endif

@@ -16,8 +16,36 @@
 #ifndef MEM_ARENA_H
 #define MEM_ARENA_H
 
+#include "mem_constants.h"
+#include "mem_types.h"
+
 namespace mem {
 
+	struct arena_t {
+		
+		char* memory;
+		char* alloc_position;
+		size_t capacity;
+		size_t size;
+
+		arena_t() :
+			memory(NULL),
+			alloc_position(NULL),
+			capacity(0),
+			size(0)
+		{}
+
+		arena_t(char* memory, size_t capacity) :
+			memory(memory),
+			alloc_position(memory),
+			capacity(capacity),
+			size(capacity)
+		{}
+
+	};
+
 }
+
+
 
 #endif

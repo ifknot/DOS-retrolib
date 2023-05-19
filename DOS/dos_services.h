@@ -107,14 +107,14 @@ namespace dos {
          * \param vec_num
          * \param address
          */
-        void set_interrupt_vector(uint8_t vec_num, uint32_t address) {
-            address_t p(address);
+        void set_interrupt_vector(uint8_t vec_num, void* address) {
+            address_t addr(address);
             union REGS r;
             struct SREGS s;
             r.h.ah = SET_INTERRUPT_VECTOR;
             r.h.al = vec_num;
-            s.ds = p.memory.segment;
-            r.x.dx = p.memory.offset;
+            s.ds = addr.memloc.segment;
+            r.x.dx = addr.memloc.offset;
             int86x(DOS_SERVICE, &r, &r, &s);
             if (r.x.cflag != 0) LOG("fail");
         }
@@ -160,14 +160,14 @@ namespace dos {
          * \param vec_num
          * \return uint32_t segment:offset pointer to interrupt handler
          */
-        uint32_t get_interrupt_vector(uint8_t vec_num) {
+        void* get_interrupt_vector(uint8_t vec_num) {
                 union REGS r;
                 struct SREGS s;
                 r.h.ah = GET_INTERRUPT_VECTOR;
                 r.h.al = vec_num;
                 int86x(DOS_SERVICE, &r, &r, &s);
                 if (r.x.cflag != 0) LOG("fail");
-                return address_t(s.es, r.x.bx).address;
+                return address_t(s.es, r.x.bx).ptr;
         }
 
         // 36  Get disk free space

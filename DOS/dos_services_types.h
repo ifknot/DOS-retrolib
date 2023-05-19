@@ -26,22 +26,37 @@ namespace dos {
 
 	union address_t {
 
-		uint32_t address;
-		segoff_t memory;
+		void* ptr;
+		segoff_t memloc;
 		uint16_t words[2];
 		uint8_t bytes[4];
 
-		address_t() : address(0) {}
+		address_t() : ptr(NULL) {}
 
-		address_t(uint32_t address) : address(address) {}
+		address_t(void* ptr) : ptr(ptr) {}
 
 		address_t(uint16_t segment, uint16_t offset) {
-			memory.segment = segment;
-			memory.offset = offset;
+			memloc.segment = segment;
+			memloc.offset = offset;
 		}
 
 	};
 
+}
+
+std::ostream& operator<< (std::ostream& os, const dos::segoff_t& memloc) {
+	os << std::hex << std::setfill('0')
+		<< std::setw(4) << memloc.segment << ':' << std::setw(4) << memloc.offset
+		<< std::dec;
+	return os;
+}
+
+
+std::ostream& operator<< (std::ostream& os, const dos::address_t& addr) {
+	os << std::hex << std::setfill('0')
+		<< std::setw(8) << (uint32_t)addr.ptr
+		<< std::dec;
+	return os;
 }
 
 #endif
