@@ -3,11 +3,11 @@
 //#include "ABM/test_abm.h"
 //#include "RND/test_rnd.h"
 
-//#include "MEM/test_mem.h"
+#include "MEM/test_mem.h"
 
 //#include "BIOS/test_bios.h"
 
-#include "DOS/test_dos.h"
+//#include "DOS/test_dos.h"
 
 //#include "GFX/HGA/test_herc.h"
 //#include "GFX/PBM/test_pbm.h"
@@ -21,8 +21,6 @@
 
 int main() {
 
-    return test_dos::run();
-
-    return 0;
+    return test_mem::run();
 
 }

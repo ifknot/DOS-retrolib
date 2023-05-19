@@ -10,6 +10,8 @@
 #ifndef MEM_H
 #define MEM_H
 
-
+#include "mem_arena.h"
+#include "mem_contstants.h"
+#include "mem_types.h"
 
 #endif

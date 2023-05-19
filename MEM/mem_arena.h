@@ -1,5 +1,5 @@
 /**
- *  @brief Bulk memory block management using C malloc, calloc and free memory allocation and deallocation.
+ *  @brief Bulk memory block management using memory allocation and deallocation.
  *  Memory aquired via C, divvied out and then freed all at once when no longer needed.
  *  @note *By design* unable to free individual allocated memory blocks *only* the whole backing memory block arena 
  *  @details   Memory Arena the area where dynamic runtime memory is stored. 
@@ -16,34 +16,81 @@
 #ifndef MEM_ARENA_H
 #define MEM_ARENA_H
 
-#include "mem_constants.h"
+#include "mem_contstants.h"
 #include "mem_types.h"
+
+#include "../DOS/dos.h"
 
 namespace mem {
 
 	struct arena_t {
-		
-		char* memory;
-		char* alloc_position;
-		size_t capacity;
-		size_t size;
+
+		char* ptr;
+		size_t alloc_pos;
+		uint32_t capacity;
+		uint32_t size;
+		uint32_t type;
 
 		arena_t() :
-			memory(NULL),
-			alloc_position(NULL),
+			ptr(NULL),
+			alloc_pos(0),
 			capacity(0),
 			size(0)
+			type(0)
 		{}
 
-		arena_t(char* memory, size_t capacity) :
-			memory(memory),
-			alloc_position(memory),
+		arena_t(char* ptr, uint32_t capacity, uint32_t tag) :
+			ptr(ptr),
+			alloc_pos(0),
 			capacity(capacity),
-			size(capacity)
+			size(capacity),
+			type(tag)
 		{}
 
 	};
 
+
+	arena_t make_arena(uint32_t bytes = MEM_MAX_ARENA_BYTES) {
+		
+		return mem::arena_t();
+	}
+
+	void free_arena(arena_t& arena) {
+		assert(arena.ptr);
+		
+	}
+
+	/**
+	* Bulk memory block management using DOS memory allocation and deallocation.
+	*/
+	arena_t make_arena_using_DOS(uint32_t bytes = MEM_MAX_ARENA_BYTES) {
+		assert(bytes <= MEM_MAX_ARENA_BYTES);
+		size_t paragraphs = bytes / PARAGRAPH_SIZE;
+		if (bytes & 0xF != 0) {	// if mod 16 then need another paragraph for the remainder
+			paragraphs++;
+		}
+		dos::address_t addr(dos::allocate_memory_blocks(paragraphs), 0);
+		return mem::arena_t((char*)addr.ptr, bytes, DOS_TAG);
+	}
+
+	void free_arena_using_DOS(arena_t& arena) {
+		assert(arena.ptr);
+		assert(arena.type == )
+		dos::address_t addr(arena.ptr);
+		bool success = dos::free_allocated_memory_blocks(addr.memloc.segment);
+		assert(success);
+	}
+
+}
+
+std::ostream& operator<< (std::ostream& os, const mem::arena_t& arena) {
+	dos::address_t addr(arena.ptr);
+	os << "start ptr\t" << addr << '\n'
+		<< "alloc_pos\t" << arena.alloc_pos << '\n'
+		<< "capacity\t" << arena.capacity << '\n'
+		<< "size    \t" << arena.size << '\n'
+		<< "type    \t" << arena.type;
+	return os;
 }
 
 
