@@ -62,12 +62,28 @@ namespace gfx {
           *                     followed by an alpha sample.
           */
         struct ihdr_t {
+
                 static const uint16_t size = 6;
                 static const uint32_t type = IHDR_TAG;
                 uint16_t width;
                 uint16_t height;
                 uint8_t bit_depth;
                 uint8_t colour_type;
+/*
+                ihdr_t() :
+                    width(0),
+                    height(0),
+                    bit_depth(1),       // default to monochrome
+                    colour_type(0)      // black and white
+                {}
+
+                ihdr_t(uint16_t width, uint16_t height, uint8_t bit_depth, uint8_t colour_type) :
+                    width(width),
+                    height(height),
+                    bit_depth(bit_depth),      
+                    colour_type(colour_type)    
+                {}
+*/
         };
 
          /**

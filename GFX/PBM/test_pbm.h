@@ -51,28 +51,34 @@ namespace test_pbm {
 			if (adapter == bios::HGC || adapter == bios::UNKNOWN) {
 				if (YESNO("graphics mode? ")) {
 					hga::graphics_full_mode();
+					//hga::swap_buffers();
 					hga::cls();
-					hga::vram_tile_8x8(10, 10, bmp.idat.data);
-					hga::vram_tile_block(11, 11, &bmp);
+					hga::vram_tile_8x8(10, 11, bmp.idat.data);
+					hga::vram_tile_block(10, 20, &bmp);
+					
+					ANYKEY("");					
+					hga::swap_buffers();
+					hga::cls();
+					hga::vram_tile_8x8(10, 12, bmp.idat.data);
+					hga::vram_tile_block(21, 12, &bmp);
 
-					if (YESNO("swap buffers? ")) {
+					//for (int i = 0; i < 20; ++i) {
+						ANYKEY("");
 						hga::swap_buffers();
-						hga::cls();
-						hga::vram_tile_8x8(10, 10, bmp.idat.data);
-						hga::vram_tile_block(11, 11, &bmp);
-					}
-
-					if (YESNO("text mode? ")) {
-						hga::text_half_mode();
-					}
+					//}
+					
+					ANYKEY("");
+					hga::text_half_mode();
+					
 				}
 			}
 			gfx::free_simple_bitmap(p);
 		}
+		/*
 		{
 			INFO("test Portable Bit Map\n");
 			const int n = 20;
-			const char data_path[] = "CHESS/FILES.csv";
+			const char data_path[] = "TEST/CHESS/FILES.csv";
 			char fpaths[20][MAX_LINE_SIZE];
 			if (fsys::read_csv(data_path, fpaths, n) == STDIO_FAIL) {
 				LOG(data_path);
@@ -85,7 +91,7 @@ namespace test_pbm {
 			}
 
 			gfx::simple_bitmap_t* testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm" "CHESS/SPRITES0.pbm"
-			testbmp = pbm::create_simple_bitmap("CHESS/16x16set.pbm");
+			testbmp = pbm::create_simple_bitmap("TEST/CHESS/16x16set.pbm");
 
 			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
 			LOG(bios::video_adapter_names[adapter]);
@@ -102,7 +108,7 @@ namespace test_pbm {
 					if (YESNO("swap buffers? ")) {
 						hga::cls(0x800);						
 						hga::vram_tile_block(20, 20, testbmp, 0x800);
-						hga::vsync_swap_buffers();
+						hga::swap_buffers();
 					}
 
 					if (YESNO("text mode? ")) {
@@ -117,7 +123,7 @@ namespace test_pbm {
 			}
 			gfx::free_simple_bitmap(testbmp);
 			delete testbmp;
-		}
+		}*/
 		return 0;
 	}
 

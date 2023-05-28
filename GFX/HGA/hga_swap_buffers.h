@@ -21,18 +21,19 @@ namespace hga {
         using namespace GLOBAL;
         __asm {
             .8086
-            xor     active_buffer, HGA_PAGE_2_OFFSET    ; flip to other page  using xor 0 -> 800h and 800h -> 0
-            xor     back_buffer, HGA_PAGE_2_OFFSET      ; effectively exchaning active and back buffer VRAM addresses
-            mov     dx, HGA_CONTROL_REGISTER
             mov     ax, active_buffer
-            or      ah, ah
-            js      L0                          ; because Bh is 80b ie signed hence 800h is signed
+            xchg    ax, back_buffer
+            mov     active_buffer, ax
+            mov     dx, HGA_CONTROL_REGISTER
+            cmp     ax, HGA_PAGE_2_OFFSET
+            je      J0                          
             mov     al, 00001010b               ; screen on buffer 0 default display page buffer B000:000
             out     dx, al
             jmp     END
-    L0:     mov     al, 10001010b               ; screen on buffer 1 second display page buffer B000:8000
+    J0:     mov     al, 10001010b               ; screen on buffer 1 second display page buffer B000:8000
             out     dx, al
-    END:
+    
+    END:    
 
         }
     }
@@ -43,37 +44,41 @@ namespace hga {
             using namespace GLOBAL;
             __asm {
                 .8086
-                xor active_buffer, HGA_PAGE_2_OFFSET;xor other page  using xor 0 -> 800h and 800h -> 0
+                mov     dx, CRTC_STATUS_PORT                ; read port 3BAh
                 mov     ax, active_buffer
-                or ah, ah
-                jns     L0; because Bh is 80b ie signed hence 800h is signed
+                xchg    ax, back_buffer
+                mov     active_buffer, ax
+                cmp     ax, HGA_PAGE_2_OFFSET
+                je      J0                                  
 
-                mov     dx, CRTC_STATUS_PORT; read port 3BAh
-                V0a : in      al, dx; read status
-                test    al, 10000000b; is bit 7 clear ? (in a vertical retrace interval)
-                jz      V0a; yes, keep waiting
-                V0b : in      al, dx; read status again
-                test    al, 10000000b; is bit 7 clear ? (just started a vertical retrace interval)
-                jz      V0b; no, keep waiting
+               
+    V0a:        in      al, dx                              ; read status
+                test    al, 10000000b                       ; is bit 7 clear ? (in a vertical retrace interval)
+                jz      V0a                                 ; yes, keep waiting
+    V0b:        in      al, dx                              ; read status again
+                test    al, 10000000b                       ; is bit 7 clear ? (just started a vertical retrace interval)
+                jz      V0b                                 ; no, keep waiting
 
                 mov     dx, HGA_CONTROL_REGISTER
-                mov     al, 00001010b; screen on buffer 0 default display page buffer B000 : 000
-                out     dx, al; swap
+                mov     al, 00001010b                       ; screen on buffer 0 default display page buffer B000 : 000
+                out     dx, al                              ; swap
 
                 jmp     END
 
-                L0 : mov     dx, CRTC_STATUS_PORT; read port 3BAh
-                V1a : in      al, dx; read status
-                test    al, 10000000b; is bit 7 clear ? (in a vertical retrace interval)
-                jz      V1a; yes, keep waiting
-                V1b : in      al, dx; read status again
-                test    al, 10000000b; is bit 7 clear ? (just started a vertical retrace interval)
-                jz      V1b; no, keep waiting
+    J0:        
+    V1a:        in      al, dx                              ; read status
+                test    al, 10000000b                       ; is bit 7 clear ? (in a vertical retrace interval)
+                jz      V1a                                 ; yes, keep waiting
+    V1b:        in      al, dx                              ; read status again
+                test    al, 10000000b                       ; is bit 7 clear ? (just started a vertical retrace interval)
+                jz      V1b                                 ; no, keep waiting
 
                 mov     dx, HGA_CONTROL_REGISTER
-                mov     al, 10001010b; screen on buffer 1 second display page buffer B000 : 8000
-                out     dx, al; swap
-                END :
+                mov     al, 10001010b                       ; screen on buffer 1 second display page buffer B000 : 8000
+                out     dx, al                              ; swap
+    
+    END:        
+
             }
         }
 
