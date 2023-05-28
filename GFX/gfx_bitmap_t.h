@@ -33,7 +33,7 @@
 #include "gfx_constants.h"
 #include "gfx_types.h"
 
-#define IHDR_TAG 0x52444849    // IHDR ascii hex NB little endian
+#define IHDR_TAG 0x52444849     // "IHDR" ascii hex NB little endian
 #define IDAT_TAG 0x54414449     // "IDAT"
 #define PLTE_TAG 0x45544c50     // "PLTE"
 

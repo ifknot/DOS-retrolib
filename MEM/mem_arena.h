@@ -21,6 +21,10 @@
 
 #include "../DOS/dos.h"
 
+#define MDOS_TAG 0x534F444D		// "MDOS" ascii hex NB little endian
+#define CMEM_TAG 0x4D454D43		// "CMEM" ie using C malloc and free
+#define VOID_TAG 0x44494F56		// "VOID"	
+
 namespace mem {
 
 	struct arena_t {
@@ -35,8 +39,8 @@ namespace mem {
 			ptr(NULL),
 			alloc_pos(0),
 			capacity(0),
-			size(0)
-			type(0)
+			size(0),
+			type(VOID_TAG)
 		{}
 
 		arena_t(char* ptr, uint32_t capacity, uint32_t tag) :
@@ -48,6 +52,8 @@ namespace mem {
 		{}
 
 	};
+
+
 
 
 	arena_t make_arena(uint32_t bytes = MEM_MAX_ARENA_BYTES) {
@@ -64,18 +70,18 @@ namespace mem {
 	* Bulk memory block management using DOS memory allocation and deallocation.
 	*/
 	arena_t make_arena_using_DOS(uint32_t bytes = MEM_MAX_ARENA_BYTES) {
-		assert(bytes <= MEM_MAX_ARENA_BYTES);
+		assert(bytes <= MEM_MAX_ARENA_BYTES && "DOS memory managed arena limited to 64K bytes!");
 		size_t paragraphs = bytes / PARAGRAPH_SIZE;
 		if (bytes & 0xF != 0) {	// if mod 16 then need another paragraph for the remainder
 			paragraphs++;
 		}
 		dos::address_t addr(dos::allocate_memory_blocks(paragraphs), 0);
-		return mem::arena_t((char*)addr.ptr, bytes, DOS_TAG);
+		return mem::arena_t((char*)addr.ptr, bytes, MDOS_TAG);
 	}
 
 	void free_arena_using_DOS(arena_t& arena) {
-		assert(arena.ptr);
-		assert(arena.type == )
+		assert(arena.ptr && "Void memory arena ptr!");
+		assert(arena.type == MDOS_TAG && "Invalid arena type, not created with DOS!");
 		dos::address_t addr(arena.ptr);
 		bool success = dos::free_allocated_memory_blocks(addr.memloc.segment);
 		assert(success);
@@ -88,8 +94,9 @@ std::ostream& operator<< (std::ostream& os, const mem::arena_t& arena) {
 	os << "start ptr\t" << addr << '\n'
 		<< "alloc_pos\t" << arena.alloc_pos << '\n'
 		<< "capacity\t" << arena.capacity << '\n'
-		<< "size    \t" << arena.size << '\n'
-		<< "type    \t" << arena.type;
+		<< "size    \t" << arena.size << '\n';
+	char* name = (char*)&arena.type;
+	os << "type    \t" << name[0] << name[1] << name[2] << name[3] << '\n';
 	return os;
 }
 

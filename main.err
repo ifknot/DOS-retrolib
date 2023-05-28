@@ -26,6 +26,6 @@ MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Warning! W086: col(17) defin
 MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 'SC_NP_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(94) (col 9)
 MEM/../TEST/debug_macros.h(100): Warning! W726: col(9) no reference to formal parameter 'msg'
 MEM/../TEST/debug_macros.h(97): Note! N392: col(29) definition: 'char * msg' in 'void test::__anykey( char * )'
-MEM/mem_arena.h(53): Warning! W726: col(9) no reference to formal parameter 'bytes'
-MEM/mem_arena.h(50): Note! N392: col(37) definition: 'unsigned long bytes' in 'mem::arena_t mem::make_arena( unsigned long )'
-MEM/mem_arena.h(60): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+MEM/mem_arena.h(62): Warning! W726: col(9) no reference to formal parameter 'bytes'
+MEM/mem_arena.h(59): Note! N392: col(37) definition: 'unsigned long bytes' in 'mem::arena_t mem::make_arena( unsigned long )'
+MEM/mem_arena.h(74): Warning! W389: col(35) integral value may be truncated during assignment or initialization
