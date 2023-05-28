@@ -30,14 +30,14 @@ namespace mem {
 	struct arena_t {
 
 		char* ptr;
-		size_t alloc_pos;
+		size_t pos;
 		uint32_t capacity;
 		uint32_t size;
 		uint32_t type;
 
 		arena_t() :
 			ptr(NULL),
-			alloc_pos(0),
+			pos(0),
 			capacity(0),
 			size(0),
 			type(VOID_TAG)
@@ -45,7 +45,7 @@ namespace mem {
 
 		arena_t(char* ptr, uint32_t capacity, uint32_t tag) :
 			ptr(ptr),
-			alloc_pos(0),
+			pos(0),
 			capacity(capacity),
 			size(capacity),
 			type(tag)
@@ -53,10 +53,19 @@ namespace mem {
 
 	};
 
+	template<typename T>
+	T* arena_alloc(arena_t* arena, uint32_t capacity) {
+		assert(arena->type != VOID_TAG && "Invalid arena type, uninitialized!");
+		assert(capacity > 0 && "Invalid request, capacity = 0!");
+		uint32_t byte_count = sizeof(T) * capacity;
+		assert(byte_count <= arena->size && "Arena not enough space for request!");
+		T* p = (T*)(arena->ptr + arena->pos);
+		arena->pos += byte_count;
+		arena->size -= byte_count;
+		return p;
+	}
 
-
-
-	arena_t make_arena(uint32_t bytes = MEM_MAX_ARENA_BYTES) {
+	arena_t make_arena(uint32_t byte_count = MEM_MAX_ARENA_BYTES) {
 		
 		return mem::arena_t();
 	}
@@ -69,14 +78,14 @@ namespace mem {
 	/**
 	* Bulk memory block management using DOS memory allocation and deallocation.
 	*/
-	arena_t make_arena_using_DOS(uint32_t bytes = MEM_MAX_ARENA_BYTES) {
-		assert(bytes <= MEM_MAX_ARENA_BYTES && "DOS memory managed arena limited to 64K bytes!");
-		size_t paragraphs = bytes / PARAGRAPH_SIZE;
-		if (bytes & 0xF != 0) {	// if mod 16 then need another paragraph for the remainder
+	arena_t make_arena_using_DOS(uint32_t byte_count = MEM_MAX_ARENA_BYTES) {
+		assert(byte_count <= MEM_MAX_ARENA_BYTES && "DOS memory managed arena limited to 64K bytes!");
+		size_t paragraphs = byte_count / PARAGRAPH_SIZE;
+		if (byte_count & 0xF != 0) {	// if mod 16 then need another paragraph for the remainder
 			paragraphs++;
 		}
 		dos::address_t addr(dos::allocate_memory_blocks(paragraphs), 0);
-		return mem::arena_t((char*)addr.ptr, bytes, MDOS_TAG);
+		return mem::arena_t((char*)addr.ptr, byte_count, MDOS_TAG);
 	}
 
 	void free_arena_using_DOS(arena_t& arena) {
@@ -84,7 +93,11 @@ namespace mem {
 		assert(arena.type == MDOS_TAG && "Invalid arena type, not created with DOS!");
 		dos::address_t addr(arena.ptr);
 		bool success = dos::free_allocated_memory_blocks(addr.memloc.segment);
-		assert(success);
+		assert(success && "DOS failed to free memory block!");
+		arena.ptr = NULL;
+		arena.pos = 0;
+		arena.capacity = arena.size = 0;
+		arena.type = VOID_TAG;
 	}
 
 }
@@ -92,7 +105,7 @@ namespace mem {
 std::ostream& operator<< (std::ostream& os, const mem::arena_t& arena) {
 	dos::address_t addr(arena.ptr);
 	os << "start ptr\t" << addr << '\n'
-		<< "alloc_pos\t" << arena.alloc_pos << '\n'
+		<< "alloc pos\t" << arena.pos << '\n'
 		<< "capacity\t" << arena.capacity << '\n'
 		<< "size    \t" << arena.size << '\n';
 	char* name = (char*)&arena.type;

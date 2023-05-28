@@ -26,6 +26,12 @@ MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Warning! W086: col(17) defin
 MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 'SC_NP_' defined in: MEM/../TEST/../BIOS/bios_keyboard_scan_codes.h(94) (col 9)
 MEM/../TEST/debug_macros.h(100): Warning! W726: col(9) no reference to formal parameter 'msg'
 MEM/../TEST/debug_macros.h(97): Note! N392: col(29) definition: 'char * msg' in 'void test::__anykey( char * )'
-MEM/mem_arena.h(62): Warning! W726: col(9) no reference to formal parameter 'bytes'
-MEM/mem_arena.h(59): Note! N392: col(37) definition: 'unsigned long bytes' in 'mem::arena_t mem::make_arena( unsigned long )'
-MEM/mem_arena.h(74): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+MEM/mem_arena.h(71): Warning! W726: col(9) no reference to formal parameter 'byte_count'
+MEM/mem_arena.h(68): Note! N392: col(37) definition: 'unsigned long byte_count' in 'mem::arena_t mem::make_arena( unsigned long )'
+MEM/mem_arena.h(83): Warning! W389: col(35) integral value may be truncated during assignment or initialization
+MEM/mem_arena.h(63): Warning! W389: col(31) integral value may be truncated during assignment or initialization
+MEM/mem_arena.h(63): Note! N634: col(31) template function instantiation for 'arena_alloc' was in: MEM/test_mem.h(26) (col 66)
+MEM/mem_arena.h(57): Note! N392: col(12) definition: 'char * mem::arena_alloc( mem::arena_t *, unsigned long )'
+MEM/mem_arena.h(63): Warning! W389: col(31) integral value may be truncated during assignment or initialization
+MEM/mem_arena.h(63): Note! N634: col(31) template function instantiation for 'arena_alloc' was in: MEM/test_mem.h(32) (col 81)
+MEM/mem_arena.h(57): Note! N392: col(12) definition: 'mem::arena_t * mem::arena_alloc( mem::arena_t *, unsigned long )'
