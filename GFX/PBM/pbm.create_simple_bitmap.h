@@ -39,7 +39,7 @@ namespace pbm {
             while (fsys::fpeek(fptr) == '#') {                      // skip any comments
                 assert(fgets(line, sizeof(line), fptr));
             }
-            gfx::simple_bitmap_t* p = gfx::create_simple_bitmap();
+            gfx::simple_bitmap_t* p = new gfx::simple_bitmap_t();
             // process the header
             assert(fscanf(fptr, "%d %d", (int*)&p->ihdr.width, (int*)&p->ihdr.height)); // get the bitmap dimensions
             p->idat.size = (uint16_t)p->ihdr.width / 8;           // convert width to bytes

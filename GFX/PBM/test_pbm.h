@@ -28,6 +28,7 @@ namespace test_pbm {
 
 	int run() {
 		INFO(__FUNCTION__);
+		// ---------------------------------------------------------------
 		{
 			INFO("test gfx::simple_bitmap\n");
 
@@ -70,7 +71,7 @@ namespace test_pbm {
 			}
 	
 		}
-		/*
+		// ------------------------------------------------------------
 		{
 			INFO("test Portable Bit Map\n");
 			const int n = 20;
@@ -83,9 +84,10 @@ namespace test_pbm {
 			INFO("Loading image files...");
 			gfx::simple_bitmap_t* bmp[n];
 			for (int i = 0; i < n; ++i) {
+				LOG(fpaths[i]);
 				bmp[i] = pbm::create_simple_bitmap(fpaths[i]);
 			}
-
+			/*
 			gfx::simple_bitmap_t* testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm" "CHESS/SPRITES0.pbm"
 			testbmp = pbm::create_simple_bitmap("TEST/CHESS/16x16set.pbm");
 
@@ -113,13 +115,16 @@ namespace test_pbm {
 					}
 				}		
 			}
+			
+			gfx::free_simple_bitmap(testbmp);
+			delete testbmp;
+			*/
 			for (int i = 0; i < n; ++i) {
 				gfx::free_simple_bitmap(bmp[i]);
 				delete bmp[i];
 			}
-			gfx::free_simple_bitmap(testbmp);
-			delete testbmp;
-		}*/
+			LOG("HELLO");
+		}
 		return 0;
 	}
 

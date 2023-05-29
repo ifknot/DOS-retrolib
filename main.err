@@ -1,39 +1,54 @@
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from GFX/PBM/../../TEST/../BIOS/bios_keyboard_services.h(16)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from GFX/PBM/../../TEST/debug_macros.h(12)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from GFX/PBM/test_pbm.h(13)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from main.cpp(13)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N851: col(14) macro 'SC_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(25) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(40): Note! N851: col(14) macro 'SC_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(26) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(41): Note! N851: col(14) macro 'SC_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(40) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(54): Note! N851: col(14) macro 'SC_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(41) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(66): Note! N851: col(14) macro 'SC_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(54) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(67): Note! N851: col(14) macro 'SC_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(66) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(68): Note! N851: col(14) macro 'SC_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(67) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(86): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(85) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(90): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(86) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(90) (col 9)
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Warning! W086: col(17) definition of macro 'SC_NP_' not identical to previous definition
-GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 'SC_NP_' defined in: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h(94) (col 9)
-GFX/PBM/../../TEST/debug_macros.h(100): Warning! W726: col(9) no reference to formal parameter 'msg'
-GFX/PBM/../../TEST/debug_macros.h(97): Note! N392: col(29) definition: 'char * msg' in 'void test::__anykey( char * )'
-GFX/PBM/../HGA/hga_vram_tile_8x8.h(86): Warning! W389: col(124) integral value may be truncated during assignment or initialization
-GFX/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'fptr'
-GFX/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(26) definition: '__iobuf * fptr' in 'int fsys::ignore( __iobuf *, long, int )'
-GFX/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'size'
-GFX/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(37) definition: 'long size' in 'int fsys::ignore( __iobuf *, long, int )'
-GFX/PBM/../../FSYS/fsys_ignore.h(27): Warning! W726: col(9) no reference to formal parameter 'delim'
-GFX/PBM/../../FSYS/fsys_ignore.h(24): Note! N392: col(51) definition: 'int delim' in 'int fsys::ignore( __iobuf *, long, int )'
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'mode_names'
-GFX/PBM/../HGA/hga_constants.h(149): Note! N392: col(16) definition: 'char const hga::mode_names[4][255]'
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'default_font_data'
-GFX/PBM/../HGA/hga_default_font_8x8.h(52): Note! N392: col(19) definition: 'unsigned char const hga::default_font_data[256][8]'
+File: GFX/PBM/../../TEST/../BIOS/bios_keyboard_scan_codes.h
+  included from GFX/PBM/../../TEST/../BIOS/bios_keyboard_services.h(16)
+  included from GFX/PBM/../../TEST/debug_macros.h(12)
+  included from GFX/PBM/test_pbm.h(13)
+  included from main.cpp(13)
+(26,14): Warning! W086: definition of macro 'SC_' not identical to previous definition
+  macro 'SC_' defined at: (25,9)
+(40,14): Warning! W086: definition of macro 'SC_' not identical to previous definition
+  macro 'SC_' defined at: (26,9)
+(41,14): Warning! W086: definition of macro 'SC_' not identical to previous definition
+  macro 'SC_' defined at: (40,9)
+(54,14): Warning! W086: definition of macro 'SC_' not identical to previous definition
+  macro 'SC_' defined at: (41,9)
+(66,14): Warning! W086: definition of macro 'SC_' not identical to previous definition
+  macro 'SC_' defined at: (54,9)
+(67,14): Warning! W086: definition of macro 'SC_' not identical to previous definition
+  macro 'SC_' defined at: (66,9)
+(68,14): Warning! W086: definition of macro 'SC_' not identical to previous definition
+  macro 'SC_' defined at: (67,9)
+(86,17): Warning! W086: definition of macro 'SC_NP_' not identical to previous definition
+  macro 'SC_NP_' defined at: (85,9)
+(90,17): Warning! W086: definition of macro 'SC_NP_' not identical to previous definition
+  macro 'SC_NP_' defined at: (86,9)
+(94,17): Warning! W086: definition of macro 'SC_NP_' not identical to previous definition
+  macro 'SC_NP_' defined at: (90,9)
+(99,17): Warning! W086: definition of macro 'SC_NP_' not identical to previous definition
+  macro 'SC_NP_' defined at: (94,9)
+File: GFX/PBM/../../TEST/debug_macros.h
+  included from GFX/PBM/test_pbm.h(13)
+  included from main.cpp(13)
+(100,9): Warning! W726: no reference to formal parameter 'msg'
+  definition: 'char * msg' in 'void test::__anykey( char * )'
+File: GFX/PBM/../HGA/hga_vram_tile_8x8.h
+  included from GFX/PBM/../HGA/hga.h(34)
+  included from GFX/PBM/test_pbm.h(16)
+  included from main.cpp(13)
+(86,124): Warning! W389: integral value may be truncated during assignment or initialization
+File: GFX/PBM/../../FSYS/fsys_ignore.h
+  included from GFX/PBM/../../FSYS/fsys.h(21)
+  included from GFX/PBM/pbm.create_simple_bitmap.h(15)
+  included from GFX/PBM/pbm.h(20)
+  included from GFX/PBM/test_pbm.h(18)
+  included from main.cpp(13)
+(27,9): Warning! W726: no reference to formal parameter 'fptr'
+  definition: '__iobuf * fptr' in 'int fsys::ignore( __iobuf *, long, int )'
+(27,9): Warning! W726: no reference to formal parameter 'size'
+  definition: 'long size' in 'int fsys::ignore( __iobuf *, long, int )'
+(27,9): Warning! W726: no reference to formal parameter 'delim'
+  definition: 'int delim' in 'int fsys::ignore( __iobuf *, long, int )'
+End of file
+Warning! W014: no reference to symbol 'mode_names'
+  definition: 'char const hga::mode_names[4][255]'
+Warning! W014: no reference to symbol 'default_font_data'
+  definition: 'unsigned char const hga::default_font_data[256][8]'
