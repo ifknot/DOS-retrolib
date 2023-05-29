@@ -14,7 +14,8 @@ namespace test_dos {
 		{
 			INFO("0. test DOS services types");
 			char str[] = "hello";
-			dos::address_t addr(str);
+			dos::address_t addr;
+			addr.ptr = (void*)str;
 			std::cout << str << '\n'
 				<< addr.memloc << '\n' 
 				<< addr << '\n'

@@ -31,15 +31,6 @@ namespace dos {
 		uint16_t words[2];
 		uint8_t bytes[4];
 
-		address_t() : ptr(NULL) {}
-
-		address_t(void* ptr) : ptr(ptr) {}
-
-		address_t(uint16_t segment, uint16_t offset) {
-			memloc.segment = segment;
-			memloc.offset = offset;
-		}
-
 	};
 
 }

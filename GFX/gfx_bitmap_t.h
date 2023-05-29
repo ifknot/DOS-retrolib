@@ -33,6 +33,8 @@
 #include "gfx_constants.h"
 #include "gfx_types.h"
 
+#include "../DOS/dos_services_types.h"
+
 #define IHDR_TAG 0x52444849     // "IHDR" ascii hex NB little endian
 #define IDAT_TAG 0x54414449     // "IDAT"
 #define PLTE_TAG 0x45544c50     // "PLTE"
@@ -105,24 +107,12 @@ namespace gfx {
          */
         struct simple_bitmap_t {
 
-            struct ihdr_t ihdr;
-            struct plte_t plte;
-            struct idat_t idat;
+            ihdr_t* ihdr;
+            plte_t* plte;
+            idat_t* idat;
 
         };
        
-        /**
-         *  @brief Initialise a gfx::simple_bitmap_t
-         *  @param bmp            - 
-         *  @param width          - 
-         *  @param height         - 
-         *  @param bit_depth      - 
-         *  @param colour_type    - 
-         *  @param palette_data   - 
-         *  @param palette_length - 
-         *  @param image_data     - 
-         *  @param image_length   - 
-         */
         void init_simple_bitmap(
             simple_bitmap_t* bmp,
             // chunk default values
@@ -136,14 +126,17 @@ namespace gfx {
             uint16_t image_size = 0
         ) {
             assert(bmp);
-            bmp->ihdr.width = width;
-            bmp->ihdr.height = height;
-            bmp->ihdr.bit_depth = bit_depth;
-            bmp->ihdr.colour_type = colour_type;
-            bmp->plte.data = palette_data;
-            bmp->plte.size = palette_size;
-            bmp->idat.data = image_data;
-            bmp->idat.size = image_size;
+            bmp->ihdr = new ihdr_t;
+            bmp->plte = new plte_t;
+            bmp->idat = new idat_t;
+            bmp->ihdr->width = width;
+            bmp->ihdr->height = height;
+            bmp->ihdr->bit_depth = bit_depth;
+            bmp->ihdr->colour_type = colour_type;
+            bmp->plte->data = palette_data;
+            bmp->plte->size = palette_size;
+            bmp->idat->data = image_data;
+            bmp->idat->size = image_size;
         }
 
         gfx::simple_bitmap_t* new_simple_bitmap (
@@ -179,50 +172,57 @@ namespace gfx {
          */
         void free_simple_bitmap(gfx::simple_bitmap_t* bmp) {
             if (bmp) {
-                if (bmp->idat.data) free(bmp->idat.data);  // free the image data
-                if (bmp->plte.data) free(bmp->plte.data);  // free the palette data                           
+                if (bmp->idat->data) free(bmp->idat->data);  // free the image data
+                free(bmp->idat);
+                if (bmp->plte->data) free(bmp->plte->data);  // free the palette data    
+                free(bmp->plte);
+                free(bmp->ihdr);   
+                init_simple_bitmap(bmp);
             }
         }
 
 }
 
-std::ostream& operator<<(std::ostream& os, const gfx::ihdr_t& ihdr) {
-    char* name = (char*)&ihdr.type;
-    os << ihdr.size << ' ' << name[0] << name[1] << name[2] << name[3] << ' '
-        << ihdr.width << ' ' << ihdr.height << ' ' << (int)ihdr.bit_depth << ' ' << (int)ihdr.colour_type;
+std::ostream& operator<<(std::ostream& os, const gfx::ihdr_t* ihdr) {
+    dos::address_t name;
+    name.ptr = (void*)ihdr->type;
+    os << ihdr->size << ' ' << name.bytes[0] << name.bytes[1] << name.bytes[2] << name.bytes[3] << ' '
+        << ihdr->width << ' ' << ihdr->height << ' ' << (int)ihdr->bit_depth << ' ' << (int)ihdr->colour_type;
     return os;
 }
 
-std::ostream& operator<< (std::ostream& os, const gfx::plte_t& plte) {
-    char* name = (char*)&plte.type;
-    os << plte.size << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
-    if (plte.data) {
+std::ostream& operator<< (std::ostream& os, const gfx::plte_t* plte) {
+    dos::address_t name;
+    name.ptr = (void*)plte->type;
+    os << plte->size << ' ' << name.bytes[0] << name.bytes[1] << name.bytes[2] << name.bytes[3] << ' ';
+    if (plte->data) {
         os << '\n' << std::hex << std::setfill('0');
-        for (uint16_t i = 0; i < plte.size; ++i) {
-            os << '{' << std::setw(2) << (int)(plte.data + i)->r << ',' << std::setw(2) << (int)(plte.data + i)->g << ',' << std::setw(2) << (int)(plte.data + i)->b << "} ";
+        for (uint16_t i = 0; i < plte->size; ++i) {
+            os << '{' << std::setw(2) << (int)(plte->data + i)->r << ',' << std::setw(2) << (int)(plte->data + i)->g << ',' << std::setw(2) << (int)(plte->data + i)->b << "} ";
             if (i % 7 == 7) os << '\n';
         }
     }
     return os;
 }
 
-std::ostream& operator<< (std::ostream& os, const gfx::idat_t& idat) {
-    char* name = (char*)&idat.type;
-    os << idat.size << ' ' << name[0] << name[1] << name[2] << name[3] << ' ';
-    if (idat.data) {
+std::ostream& operator<< (std::ostream& os, const gfx::idat_t* idat) {
+    dos::address_t name;
+    name.ptr = (void*)idat->type;
+    os << idat->size << ' ' << name.bytes[0] << name.bytes[1] << name.bytes[2] << name.bytes[3] << ' ';
+    if (idat->data) {
         os << '\n' << std::hex << std::setfill('0');
-        for (uint16_t i = 0; i < idat.size; ++i) {
-            os << std::setw(2) << (int)(*(idat.data + i)) << ' ';
+        for (uint16_t i = 0; i < idat->size; ++i) {
+            os << std::setw(2) << (int)(*(idat->data + i)) << ' ';
             if (i % 15 == 15) os << '\n';
         }
     }
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, const gfx::simple_bitmap_t& bmp) {
-    os << bmp.ihdr << '\n';
-    os << bmp.plte << '\n';
-    os << bmp.idat;
+std::ostream& operator<<(std::ostream& os, const gfx::simple_bitmap_t* bmp) {
+    os << bmp->ihdr << '\n';
+    os << bmp->plte << '\n';
+    os << bmp->idat;
     return os;
 }
 

@@ -108,7 +108,8 @@ namespace dos {
          * \param address
          */
         void set_interrupt_vector(uint8_t vec_num, void* address) {
-            address_t addr(address);
+            address_t addr;
+            addr.ptr = address;
             union REGS r;
             struct SREGS s;
             r.h.ah = SET_INTERRUPT_VECTOR;
@@ -167,7 +168,10 @@ namespace dos {
                 r.h.al = vec_num;
                 int86x(DOS_SERVICE, &r, &r, &s);
                 if (r.x.cflag != 0) LOG("fail");
-                return address_t(s.es, r.x.bx).ptr;
+                address_t addr;
+                addr.memloc.segment = s.es;
+                addr.memloc.offset = r.x.bx;
+                return addr.ptr;
         }
 
         // 36  Get disk free space

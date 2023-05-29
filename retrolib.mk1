@@ -3,8 +3,8 @@ C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.obj : C:\Users\ifkno\DOSBOX\DOS16\&
 RETROLIB\main.cpp .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp main.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -x&
-s -xr -ft
+ *wpp main.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -otexan -of -d2 -bt=dos -fo=.ob&
+j -ml -xs -xr -ft
 
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
 S16\RETROLIB\main.obj .AUTODEPEND

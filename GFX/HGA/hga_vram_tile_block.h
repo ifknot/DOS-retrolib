@@ -26,9 +26,9 @@ namespace hga {
      */
     void vram_tile_block(uint16_t x, uint16_t y, const gfx::simple_bitmap_t* bmp, uint16_t buffer = GLOBAL::active_buffer) {
         uint16_t w, h, step;
-        w = step = bmp->ihdr.width;
-        h = bmp->ihdr.height;
-        const char* bytes = bmp->idat.data;
+        w = step = bmp->ihdr->width;
+        h = bmp->ihdr->height;
+        const char* bytes = bmp->idat->data;
         __asm {
             .8086
             pushf
