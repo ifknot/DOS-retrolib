@@ -63,27 +63,27 @@ namespace gfx {
           */
         struct ihdr_t {
 
-                static const uint16_t size = 6;
-                static const uint32_t type = IHDR_TAG;
-                uint16_t width;
-                uint16_t height;
-                uint8_t bit_depth;
-                uint8_t colour_type;
-/*
-                ihdr_t() :
-                    width(0),
-                    height(0),
-                    bit_depth(1),       // default to monochrome
-                    colour_type(0)      // black and white
-                {}
+            static const uint16_t size = 6;
+            static const uint32_t type = IHDR_TAG;
+            uint16_t width;
+            uint16_t height;
+            uint8_t bit_depth;
+            uint8_t colour_type;
 
-                ihdr_t(uint16_t width, uint16_t height, uint8_t bit_depth, uint8_t colour_type) :
-                    width(width),
-                    height(height),
-                    bit_depth(bit_depth),      
-                    colour_type(colour_type)    
-                {}
-*/
+            ihdr_t() :
+                width(0),
+                height(0),
+                bit_depth(1),       // default to monochrome
+                colour_type(0)      // black and white
+            {}
+
+            ihdr_t(uint16_t width, uint16_t height, uint8_t bit_depth, uint8_t colour_type) :
+                width(width),
+                height(height),
+                bit_depth(bit_depth),      
+                colour_type(colour_type)    
+            {}
+
         };
 
          /**
@@ -94,9 +94,21 @@ namespace gfx {
           *  + data (length bytes of image data as left-to-right pixels per line and top-to-bottom lines)
           */
         struct idat_t {
-                uint16_t size;
-                static const uint32_t type = IDAT_TAG;    
-                char* data;
+                
+            uint16_t size;
+            static const uint32_t type = IDAT_TAG;    
+            char* data;
+
+            idat_t() :
+                size(0),
+                data(NULL)
+            {}
+
+            idat_t(uint16_t size, char* data) :
+                size(size),
+                data(data)
+            {}
+                
         };
 
         /**
@@ -105,9 +117,21 @@ namespace gfx {
          *  @note   There is a hard limit of 64K bytes palette size for retrolib
          */
         struct plte_t {
-                uint16_t size;   
-                static const uint32_t type = PLTE_TAG;
-                gfx::rgb_t* data;
+                
+            uint16_t size;   
+            static const uint32_t type = PLTE_TAG;
+            gfx::rgb_t* data;
+
+            plte_t() :
+                size(0),
+                data(NULL)
+            {}
+
+            plte_t(uint16_t size, gfx::rgb_t* data) :
+                size(size),
+                data(data)
+            {}
+
         };
 
         /**
@@ -125,82 +149,24 @@ namespace gfx {
             struct plte_t plte;
             struct idat_t idat;
 
+            simple_bitmap_t() {}
+
+            simple_bitmap_t(
+                uint16_t width,
+                uint16_t height,
+                uint8_t bit_depth,
+                uint8_t colour_type,
+                uint16_t palette_size,
+                rgb_t* palette_data,
+                uint16_t image_size,
+                char* image_data
+            ) :
+                ihdr(width, height, bit_depth, colour_type),
+                plte(palette_size, palette_data),
+                idat(image_size, image_data)
+            {}
+
         };
-       
-        /**
-         *  @brief Initialise a gfx::simple_bitmap_t
-         *  @param bmp            - 
-         *  @param width          - 
-         *  @param height         - 
-         *  @param bit_depth      - 
-         *  @param colour_type    - 
-         *  @param palette_data   - 
-         *  @param palette_length - 
-         *  @param image_data     - 
-         *  @param image_length   - 
-         */
-        void init_simple_bitmap(
-            simple_bitmap_t* bmp,
-            uint16_t width = 0,
-            uint16_t height = 0,
-            uint8_t bit_depth = 1,
-            uint8_t colour_type = 0,
-
-            rgb_t* palette_data = NULL,
-            uint16_t palette_size = 0,
-
-            char* image_data = NULL,
-            uint16_t image_size = 0
-        ) {
-            assert(bmp);
-            // set chunk default values
-            bmp->ihdr.width = width;
-            bmp->ihdr.height = height;
-            bmp->ihdr.bit_depth = bit_depth;
-            bmp->ihdr.colour_type = colour_type;
-            bmp->plte.data = palette_data;
-            bmp->plte.size = palette_size;
-            bmp->idat.data = image_data;
-            bmp->idat.size = image_size;
-        }
-
-        gfx::simple_bitmap_t* create_simple_bitmap(
-                uint16_t width = 0,
-                uint16_t height = 0,
-                uint8_t bit_depth = 1,
-                uint8_t colour_type = 0,
-            
-                rgb_t* palette_data = NULL,
-                uint16_t palette_size = 0,
-
-                char* image_data = NULL,
-                uint16_t image_size = 0
-            ) { 
-            // create bitmap and sanity check
-            simple_bitmap_t* bmp = new simple_bitmap_t;
-            assert(bmp);
-            init_simple_bitmap(bmp, width, height, bit_depth, colour_type, palette_data, palette_size, image_data, image_size);
-            return bmp;
-        }
-
-        /*void copy_simple_bitmap(gfx::simple_bitmap_t bmp, gfx::simple_bitmap_t other) {
-            copy over the ihdr metrics and plte and idat lengths
-            free plte data and idat data 
-            malloc new mem same as other
-            copy over plte and idat data
-        }*/
-
-        /**
-         *  @brief Free any malloc'd memory used by a simple bitmap.
-         *  @note  The simple bitmap structure itself is *not* deleted.
-         *  @param bmp - pointer to an extant gfx::simple_bitmap_t
-         */
-        void free_simple_bitmap(gfx::simple_bitmap_t* bmp) {
-            if (bmp) {
-                if (bmp->idat.data) free(bmp->idat.data);  // free the image data
-                if (bmp->plte.data) free(bmp->plte.data);  // free the palette data                           
-            }
-        }
 
 }
 

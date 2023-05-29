@@ -30,19 +30,15 @@ namespace test_pbm {
 		INFO(__FUNCTION__);
 		{
 			INFO("test gfx::simple_bitmap\n");
-			gfx::simple_bitmap_t bmp;
-			gfx::simple_bitmap_t* p = new gfx::simple_bitmap_t;
-
-			std::cout << bmp.ihdr << std::endl;
-			std::cout << p->ihdr << std::endl;
 
 			gfx::rgb_t rgb[1] = { {128,127,12} };
 
 			char img[8] = { 0x30, 0x78, 0xcc, 0xcc, 0xfc, 0xcc, 0xcc, 0x00 };	// U+0041 (A)
 
-			gfx::init_simple_bitmap(&bmp, 8, 8, 1, 0, rgb, 1, img, 8);
+			gfx::simple_bitmap_t bmp(8, 8, 1, 0, 1, rgb, 8, img);
+			gfx::simple_bitmap_t* p = new gfx::simple_bitmap_t(8, 8, 1, 0, 1, rgb, 8, img);
+
 			std::cout << bmp << std::endl;
-			p = gfx::create_simple_bitmap(2, 3, 1, 0, rgb, 1);
 			std::cout << *p << std::endl;
 
 			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
@@ -53,7 +49,7 @@ namespace test_pbm {
 					hga::graphics_full_mode();
 					//hga::swap_buffers();
 					hga::cls();
-					hga::vram_tile_8x8(10, 11, bmp.idat.data);
+					hga::vram_tile_8x8(10, 11, p->idat.data);
 					hga::vram_tile_block(10, 20, &bmp);
 					
 					ANYKEY("");					
@@ -62,17 +58,17 @@ namespace test_pbm {
 					hga::vram_tile_8x8(10, 12, bmp.idat.data);
 					hga::vram_tile_block(21, 12, &bmp);
 
-					//for (int i = 0; i < 20; ++i) {
+					for (int i = 0; i < 5; ++i) {
 						ANYKEY("");
 						hga::swap_buffers();
-					//}
+					}
 					
 					ANYKEY("");
 					hga::text_half_mode();
 					
 				}
 			}
-			gfx::free_simple_bitmap(p);
+	
 		}
 		/*
 		{
