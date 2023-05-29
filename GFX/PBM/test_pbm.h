@@ -28,18 +28,21 @@ namespace test_pbm {
 
 	int run() {
 		INFO(__FUNCTION__);
-		// ---------------------------------------------------------------
 		{
 			INFO("test gfx::simple_bitmap\n");
+			gfx::simple_bitmap_t bmp;
+			gfx::simple_bitmap_t* p = new gfx::simple_bitmap_t;
+
+			std::cout << bmp.ihdr << std::endl;
+			std::cout << p->ihdr << std::endl;
 
 			gfx::rgb_t rgb[1] = { {128,127,12} };
 
 			char img[8] = { 0x30, 0x78, 0xcc, 0xcc, 0xfc, 0xcc, 0xcc, 0x00 };	// U+0041 (A)
 
-			gfx::simple_bitmap_t bmp(8, 8, 1, 0, 1, rgb, 8, img);
-			gfx::simple_bitmap_t* p = new gfx::simple_bitmap_t(8, 8, 1, 0, 1, rgb, 8, img);
-
+			gfx::init_simple_bitmap(&bmp, 8, 8, 1, 0, rgb, 1, img, 8);
 			std::cout << bmp << std::endl;
+			p = gfx::make_simple_bitmap(2, 3, 1, 0, rgb, 1);
 			std::cout << *p << std::endl;
 
 			bios::video_adapter_t adapter = bios::detect_video_adapter_type();
@@ -50,7 +53,7 @@ namespace test_pbm {
 					hga::graphics_full_mode();
 					//hga::swap_buffers();
 					hga::cls();
-					hga::vram_tile_8x8(10, 11, p->idat.data);
+					hga::vram_tile_8x8(10, 11, bmp.idat.data);
 					hga::vram_tile_block(10, 20, &bmp);
 					
 					ANYKEY("");					
@@ -69,9 +72,9 @@ namespace test_pbm {
 					
 				}
 			}
-	
+			gfx::free_simple_bitmap(p);
 		}
-		// ------------------------------------------------------------
+		/*
 		{
 			INFO("test Portable Bit Map\n");
 			const int n = 20;
@@ -84,10 +87,9 @@ namespace test_pbm {
 			INFO("Loading image files...");
 			gfx::simple_bitmap_t* bmp[n];
 			for (int i = 0; i < n; ++i) {
-				LOG(fpaths[i]);
 				bmp[i] = pbm::create_simple_bitmap(fpaths[i]);
 			}
-			/*
+
 			gfx::simple_bitmap_t* testbmp; //"CHESS/LEFTNUM.pbm" "WDINGS/CIRCLE24.pbm" "CHESS/TOPALPHA.pbm" "CHESS/E4MOVE.pbm" "CHESS/SPRITES0.pbm"
 			testbmp = pbm::create_simple_bitmap("TEST/CHESS/16x16set.pbm");
 
@@ -115,16 +117,13 @@ namespace test_pbm {
 					}
 				}		
 			}
-			
-			gfx::free_simple_bitmap(testbmp);
-			delete testbmp;
-			*/
 			for (int i = 0; i < n; ++i) {
 				gfx::free_simple_bitmap(bmp[i]);
 				delete bmp[i];
 			}
-			LOG("HELLO");
-		}
+			gfx::free_simple_bitmap(testbmp);
+			delete testbmp;
+		}*/
 		return 0;
 	}
 

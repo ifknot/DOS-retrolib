@@ -125,19 +125,17 @@ namespace gfx {
          */
         void init_simple_bitmap(
             simple_bitmap_t* bmp,
+            // chunk default values
             uint16_t width = 0,
             uint16_t height = 0,
             uint8_t bit_depth = 1,
             uint8_t colour_type = 0,
-
             rgb_t* palette_data = NULL,
             uint16_t palette_size = 0,
-
             char* image_data = NULL,
             uint16_t image_size = 0
         ) {
             assert(bmp);
-            // set chunk default values
             bmp->ihdr.width = width;
             bmp->ihdr.height = height;
             bmp->ihdr.bit_depth = bit_depth;
@@ -148,7 +146,7 @@ namespace gfx {
             bmp->idat.size = image_size;
         }
 
-        gfx::simple_bitmap_t* create_simple_bitmap(
+        gfx::simple_bitmap_t* new_simple_bitmap (
                 uint16_t width = 0,
                 uint16_t height = 0,
                 uint8_t bit_depth = 1,
