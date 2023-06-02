@@ -1,4 +1,4 @@
-# retrolib
+# DOS-retrolib
 ### [Wiki](https://github.com/ifknot/DOS-retrolib/wiki)
 DOS 16 bit Real Mode Graphics and Physics Library written in C++98 &amp; 8086 Assembly
 
