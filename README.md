@@ -9,6 +9,15 @@ Built using [Open Watcom V2 Fork](https://open-watcom.github.io/)
 
 Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
+## Project Progress (*aka the great re-write of 2023*)
+
+| Core Routines | Graphics | Bit Boards |
+| --------------- | --------------- | --------------- |
+| - [ ] BIOS | - [ ] MDA | - [ ] population count |
+| - [ ] DOS | - [ ] HGA |   |
+| - [ ] Memory | - [ ] CGA |   |
+| - [ ] Math | - [ ] VGA|  |
+
 ## Why DOS 16 bit?
 
 Having recently aquired a couple of IBM XT 5160 machines I was looking into the best way to create and cross-compile software for this wonderful old machine and its kind.
