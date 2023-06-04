@@ -14,6 +14,7 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
 | Core Routines | Graphics | Bit Boards |
 | --------------- | --------------- | --------------- |
+| - [] TEST | - [] | - [] |
 | - [ ] BIOS | - [ ] MDA | - [ ] population count |
 | - [ ] DOS | - [ ] HGA |   |
 | - [ ] Memory | - [ ] CGA |   |
