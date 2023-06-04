@@ -67,32 +67,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BIOS\bios_keyboard_scan_codes.h" />
-    <ClInclude Include="GFX\HGA\hga.h" />
-    <ClInclude Include="GFX\HGA\hga_cls.h" />
-    <ClInclude Include="GFX\HGA\hga_constants.h" />
-    <ClInclude Include="GFX\HGA\hga_default_font_8x8.h" />
-    <ClInclude Include="GFX\HGA\hga_environment.h" />
-    <ClInclude Include="GFX\HGA\hga_monospaced_font_t.h" />
-    <ClInclude Include="GFX\HGA\hga_read_light_pen_registers.h" />
-    <ClInclude Include="GFX\HGA\hga_swap_buffers.h" />
-    <ClInclude Include="GFX\HGA\hga_video_mode.h" />
-    <ClInclude Include="GFX\HGA\hga_vram_splash_bitmap.h" />
-    <ClInclude Include="GFX\HGA\hga_vram_write_bitmap_32x32.h" />
-    <ClInclude Include="GFX\HGA\hga_vsync.h" />
-    <ClInclude Include="GFX\HGA\hga_vram_tile_8x8.h" />
-    <ClInclude Include="GFX\HGA\hga_vram_tile_block.h" />
-    <ClInclude Include="GFX\HGA\test_herc.h" />
-    <ClInclude Include="GFX\HGA\test_vram_buffer.h" />
-    <ClInclude Include="GFX\HGA\hga_vram_tile_16x16.h" />
-    <ClInclude Include="GFX\PBM\pbm.h" />
-    <ClInclude Include="GFX\PBM\pbm.create_simple_bitmap.h" />
-    <ClInclude Include="GFX\PBM\pbm_constants.h" />
-    <ClInclude Include="GFX\PBM\pbm_types.h" />
-    <ClInclude Include="GFX\PBM\test_pbm.h" />
-    <ClInclude Include="TEST\debug_macros.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

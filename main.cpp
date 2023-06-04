@@ -10,7 +10,7 @@
 //#include "DOS/test_dos.h"
 
 //#include "GFX/HGA/test_herc.h"
-#include "GFX/PBM/test_pbm.h"
+//#include "GFX/PBM/test_pbm.h"
 //#include "STR/test_str.h"
 //#include "FILESYS/test_fsys.h"
 //#include "GFX/test_gfx.h"
@@ -20,12 +20,7 @@
 // [ ] test vram buffer
 
 int main() {
-
-    //return test_pbm::run();
-
-    test_pbm::run();
-
-    LOG("RETURN");
+    //LOG(__FILE__);
 
     return 0;
 
