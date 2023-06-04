@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "RETROLIB/TEST/debug_macros.h"
+
 //#include "ABM/test_abm.h"
 //#include "RND/test_rnd.h"
 
@@ -20,7 +22,8 @@
 // [ ] test vram buffer
 
 int main() {
-    //LOG(__FILE__);
+    INFO(__FILE__);
+    LOG(__FILE__);
 
     return 0;
 

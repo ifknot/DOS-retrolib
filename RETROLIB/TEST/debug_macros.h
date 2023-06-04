@@ -9,7 +9,7 @@
 #define DEBUG_MACROS_H
 
 #include <cassert>
-#include "../BIOS/bios_keyboard_services.h"
+//#include "../BIOS/bios_keyboard_services.h"
 
 #define EXIT_SUCCESS 0
 
@@ -56,6 +56,7 @@ define DISPLAY std::cout << '.';
 						} while(false)
 #endif
 
+/*
 #ifdef NDEBUG
 #define YESNO(msg)
 #else
@@ -101,5 +102,6 @@ namespace test {
 
 }
 #endif
+*/
 
 #endif
