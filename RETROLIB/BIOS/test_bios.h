@@ -31,13 +31,16 @@ namespace test_bios {
 		}
 		{
 			INFO("test AT clock services\nWAIT...");
-			bios::bcd_time_t t;
-			bios::at::read_bcd_rtc_clock(&t);
-			LOG_AS(t.time, std::hex);
-			char time[9] = "  :  :  ";
+			char time[9] = "  -  -  ";
+			bios::bcd_time_t t;		
+			bios::read_rtc_clock(&t);
+			LOG_AS(t.time, std::hex);		
 			std::cout << time << '\n';
-			bios::at::string_read_rtc_clock(time);
+			bios::convert_bcd_time_to_string(&t, time);
 			std::cout << time << '\n';
+			std::cout << (int)t.hmsd[3] << '\n';
+			bios::convert_string_to_bcd_time("10:12:20", true, &t);
+
 			INFO("PASS!\n");
 		}
 		{

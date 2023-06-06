@@ -29,6 +29,8 @@
 
 namespace bios {
 
+    // ---- XT BIOS clock services ----
+
     /**
     *  @brief  INT 1A,0 - Read System Clock Counter
     *  @details Reads the BIOS Data Area address 40:6C Timer Counter DWord as updated by the INT 08 routine.
@@ -60,16 +62,34 @@ namespace bios {
     */
     void set_system_clock_counter(tick_count_t ticks_since_midnight);
 
-    namespace at {
+    // ---- AT, PS/2 BIOS clock services ----
 
-        /**
-        *  @brief Read Time From Real Time Clock (XT 286,AT,PS/2)
-        */
-        void read_bcd_rtc_clock(bcd_time_t* bcd_time);
+    // bool is_rtc_working()
 
-        void string_read_rtc_clock(char* str);
+    /**
+    *  @brief Read Time From Real Time Clock (XT286,AT,PS/2)
+    */
+    void read_rtc_clock(bcd_time_t* bcd_time);
 
-    }
+
+    //void set_bcd_rtc_clock((bcd_time_t* bcd_time) 
+
+    /**
+    * convert bcd_time_t to string format HH:MM:SS
+    */
+    void convert_bcd_time_to_string(bcd_time_t* bcd_time, char* str, char delim = ':');
+
+    /**
+    * convert string format HH:MM:SS to bcd_time
+    */
+    void convert_string_to_bcd_time(char* str, bool dlst, bcd_time_t* bcd_time);
+
+    // ---- PS/2 only BIOS clock services ----
+
+    // ---- convertible, PS/2 BIOS clock services ----
+
+    // ---- PCjr only BIOS clock services ----
+
 }
 
 #endif

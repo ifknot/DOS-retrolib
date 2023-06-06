@@ -4,6 +4,8 @@
 
 namespace bios {
 
+    // ---- XT BIOS clock services ----
+
     /**
     * INT 1A,0 - Read System Clock Counter
     * AH = 00
@@ -61,47 +63,69 @@ namespace bios {
         }
     }
 
-    namespace at {
+    // ---- AT, PS/2 BIOS clock services ----
 
-        /**
-        * INT 1A,2 - Read Time From Real Time Clock (XT 286,AT,PS/2)
-        * AH = 02
-        * on return:
-        * CF = 0 if successful
-        *    = 1 if error, RTC not operating
-        * CH = hours in BCD
-        * CL = minutes in BCD
-        * DH = seconds in BCD
-        * DL = 1 if daylight savings time option
-        * @note - on AT with BIOS before 6/10/85, DL is not returned
-        */
-        void read_bcd_rtc_clock(bcd_time_t* bcd_time) {
-            bcd_time->time = -1;   // error state
-            __asm {
-                lds     bx, bcd_time
-                mov     ah, READ_REAL_TIME_CLOCK_TIME
-                int     BIOS_CLOCK_SERVICES
-                jc      END;
-                mov[bx], ch         ; hours in BCD
-                mov[bx + 1], cl     ; minutes in BCD
-                mov[bx + 2], dh     ; seconds in BCD
-                mov[bx + 3], dl     ; 1 if daylight savings time option
-        END:
-            }
-            assert(bcd_time->time != -1 && "error, RTC not operating");
+    /**
+    * INT 1A,2 - Read Time From Real Time Clock (XT 286,AT,PS/2)
+    * AH = 02
+    * on return:
+    * CF = 0 if successful
+    *    = 1 if error, RTC not operating
+    * CH = hours in BCD
+    * CL = minutes in BCD
+    * DH = seconds in BCD
+    * DL = 1 if daylight savings time option
+    * @note - on AT with BIOS before 6/10/85, DL is not returned
+    */
+    void read_rtc_clock(bcd_time_t* bcd_time) {
+        bcd_time->time = -1;   // error state
+        __asm {
+            lds     bx, bcd_time
+            mov     ah, READ_REAL_TIME_CLOCK_TIME
+            int     BIOS_CLOCK_SERVICES
+            jc      END         ; carry flag set if RTC not operating
+            mov[bx], ch         ; hours in BCD
+            mov[bx + 1], cl     ; minutes in BCD
+            mov[bx + 2], dh     ; seconds in BCD
+            mov[bx + 3], dl     ; 1 if daylight savings time option
+    END:
         }
+        assert(bcd_time->time != -1 && "error, RTC not operating");
+    }
+    /**
+    * INT 1A,3 - Set Time on Real Time Clock (XT 286,AT,PS/2)
+    * AH = 03
+	* CH = hours in BCD
+	* CL = minutes in BCD
+	* DH = seconds in BCD
+	* DL = 1 if daylight savings time option
+	*    = 0 if standard time
+	* @note clock values must be in BCD
+    */
+    // void set_bcd_rtc_clock((bcd_time_t* bcd_time) 
 
-        void string_read_rtc_clock(char* str) {
-            bcd_time_t t;
-            read_bcd_rtc_clock(&t);
-            str[1] = (t.hmsd[0] & 0xF) + 0x30;
-            str[0] = (t.hmsd[0] >> 4) + 0x30;
-            str[4] = (t.hmsd[1] & 0xF) + 0x30;
-            str[3] = (t.hmsd[1] >> 4) + 0x30;
-            str[7] = (t.hmsd[2] & 0xF) + 0x30;
-            str[6] = (t.hmsd[2] >> 4) + 0x30;
-        }
+    void convert_bcd_time_to_string(bcd_time_t* bcd_time, char* str, char delim) {
+        str[1] = (bcd_time->hmsd[0] & 0xF) + '0';
+        str[0] = (bcd_time->hmsd[0] >> 4) + '0';
+        str[2] = delim;
+        str[4] = (bcd_time->hmsd[1] & 0xF) + '0';
+        str[3] = (bcd_time->hmsd[1] >> 4) + '0';
+        str[5] = delim;
+        str[7] = (bcd_time->hmsd[2] & 0xF) + '0';
+        str[6] = (bcd_time->hmsd[2] >> 4) + '0';
+    }
 
+    void convert_string_to_bcd_time(char* str, bool is_dlst, bcd_time_t* bcd_time) {
+        bcd_time->hmsd[0] = str[0] - '0';
+        bcd_time->hmsd[0] <<= 4;
+        bcd_time->hmsd[0] += str[1] - '0';
+        bcd_time->hmsd[1] = str[3] - '0';
+        bcd_time->hmsd[1] <<= 4;
+        bcd_time->hmsd[1] += str[4] - '0';
+        bcd_time->hmsd[2] = str[6] - '0';
+        bcd_time->hmsd[2] <<= 4;
+        bcd_time->hmsd[2] += str[7] - '0';
+        bcd_time->hmsd[3] = is_dlst;
     }
 
 }
