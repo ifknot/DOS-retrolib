@@ -6,11 +6,19 @@ RETROLIB\main.cpp .AUTODEPEND
  *wpp main.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -otexan -of -d2 -bt=dos -fo=.ob&
 j -ml -xs -xr -ft
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
-S16\RETROLIB\main.obj .AUTODEPEND
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_clock_services.obj : C:\Users\ifkn&
+o\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_clock_services.cpp .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- @%write retrolib.lk1 FIL main.obj
+ *wpp RETROLIB\BIOS\bios_clock_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -o&
+texan -of -d2 -bt=dos -fo=.obj -ml -xs -xr -ft
+
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
+S16\RETROLIB\main.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_clock_servic&
+es.obj .AUTODEPEND
+ @C:
+ cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ @%write retrolib.lk1 FIL main.obj,bios_clock_services.obj
  @%append retrolib.lk1 
  *wlink name retrolib d all sys dos op m op maxe=25 op q op symf @retrolib.l&
 k1
