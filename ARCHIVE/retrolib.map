@@ -1,0 +1,147 @@
+Open Watcom Linker Version 2.0 beta Nov  1 2017 20:56:49 (64-bit)
+Copyright (c) 2002-2017 The Open Watcom Contributors. All Rights Reserved.
+Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
+Created on:       23/06/04 19:41:55
+Executable Image: retrolib.exe
+creating a DOS executable
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          0045:0000            00000890
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+main_TEXT              CODE           AUTO           0000:0000       00000023
+_TEXT                  CODE           AUTO           0000:0024       0000041a
+cppdata_TEXT           CODE           AUTO           0000:0440       00000000
+fsroot_TEXT            CODE           AUTO           0000:0440       0000000b
+FAR_DATA               FAR_DATA       AUTO           0044:000b       00000000
+cppdata_DATA1          FAR_CONST      AUTO           0045:0000       00000000
+fsroot_DATA1           FAR_CONST      AUTO           0045:0000       00000000
+_NULL                  BEGDATA        DGROUP         0045:0000       00000020
+_AFTERNULL             BEGDATA        DGROUP         0047:0000       00000002
+CONST                  DATA           DGROUP         0047:0002       00000000
+CONST2                 DATA           DGROUP         0047:0002       00000000
+_DATA                  DATA           DGROUP         0047:0002       0000003c
+XIB                    DATA           DGROUP         004a:000e       00000000
+XI                     DATA           DGROUP         004a:000e       00000006
+XIE                    DATA           DGROUP         004b:0004       00000000
+YIB                    DATA           DGROUP         004b:0004       00000000
+YI                     DATA           DGROUP         004b:0004       00000000
+YIE                    DATA           DGROUP         004b:0004       00000000
+STRINGS                DATA           DGROUP         004b:0004       00000000
+DATA                   DATA           DGROUP         004b:0004       00000000
+_BSS                   BSS            DGROUP         004b:0004       0000002c
+STACK                  STACK          DGROUP         004e:0000       00000800
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
+0000:0000      main_
+Module: C:\WATCOM\lib286\dos\clibl.lib(cstart)
+0045:0000*     __nullarea
+0045:0022*     __ovlflag
+0045:0023*     __intno
+0045:0024*     __ovlvec
+0000:0024      _cstart_
+0000:00f7*     _Not_Enough_Memory_
+0000:0229      __exit_
+0000:0246      __do_exit_with_msg__
+0000:029f      __GETDS
+Module: C:\WATCOM\lib286\dos\clibl.lib(cmodel.asm)
+0000:02aa      _big_code_
+0000:02aa*     CodeModelMismatch
+Module: C:\WATCOM\lib286\plbxl.lib(cppdata.cpp)
+0045:0064      __wint_thread_data
+0045:0088      __compiled_under_generic
+Module: C:\WATCOM\lib286\plbxl.lib(fsroot.cpp)
+0045:005e      ___wcpp_4_data_init_fs_root_
+Module: C:\WATCOM\lib286\dos\clibl.lib(xmsg.c)
+0000:02aa*     __exit_with_msg_
+0000:02af      __fatal_runtime_error_
+Module: C:\WATCOM\lib286\dos\clibl.lib(cmain086.c)
+0000:02c9      __CMain
+Module: C:\WATCOM\lib286\dos\clibl.lib(initrtns.c)
+0000:0324      __InitRtns
+0000:0324*     __FInitRtns
+0000:037f      __FiniRtns
+0000:037f*     __FFiniRtns
+Module: C:\WATCOM\lib286\dos\clibl.lib(crwdata)
+0045:0028      __curbrk
+0045:0030      __STACKLOW
+0045:0032      __STACKTOP
+0045:0034      __cbyte
+0045:0036      __child
+0045:0038      __no87
+0045:0045      ___FPE_handler
+0045:002a      __psp
+0045:0039      __get_ovl_stack
+0045:003d      __restore_ovl_stack
+0045:0041      __close_ovl_file
+0045:0049      __LpCmdLine
+0045:004d      __LpPgmName
+0045:002c      __osmajor
+0045:002d      __osminor
+0045:002e      __osmode
+0045:002f      __HShift
+Module: C:\WATCOM\lib286\dos\clibl.lib(uselfn.c)
+0045:0052      ___uselfn
+Module: C:\WATCOM\lib286\dos\clibl.lib(dosseg)
+0000:03e4      __DOSseg__
+Module: C:\WATCOM\lib286\dos\clibl.lib(enterdb.c)
+0000:03e5      __EnterWVIDEO_
+0045:0054+     ___WD_Present
+Module: C:\WATCOM\lib286\dos\clibl.lib(___argc.c)
+0045:008a      ____Argv
+0045:008e      ____Argc
+Module: C:\WATCOM\lib286\dos\clibl.lib(exit.c)
+0000:0409+     __null_int23_exit_
+0000:040a      exit_
+0000:0422*     _exit_
+0045:0056+     ___int23_exit
+0045:005a+     ___FPE_handler_exit
+Module: C:\WATCOM\lib286\dos\clibl.lib(sgdef086)
+0045:005e      __Start_XI
+0045:0064      __End_XI
+0045:0064      __Start_YI
+0045:0064      __End_YI
+
+
+                        +--------------------+
+                        |   Libraries Used   |
+                        +--------------------+
+
+C:\WATCOM\lib286\plbxl.lib
+C:\WATCOM\lib286\dos\clibl.lib
+
+
+                        +-----------------------+
+                        |   Linker Statistics   |
+                        +-----------------------+
+
+Stack size:  0800 (2048.)
+Memory size:  0ce0 (3296.)
+Entry point address: 0000:0024
+Link time: 00:00.50
