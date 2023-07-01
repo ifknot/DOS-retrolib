@@ -52,6 +52,8 @@ namespace bios {
     /**
     *  @brief query the midnight flag AL after a call to read system clock counter
     *  @retval bool yes/no 24hrs since reset
+    *  @note 1. there are 0x1800B0 clock ticks per day.
+    *  @note 2. the 32 bit system clock overflows after 10yrs 8 months
     */
     bool is_24_hours_since_reset();
 
@@ -64,25 +66,37 @@ namespace bios {
 
     // ---- AT, PS/2 BIOS clock services ----
 
-    // bool is_rtc_working()
+    /**
+    *  @brief test if the Real Time Clock is working
+    */
+    bool is_rtc_working();
+
+    // NB - on AT with BIOS before 6/10/85, DL is not returned
+    //bool is_rtc_daylight_savings();
 
     /**
-    *  @brief Read Time From Real Time Clock (XT286,AT,PS/2)
+    *  @brief Read BCD Time from Real Time Clock (XT286,AT,PS/2)
+    *  @note values are written as Binary Coded Decimal 
     */
     void read_rtc_clock(bcd_time_t* bcd_time);
 
 
-    //void set_bcd_rtc_clock((bcd_time_t* bcd_time) 
+    /**
+    *  @brief Set BCD Time to Real Time Clock (XT286,AT,PS/2)
+    *  @note   1. Does not work with DOSBOX
+    *  @note   2. Values are expected as Binary Coded Decimal 
+    */
+    void set_rtc_clock(bcd_time_t* bcd_time);
 
     /**
-    * convert bcd_time_t to string format HH:MM:SS
+    *  @brief convert bcd_time_t to string format HH:MM:SS
     */
     void convert_bcd_time_to_string(bcd_time_t* bcd_time, char* str, char delim = ':');
 
     /**
-    * convert string format HH:MM:SS to bcd_time
+    *  @brief convert string format HH:MM:SS to bcd_time
     */
-    void convert_string_to_bcd_time(char* str, bool dlst, bcd_time_t* bcd_time);
+    void convert_string_to_bcd_time(char* str, uint8_t dlst, bcd_time_t* bcd_time);
 
     // ---- PS/2 only BIOS clock services ----
 

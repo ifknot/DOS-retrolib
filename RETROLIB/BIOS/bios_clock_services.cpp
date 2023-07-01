@@ -2,6 +2,8 @@
 
 #include <assert.h>
 
+#include "../RETRO/retro_types.h"
+
 namespace bios {
 
     // ---- XT BIOS clock services ----
@@ -17,16 +19,16 @@ namespace bios {
     * at midnight CX:DX is zero
     */
     tick_count_t read_system_clock_counter() {
-        tick_count_t ticks_since_midnight;
+        tick_count_t ticks;
         __asm {
             .8086
-            lea     bx, ticks_since_midnight
+            lea     bx, ticks
             mov     ah, READ_SYSTEM_CLOCK_COUNTER
-            int     BIOS_CLOCK_SERVICES
-            mov[bx], dx
-            mov[bx + 2], cx
+            int     BIOS_CLOCK_SERVICES            
+            mov     [bx + 2], cx                    ; high order word of tick count
+            mov     [bx], dx                        ; low order word of tick count
         }
-        return ticks_since_midnight;
+        return ticks;
     }
 
     /**
@@ -55,15 +57,28 @@ namespace bios {
         __asm {
             .8086
             lea     bx, ticks_since_midnight
+            mov     cx, [bx + 2]                    ; high order word of tick count
+            mov     dx, [bx]                        ; low order word of tick count
             mov     ah, SET_SYSTEM_CLOCK_COUNTER
-            mov     cx, [bx + 2];
-            mov     dx, [bx];
             int     BIOS_CLOCK_SERVICES
-
         }
     }
 
     // ---- AT, PS/2 BIOS clock services ----
+
+    bool is_rtc_working() {
+        bcd_time_t bcd_time;
+        int is_rtc = 0;     // false error state
+         __asm {
+            lea     bx, bcd_time
+            mov     ah, READ_REAL_TIME_CLOCK_TIME
+            int     BIOS_CLOCK_SERVICES
+            jc      END         ; carry flag set if RTC not operating
+            mov     is_rtc, 1
+    END:
+        }
+         return is_rtc;
+    }
 
     /**
     * INT 1A,2 - Read Time From Real Time Clock (XT 286,AT,PS/2)
@@ -92,6 +107,7 @@ namespace bios {
         }
         assert(bcd_time->time != -1 && "error, RTC not operating");
     }
+
     /**
     * INT 1A,3 - Set Time on Real Time Clock (XT 286,AT,PS/2)
     * AH = 03
@@ -102,7 +118,29 @@ namespace bios {
 	*    = 0 if standard time
 	* @note clock values must be in BCD
     */
-    // void set_bcd_rtc_clock((bcd_time_t* bcd_time) 
+    void set_rtc_clock(bcd_time_t* bcd_time) {
+        //assert(is_rtc_working() && "error, RTC not operating");
+        __asm {
+            lds     bx, bcd_time
+            mov     ch, [bx]            ; hours in BCD
+            cmp     ch, 23h             
+            jg      ERR                 ; more than 23hrs
+            mov     cl, [bx + 1]        ; minutes in BCD
+            cmp     cl, 59h             
+            jg      ERR                 ; more than 59mins
+            mov     dh, [bx + 2]        ; seconds in BCD
+            cmp     dh, 59h
+            jg      ERR                 ; more than 59secs
+            mov     dl, [bx + 3]        ; 1 if daylight savings time option 
+            cmp     dl, 1
+            jg      ERR                 ; invalid daylight savings time option
+            mov     ah, SET_REAL_TIME_CLOCK_TIME
+            int     BIOS_CLOCK_SERVICES
+            jmp     END
+    ERR:
+    END:
+        }
+    }
 
     void convert_bcd_time_to_string(bcd_time_t* bcd_time, char* str, char delim) {
         str[1] = (bcd_time->hmsd[0] & 0xF) + '0';
@@ -115,7 +153,7 @@ namespace bios {
         str[6] = (bcd_time->hmsd[2] >> 4) + '0';
     }
 
-    void convert_string_to_bcd_time(char* str, bool is_dlst, bcd_time_t* bcd_time) {
+    void convert_string_to_bcd_time(char* str, uint8_t dlst, bcd_time_t* bcd_time) {
         bcd_time->hmsd[0] = str[0] - '0';
         bcd_time->hmsd[0] <<= 4;
         bcd_time->hmsd[0] += str[1] - '0';
@@ -125,7 +163,7 @@ namespace bios {
         bcd_time->hmsd[2] = str[6] - '0';
         bcd_time->hmsd[2] <<= 4;
         bcd_time->hmsd[2] += str[7] - '0';
-        bcd_time->hmsd[3] = is_dlst;
+        bcd_time->hmsd[3] = dlst;
     }
 
 }

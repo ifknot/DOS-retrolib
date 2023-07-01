@@ -34,6 +34,6 @@
 // INT 1A, 80  Set up sound multiplexer(PCjr only)
 
 #define TICKS_PER_SECOND			18.206
-#define TICKS_PER_24HR				1800B0h
+#define TICKS_PER_DAY				1800B0h
 
 #endif
