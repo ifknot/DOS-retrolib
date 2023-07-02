@@ -70,6 +70,7 @@ namespace bios {
         bcd_time_t bcd_time;
         int is_rtc = 0;     // false error state
          __asm {
+            .8086
             lea     bx, bcd_time
             mov     ah, READ_REAL_TIME_CLOCK_TIME
             int     BIOS_CLOCK_SERVICES
@@ -92,20 +93,20 @@ namespace bios {
     * DL = 1 if daylight savings time option
     * @note - on AT with BIOS before 6/10/85, DL is not returned
     */
-    void read_rtc_clock(bcd_time_t* bcd_time) {
-        bcd_time->time = -1;   // error state
+    void read_rtc_time(bcd_time_t* bcd_time) {
         __asm {
+            .8086
             lds     bx, bcd_time
             mov     ah, READ_REAL_TIME_CLOCK_TIME
             int     BIOS_CLOCK_SERVICES
-            jc      END         ; carry flag set if RTC not operating
+            jc      ERR         ; carry flag set if RTC not operating
             mov[bx], ch         ; hours in BCD
             mov[bx + 1], cl     ; minutes in BCD
             mov[bx + 2], dh     ; seconds in BCD
             mov[bx + 3], dl     ; 1 if daylight savings time option
+    ERR:
     END:
         }
-        assert(bcd_time->time != -1 && "error, RTC not operating");
     }
 
     /**
@@ -118,9 +119,9 @@ namespace bios {
 	*    = 0 if standard time
 	* @note clock values must be in BCD
     */
-    void set_rtc_clock(bcd_time_t* bcd_time) {
-        //assert(is_rtc_working() && "error, RTC not operating");
+    void set_rtc_time(bcd_time_t* bcd_time) {
         __asm {
+            .8086
             lds     bx, bcd_time
             mov     ch, [bx]            ; hours in BCD
             cmp     ch, 23h             
@@ -142,6 +143,33 @@ namespace bios {
         }
     }
 
+    /**
+    * AH = 04
+    * on return:
+	* CH = century in BCD (decimal 19 or 20)
+	* CL = year in BCD
+	* DH = month in BCD
+	* DL = day in BCD
+	* CF = 0 if successful
+	*    = 1 if error or clock not operating
+    * @note calling this interrupt will update the DOS maintained date and reset the BIOS Data Area date rollover flag at 40:70
+    */
+    void read_rtc_date(bcd_date_t* bcd_date) {
+        __asm {
+            .8086
+            lds     bx, bcd_date
+            mov     ah, READ_REAL_TIME_CLOCK_DATE
+            int     BIOS_CLOCK_SERVICES
+            jc      ERR         ; carry flag set if RTC not operating
+            mov[bx], ch         ; century in BCD
+            mov[bx + 1], cl     ; year in BCD
+            mov[bx + 2], dh     ; month in BCD
+            mov[bx + 3], dl     ; day in BCD
+    ERR:
+    END:
+        }
+    }
+
     void convert_bcd_time_to_string(bcd_time_t* bcd_time, char* str, char delim) {
         str[1] = (bcd_time->hmsd[0] & 0xF) + '0';
         str[0] = (bcd_time->hmsd[0] >> 4) + '0';
@@ -153,7 +181,7 @@ namespace bios {
         str[6] = (bcd_time->hmsd[2] >> 4) + '0';
     }
 
-    void convert_string_to_bcd_time(char* str, uint8_t dlst, bcd_time_t* bcd_time) {
+    void convert_string_to_bcd_time(char* str, bcd_time_t* bcd_time, uint8_t dlst) {
         bcd_time->hmsd[0] = str[0] - '0';
         bcd_time->hmsd[0] <<= 4;
         bcd_time->hmsd[0] += str[1] - '0';
@@ -165,5 +193,32 @@ namespace bios {
         bcd_time->hmsd[2] += str[7] - '0';
         bcd_time->hmsd[3] = dlst;
     }
+
+    void convert_bcd_date_to_string(bcd_date_t* bcd_date, char* str, char delim) {
+        str[1] = (bcd_date->cymd[3] & 0xF) + '0';
+        str[0] = (bcd_date->cymd[3] >> 4) + '0';
+        str[2] = delim;
+        str[4] = (bcd_date->cymd[2] & 0xF) + '0';
+        str[3] = (bcd_date->cymd[2] >> 4) + '0';
+        str[5] = delim;
+        str[7] = (bcd_date->cymd[1] & 0xF) + '0';
+        str[6] = (bcd_date->cymd[1] >> 4) + '0';
+    }
+
+    void convert_string_to_bcd_date(char* str, bcd_date_t* bcd_date, uint8_t century) {
+        bcd_date->cymd[0] = century;
+        bcd_date->cymd[1] = str[0] - '0';
+        bcd_date->cymd[1] <<= 4;
+        bcd_date->cymd[1] += str[1] - '0';
+        bcd_date->cymd[2] = str[3] - '0';
+        bcd_date->cymd[2] <<= 4;
+        bcd_date->cymd[2] += str[4] - '0';
+        bcd_date->cymd[3] = str[6] - '0';
+        bcd_date->cymd[3] <<= 4;
+        bcd_date->cymd[3] += str[7] - '0';
+
+    }
+
+
 
 }

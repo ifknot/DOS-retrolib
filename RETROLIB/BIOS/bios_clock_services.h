@@ -3,8 +3,8 @@
  *  @details
  *  [x] INT 1A,0   Read system clock counter
  *  [x] INT 1A,1   Set system clock counter
- *  [ ] INT 1A,2   Read real time clock time (AT,PS/2)
- *  [ ] INT 1A,3   Set real time clock time (AT,PS/2)
+ *  [x] INT 1A,2   Read real time clock time (AT,PS/2)
+ *  [x] INT 1A,3   Set real time clock time (AT,PS/2)
  *  [ ] INT 1A,4   Read real time clock date (AT,PS/2)
  *  [ ] INT 1A,5   Set real time clock date (AT,PS/2)
  *  [ ] INT 1A,6   Set real time clock alarm (AT,PS/2)
@@ -78,15 +78,18 @@ namespace bios {
     *  @brief Read BCD Time from Real Time Clock (XT286,AT,PS/2)
     *  @note values are written as Binary Coded Decimal 
     */
-    void read_rtc_clock(bcd_time_t* bcd_time);
-
+    void read_rtc_time(bcd_time_t* bcd_time);
 
     /**
     *  @brief Set BCD Time to Real Time Clock (XT286,AT,PS/2)
     *  @note   1. Does not work with DOSBOX
     *  @note   2. Values are expected as Binary Coded Decimal 
     */
-    void set_rtc_clock(bcd_time_t* bcd_time);
+    void set_rtc_time(bcd_time_t* bcd_time);
+
+    void read_rtc_date(bcd_date_t* bcd_date);
+    
+    //void set_rtc_date(bcd_date_t* bcd_date);
 
     /**
     *  @brief convert bcd_time_t to string format HH:MM:SS
@@ -96,13 +99,35 @@ namespace bios {
     /**
     *  @brief convert string format HH:MM:SS to bcd_time
     */
-    void convert_string_to_bcd_time(char* str, uint8_t dlst, bcd_time_t* bcd_time);
+    void convert_string_to_bcd_time(char* str, bcd_time_t* bcd_time, uint8_t dlst = 0);
 
-    // ---- PS/2 only BIOS clock services ----
+    /**
+    *  @brief convert bcd_date_t to string format MM/DD/YY
+    */
+    void convert_bcd_date_to_string(bcd_date_t* bcd_date, char* str, char delim = '/');
+
+    /**
+    *  @brief convert string format MM/DD/YY to bcd_time
+    */
+    void convert_string_to_bcd_date(char* str, bcd_date_t* bcd_date, uint8_t century = 0x21);
+
+    // ---- PS/2 BIOS clock services ----
+
+    //void reset_rtc_alarm();
+
+    //void read_system_day_counter();
+     
+    //void set_system_day_counter();
 
     // ---- convertible, PS/2 BIOS clock services ----
 
-    // ---- PCjr only BIOS clock services ----
+    // void set_rtc_activated_power_on_mode();
+    
+    // void read_rtc_alarm_time_and_status();
+
+    // ---- PCjr *only* BIOS clock services ----
+
+    //void set_up_sound_multiplexer();
 
 }
 
