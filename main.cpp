@@ -6,6 +6,8 @@
 // TODO
 // [ ] mem arena
 // [ ] make gfx primitives using arena
+// [ ] draw(...) primitives
+//      [ ] HGA
 // [ ] test vram buffer
 
 int main() {
