@@ -7,8 +7,8 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef RETRO_CONSTANTS_H
-#define RETRO_CONSTANTS_H
+#ifndef MEM_CONSTANTS_H
+#define MEM_CONSTANTS_H
 
 /**
 * A paragraph is 16 bytes. Intel made the paragraph size of the x86 16 bytes, or four bits of the physical address.

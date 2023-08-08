@@ -7,8 +7,8 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef RETRO_TYPES_H
-#define RETRO_TYPES_H
+#ifndef MEM_TYPES_H
+#define MEM_TYPES_H
 
 #include <stdint.h>
 #include <iostream>
