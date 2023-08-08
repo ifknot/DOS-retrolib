@@ -2,7 +2,7 @@
 
 #include <assert.h>
 
-#include "../RETRO/retro_types.h"
+#include "../MEM/mem_types.h"
 
 namespace bios {
 

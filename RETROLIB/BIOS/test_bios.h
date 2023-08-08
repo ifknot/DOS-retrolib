@@ -12,7 +12,7 @@
 #include "bios_clock_services.h"
 #include "bios_memory_services.h"
 
-#include "../RETRO/retro_types.h"
+#include "../MEM/mem_types.h"
 
 // TODO:
 // [?] AT time bios functions
@@ -67,7 +67,7 @@ namespace test_bios {
 			INFO("PASS!\n");
 		}
 		{
-			INFO("test AT dtae services\nWAIT...");
+			INFO("test AT date services\nWAIT...");
 			char date[9] = "  -  -  ";
 			bios::bcd_date_t d;
 			bios::read_rtc_date(&d);

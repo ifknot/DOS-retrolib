@@ -10,7 +10,7 @@
 #ifndef BIOS_CONFIG_SERVICES_H
 #define BIOS_CONFIG_SERVICES_H
 
-#include "..\RETRO\retro_types.h"
+#include "..\MEM\mem_types.h"
 
 namespace bios {
 
