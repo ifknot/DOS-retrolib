@@ -3,6 +3,11 @@
 #include "RETROLIB/TEST/debug_macros.h"
 #include "RETROLIB/BIOS/test_bios.h"
 
+// TODO
+// [ ] mem arena
+// [ ] make gfx primitives using arena
+// [ ] test vram buffer
+
 int main() {
 
     return test_bios::run();
@@ -21,5 +26,3 @@ int main() {
 //#include "GFX/test_gfx.h"
 //#include "GFX/HGA/test_vram_buffer.h"
 
-// TODO
-// [ ] test vram buffer
