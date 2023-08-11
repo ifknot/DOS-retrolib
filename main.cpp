@@ -3,6 +3,19 @@
 #include "RETROLIB/TEST/debug_macros.h"
 #include "RETROLIB/BIOS/test_bios.h"
 
+// TODO DOS
+//[ ] move DOS into retrolib
+//FIX:
+//give option to include stream operators if desired but inc in dos.h 
+//[ ] dos_services_streams.h (inc types reduce types header burden)
+//[ ] dos_services_streams.cpp 
+//[ ] add to dos.h
+//[X] dos_services.h is long - close up the empty lines
+//[ ] dos_services.cpp
+//[ ] replace int86 use asm
+//[ ] extend test.h
+
+
 // TODO
 // [ ] mem arena
 // [ ] make gfx primitives using arena
