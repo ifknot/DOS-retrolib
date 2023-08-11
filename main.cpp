@@ -10,8 +10,8 @@
 //[ ] dos_services_streams.h (inc types reduce types header burden)
 //[ ] dos_services_streams.cpp 
 //[ ] add to dos.h
-//[X] dos_services.h is long - close up the empty lines
-//[ ] dos_services.cpp
+//[x] dos_services.h is long - close up the empty lines
+//[x] dos_services.cpp
 //[ ] replace int86 use asm
 //[ ] extend test.h
 
