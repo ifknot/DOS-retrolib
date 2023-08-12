@@ -4,10 +4,10 @@ projectIdent
 VpeMain
 1
 WRect
-229
-4882
-3904
-5120
+191
+2816
+4685
+6560
 2
 MProject
 3
@@ -30,8 +30,8 @@ VComponent
 WRect
 0
 0
-5664
-4209
+5662
+2784
 0
 0
 9
@@ -39,5 +39,5 @@ WFileName
 12
 retrolib.tgt
 0
-0
+5
 7
