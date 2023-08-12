@@ -5,24 +5,13 @@
 
 namespace bios {
 
-  uint8_t wait_key_ascii() {
-		uint8_t ascii = 0;
+	uint16_t wait_key() {
+		uint16_t scan;
 		__asm {
 			.8086
 			mov		ah, WAIT_FOR_KEYSTROKE_AND_READ
 			int		BIOS_KEYBOARD_SERVICE
-			mov		ascii, al
-		}
-		return ascii;
-	}
-
-	uint8_t wait_key_scan_code() {
-		uint8_t scan = 0;
-		__asm {
-			.8086
-			mov		ah, WAIT_FOR_KEYSTROKE_AND_READ
-			int		BIOS_KEYBOARD_SERVICE
-			mov		scan, ah
+			mov		scan, ax
 		}
 		return scan;
 	}

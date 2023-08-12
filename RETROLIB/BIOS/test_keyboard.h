@@ -17,15 +17,22 @@
 namespace test_keyboard {
 
 	void run() {
-		std::cout << "\ntest keyboard - 'Q' to quit...\n";
+		std::cout << "\ntest keyboard press each key 3 times - 'Q' to quit...\n";
 		{
-			uint8_t k = 0;
-			while (k != 'Q') {
-				k = bios::wait_key_ascii();
-				std::cout << k << std::endl;
+			uint16_t s = 0;
+			while ((s & 0xFF) != 'Q') {
+				s= bios::wait_key();
+				char k1 = s;
+				uint16_t s1 = s >> 8;
+				std::cout << k1 << ' ' << s1 << std::endl;
+				char k2 = bios::wait_key_ascii();
+				std::cout << k2 << std::endl;
+				ASSERT(k1 == k2, k2, k1);
+				uint16_t s2 = bios::wait_key_scan_code();
+				std::cout << s2 << std::endl;
+				ASSERT(s1 == s2, s2, s1);
 			}
 		}
-		std::cout << "success!\n";
 	}
 
 }

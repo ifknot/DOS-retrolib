@@ -44,7 +44,7 @@ define DISPLAY std::cout << '.';
 #endif
 
 #ifdef NDEBUG
-#define ASSERT(test, msg)
+#define ASSERT(test, observe, expect)
 #else
 #define ASSERT(test, observe, expect) do { \
 							if(test) {DISPLAY}\

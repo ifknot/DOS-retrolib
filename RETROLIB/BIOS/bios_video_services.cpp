@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cassert>
 #include <stdint.h>
-//#include <dos.h>
+#include <dos.h>
 
 #include "bios_video_services_constants.h"
 #include "bios_video_services_types.h"
@@ -92,7 +92,7 @@ namespace vga {
               r.h.al = 0x00;  //enable CPU access to video RAM and I/O ports
               int86(BIOS_VIDEO_SERVICE, &r, &r);
               if (r.x.cflag != 0) {
-                      LOG("fail");//LOG(dos::error::messages[_doserrno]);
+                      //LOG("fail");//LOG(dos::error::messages[_doserrno]);
               }
               return r.h.al;
       }
@@ -210,7 +210,7 @@ namespace ega {
             r.h.bl = GET_VIDEO_CONFIG_INFO;
             int86(BIOS_VIDEO_SERVICE, &r, &r);
             if (r.x.cflag != 0) {
-                    LOG("fail");//LOG(dos::error::messages[_doserrno]);
+                    //LOG("fail");//LOG(dos::error::messages[_doserrno]);
             }
             info.mode = r.h.bh;
             info.memory = r.h.bl;

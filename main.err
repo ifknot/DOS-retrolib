@@ -1,0 +1,2 @@
+RETROLIB/BIOS/test_keyboard.h(25): Warning! W389: col(41) integral value may be truncated during assignment or initialization
+RETROLIB/BIOS/test_keyboard.h(25): Note! N393: col(41) included from main.cpp(4)

@@ -1,10 +1,10 @@
 #include <iostream>
 
 #include "RETROLIB/TEST/debug_macros.h"
-#include "RETROLIB/BIOS/test_bios.h"
+#include "RETROLIB/BIOS/test_keyboard.h"
 
 // TODO DOS
-//[ ] move DOS into retrolib
+//[x] move DOS into retrolib
 //FIX:
 //give option to include stream operators if desired but inc in dos.h 
 //[ ] dos_services_streams.h (inc types reduce types header burden)
@@ -14,6 +14,18 @@
 //[x] dos_services.cpp
 //[ ] replace int86 use asm
 //[ ] extend test.h
+
+// TODO BIOS
+//[ ] seperate test for each service
+//  [ ] keyboard
+//  [ ] clock 
+//  [ ] config
+//  [ ] bios data area 
+//  [ ] memory
+//  [ ] video
+//[ ] combined into test bios header
+// FIX
+//[ ] not depend in dos.h int86
 
 
 // TODO
@@ -25,7 +37,9 @@
 
 int main() {
 
-    return test_bios::run();
+	test_keyboard::run();
+
+	return 0;
 
 }
 

@@ -16,9 +16,15 @@
 
 namespace bios {
 
-	uint8_t wait_key_ascii();
+	uint16_t wait_key();
 
-	uint8_t wait_key_scan_code();
+	inline uint8_t wait_key_ascii() {
+		return static_cast<uint8_t>(wait_key());
+	}
+
+	inline uint8_t wait_key_scan_code() {
+		return static_cast<uint8_t>(wait_key() >> 8);
+	}
 
 }
 
