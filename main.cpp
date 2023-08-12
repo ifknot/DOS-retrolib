@@ -17,7 +17,7 @@
 
 // TODO BIOS
 //[ ] seperate test for each service
-//  [ ] keyboard
+//  [x] keyboard
 //  [ ] clock 
 //  [ ] config
 //  [ ] bios data area 
