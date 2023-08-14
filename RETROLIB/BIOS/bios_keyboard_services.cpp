@@ -5,15 +5,18 @@
 
 namespace bios {
 
+	/**
+	* returns combined ascii key LSByte and unique key scan code MSByte
+	*/
 	uint16_t wait_key() {
-		uint16_t scan;
+		uint16_t key_scan;
 		__asm {
 			.8086
 			mov		ah, WAIT_FOR_KEYSTROKE_AND_READ
-			int		BIOS_KEYBOARD_SERVICE
-			mov		scan, ax
+			int		BIOS_KEYBOARD_SERVICE	
+			mov		key_scan, ax
 		}
-		return scan;
+		return key_scan;
 	}
 
 }
