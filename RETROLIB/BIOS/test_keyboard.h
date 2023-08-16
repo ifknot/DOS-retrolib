@@ -12,13 +12,15 @@
 
 #include <iostream>
 
+#include "../TEST/debug_macros.h"
+
 #include "bios_keyboard_services.h"
 
 namespace test_keyboard {
 
 	void run() {
-		std::cout << "\ntest keyboard press each key 3 times - 'Q' to quit...\n";
 		{
+			INFO("\ntest keyboard press each key 3 times - 'Q' to quit...\n");
 			uint16_t s = 0;
 			while ((s & 0xFF) != 'Q') {
 				s= bios::wait_key();

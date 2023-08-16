@@ -1,4 +1,4 @@
-RETROLIB\BIOS\bios_config_services.cpp(17): Warning! W014: col(9) no reference to symbol 'segment'
-RETROLIB\BIOS\bios_config_services.cpp(10): Note! N392: col(26) definition: 'unsigned short segment' in 'retro::address_t bios::get_ROM_table_address( void )'
-RETROLIB\BIOS\bios_config_services.cpp(17): Warning! W014: col(9) no reference to symbol 'offset'
-RETROLIB\BIOS\bios_config_services.cpp(10): Note! N392: col(35) definition: 'unsigned short offset' in 'retro::address_t bios::get_ROM_table_address( void )'
+RETROLIB\BIOS\bios_config_services.cpp(15): Warning! W014: col(9) no reference to symbol 'segment'
+RETROLIB\BIOS\bios_config_services.cpp(8): Note! N392: col(26) definition: 'unsigned short segment' in 'retro::address_t bios::get_ROM_table_address( void )'
+RETROLIB\BIOS\bios_config_services.cpp(15): Warning! W014: col(9) no reference to symbol 'offset'
+RETROLIB\BIOS\bios_config_services.cpp(8): Note! N392: col(35) definition: 'unsigned short offset' in 'retro::address_t bios::get_ROM_table_address( void )'

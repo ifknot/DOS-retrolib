@@ -12,8 +12,6 @@
 
 #include <stdint.h>
 
-
-
 namespace bios {
 
 	uint16_t wait_key();

@@ -1,14 +1,11 @@
 #include <iostream>
 
-#include "RETROLIB/TEST/debug_macros.h"
-#include "RETROLIB/BIOS/test_keyboard.h"
-
 // TODO DOS
 //[x] move DOS into retrolib
 //FIX:
 //give option to include stream operators if desired but inc in dos.h 
-//[ ] dos_services_streams.h (inc types reduce types header burden)
-//[ ] dos_services_streams.cpp 
+//[ ] dos_types_stream_operators.h (inc types reduce types header burden)
+//[ ] dos_types_stream_operators.cpp 
 //[ ] add to dos.h
 //[x] dos_services.h is long - close up the empty lines
 //[x] dos_services.cpp
@@ -16,9 +13,11 @@
 //[ ] extend test.h
 
 // TODO BIOS
+// [ ] bios_types_stream_operators.h
+// [ ] types_stream_operators.cpp
 //[ ] seperate test for each service
 //  [x] keyboard
-//  [ ] clock 
+//  [x] clock 
 //  [ ] config
 //  [ ] bios data area 
 //  [ ] memory
@@ -35,9 +34,12 @@
 //      [ ] HGA
 // [ ] test vram buffer
 
+#include "RETROLIB/TEST/debug_macros.h"
+#include "RETROLIB/BIOS/test_bios.h"
+
 int main() {
 
-	test_keyboard::run();
+	if (YESNO("000\ttest bios ?")) test_bios::run();
 
 	return 0;
 
