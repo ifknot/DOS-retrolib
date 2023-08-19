@@ -1,4 +1,5 @@
-RETROLIB\BIOS\bios_config_services.cpp(15): Warning! W014: col(9) no reference to symbol 'segment'
-RETROLIB\BIOS\bios_config_services.cpp(8): Note! N392: col(26) definition: 'unsigned short segment' in 'retro::address_t bios::get_ROM_table_address( void )'
-RETROLIB\BIOS\bios_config_services.cpp(15): Warning! W014: col(9) no reference to symbol 'offset'
-RETROLIB\BIOS\bios_config_services.cpp(8): Note! N392: col(35) definition: 'unsigned short offset' in 'retro::address_t bios::get_ROM_table_address( void )'
+RETROLIB\BIOS\bios_config_services.cpp(24): Warning! W389: col(24) integral value may be truncated during assignment or initialization
+RETROLIB\BIOS\bios_config_services.cpp(55): Warning! W014: col(1) no reference to symbol 'config_models'
+RETROLIB\BIOS\bios_config_services_constants.h(80): Note! N392: col(29) definition: 'char bios::ext::config_models[5][5]'
+RETROLIB\BIOS\bios_config_services.cpp(55): Warning! W014: col(1) no reference to symbol 'config_sub_models'
+RETROLIB\BIOS\bios_config_services_constants.h(89): Note! N392: col(29) definition: 'char bios::ext::config_sub_models[5][14]'

@@ -1,2 +1,2 @@
-FIL main.obj,bios_clock_services.obj,bios_config_services.obj,bios_keyboard_services.obj,bios_video_services.obj
+FIL main.obj,bios_clock_services.obj,bios_config_services.obj,bios_keyboard_services.obj,bios_video_services.obj,mem_types_stream_operators.obj
 

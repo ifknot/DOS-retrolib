@@ -216,9 +216,6 @@ namespace bios {
         bcd_date->cymd[3] = str[6] - '0';
         bcd_date->cymd[3] <<= 4;
         bcd_date->cymd[3] += str[7] - '0';
-
     }
-
-
 
 }
