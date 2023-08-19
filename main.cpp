@@ -13,12 +13,12 @@
 //[ ] extend test.h
 
 // TODO BIOS
-// [ ] bios_types_stream_operators.h
-// [ ] types_stream_operators.cpp
-//[ ] seperate test for each service
+// [x] bios_types_stream_operators.h
+// [x] bios_types_stream_operators.cpp
+// [ ] seperate test for each service
 //  [x] keyboard
 //  [x] clock 
-//  [ ] config
+//  [x] config
 //  [ ] bios data area 
 //  [ ] memory
 //  [ ] video
