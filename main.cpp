@@ -26,13 +26,19 @@
 // FIX
 //[ ] not depend in dos.h int86
 
-
-// TODO
+// TODO MEM
 // [ ] mem arena
+
+// TODO GFX
+// [ ] rectangle_t & functions
+// [ ] bitblt memory -> vram
+//   [ ] HGA
+//   [ ] CGA
 // [ ] make gfx primitives using arena
+// [ ] use swap buffers paradigm
+//   [ ] HGA
+//   [ ] CGA
 // [ ] draw(...) primitives
-//      [ ] HGA
-// [ ] test vram buffer
 
 #include "RETROLIB/TEST/debug_macros.h"
 #include "RETROLIB/BIOS/test_bios.h"
