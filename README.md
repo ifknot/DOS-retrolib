@@ -20,65 +20,39 @@ FIX:
 + [ ] give option to include stream operators if desired but inc in dos.h 
 + [ ] dos_types_stream_operators.h (inc types reduce types header burden)
 + [ ] dos_types_stream_operators.cpp 
-
-[ ] add to dos.h
-
-[x] dos_services.h is long - close up the empty lines
-
-[x] dos_services.cpp
-
-[ ] replace int86 use asm
-
-[ ] extend test.h
++ [ ] add to dos.h
++ [x] dos_services.h is long - close up the empty lines
++ [x] dos_services.cpp
++ [ ] replace int86 use asm
++ [ ] extend test.h
 
 TODO BIOS
-
-[x] bios_types_stream_operators.h
-
-[x] bios_types_stream_operators.cpp
-
-[ ] seperate test for each service
-
-[x] keyboard
-
-[x] clock 
-
-[x] config
-
-[ ] bios data area 
-
-[ ] memory
-
-[ ] video
-
-[ ] combined into test bios header
++ [x] bios_types_stream_operators.h
++ [x] bios_types_stream_operators.cpp
++ [ ] seperate test for each service
++ [x] keyboard
++ [x] clock 
++ [x] config
++ [ ] bios data area 
++ [ ] memory
++ [ ] video
++ [ ] combined into test bios header
 
 FIX
-
-[ ] not depend in dos.h int86
++ [ ] not depend in dos.h int86
 
 TODO MEM
-
-[ ] mem arena
++ [ ] mem arena
 
 TODO GFX
-
-[ ] rectangle_t & functions
-
-[ ] bitblt memory -> vram
-
-+ [ ] HGA
-
-[ ] CGA
-
-[ ] make gfx primitives using arena
-
-[ ] use swap buffers paradigm
-
-[ ] HGA
-
-[ ] CGA
-
++ [ ] rectangle_t & functions
++ [ ] bitblt memory -> vram
+    + [ ] HGA
+    + [ ] CGA
++ [ ] make gfx primitives using arena
++ [ ] use swap buffers paradigm
+    + [ ] HGA
+    + [ ] CGA
 [ ] draw(...) primitives
 
 ## Why DOS 16 bit?
