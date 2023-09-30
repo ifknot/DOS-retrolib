@@ -53,7 +53,7 @@ TODO GFX
 + [ ] use swap buffers paradigm
     + [ ] HGA
     + [ ] CGA
-[ ] draw(...) primitives
++[ ] draw(...) primitives
 
 ## Why DOS 16 bit?
 
