@@ -69,7 +69,7 @@ My steep learning curve.
 
 ## How do I get setup?
 
-Option 1: Run the executable files in DOSBOX our on your own old iron hardware.
+Option 1: Run the executable files in DOSBOX - or on your own old iron hardware!
 
 OPtion 2: Download and Install:
 
