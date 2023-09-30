@@ -30,12 +30,12 @@ TODO BIOS
 + [x] bios_types_stream_operators.h
 + [x] bios_types_stream_operators.cpp
 + [ ] seperate test for each service
-+ [x] keyboard
-+ [x] clock 
-+ [x] config
-+ [ ] bios data area 
-+ [ ] memory
-+ [ ] video
+    + [x] keyboard
+    + [x] clock 
+    + [x] config
+    + [ ] bios data area 
+    + [ ] memory
+    + [ ] video
 + [ ] combined into test bios header
 
 FIX
