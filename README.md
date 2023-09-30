@@ -20,9 +20,8 @@ FIX:
 
 give option to include stream operators if desired but inc in dos.h 
 
-[ ] dos_types_stream_operators.h (inc types reduce types header burden)
-
-[ ] dos_types_stream_operators.cpp 
++ [ ] dos_types_stream_operators.h (inc types reduce types header burden)
++ [ ] dos_types_stream_operators.cpp 
 
 [ ] add to dos.h
 
