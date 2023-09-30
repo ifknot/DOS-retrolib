@@ -12,26 +12,26 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
 ## Project Progress (*aka the great re-write of 2023*)
 
-// TODO DOS
-//[x] move DOS into retrolib
-//FIX:
-//give option to include stream operators if desired but inc in dos.h 
-//[ ] dos_types_stream_operators.h (inc types reduce types header burden)
-//[ ] dos_types_stream_operators.cpp 
-//[ ] add to dos.h
-//[x] dos_services.h is long - close up the empty lines
-//[x] dos_services.cpp
-//[ ] replace int86 use asm
-//[ ] extend test.h
+TODO DOS
+[x] move DOS into retrolib
+FIX:
+give option to include stream operators if desired but inc in dos.h 
+[ ] dos_types_stream_operators.h (inc types reduce types header burden)
+[ ] dos_types_stream_operators.cpp 
+[ ] add to dos.h
+[x] dos_services.h is long - close up the empty lines
+[x] dos_services.cpp
+[ ] replace int86 use asm
+[ ] extend test.h
 
-// TODO BIOS
-// [x] bios_types_stream_operators.h
-// [x] bios_types_stream_operators.cpp
-// [ ] seperate test for each service
-//  [x] keyboard
-//  [x] clock 
-//  [x] config
-//  [ ] bios data area 
+TODO BIOS
+[x] bios_types_stream_operators.h
+[x] bios_types_stream_operators.cpp
+[ ] seperate test for each service
+[x] keyboard
+[x] clock 
+[x] config
+[ ] bios data area 
 //  [ ] memory
 //  [ ] video
 //[ ] combined into test bios header
