@@ -13,7 +13,7 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 ## Project Progress (*aka the great re-write of 2023*)
 
 TODO DOS
-[x] move DOS into retrolib
+-[x] move DOS into retrolib
 FIX:
 give option to include stream operators if desired but inc in dos.h 
 [ ] dos_types_stream_operators.h (inc types reduce types header burden)
