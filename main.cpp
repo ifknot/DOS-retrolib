@@ -1,5 +1,8 @@
 #include <iostream>
 
+// TODO 
+//[ ] general purpose memory block display taking a struct w 8,16,13,64 data size and char[] of descriptors 
+
 // TODO DOS
 //[x] move DOS into retrolib
 //FIX:
