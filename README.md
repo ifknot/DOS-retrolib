@@ -12,7 +12,7 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
 ## Project Progress (*aka the great re-write of 2023*)
 
-###TODO:
+### TODO:
 + [ ] general purpose memory block display taking a struct w 8,16,13,64 data size and char[] of descriptors 
 
 TODO DOS
@@ -55,7 +55,7 @@ TODO GFX
     + [ ] CGA
 + [ ] draw(...) primitives
 
-###DONE
+### DONE
 
 ## Why DOS 16 bit?
 
