@@ -2,6 +2,9 @@
 
 // TODO 
 //[ ] general purpose memory block display taking a struct w 8,16,13,64 data size and char[] of descriptors 
+//[ ] move mem consts into lower mem consts 
+//[ ] .h and .cpp for mem functions 
+//[ ] global bios consts for the likes of int 15h
 
 // TODO DOS
 //[x] move DOS into retrolib
