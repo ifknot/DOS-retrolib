@@ -20,10 +20,10 @@ namespace test_memory {
 		{
 			INFO("test memory services\nWAIT...");
 			LOG(bios::get_low_memory_size());
-			LOG(bios::read_data_area<int16_t>(BIOS_DATA_AREA_MEMORY));
+			LOG(bios::read_BDA<int16_t>(BDA_LOW_MEMORY_SIZE));
 			LOG_AS(bios::get_ram_top_segment(), std::hex);
 			LOG(bios::get_ebda_segment());
-			LOG(bios::read_data_area<int16_t>(BIOS_DATA_AREA_LPT4_ADDR));
+			LOG(bios::read_BDA<int16_t>(BDA_LPT4_ADDR));
 			LOG(bios::get_ebda_size());
 			INFO("PASS!\n");
 		}

@@ -17,8 +17,9 @@
 namespace bios {
 
 	template<typename T>
-	T read_data_area(uint32_t p) {
-		return *((T*)p);
+	T read_BDA(uint32_t bda_addr) {
+		bda_addr += BDA_START_ADDR;
+		return *((T*)bda_addr);
 	}
 
 }

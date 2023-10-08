@@ -27,7 +27,7 @@
 //  [x] clock 
 //  [x] config
 //  [ ] bios data area 
-//  [ ] memory
+//  [x] memory
 //  [ ] video
 //[ ] combined into test bios header
 // FIX

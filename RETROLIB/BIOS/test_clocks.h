@@ -21,13 +21,13 @@ namespace test_clocks {
 		if (YESNO("XT clocks?")) {
 			INFO("test XT clock services\nWAIT...");
 			LOG(bios::read_system_clock_counter());
-			assert(bios::read_system_clock_counter() == bios::read_data_area<int32_t>(BIOS_DATA_AREA_TIMER));
+			assert(bios::read_system_clock_counter() == bios::read_BDA<int32_t>(BDA_DAILY_TIMER));
 			LOG(bios::is_24_hours_since_reset());
 			bios::set_system_clock_counter(1);
 			INFO("bios::set_system_clock_counter(1)");
 			uint32_t t = bios::read_system_clock_counter();
 			ASSERT(t == 1, t, 0);
-			assert(bios::read_system_clock_counter() == bios::read_data_area<int32_t>(BIOS_DATA_AREA_TIMER));
+			assert(bios::read_system_clock_counter() == bios::read_BDA<int32_t>(BDA_DAILY_TIMER));
 			INFO("PASS!\n");
 		}
 		if (YESNO("AT clocks?")) {

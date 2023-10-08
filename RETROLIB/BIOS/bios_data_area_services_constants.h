@@ -10,11 +10,13 @@
 #ifndef BIOS_DATA_AREA_SERVICES_CONSTANTS_H
 #define BIOS_DATA_AREA_SERVICES_CONSTANTS_H
 
-#define BIOS_DATA_AREA_TIMER	0x0040006C	// dword Daily timer counter, equal to zero at midnight;
+#define BDA_START_ADDR		0x00400000
 
-#define BIOS_DATA_AREA_MEMORY	0x00400013	// word	Memory size in Kbytes (see INT 12)
+#define BDA_LPT4_ADDR		0x000E // except PS/2 Extended BIOS Data Area segment (PS/2, see EBDA)
 
-#define BIOS_DATA_AREA_LPT4_ADDR	0x0040000E // except PS/2 Extended BIOS Data Area segment (PS/2, see EBDA)
+#define BDA_LOW_MEMORY_SIZE	0x0013	// word	Memory size in Kbytes (see INT 12)
+
+#define BDA_DAILY_TIMER		0x006C	// dword Daily timer counter, equal to zero at midnight;
 
 #endif
 
