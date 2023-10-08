@@ -14,6 +14,8 @@
 
 #define BIOS_DATA_AREA_MEMORY	0x00400013	// word	Memory size in Kbytes (see INT 12)
 
+#define BIOS_DATA_AREA_LPT4_ADDR	0x0040000E // except PS/2 Extended BIOS Data Area segment (PS/2, see EBDA)
+
 #endif
 
 /*

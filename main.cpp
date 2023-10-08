@@ -1,9 +1,9 @@
 #include <iostream>
 
-// TODO 
+// TODO
+//[x] SYS folder  
 //[ ] general purpose memory block display taking a struct w 8,16,13,64 data size and char[] of descriptors 
-//[ ] move mem consts into lower mem consts 
-//[ ] .h and .cpp for mem functions 
+//[x] move mem consts into lower mem consts 
 //[ ] global bios consts for the likes of int 15h
 
 // TODO DOS
@@ -19,9 +19,10 @@
 //[ ] extend test.h
 
 // TODO BIOS
-// [x] bios_types_stream_operators.h
-// [x] bios_types_stream_operators.cpp
-// [ ] seperate test for each service
+//[x] bios_types_stream_operators.h
+//[x] bios_types_stream_operators.cpp
+//[ ] .h and .cpp for bios mem functions 
+//[ ] seperate test for each service
 //  [x] keyboard
 //  [x] clock 
 //  [x] config

@@ -10,6 +10,10 @@
 #ifndef TEST_MEMORY_H
 #define TEST_MEMORY_H
 
+#include "../TEST/debug_macros.h"
+
+#include "bios_memory_services.h"
+
 namespace test_memory {
 
 	void  run() {
@@ -17,9 +21,10 @@ namespace test_memory {
 			INFO("test memory services\nWAIT...");
 			LOG(bios::get_low_memory_size());
 			LOG(bios::read_data_area<int16_t>(BIOS_DATA_AREA_MEMORY));
-			LOG_AS(bios::get_ram_segment_top(), std::hex);
-			//LOG(bios::get_ebda_segment());
-			//LOG(bios::get_ebda_size());
+			LOG_AS(bios::get_ram_top_segment(), std::hex);
+			LOG(bios::get_ebda_segment());
+			LOG(bios::read_data_area<int16_t>(BIOS_DATA_AREA_LPT4_ADDR));
+			LOG(bios::get_ebda_size());
 			INFO("PASS!\n");
 		}
 	}
