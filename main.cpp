@@ -2,6 +2,9 @@
 
 // TODO
 //[x] SYS folder  
+//[ ] test_sys.h
+//[ ] test sys ios
+//[x] read/write memloc T
 //[ ] general purpose memory block display taking a struct w 8,16,13,64 data size and char[] of descriptors 
 //[x] move mem consts into lower mem consts 
 //[ ] global bios consts for the likes of int 15h
@@ -26,7 +29,7 @@
 //  [x] keyboard
 //  [x] clock 
 //  [x] config
-//  [ ] bios data area 
+//  [x] bios data area 
 //  [x] memory
 //  [ ] video
 //[ ] combined into test bios header
@@ -51,8 +54,9 @@
 #include "RETROLIB/BIOS/test_bios.h"
 
 int main() {
-
-	if (YESNO("000\ttest bios ?")) test_bios::run();
+	std::cout<< "test functions..." << std::endl;
+	//if (YESNO("000\ttest sys ?")) test_sys::run();
+	if (YESNO("001\ttest bios ?")) test_bios::run();
 
 	return 0;
 

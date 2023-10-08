@@ -1,6 +1,6 @@
 RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(26): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
 RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from RETROLIB/TEST/debug_macros.h(16)
-RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from main.cpp(50)
+RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N393: col(14) included from main.cpp(51)
 RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(26): Note! N851: col(14) macro 'SC_' defined in: RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(25) (col 9)
 RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(40): Warning! W086: col(14) definition of macro 'SC_' not identical to previous definition
 RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(40): Note! N851: col(14) macro 'SC_' defined in: RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(26) (col 9)
@@ -25,7 +25,7 @@ RETROLIB/TEST/../BIOS/bios_keyboard_scan_codes.h(99): Note! N851: col(17) macro 
 RETROLIB/TEST/debug_macros.h(104): Warning! W726: col(9) no reference to formal parameter 'msg'
 RETROLIB/TEST/debug_macros.h(101): Note! N392: col(36) definition: 'char * msg' in 'void test::__anykey( char * )'
 RETROLIB/BIOS/test_keyboard.h(27): Warning! W389: col(41) integral value may be truncated during assignment or initialization
-main.cpp(60): Warning! W014: col(0) no reference to symbol '__pressenter'
+main.cpp(62): Warning! W014: col(0) no reference to symbol '__pressenter'
 RETROLIB/TEST/debug_macros.h(93): Note! N392: col(21) definition: 'void test::__pressenter( char * )'
-main.cpp(60): Warning! W014: col(0) no reference to symbol '__anykey'
+main.cpp(62): Warning! W014: col(0) no reference to symbol '__anykey'
 RETROLIB/TEST/debug_macros.h(101): Note! N392: col(21) definition: 'void test::__anykey( char * )'
