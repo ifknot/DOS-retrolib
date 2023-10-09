@@ -10,19 +10,11 @@
 
 namespace test_dos {
 
-	int run() {
-		{
-			INFO("0. test DOS services types");
-			char str[] = "hello";
-			dos::address_t addr;
-			addr.ptr = (void*)str;
-			std::cout << str << '\n'
-				<< addr.memloc << '\n' 
-				<< addr << '\n'
-				<< std::hex << (uint32_t)str << '\n';
+	void run() {	
+		void run() {
+			if (YESNO("\t001\ttest types ?")) test_types::run();
+			
 		}
-
-		return EXIT_SUCCESS;
 	}
 
 }

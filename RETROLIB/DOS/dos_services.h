@@ -58,8 +58,10 @@ namespace dos {
         // 22  Random write using FCB
         // 23  Get file size using FCB
         // 24  Set relative record field for FCB
+        
         // 25  Set interrupt vector
         void set_interrupt_vector(uint8_t vec_num, void* address);
+
         // 26  Create new program segment
         // 27  Random block read using FCB
         // 28  Random block write using FCB
@@ -75,8 +77,10 @@ namespace dos {
         // 32  Get pointer to drive parameter table (undocumented)
         // 33  Get/set Ctrl-Break check state & get boot drive
         // 34  Get address to DOS critical flag (undocumented)
+        
         // 35  Get interrupt vector
         void* get_interrupt_vector(uint8_t vec_num);
+       
         // 36  Get disk free space
         // 37  Get/set switch character (undocumented)
         // 38  Get/set country dependent information
@@ -95,10 +99,13 @@ namespace dos {
         // 45  Duplicate file handle
         // 46  Force duplicate file handle
         // 47  Get current directory
+        
         // 48  Allocate memory blocks
         uint16_t allocate_memory_blocks(uint16_t paragraphs);
+        
         // 49  Free allocated memory blocks
         bool free_allocated_memory_blocks(uint16_t segment);
+       
         // 4A  Modify allocated memory blocks
         // 4B  EXEC load and execute program (func 1 undocumented)
         // 4C  Terminate process with return code
@@ -114,8 +121,10 @@ namespace dos {
         // 56  Rename file
         // 57  Get/set file date and time using handle
         // 58  Get/set memory allocation strategy (3.x+, undocumented)
+       
         // 59  Get extended error information (3.x+)
         std::string get_extended_error_information();
+        
         // 5A  Create temporary file (3.x+)
         // 5B  Create new file (3.x+)
         // 5C  Lock/unlock file access (3.x+)

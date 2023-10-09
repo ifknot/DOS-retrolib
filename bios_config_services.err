@@ -1,5 +1,0 @@
-RETROLIB\BIOS\bios_config_services.cpp(24): Warning! W389: col(24) integral value may be truncated during assignment or initialization
-RETROLIB\BIOS\bios_config_services.cpp(55): Warning! W014: col(1) no reference to symbol 'config_models'
-RETROLIB\BIOS\bios_config_services_constants.h(95): Note! N392: col(29) definition: 'char bios::ext::config_models[5][5]'
-RETROLIB\BIOS\bios_config_services.cpp(55): Warning! W014: col(1) no reference to symbol 'config_sub_models'
-RETROLIB\BIOS\bios_config_services_constants.h(104): Note! N392: col(29) definition: 'char bios::ext::config_sub_models[5][14]'
