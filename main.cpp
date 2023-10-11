@@ -46,6 +46,93 @@
 //   [ ] CGA
 // [ ] draw(...) primitives
 
+/*
+## Project Progress(*aka the great re - write of 2023 *)
+
+### TODO:
+
+TODO BIOS
++ [] v0.2
+
+TODO DOS
++ [] v0.2
++ [] extend test.h
+
+TODO SYS
++ [ ] v0.1
++ [ ] test_sys.h
++ [ ] global bios consts for the likes of int 15h
+
+TODO MEM
++ [] v0.1
++ [] mem arena
+
+TODO GFX
++ [] v0.5
++ [] rectangle_t & functions
++ [] bitblt memory->vram
++ [] HGA
++ [] CGA
++ [] make gfx primitives using arena
++ [] use swap buffers paradigm
++ [] HGA
++ [] CGA
++ [] draw(...) primitives
+
+### DOING
+
+DOING BIOS
+
++ [x] seperate test for each service
++ [x] keyboard
++ [x] clock
++ [x] config
++ [x] bios data area
++ [x] memory
++ [] video
++ [x] combined into test bios header
+
+DOING DOS
+
++ [] replace int86 use asm
+
+DOING SYS
++ [x] SYS folder
++ [ ] test_sys.h
++ [x] read/write memloc T
++ [x] move mem consts into lower mem consts
++ [ ] global bios consts for the likes of int 15h
+
+### TEST
+
+TEST BIOS
+
++ [] seperate test for each service
+	+ [x] keyboard
+	+ [x] clock
+	+ [x] config
+	+ [x] bios data area
+	+ [x] memory
+	+ [] video
+	+ [] combined into test bios header
+
+TEST DOS
+
++ [] seperate test for each service
+
+
+### DONE
+
+DONE BIOS
+
+DONE DOS
+
++ [x] dos_services.h is long - close up the empty lines
++ [x] dos_services.cpp
+
+*/
+
+
 #include "RETROLIB/TEST/debug_macros.h"
 #include "RETROLIB/BIOS/test_bios.h"
 

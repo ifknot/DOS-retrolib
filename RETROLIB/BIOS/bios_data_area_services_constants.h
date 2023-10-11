@@ -12,11 +12,26 @@
 
 #define BDA_START_ADDR		0x00400000
 
-#define BDA_LPT4_ADDR		0x000E // except PS/2 Extended BIOS Data Area segment (PS/2, see EBDA)
+#define BDA_IO_COM1			0x0000	// (4 words) IO ports for COM1-COM4 serial (each address is 1 word, zero if none)
+#define BDA_IO_COM2			0x0002
+#define BDA_IO_COM3			0x0004
+#define BDA_IO_COM4			0x0006
+#define BDA_IO_LPT1			0x0008	// (3 words)	IO ports for LPT1 - LPT3 parallel(each address is 1 word, zero if none)
+#define BDA_IO_LPT2			0x000A
+#define BDA_IO_LPT3			0x000C
+#define BDA_IO_LPT4			0x000E	// (word) except PS/2 Extended BIOS Data Area segment (PS/2, see below)
+#define BDA_EBDA_ADDR		0x000E	// (word) EBDA base address >> 4 (usually!)
+#define BDA_HARDWARE_FLAGS	0x0010	// (2 bytes)	Equipment list flags (see INT 11)
+#define BDA_PCJR_IFR_ERRS   0x0012  // (byte)	PCjr: infrared keyboard link error count
+#define BDA_LOW_MEMORY_SIZE	0x0013	// (word)	Memory size in Kbytes (see INT 12)
 
-#define BDA_LOW_MEMORY_SIZE	0x0013	// word	Memory size in Kbytes (see INT 12)
+#define BDA_DISPLAY_MODE	0x0049	// (byte)Display Mode
 
-#define BDA_DAILY_TIMER		0x006C	// dword Daily timer counter, equal to zero at midnight;
+#define BDA_COLS_TEXT_MODE  0x004A	// (word)number of columns in text mode
+
+#define	BDA_HARD_DISK_NUM	0x0075 // (byte) # of hard disk drives detected
+
+#define BDA_DAILY_TIMER		0x006C	// (dword) Daily timer counter, equal to zero at midnight as # of IRQ0 timer ticks since boot
 
 #endif
 

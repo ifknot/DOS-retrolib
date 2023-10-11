@@ -23,7 +23,7 @@ namespace test_memory {
 			LOG(bios::read_BDA<int16_t>(BDA_LOW_MEMORY_SIZE));
 			LOG_AS(bios::get_ram_top_segment(), std::hex);
 			LOG(bios::get_ebda_segment());
-			LOG(bios::read_BDA<int16_t>(BDA_LPT4_ADDR));
+			LOG(bios::read_BDA<int16_t>(BDA_IO_LPT4));
 			LOG(bios::get_ebda_size());
 			INFO("PASS!\n");
 		}
