@@ -22,9 +22,11 @@ TODO DOS
 + [ ] extend test.h
 
 TODO MEM
++ [ ] v0.1
 + [ ] mem arena
 
 TODO GFX
++ [ ] v0.5
 + [ ] rectangle_t & functions
 + [ ] bitblt memory -> vram
     + [ ] HGA
