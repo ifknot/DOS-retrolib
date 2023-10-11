@@ -10,7 +10,8 @@ Built using [Open Watcom V2 Fork](https://open-watcom.github.io/)
 
 Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
-## Project Progress (*aka the great re-write of 2023*)
+
+## Project Progress
 
 ### TODO:
 
@@ -21,6 +22,11 @@ TODO DOS
 + [ ] v0.2
 + [ ] extend test.h
 
+TODO SYS
++ [ ] v0.1
++ [ ] test_sys.h
++ [ ] global bios consts for the likes of int 15h
+
 TODO MEM
 + [ ] v0.1
 + [ ] mem arena
@@ -28,45 +34,55 @@ TODO MEM
 TODO GFX
 + [ ] v0.5
 + [ ] rectangle_t & functions
-+ [ ] bitblt memory -> vram
-    + [ ] HGA
-    + [ ] CGA
++ [ ] bitblt memory->vram
++ [ ] HGA
++ [ ] CGA
 + [ ] make gfx primitives using arena
 + [ ] use swap buffers paradigm
-    + [ ] HGA
-    + [ ] CGA
++ [ ] HGA
++ [ ] CGA
 + [ ] draw(...) primitives
 
 ### DOING
 
-DOING BIOS 
+DOING BIOS
 
-+ [ ] seperate test for each service
-    + [x] keyboard
-    + [x] clock 
-    + [x] config
-    + [ ] bios data area 
-    + [x] memory
-    + [ ] video
-+ [ ] combined into test bios header
++ [x] seperate test for each service
++ [x] keyboard
++ [x] clock
++ [x] config
++ [x] bios data area
++ [x] memory
++ [ ] video
++ [ ] video debug streams
++ [x] combined into test bios header
 
 DOING DOS
 
-+ [ ] replace int86 use asm
-
+DOING SYS
++ [x] SYS folder
++ [ ] test_sys.h
++ [x] read/write memloc T
++ [x] move mem consts into lower mem consts
++ [ ] global bios consts for the likes of int 15h
 
 ### TEST
 
 TEST BIOS
 
 + [ ] seperate test for each service
-    + [x] keyboard
-    + [x] clock 
-    + [x] config
-    + [ ] bios data area 
-    + [x] memory
-    + [ ] video
-+ [ ] combined into test bios header
+	+ [x] keyboard
+	+ [x] clock
+	+ [x] config
+	+ [x] bios data area
+	+ [x] memory
+	+ [ ] video
+	+ [ ] combined into test bios header
+
+TEST DOS
+
++ [ ] seperate test for each service
++ [ ] replace int86 use asm
 
 ### DONE
 
@@ -77,11 +93,11 @@ DONE DOS
 + [x] dos_services.h is long - close up the empty lines
 + [x] dos_services.cpp
 
-## Why DOS 16 bit?
+DONE SYS
 
-Having recently aquired a couple of IBM XT 5160 machines I was looking into the best way to create and cross-compile software for this wonderful old machine and its kind.
-Now also an IBM 5140 and an IBM 5170 :)
- 
+DONE MEM
+
++ [x] inline debug streams
 ## Usage
 
 Clone it, compile it, play with it...

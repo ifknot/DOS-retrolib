@@ -47,7 +47,7 @@
 // [ ] draw(...) primitives
 
 /*
-## Project Progress(*aka the great re - write of 2023 *)
+## Project Progress
 
 ### TODO:
 
@@ -90,11 +90,10 @@ DOING BIOS
 + [x] bios data area
 + [x] memory
 + [] video
++ [] video debug streams
 + [x] combined into test bios header
 
 DOING DOS
-
-+ [] replace int86 use asm
 
 DOING SYS
 + [x] SYS folder
@@ -119,7 +118,7 @@ TEST BIOS
 TEST DOS
 
 + [] seperate test for each service
-
++ [] replace int86 use asm
 
 ### DONE
 

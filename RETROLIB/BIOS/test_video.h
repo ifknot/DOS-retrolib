@@ -10,6 +10,10 @@
 #ifndef TEST_VIDEO_H
 #define TEST_VIDEO_H
 
+#include "../TEST/debug_macros.h"
+
+#include "bios_video_services.h"
+
 namespace test_video {
 
 	void run() {
