@@ -13,33 +13,13 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 ## Project Progress (*aka the great re-write of 2023*)
 
 ### TODO:
-+ [ ] general purpose memory block display taking a struct w 8,16,13,64 data size and char[] of descriptors 
-
-TODO DOS
-FIX:
-+ [ ] give option to include stream operators if desired but inc in dos.h 
-+ [ ] dos_types_stream_operators.h (inc types reduce types header burden)
-+ [ ] dos_types_stream_operators.cpp 
-+ [ ] add to dos.h
-+ [x] dos_services.h is long - close up the empty lines
-+ [x] dos_services.cpp
-+ [ ] replace int86 use asm
-+ [ ] extend test.h
 
 TODO BIOS
-+ [x] bios_types_stream_operators.h
-+ [x] bios_types_stream_operators.cpp
-+ [ ] seperate test for each service
-    + [x] keyboard
-    + [x] clock 
-    + [x] config
-    + [ ] bios data area 
-    + [ ] memory
-    + [ ] video
-+ [ ] combined into test bios header
++ [ ] v0.2
 
-FIX
-+ [ ] not depend in dos.h int86
+TODO DOS
++ [ ] v0.2
++ [ ] extend test.h
 
 TODO MEM
 + [ ] mem arena
@@ -55,12 +35,51 @@ TODO GFX
     + [ ] CGA
 + [ ] draw(...) primitives
 
+### DOING
+
+DOING BIOS 
+
++ [ ] seperate test for each service
+    + [x] keyboard
+    + [x] clock 
+    + [x] config
+    + [ ] bios data area 
+    + [x] memory
+    + [ ] video
++ [ ] combined into test bios header
+
+DOING DOS
+
++ [ ] replace int86 use asm
+
+
+### TEST
+
+TEST BIOS
+
++ [ ] seperate test for each service
+    + [x] keyboard
+    + [x] clock 
+    + [x] config
+    + [ ] bios data area 
+    + [x] memory
+    + [ ] video
++ [ ] combined into test bios header
+
 ### DONE
+
+DONE BIOS
+
+DONE DOS
+
++ [x] dos_services.h is long - close up the empty lines
++ [x] dos_services.cpp
 
 ## Why DOS 16 bit?
 
 Having recently aquired a couple of IBM XT 5160 machines I was looking into the best way to create and cross-compile software for this wonderful old machine and its kind.
-
+Now also an IBM 5140 and an IBM 5170 :)
+ 
 ## Usage
 
 Clone it, compile it, play with it...
