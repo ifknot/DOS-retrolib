@@ -20,7 +20,11 @@ TODO BIOS
 
 TODO DOS
 + [ ] v0.2
-
++ [ ] FCB
+ + [ ] open
+ + [ ] close
+ + [ ] rename
+ + [ ] delete
 
 TODO SYS
 + [ ] v0.1
@@ -34,14 +38,15 @@ TODO MEM
 TODO GFX
 + [ ] v0.5
 + [ ] rectangle_t & functions
++ [ ] screen buffer(s) mem arena
 + [ ] bitblt memory->vram
-+ [ ] HGA
-+ [ ] CGA
+ + [ ] HGA
+ + [ ] CGA
 + [ ] make gfx primitives using arena
 + [ ] use swap buffers paradigm
-+ [ ] HGA
-+ [ ] CGA
-+ [ ] draw(...) primitives
+ + [ ] HGA
+ + [ ] CGA
++ [ ] draw(...) screen buffer primitives
 
 ### DOING
 
