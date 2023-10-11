@@ -20,7 +20,6 @@ TODO BIOS
 
 TODO DOS
 + [ ] v0.2
-+ [ ] extend test.h
 
 TODO SYS
 + [ ] v0.1
