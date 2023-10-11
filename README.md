@@ -21,6 +21,7 @@ TODO BIOS
 TODO DOS
 + [ ] v0.2
 
+
 TODO SYS
 + [ ] v0.1
 + [ ] test_sys.h
@@ -59,10 +60,10 @@ DOING BIOS
 DOING DOS
 
 + [ ] 25  Set interrupt vector
-+ [ ] 35  Get interrupt vector
-+ [ ] 49  Free allocated memory blocks
-+ [ ] 48  Allocate memory blocks
-+ [ ] 59  Get extended error information (3.x+)
++ [x] 35  Get interrupt vector
++ [x] 49  Free allocated memory blocks
++ [x] 48  Allocate memory blocks
++ [x] 59  Get extended error information (3.x+)
 
 DOING SYS
 + [x] SYS folder
@@ -87,12 +88,11 @@ TEST BIOS
 TEST DOS
 
 + [ ] seperate test for each service
-+ [ ] replace int86 use asm
-+ [ ] 25  Set interrupt vector
-+ [ ] 35  Get interrupt vector
-+ [ ] 49  Free allocated memory blocks
-+ [ ] 48  Allocate memory blocks
-+ [ ] 59  Get extended error information (3.x+)
+ + [ ] 25  Set interrupt vector
+ + [ ] 35  Get interrupt vector
+ + [ ] 49  Free allocated memory blocks
+ + [ ] 48  Allocate memory blocks
+ + [ ] 59  Get extended error information (3.x+)
 
 ### DONE
 
@@ -100,6 +100,7 @@ DONE BIOS
 
 DONE DOS
 
++ [x] replace int86 use asm
 + [x] dos_services.h is long - close up the empty lines
 + [x] dos_services.cpp
 
