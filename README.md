@@ -58,6 +58,12 @@ DOING BIOS
 
 DOING DOS
 
++ [ ] 25  Set interrupt vector
++ [ ] 35  Get interrupt vector
++ [ ] 49  Free allocated memory blocks
++ [ ] 48  Allocate memory blocks
++ [ ] 59  Get extended error information (3.x+)
+
 DOING SYS
 + [x] SYS folder
 + [ ] test_sys.h
@@ -82,6 +88,11 @@ TEST DOS
 
 + [ ] seperate test for each service
 + [ ] replace int86 use asm
++ [ ] 25  Set interrupt vector
++ [ ] 35  Get interrupt vector
++ [ ] 49  Free allocated memory blocks
++ [ ] 48  Allocate memory blocks
++ [ ] 59  Get extended error information (3.x+)
 
 ### DONE
 
