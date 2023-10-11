@@ -130,6 +130,12 @@ DONE DOS
 + [x] dos_services.h is long - close up the empty lines
 + [x] dos_services.cpp
 
+DONE SYS
+
+DONE MEM
+
++ [x] inline debug streams
+
 */
 
 
