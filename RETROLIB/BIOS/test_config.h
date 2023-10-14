@@ -13,7 +13,7 @@
 #include "../TEST/debug_macros.h"
 
 #include "../MEM/mem_types.h"
-#include "../MEM/mem_types_stream_operators.h"
+//#include "../MEM/mem_types_stream_operators.h"
 
 #include "bios_config_services.h"
 #include "bios_config_services_constants.h"

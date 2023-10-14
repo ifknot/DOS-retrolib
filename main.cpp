@@ -140,11 +140,13 @@ DONE MEM
 
 #include "RETROLIB/TEST/debug_macros.h"
 #include "RETROLIB/BIOS/test_bios.h"
+#include "RETROLIB/DOS/test_dos.h"
 
 int main() {
 	std::cout<< "test functions..." << std::endl;
 	//if (YESNO("000\ttest sys ?")) test_sys::run();
-	if (YESNO("001\ttest bios ?")) test_bios::run();
+	if (YESNO("001\ttest BIOS ?")) test_bios::run();
+	if (YESNO("002\ttest DOS ?")) test_dos::run();
 
 	return 0;
 

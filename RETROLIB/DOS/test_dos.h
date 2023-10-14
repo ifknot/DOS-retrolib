@@ -6,15 +6,15 @@
 
 #include "../TEST/debug_macros.h"
 
-#include "dos.h"
+#include "test_dos_types.h"
 
 namespace test_dos {
 
 	void run() {	
-		void run() {
-			if (YESNO("\t001\ttest types ?")) test_types::run();
+		
+		if (YESNO("\t001\ttest types ?")) test_dos_types::run();
 			
-		}
+		
 	}
 
 }

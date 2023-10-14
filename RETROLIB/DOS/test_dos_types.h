@@ -10,10 +10,14 @@
 #ifndef TEST_DOS_TYPES_H
 #define TEST_DOS_TYPES_H
 
+#include "../TEST/debug_macros.h"
+
+#include "dos_services_types.h"
+
 namespace test_dos_types {
 
-	{
-		INFO("0. test DOS services types");
+	void run() {
+		INFO("\t001 test DOS services types");
 		char str[] = "hello";
 		dos::address_t addr;
 		addr.ptr = (void*)str;
