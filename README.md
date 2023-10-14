@@ -20,7 +20,11 @@ TODO BIOS
 
 TODO DOS
 + [ ] v0.2
-+ [ ] extend test.h
++ [ ] FCB
+ + [ ] open
+ + [ ] close
+ + [ ] rename
+ + [ ] delete
 
 TODO SYS
 + [ ] v0.1
@@ -34,14 +38,15 @@ TODO MEM
 TODO GFX
 + [ ] v0.5
 + [ ] rectangle_t & functions
++ [ ] screen buffer(s) mem arena
 + [ ] bitblt memory->vram
-+ [ ] HGA
-+ [ ] CGA
+ + [ ] HGA
+ + [ ] CGA
 + [ ] make gfx primitives using arena
 + [ ] use swap buffers paradigm
-+ [ ] HGA
-+ [ ] CGA
-+ [ ] draw(...) primitives
+ + [ ] HGA
+ + [ ] CGA
++ [ ] draw(...) screen buffer primitives
 
 ### DOING
 
@@ -58,6 +63,12 @@ DOING BIOS
 + [x] combined into test bios header
 
 DOING DOS
+
++ [ ] 25  Set interrupt vector
++ [x] 35  Get interrupt vector
++ [x] 49  Free allocated memory blocks
++ [x] 48  Allocate memory blocks
++ [x] 59  Get extended error information (3.x+)
 
 DOING SYS
 + [x] SYS folder
@@ -82,7 +93,11 @@ TEST BIOS
 TEST DOS
 
 + [ ] seperate test for each service
-+ [ ] replace int86 use asm
+ + [ ] 25  Set interrupt vector
+ + [ ] 35  Get interrupt vector
+ + [ ] 49  Free allocated memory blocks
+ + [ ] 48  Allocate memory blocks
+ + [ ] 59  Get extended error information (3.x+)
 
 ### DONE
 
@@ -90,6 +105,7 @@ DONE BIOS
 
 DONE DOS
 
++ [x] replace int86 use asm
 + [x] dos_services.h is long - close up the empty lines
 + [x] dos_services.cpp
 
