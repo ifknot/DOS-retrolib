@@ -34,25 +34,34 @@ namespace test_clocks {
 			INFO("test AT clock services\nWAIT...");
 			ASSERT(bios::is_rtc_working(), bios::is_rtc_working(), 1);
 			char time[9] = "  -  -  ";
+			std::cout << time << '\n';
 			bios::bcd_time_t t;
 			bios::read_rtc_time(&t);
 			INFO("bios::read_rtc_clock(&t)");
 			LOG_AS(t.time, std::hex);
+
 			bios::convert_bcd_time_to_string(&t, time);
 			INFO("bios::convert_bcd_time_to_string(&t, time)");
 			LOG(time);
-			std::cout << (int)t.hmsd[3] << '\n';
+			std::cout << time << '\n';
+			std::cout << (int)t.hmsd[3] << '\n';	// daylight savings time?
+
 			bios::convert_string_to_bcd_time("10:12:20", &t);
 			INFO("bios::convert_string_to_bcd_time(\"10:12:20\", &t)");
+			if (YESNO("Enter a new time?")) {
+				std::cin >> t;
+			}
 			LOG_AS(t.time, std::hex);
 			bios::set_rtc_time(&t);
 			INFO("bios::set_rtc_clock(&t)");
+
 			bios::read_rtc_time(&t);
 			INFO("bios::read_rtc_clock(&t)");
 			LOG_AS(t.time, std::hex);
 			bios::convert_bcd_time_to_string(&t, time);
 			INFO("bios::convert_bcd_time_to_string(&t, time)");
 			LOG(time);
+
 			INFO("PASS!\n");
 		}
 		if (YESNO("AT DATES?")) {
@@ -62,9 +71,22 @@ namespace test_clocks {
 			bios::read_rtc_date(&d);
 			INFO("bios::read_rtc_date(&d)");
 			LOG_AS(d.date, std::hex);
+
 			bios::convert_bcd_date_to_string(&d, date);
 			INFO("bios::convert_bcd_date_to_string(&d, date)");
 			LOG(date);
+			std::cout << date << '\n';
+
+			bios::convert_string_to_bcd_date("01/02/86", &d);
+			INFO("bios::convert_string_to_bcd_date(\"11/02/86\", &d);");
+			if (YESNO("Enter a new date?")) {
+				std::cin >> d;
+			}
+			LOG_AS(d.date, std::hex);
+			//bios::set_rtc_date(&d);
+			INFO("bios::set_rtc_date(&d);");
+
+			INFO("PASS!\n");
 		}
 	}
 

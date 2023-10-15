@@ -144,6 +144,7 @@ namespace bios {
     }
 
     /**
+    * INT 1A,4
     * AH = 04
     * on return:
 	* CH = century in BCD (decimal 19 or 20)
@@ -170,7 +171,11 @@ namespace bios {
         }
     }
 
-    void convert_bcd_time_to_string(bcd_time_t* bcd_time, char* str, char delim) {
+    void set_rtc_date(bcd_date_t* bcd_date) {
+    
+    }
+
+    void convert_bcd_time_to_string(const bcd_time_t* bcd_time, char* str, char delim) {
         str[1] = (bcd_time->hmsd[0] & 0xF) + '0';
         str[0] = (bcd_time->hmsd[0] >> 4) + '0';
         str[2] = delim;
@@ -194,7 +199,7 @@ namespace bios {
         bcd_time->hmsd[3] = dlst;
     }
 
-    void convert_bcd_date_to_string(bcd_date_t* bcd_date, char* str, char delim) {
+    void convert_bcd_date_to_string(const bcd_date_t* bcd_date, char* str, char delim) {
         str[1] = (bcd_date->cymd[3] & 0xF) + '0';
         str[0] = (bcd_date->cymd[3] >> 4) + '0';
         str[2] = delim;
@@ -207,15 +212,43 @@ namespace bios {
 
     void convert_string_to_bcd_date(char* str, bcd_date_t* bcd_date, uint8_t century) {
         bcd_date->cymd[0] = century;
-        bcd_date->cymd[1] = str[0] - '0';
-        bcd_date->cymd[1] <<= 4;
-        bcd_date->cymd[1] += str[1] - '0';
+        bcd_date->cymd[3] = str[0] - '0';
+        bcd_date->cymd[3] <<= 4;
+        bcd_date->cymd[3] += str[1] - '0';
         bcd_date->cymd[2] = str[3] - '0';
         bcd_date->cymd[2] <<= 4;
         bcd_date->cymd[2] += str[4] - '0';
-        bcd_date->cymd[3] = str[6] - '0';
-        bcd_date->cymd[3] <<= 4;
-        bcd_date->cymd[3] += str[7] - '0';
+        bcd_date->cymd[1] = str[6] - '0';
+        bcd_date->cymd[1] <<= 4;
+        bcd_date->cymd[1] += str[7] - '0';
     }
 
+}
+
+std::ostream& operator<<(std::ostream& os, const bios::bcd_time_t& t) {
+    char str[9];
+    bios::convert_bcd_time_to_string(&t, str);
+    os << str;
+    return os;
+}
+
+std::istream& operator>>(std::istream& is, bios::bcd_time_t& t) {
+    char str[9];
+    is >> str;
+    bios::convert_string_to_bcd_time(str, &t);
+    return is;
+}
+
+std::ostream& operator<<(std::ostream& os, const bios::bcd_date_t& d) {
+    char str[9];
+    bios::convert_bcd_date_to_string(&d, str);
+    os << str;
+    return os;
+}
+
+std::istream& operator>>(std::istream& is, bios::bcd_date_t& d) {
+    char str[9];
+    is >> str;
+    bios::convert_string_to_bcd_date(str, &d);
+    return is;
 }

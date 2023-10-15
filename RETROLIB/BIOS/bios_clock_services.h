@@ -24,6 +24,8 @@
 #ifndef BIOS_CLOCK_SERVICES_H
 #define BIOS_CLOCK_SERVICES_H
 
+#include <iostream>
+
 #include "bios_clock_services_constants.h"
 #include "bios_clock_services_types.h"
 
@@ -89,12 +91,12 @@ namespace bios {
 
     void read_rtc_date(bcd_date_t* bcd_date);
     
-    //void set_rtc_date(bcd_date_t* bcd_date);
+    void set_rtc_date(bcd_date_t* bcd_date);
 
     /**
     *  @brief convert bcd_time_t to string format HH:MM:SS
     */
-    void convert_bcd_time_to_string(bcd_time_t* bcd_time, char* str, char delim = ':');
+    void convert_bcd_time_to_string(const bcd_time_t* bcd_time, char* str, char delim = ':');
 
     /**
     *  @brief convert string format HH:MM:SS to bcd_time
@@ -104,12 +106,12 @@ namespace bios {
     /**
     *  @brief convert bcd_date_t to string format MM/DD/YY
     */
-    void convert_bcd_date_to_string(bcd_date_t* bcd_date, char* str, char delim = '/');
+    void convert_bcd_date_to_string(const bcd_date_t* bcd_date, char* str, char delim = '/');
 
     /**
     *  @brief convert string format MM/DD/YY to bcd_time
     */
-    void convert_string_to_bcd_date(char* str, bcd_date_t* bcd_date, uint8_t century = 0x21);
+    void convert_string_to_bcd_date(char* str, bcd_date_t* bcd_date, uint8_t century = 0x20);
 
     // ---- PS/2 BIOS clock services ----
 
@@ -130,5 +132,15 @@ namespace bios {
     //void set_up_sound_multiplexer();
 
 }
+
+    // Stream operators
+
+    std::ostream& operator<<(std::ostream& os, const bios::bcd_time_t& t);
+
+    std::istream& operator>>(std::istream& is, bios::bcd_time_t& t);
+
+    std::ostream& operator<<(std::ostream& os, const bios::bcd_date_t& d);
+
+    std::istream& operator>>(std::istream& is, bios::bcd_date_t& d);
 
 #endif
