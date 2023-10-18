@@ -1,5 +1,9 @@
 #include "dos_services.h"
 
+#include "dos_services_constants.h"
+#include "dos_services_types.h"
+#include "dos_error_messages.h"
+
 namespace dos {
 
         /**
@@ -86,12 +90,14 @@ namespace dos {
         OK:     mov     mem_seg, ax
 
             }
+#ifndef NDEBUG
             if (mem_seg == 0) {
                 std::cout << dos::error::messages[err_code] << '\n';
                 if (err_code == dos::error::INSUFFICIENT_MEMORY) {
                     std::cout << " largest block of memory available = " << std::hex << (available * 16) << " bytes\n";
                 }
             }
+#endif
             return mem_seg;
         }
 
@@ -124,17 +130,15 @@ namespace dos {
                 int     DOS_SERVICE                         ; dos call
                 jnc     OK                                  ; success CF = 0
                 mov     err_code, ax                        ; de-allocation failed ax is dos error code
-
         OK:     
-
             }
+#ifndef NDEBUG
             if (err_code) {
                 std::cout << dos::error::messages[err_code] << std::hex << segment << '\n';
                 return false;
             }
-            else {
-                return true;
-            }
+#endif
+            return !err_code;
         }
 
         /**
@@ -168,12 +172,14 @@ namespace dos {
                 mov     err_action, bl
                 mov     err_locus, ch
             }
+#ifndef NDEBUG
             std::string info(dos::error::messages[err_code]);
             if (err_code) {
                 info += dos::error::classes[err_class];
                 info += dos::error::actions[err_action];
                 info += dos::error::locus[err_locus];
             }
+#endif
             return info;
         }
 

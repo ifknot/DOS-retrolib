@@ -11,11 +11,17 @@
 #include <cassert>
 #include <iostream>
 #include <stdint.h>
-
-#include "../BIOS/bios_keyboard_services.h"
-#include "../BIOS/bios_keyboard_scan_codes.h"
+#include <stdio.h>
 
 #define EXIT_SUCCESS 0
+
+#ifdef NDEBUG
+#define INFO(msg)
+#else
+#define INFO(msg) do { \
+					std::cout << msg <<std::endl; \
+				} while(false)
+#endif
 
 #ifdef NDEBUG
 #define LOG(var)
@@ -30,14 +36,6 @@
 #else
 #define LOG_AS(var, base) do { \
 					std::cout << #var << '=' << base << var << std::dec << std::endl; \
-				} while(false)
-#endif
-
-#ifdef NDEBUG
-#define INFO(msg)
-#else
-#define INFO(msg) do { \
-					std::cout << msg <<std::endl; \
 				} while(false)
 #endif
 
@@ -83,24 +81,18 @@ namespace test {
 
 	static bool __yesno(char* msg) {
 		std::cout << msg << " Y/N" << std::endl;
-		uint8_t code;
-		do {
-			code = bios::wait_key_scan_code();
-		} while (code != SC_Y && code != SC_N);
-		return (code == SC_Y) ? true : false;
+		char key;
+		return scanf(" %c", &key) == 1 && key == 'Y' || key == 'y';
 	}
 
 	static void __pressenter(char* msg) {
 		std::cout << msg << " Press <ENTER> " << std::endl;
-		uint8_t code;
-		do {
-			code = bios::wait_key_scan_code();
-		} while (code != SC_RTN);
+		while (getchar() != '\n');
 	}
 
-	static void __anykey(char* msg) {
-		//std::cout << msg << std::endl;
-		bios::wait_key_scan_code();
+	static char __anykey(char* msg) {
+		std::cout << msg << std::endl;
+		return getchar();
 	}
 
 }

@@ -1,0 +1,2 @@
+RETROLIB\DOS\dos_services.cpp(26): Warning! W726: col(9) no reference to formal parameter 'vec_num'
+RETROLIB\DOS\dos_services.cpp(19): Note! N392: col(43) definition: 'unsigned char vec_num' in 'void dos::set_interrupt_vector( unsigned char, void * )'

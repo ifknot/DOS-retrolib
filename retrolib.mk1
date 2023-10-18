@@ -6,53 +6,19 @@ RETROLIB\main.cpp .AUTODEPEND
  *wpp main.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -x&
 s -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_clock_services.obj : C:\Users\ifkn&
-o\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_clock_services.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services.obj : C:\Users\ifkno\DOSBO&
+X\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\BIOS\bios_clock_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -o&
-d -d2 -bt=dos -fo=.obj -ml -xs -xr
-
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_config_services.obj : C:\Users\ifk&
-no\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_config_services.cpp .AUTODEPEND
- @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\BIOS\bios_config_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -&
-od -d2 -bt=dos -fo=.obj -ml -xs -xr
-
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_keyboard_services.obj : C:\Users\i&
-fkno\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_keyboard_services.cpp .AUTODEP&
-END
- @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\BIOS\bios_keyboard_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq&
- -od -d2 -bt=dos -fo=.obj -ml -xs -xr
-
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_memory_services.obj : C:\Users\ifk&
-no\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_memory_services.cpp .AUTODEPEND
- @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\BIOS\bios_memory_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -&
-od -d2 -bt=dos -fo=.obj -ml -xs -xr
-
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_video_services.obj : C:\Users\ifkn&
-o\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_video_services.cpp .AUTODEPEND
- @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\BIOS\bios_video_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -o&
-d -d2 -bt=dos -fo=.obj -ml -xs -xr
+ *wpp RETROLIB\DOS\dos_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -b&
+t=dos -fo=.obj -ml -xs -xr
 
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
-S16\RETROLIB\main.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_clock_servic&
-es.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_config_services.obj C:\User&
-s\ifkno\DOSBOX\DOS16\RETROLIB\bios_keyboard_services.obj C:\Users\ifkno\DOSB&
-OX\DOS16\RETROLIB\bios_memory_services.obj C:\Users\ifkno\DOSBOX\DOS16\RETRO&
-LIB\bios_video_services.obj .AUTODEPEND
+S16\RETROLIB\main.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services.obj &
+.AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- @%write retrolib.lk1 FIL main.obj,bios_clock_services.obj,bios_config_servi&
-ces.obj,bios_keyboard_services.obj,bios_memory_services.obj,bios_video_servi&
-ces.obj
+ @%write retrolib.lk1 FIL main.obj,dos_services.obj
  @%append retrolib.lk1 
  *wlink name retrolib d all sys dos op m op maxe=25 op q op symf @retrolib.l&
 k1
