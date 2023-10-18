@@ -11,6 +11,7 @@
 
 #define DOS_SERVICE 0x21
 
+// DOS SERVICES AH FOR 0x21
 #define PROGRAM_TERMINATE								0 
 #define KEYBOARD_INPUT_WITH_ECHO 
 #define DISPLAY_OUTPUT 
@@ -117,11 +118,18 @@
 #define FLUSH_BUFFER	 								// 3.3 + 
 #define GET_SET_DISK_SERIAL_NUMBER						// UNDOCUMENTED
 
-
-
-enum interrupt_name_t {
-
-};
+// sOFTWARE INTERRUPT NUMBERS
+#define	IDIVIDE_BY_ZERO				0
+#define	ISINGLE_STEP				1
+#define INONMASKABLE				2
+#define	IBREAKPOINT					3
+#define	IOVERFLOW					4
+#define IPRINT_SCREEN				5
+#define	ISYSTEM_TIMER				8
+#define IKEYBOARD					9
+#define	IDISKETTE					14	
+#define IVIDEO						16
+#define IEQUIPMENT_DETERMINATION	17
 
 
 #endif

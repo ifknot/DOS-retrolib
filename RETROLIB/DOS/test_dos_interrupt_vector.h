@@ -15,7 +15,10 @@
 namespace test_dos_interrupt_vector {
 
 	void run() {
-		LOG_AS(dos::get_interrupt_vector(0), std::hex);
+		LOG_AS(dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION), std::hex);
+		INFO("dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, 0xF000F84D)");
+		dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, (void*)0xF000F84D);
+		LOG_AS(dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION), std::hex);
 	}
 
 }
