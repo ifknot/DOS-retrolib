@@ -12,12 +12,12 @@
 
 #include "../TEST/debug_macros.h"
 
-#include "dos_services_types.h"
+#include "dos.h"
 
 namespace test_dos_types {
 
 	void run() {
-		INFO("\t001 test DOS services types");
+		INFO("* test DOS services types");
 		char str[] = "hello";
 		dos::address_t addr;
 		addr.ptr = (void*)str;

@@ -10,6 +10,10 @@
 #ifndef TEST_DOS_MEMORY_H
 #define TEST_DOS_MEMORY_H
 
+#include "../TEST/debug_macros.h"
+
+#include "dos.h"
+
 namespace test_dos_memory {
 
 	void run() {
@@ -21,12 +25,22 @@ namespace test_dos_memory {
 		INFO("seg_mem_1K = dos::allocate_memory_blocks(64)");
 		LOG_AS(seg_mem_1K, std::hex);
 		ASSERT(seg_mem_1K != 0, seg_mem_1K, seg_mem_1K);
+
+		dos::address_t mcb_1k; // set it up to point to the paragraph preceding the one returned
+		mcb_1k.memloc.segment = seg_mem_1K - 1;
+		mcb_1k.memloc.offset = 0;
+		ASSERT(*(char*)mcb_1k.ptr == 'M', *(char*)mcb_1k.ptr, 'M');
 		
 		INFO("* allocate 2K");
 		seg_mem_2K = dos::allocate_memory_blocks(128); // 2K
 		INFO("seg_mem_2K = dos::allocate_memory_blocks(128)");
 		LOG_AS(seg_mem_2K, std::hex);
 		ASSERT(seg_mem_2K != 0, seg_mem_2K, seg_mem_2K);
+
+		dos::address_t mcb_2k;
+		mcb_2k.memloc.segment = seg_mem_2K - 1;
+		mcb_2k.memloc.offset = 0;
+		ASSERT(*(char*)mcb_2k.ptr == 'M', *(char*)mcb_2k.ptr, 'M');
 
 		INFO("* free 2K");
 		ASSERT(dos::free_allocated_memory_blocks(seg_mem_2K) == 0, 0, 0);

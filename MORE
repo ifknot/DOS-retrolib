@@ -1,0 +1,28 @@
+test functions...
+002	test DOS ? Y/N
+	003	test memory alloc/free ? Y/N
+* allocate 1K
+seg_mem_1K = dos::allocate_memory_blocks(64)
+seg_mem_1K=21f8
+* allocate 2K
+seg_mem_2K = dos::allocate_memory_blocks(128)
+seg_mem_2K=2239
+* free 2K
+dos::free_allocated_memory_blocks(seg_mem_2K)=0
+* free 1K
+dos::free_allocated_memory_blocks(seg_mem_1K)=0
+* allocate 2K at old 1K address
+seg_mem_2K = dos::allocate_memory_blocks(128)
+seg_mem_2K=21f8
+* try and free same 1K again
+dos::free_allocated_memory_blocks(seg_mem_1K)=0
+* try free invalid MCB
+09  Invalid memory block address 21f9
+dos::free_allocated_memory_blocks(seg_mem_1K + 1)=9
+* try allocate too much
+08  Insufficient memory 
+ largest block of memory available = e070 bytes
+dos::allocate_memory_blocks(40960)=0
+* PASS!
+test functions...
+002	test MEM ? Y/N

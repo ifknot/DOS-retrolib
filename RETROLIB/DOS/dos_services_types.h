@@ -33,6 +33,8 @@ namespace dos {
 
 	};
 
+
+
 }
 
 std::ostream& operator<< (std::ostream& os, const dos::segoff_t& memloc) {

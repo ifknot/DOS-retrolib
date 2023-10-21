@@ -16,104 +16,21 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 ### TODO:
 
 TODO BIOS
-+ [ ] v0.2
++ [...] v0.3 complete on an **as needed basis**
 
 TODO DOS
-+ [ ] v0.2
-+ [ ] FCB
- + [ ] open
- + [ ] close
- + [ ] rename
- + [ ] delete
-
-TODO SYS
-+ [ ] v0.1
-+ [ ] test_sys.h
-+ [ ] global bios consts for the likes of int 15h
++ [...] v0.3  complete on an **as needed basis**
 
 TODO MEM
 + [ ] v0.1
++ [ ] mbc_t 
++ [ ] mcb stream operators
++ [ ] get_available_low_memory
 + [ ] mem arena
 
 TODO GFX
 + [ ] v0.5
-+ [ ] rectangle_t & functions
-+ [ ] screen buffer(s) mem arena
-+ [ ] bitblt memory->vram
- + [ ] HGA
- + [ ] CGA
-+ [ ] make gfx primitives using arena
-+ [ ] use swap buffers paradigm
- + [ ] HGA
- + [ ] CGA
-+ [ ] draw(...) screen buffer primitives
 
-### DOING
-
-DOING BIOS
-
-+ [x] seperate test for each service
-+ [x] keyboard
-+ [x] clock
-+ [x] config
-+ [x] bios data area
-+ [x] memory
-+ [ ] video
-+ [ ] video debug streams
-+ [x] combined into test bios header
-
-DOING DOS
-
-+ [ ] 25  Set interrupt vector
-+ [x] 35  Get interrupt vector
-+ [x] 49  Free allocated memory blocks
-+ [x] 48  Allocate memory blocks
-+ [x] 59  Get extended error information (3.x+)
-
-DOING SYS
-+ [x] SYS folder
-+ [ ] test_sys.h
-+ [x] read/write memloc T
-+ [x] move mem consts into lower mem consts
-+ [ ] global bios consts for the likes of int 15h
-
-### TEST
-
-TEST BIOS
-
-+ [ ] seperate test for each service
-	+ [x] keyboard
-	+ [x] clock
-	+ [x] config
-	+ [x] bios data area
-	+ [x] memory
-	+ [ ] video
-	+ [ ] combined into test bios header
-
-TEST DOS
-
-+ [ ] seperate test for each service
- + [ ] 25  Set interrupt vector
- + [ ] 35  Get interrupt vector
- + [ ] 49  Free allocated memory blocks
- + [ ] 48  Allocate memory blocks
- + [ ] 59  Get extended error information (3.x+)
-
-### DONE
-
-DONE BIOS
-
-DONE DOS
-
-+ [x] replace int86 use asm
-+ [x] dos_services.h is long - close up the empty lines
-+ [x] dos_services.cpp
-
-DONE SYS
-
-DONE MEM
-
-+ [x] inline debug streams
 ## Usage
 
 Clone it, compile it, play with it...

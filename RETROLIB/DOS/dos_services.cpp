@@ -4,6 +4,12 @@
 #include "dos_services_types.h"
 #include "dos_error_messages.h"
 
+#ifndef NDEBUG 
+
+#include <cassert>
+
+#endif
+
 namespace dos {
 
         /**
@@ -146,9 +152,6 @@ namespace dos {
             if (err_code) {
                 std::cout << dos::error::messages[err_code] << std::hex << segment << '\n';
                 return err_code;
-            }
-            else { // invalidate the old MCB
-
             }
 #endif
             return err_code;

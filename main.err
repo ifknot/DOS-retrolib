@@ -1,3 +1,3 @@
 RETROLIB/TEST/test_debug_macros.h(18): Warning! W388: col(23) integral constant will be truncated during assignment or initialization
-RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from main.cpp(141)
+RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from main.cpp(6)
 RETROLIB/TEST/test_debug_macros.h(23): Warning! W367: col(41) conditional expression in if statement is always true
