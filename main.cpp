@@ -9,6 +9,13 @@
 // 002
 #include "RETROLIB/MEM/test_mem.h"
 
+//TODO:
+//###MEM 
+//- [ ] mcb_t operator<< 
+//- [ ] get_max_alloc_low_mem()
+//- [ ] get_total_low_mem()
+//- [ ] get_ram_top_segment()
+
 int main() {
 	std::cout<< "test functions..." << std::endl;
 	//if (YESNO("000\ttest debug ?")) test_debug_macros::run();
