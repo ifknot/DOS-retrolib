@@ -8,6 +8,7 @@ namespace dos {
 
         /**
          * @brief Provides a safe method for changing interrupt vectors
+         * @note returns nothing
          * INT 21,25 - Set Interrupt Vector
          * AH = 25h
          * AL = interrupt number
@@ -19,13 +20,22 @@ namespace dos {
         void set_interrupt_vector(uint8_t vec_num, void* address) {
             address_t addr;
             addr.ptr = address;
+            uint16_t seg_intr = addr.memloc.segment;
+            uint16_t off_intr = addr.memloc.offset;
             __asm {
                 .8086
+                mov     ax, seg_intr
+                mov     ds, ax 
+                mov     dx, off_intr
+                mov     al, vec_num
+                mov     ah, SET_INTERRUPT_VECTOR
+                int     DOS_SERVICE
             }
             
         }
 
         /**
+         * @brief Standard method for retrieving interrupt vectors
          * INT 21,35 - Get Interrupt Vector
          * AH = 35h
          * AL = interrupt vector number
