@@ -130,7 +130,7 @@ namespace dos {
          *  other .COM files take all available memory when they load.
          * @see  INT 21,4A
          */
-        bool free_allocated_memory_blocks(uint16_t segment) {
+        uint16_t free_allocated_memory_blocks(uint16_t segment) {
             uint16_t err_code = 0;
             __asm {
                 .8086
@@ -145,10 +145,13 @@ namespace dos {
 #ifndef NDEBUG
             if (err_code) {
                 std::cout << dos::error::messages[err_code] << std::hex << segment << '\n';
-                return false;
+                return err_code;
+            }
+            else { // invalidate the old MCB
+
             }
 #endif
-            return !err_code;
+            return err_code;
         }
 
         /**

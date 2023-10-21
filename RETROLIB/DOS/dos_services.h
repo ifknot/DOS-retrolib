@@ -101,7 +101,7 @@ namespace dos {
         uint16_t allocate_memory_blocks(uint16_t paragraphs);
         
         // 49  Free allocated memory blocks
-        bool free_allocated_memory_blocks(uint16_t segment);
+        uint16_t free_allocated_memory_blocks(uint16_t segment);
        
         // 4A  Modify allocated memory blocks
         // 4B  EXEC load and execute program (func 1 undocumented)
