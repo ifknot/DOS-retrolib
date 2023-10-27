@@ -1,0 +1,6 @@
+RETROLIB\MEM\mem_dump_ostream.cpp(23): Warning! W726: col(9) no reference to formal parameter 'os'
+RETROLIB\MEM\mem_dump_ostream.cpp(21): Note! N392: col(41) definition: 'std::ostream & os' in 'void mem::dump_ostream( std::ostream &, mem::address_t, mem::address_t )'
+RETROLIB\MEM\mem_dump_ostream.cpp(23): Warning! W726: col(9) no reference to formal parameter 'start'
+RETROLIB\MEM\mem_dump_ostream.cpp(21): Note! N392: col(61) definition: 'mem::address_t const start' in 'void mem::dump_ostream( std::ostream &, mem::address_t, mem::address_t )'
+RETROLIB\MEM\mem_dump_ostream.cpp(23): Warning! W726: col(9) no reference to formal parameter 'end'
+RETROLIB\MEM\mem_dump_ostream.cpp(21): Note! N392: col(84) definition: 'mem::address_t const end' in 'void mem::dump_ostream( std::ostream &, mem::address_t, mem::address_t )'

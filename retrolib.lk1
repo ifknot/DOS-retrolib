@@ -1,2 +1,2 @@
-FIL main.obj,dos_services.obj
+FIL main.obj,dos_services.obj,mem_dump_ostream.obj
 
