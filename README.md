@@ -15,21 +15,33 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
 ### TODO:
 
+dumps -> files -> arena_t -> bitmap_t -> blits
+
 TODO BIOS
 + [...] v0.3 complete on an **as needed basis**
 
 TODO DOS
 + [...] v0.3  complete on an **as needed basis**
+    + [ ] block file load
 
 TODO MEM
 + [ ] v0.1
-+ [ ] mbc_t 
++ [ ] mem::dump(ostream, ...)
++ [ ] mem::file_dump(cstring, ...)
++ [ ] mem::file_load(cstring, ...)
++ [ ] mem::load(istream, ...)
++ [ ] arena_t
+    + [ ] arena::functions(...)
++ [ ] mcb_t 
 + [ ] mcb stream operators
 + [ ] get_available_low_memory
-+ [ ] mem arena
 
 TODO GFX
 + [ ] v0.5
++ [ ] bitmap_t (universal)
+    + [ ] bmp::functions(...)
++ [ ] HGA
+    + [ ] hga::blits(...) universal bmp -> specialised vram
 
 ## Usage
 
