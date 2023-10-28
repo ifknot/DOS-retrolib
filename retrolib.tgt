@@ -144,8 +144,8 @@ WVList
 0
 34
 MItem
-26
-RETROLIB\MEM\mem_segof.cpp
+27
+RETROLIB\MEM\mem_segoff.cpp
 35
 WString
 6

@@ -29,29 +29,30 @@ namespace mem {
 	}
 
 	address_t dump_paragraph_ostream(std::ostream& os, const address_t start) {
-		os << std::hex << start.segoff << "  ";				// memory address as segment:offset
-		char* p = (char*) start.void_ptr;						// extract char* from address_t
-		int i;												// going to resuse i
-		for (i = 0; i < (PARAGRAPH_SIZE / 2) - 1; ++i) {	// first 7 bytes as hex
-			os << std::setw(2) << std::hex << (int)*p++ << " ";
+		os << std::hex << start.segoff;							// memory address as segment:offset
+		char* pbyte = (char*) start.void_ptr;					// extract char* from address_t
+		char* pchar = pbyte;									// duplicATE
+		int i = 0;													// going to resuse i
+		for (; i < (PARAGRAPH_SIZE / 2); ++i) {			// first 8 bytes as hex
+			os << ' ' << std::setw(2) << std::hex << (int)*pbyte++;
 		}
-		os << std::setw(2) << std::hex << (int)*p++ << "-"; // 8th byte as hex w dash spacer as per DOS DEBUG
-		for (; i < PARAGRAPH_SIZE; ++i) {					// last 8 bytes of the paragraph of memory
-			os << std::setw(2) << std::hex << (int)*p++ << " ";
+		os << '-' << std::setw(2) << std::hex << (int)*pbyte++; // 9th byte as hex w dash spacer as per DOS DEBUG
+		++i;
+		for (; i < PARAGRAPH_SIZE; ++i) {						// last 8 bytes of the paragraph of memory
+			os << ' ' << std::setw(2) << std::hex << (int)*pbyte++;
 		}
-		os << "  ";
-		char* c = p - PARAGRAPH_SIZE;						// reset char*
-		while(c < p) {										// 16 bytes as hex replace with '.' if not standard alphabet
-			if (*c >= ' ' & *c <= '~') {
-				std::cout << *c;
+		os << ' ';
+		while(pchar++ < pbyte) {								// 16 bytes as hex replace with '.' if not standard alphabet
+			if (*pchar >= ' ' & *pchar <= '~') {
+				std::cout << *pchar;
 			}
 			else {
 				std::cout << '.';
 			}
-			++c;
 		}
+		os << std::endl;
 		address_t next;
-		next.void_ptr = (void*)p;
+		next.void_ptr = (void*)pbyte;
 		return next;
 	}
 
