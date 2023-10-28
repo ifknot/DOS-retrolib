@@ -48,6 +48,8 @@ namespace test_dos_memory {
 		mcb_2k.segoff.segment = seg_mem_2K - 1;
 		mcb_2k.segoff.offset = 0;
 		ASSERT(*(char*)mcb_2k.void_ptr == 'M', *(char*)mcb_2k.void_ptr, 'M');
+		INFO("* MCB dump");
+		mem::dump_ostream(std::cout, mcb_2k, 16);
 
 		INFO("* free 2K");
 		ASSERT(dos::free_allocated_memory_blocks(seg_mem_2K) == 0, 0, 0);
