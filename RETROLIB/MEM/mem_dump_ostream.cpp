@@ -10,6 +10,7 @@
  */
 
 #include <iostream>
+#include <stdint.h>
 
 #include "mem_dump_ostream.h"
 #include "mem_constants.h"
@@ -18,17 +19,40 @@
 
 namespace mem {
 
-	void dump_ostream(std::ostream& os, const address_t start, const address_t end) {
-
+	address_t dump_ostream(std::ostream& os, const address_t start, const uint16_t bytes) {
+		address_t next = start;
+		uint16_t paras = (bytes % PARAGRAPH_SIZE) ? (bytes >> 4) + 1 : bytes >> 4; // convert size to paragraphs
+		for (int i = 0; i < paras; ++i) {
+			next = dump_paragraph_ostream(os, next);
+		}
+		return next;
 	}
 
-	void dump_line_ostream(std::ostream& os, const address_t start) {
-		os << std::hex << start.memloc << "  ";
-		char* p = (char*) start.ptr;
-		for (int i = 0; i < PARAGRAPH_SIZE; ++i) {
-			os << std::hex << (int)*p++ << " ";
+	address_t dump_paragraph_ostream(std::ostream& os, const address_t start) {
+		os << std::hex << start.segoff << "  ";				// memory address as segment:offset
+		char* p = (char*) start.void_ptr;						// extract char* from address_t
+		int i;												// going to resuse i
+		for (i = 0; i < (PARAGRAPH_SIZE / 2) - 1; ++i) {	// first 7 bytes as hex
+			os << std::setw(2) << std::hex << (int)*p++ << " ";
 		}
-		os << std::dec << std::endl;
+		os << std::setw(2) << std::hex << (int)*p++ << "-"; // 8th byte as hex w dash spacer as per DOS DEBUG
+		for (; i < PARAGRAPH_SIZE; ++i) {					// last 8 bytes of the paragraph of memory
+			os << std::setw(2) << std::hex << (int)*p++ << " ";
+		}
+		os << "  ";
+		char* c = p - PARAGRAPH_SIZE;						// reset char*
+		while(c < p) {										// 16 bytes as hex replace with '.' if not standard alphabet
+			if (*c >= ' ' & *c <= '~') {
+				std::cout << *c;
+			}
+			else {
+				std::cout << '.';
+			}
+			++c;
+		}
+		address_t next;
+		next.void_ptr = (void*)p;
+		return next;
 	}
 
 }

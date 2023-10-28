@@ -17,12 +17,21 @@
 
 namespace mem {
 
-	void dump_ostream(std::ostream& os, const address_t start, const address_t end);
+	/**
+	* @brief dump contents of memory to screen - defaults to 256 bytes 
+	* @note mimics the DOS DEBUG program layout
+	* 
+	* @return address_t - the end address of the paragraph 
+	*/
+	address_t dump_ostream(std::ostream& os, const address_t start, const uint16_t bytes = 256);
 
 	/**
-	* @brief dumps a paragraph (16 bytes) of memory to the ostream
+	* @brief dumps a paragraph (16 bytes) of memory to the ostream as hex, ascii combo
+	* @note mimics the DOS DEBUG program layout
+	* 
+	* @return address_t - the end address of the paragraph 
 	*/
-	void dump_line_ostream(std::ostream& os, const address_t start);
+	address_t dump_paragraph_ostream(std::ostream& os, const address_t start);
 
 }
 

@@ -51,8 +51,8 @@ namespace mem {
         */
         union address_t {
 
-                void* ptr;
-                segoff_t memloc;
+                void* void_ptr;
+                segoff_t segoff;
                 uint16_t words[2];
                 uint8_t bytes[4];
 
@@ -71,7 +71,7 @@ std::ostream& operator<< (std::ostream& os, const mem::segoff_t& memloc) {
 
 std::ostream& operator<< (std::ostream& os, const mem::address_t& addr) {
         os << std::hex << std::setfill('0')
-                << std::setw(8) << (uint32_t)addr.ptr
+                << std::setw(8) << (uint32_t)addr.void_ptr
                 << std::dec;
         return os;
 }
