@@ -11,6 +11,7 @@
 #define TEST_DOS_TYPES_H
 
 #include "../TEST/debug_macros.h"
+#include "../MEM/mem_address.h"
 
 #include "dos.h"
 
@@ -19,10 +20,10 @@ namespace test_dos_types {
 	void run() {
 		INFO("* test DOS services types");
 		char str[] = "hello";
-		dos::address_t addr;
-		addr.ptr = (void*)str;
+		mem::address_t addr;
+		addr.void_ptr = (void*)str;
 		std::cout << str << '\n'
-			<< addr.memloc << '\n'
+			<< addr.segoff << '\n'
 			<< addr << '\n'
 			<< std::hex << (uint32_t)str << '\n';
 	}

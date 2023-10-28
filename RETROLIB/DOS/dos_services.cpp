@@ -4,11 +4,9 @@
 #include "dos_services_types.h"
 #include "dos_error_messages.h"
 
-#ifndef NDEBUG 
+#include "../MEM/mem_address.h"
 
 #include <cassert>
-
-#endif
 
 namespace dos {
 
@@ -24,10 +22,10 @@ namespace dos {
          * @param address
          */
         void set_interrupt_vector(uint8_t vec_num, void* address) {
-            address_t addr;
-            addr.ptr = address;
-            uint16_t seg_intr = addr.memloc.segment;
-            uint16_t off_intr = addr.memloc.offset;
+            mem::address_t addr;
+            addr.void_ptr = address;
+            uint16_t seg_intr = addr.segoff.segment;
+            uint16_t off_intr = addr.segoff.offset;
             __asm {
                 .8086
                 mov     ax, seg_intr
@@ -53,7 +51,7 @@ namespace dos {
          */
         void* get_interrupt_vector(uint8_t vec_num) {
             uint16_t es_segment, bx_offset;
-            address_t addr;
+            mem::address_t addr;
             __asm {
                 .8086
                 mov     al, vec_num
@@ -62,9 +60,9 @@ namespace dos {
                 mov     es_segment, es 
                 mov     bx_offset, bx
             }
-            addr.memloc.segment = es_segment;
-            addr.memloc.offset = bx_offset;
-            return addr.ptr;
+            addr.segoff.segment = es_segment;
+            addr.segoff.offset = bx_offset;
+            return addr.void_ptr;
         }
 
         /**

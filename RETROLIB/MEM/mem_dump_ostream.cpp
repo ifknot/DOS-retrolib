@@ -29,7 +29,7 @@ namespace mem {
 	}
 
 	address_t dump_paragraph_ostream(std::ostream& os, const address_t start) {
-		os << std::hex << start.segoff << ' ';						// memory address as segment:offset
+		os << start.segoff << ' ';									// memory address as segment:offset
 		char* pbyte = (char*) start.void_ptr;						// extract char* from address_t
 		char* pchar = pbyte;										// duplicate
 		int i = 0;
@@ -41,7 +41,7 @@ namespace mem {
 			os << ' ' << std::setw(2) << std::hex << (int)*pbyte++;
 		}
 		os << "   ";
-		for (i = 0; i++ < PARAGRAPH_SIZE; ++i) {					// 16 bytes as hex replace with '.' if not standard alphabet
+		for (i = 0; i < PARAGRAPH_SIZE; ++i) {						// 16 bytes as hex replace with '.' if not standard alphabet
 			std::cout << ((*pchar >= ' ' & *pchar <= '~') ? *pchar : '.');
 			pchar++;
 		}
