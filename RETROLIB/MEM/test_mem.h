@@ -13,8 +13,8 @@
 #include <iostream>
 
 #include "../TEST/debug_macros.h"
-#include "mem_dump_ostream.h"
-#include "mem_types.h"
+
+#include "mem.h"
 
 namespace test_lib_mem {
 
