@@ -29,26 +29,21 @@ namespace mem {
 	}
 
 	address_t dump_paragraph_ostream(std::ostream& os, const address_t start) {
-		os << std::hex << start.segoff;							// memory address as segment:offset
-		char* pbyte = (char*) start.void_ptr;					// extract char* from address_t
-		char* pchar = pbyte;									// duplicATE
-		int i = 0;													// going to resuse i
-		for (; i < (PARAGRAPH_SIZE / 2); ++i) {			// first 8 bytes as hex
+		os << std::hex << start.segoff << ' ';						// memory address as segment:offset
+		char* pbyte = (char*) start.void_ptr;						// extract char* from address_t
+		char* pchar = pbyte;										// duplicate
+		int i = 0;
+		for (; i < PARAGRAPH_SIZE / 2; ++i) {						// first 8 bytes as hex
 			os << ' ' << std::setw(2) << std::hex << (int)*pbyte++;
 		}
-		os << '-' << std::setw(2) << std::hex << (int)*pbyte++; // 9th byte as hex w dash spacer as per DOS DEBUG
-		++i;
-		for (; i < PARAGRAPH_SIZE; ++i) {						// last 8 bytes of the paragraph of memory
+		os << '-' << std::setw(2) << std::hex << (int)*pbyte++;		// 9th byte as hex w dash spacer as per DOS DEBUG
+		for (; i < PARAGRAPH_SIZE - 1; ++i) {						// remaining bytes of the paragraph of memory
 			os << ' ' << std::setw(2) << std::hex << (int)*pbyte++;
 		}
-		os << ' ';
-		while(pchar++ < pbyte) {								// 16 bytes as hex replace with '.' if not standard alphabet
-			if (*pchar >= ' ' & *pchar <= '~') {
-				std::cout << *pchar;
-			}
-			else {
-				std::cout << '.';
-			}
+		os << "   ";
+		for (i = 0; i++ < PARAGRAPH_SIZE; ++i) {					// 16 bytes as hex replace with '.' if not standard alphabet
+			std::cout << ((*pchar >= ' ' & *pchar <= '~') ? *pchar : '.');
+			pchar++;
 		}
 		os << std::endl;
 		address_t next;
