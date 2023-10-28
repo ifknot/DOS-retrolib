@@ -26,14 +26,12 @@ TODO DOS
 
 TODO MEM
 + [ ] v0.1
-+ [ ] mem::dump(ostream, ...)
++ [x] mem::dump(ostream, ...)
 + [ ] mem::file_dump(cstring, ...)
 + [ ] mem::file_load(cstring, ...)
 + [ ] mem::load(istream, ...)
 + [ ] arena_t
     + [ ] arena::functions(...)
-+ [ ] mcb_t 
-+ [ ] mcb stream operators
 + [ ] get_available_low_memory
 
 TODO GFX
