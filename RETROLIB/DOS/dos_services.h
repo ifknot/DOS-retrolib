@@ -13,8 +13,9 @@
 #define DOS_SERVICES_H
 
 #include <stdint.h>
-#include <iostream>
 #include <string>
+
+#include "../MEM/mem_address.h"
 
 namespace dos {
 
@@ -57,7 +58,7 @@ namespace dos {
         // 24  Set relative record field for FCB
         
         // 25  Set interrupt vector
-        void set_interrupt_vector(uint8_t vec_num, void* address);
+        void set_interrupt_vector(uint8_t vec_num, mem::address_t addr);
 
         // 26  Create new program segment
         // 27  Random block read using FCB
@@ -76,14 +77,14 @@ namespace dos {
         // 34  Get address to DOS critical flag (undocumented)
         
         // 35  Get interrupt vector
-        void* get_interrupt_vector(uint8_t vec_num);
+        mem::address_t get_interrupt_vector(uint8_t vec_num);
        
         // 36  Get disk free space
         // 37  Get/set switch character (undocumented)
         // 38  Get/set country dependent information
         // 39  Create subdirectory (mkdir)
         // 3A  Remove subdirectory (rmdir)
-        // 3B  Change current subdirectory (chdir)
+        // 3B  Change current subdirectory (chdir) 
         // 3C  Create file using handle
         // 3D  Open file using handle
         // 3E  Close file using handle

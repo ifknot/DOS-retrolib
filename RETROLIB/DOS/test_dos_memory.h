@@ -74,7 +74,6 @@ namespace test_dos_memory {
 		INFO("* try allocate too much");
 		LOG(dos::allocate_memory_blocks(40960)); // All 640K - should error out
 
-		INFO("* PASS!");
 	}
 
 }

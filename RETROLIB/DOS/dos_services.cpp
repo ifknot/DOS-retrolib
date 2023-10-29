@@ -6,8 +6,6 @@
 
 #include "../MEM/mem_address.h"
 
-#include <cassert>
-
 namespace dos {
 
         /**
@@ -21,21 +19,19 @@ namespace dos {
          * @param vec_num
          * @param address
          */
-        void set_interrupt_vector(uint8_t vec_num, void* address) {
-            mem::address_t addr;
-            addr.void_ptr = address;
-            uint16_t seg_intr = addr.segoff.segment;
-            uint16_t off_intr = addr.segoff.offset;
+        void set_interrupt_vector(uint8_t vec_num, mem::address_t addr) {
             __asm {
                 .8086
-                mov     ax, seg_intr
-                mov     ds, ax 
-                mov     dx, off_intr
+                push    ds
+                lea     si, addr
+                mov     dx, [si]            ; offset (little endian)
+                mov     ds, [si + 2]        ; segment
                 mov     al, vec_num
                 mov     ah, SET_INTERRUPT_VECTOR
                 int     DOS_SERVICE
+                pop     ds
             }
-            
+
         }
 
         /**
@@ -49,20 +45,20 @@ namespace dos {
          * @param vec_num
          * @return void* segment:offset pointer to interrupt handler
          */
-        void* get_interrupt_vector(uint8_t vec_num) {
-            uint16_t es_segment, bx_offset;
+        mem::address_t get_interrupt_vector(uint8_t vec_num) {
             mem::address_t addr;
             __asm {
                 .8086
+                push    ds
                 mov     al, vec_num
                 mov     ah, GET_INTERRUPT_VECTOR
                 int     DOS_SERVICE
-                mov     es_segment, es 
-                mov     bx_offset, bx
+                lea     di, addr
+                mov     ds:[di], bx
+                mov     ds:[di + 2] , es
+                pop     ds
             }
-            addr.segoff.segment = es_segment;
-            addr.segoff.offset = bx_offset;
-            return addr.void_ptr;
+            return addr;
         }
 
         /**
@@ -104,14 +100,14 @@ namespace dos {
         OK:     mov     mem_seg, ax
 
             }
-#ifndef NDEBUG
+
             if (mem_seg == 0) {
                 std::cout << dos::error::messages[err_code] << '\n';
                 if (err_code == dos::error::INSUFFICIENT_MEMORY) {
                     std::cout << " largest block of memory available = " << std::hex << (available * 16) << " bytes\n";
                 }
             }
-#endif
+
             return mem_seg;
         }
 
@@ -144,14 +140,14 @@ namespace dos {
                 int     DOS_SERVICE                         ; dos call
                 jnc     OK                                  ; success CF = 0
                 mov     err_code, ax                        ; de-allocation failed ax is dos error code
-        OK:     
+        OK:
             }
-#ifndef NDEBUG
+
             if (err_code) {
                 std::cout << dos::error::messages[err_code] << std::hex << segment << '\n';
                 return err_code;
             }
-#endif
+
             return err_code;
         }
 
@@ -186,14 +182,14 @@ namespace dos {
                 mov     err_action, bl
                 mov     err_locus, ch
             }
-#ifndef NDEBUG
+
             std::string info(dos::error::messages[err_code]);
             if (err_code) {
                 info += dos::error::classes[err_class];
                 info += dos::error::actions[err_action];
                 info += dos::error::locus[err_locus];
             }
-#endif
+
             return info;
         }
 

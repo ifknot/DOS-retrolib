@@ -27,8 +27,8 @@ namespace test_retrolib {
 
 		std::cout << "test functions..." << std::endl;
 		//if (YESNO("* 000\ttest debug ?")) test_debug_macros::run();
-		if (YESNO("* 001\ttest DOS ?")) test_dos::run();
-		if (YESNO("* 002\ttest MEM ?")) test_lib_mem::run();
+		if (YESNO("* 100\ttest DOS ?")) test_dos::run();
+		if (YESNO("* 200\ttest MEM ?")) test_lib_mem::run();
 
 	}
 
