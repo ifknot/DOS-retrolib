@@ -22,7 +22,12 @@ TODO BIOS
 
 TODO DOS
 + [...] v0.3  complete on an **as needed basis**
-    + [ ] block file load
+    + [ ] 3C  Create file using handle
+    + [ ] 3D  Open file using handle
+    + [ ] 3E  Close file using handle
+    + [ ] 3F  Read file or device using handle
+    + [ ] 40  Write file or device using handle
+    + [ ] 41  Delete file
 
 TODO MEM
 + [ ] v0.1
