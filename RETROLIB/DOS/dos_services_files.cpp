@@ -10,6 +10,7 @@
  */
 #include "dos_services_files.h"
 #include "dos_services_constants.h"
+#include "dos_services_types.h"
 #include "dos_error_messages.h"
 
 namespace dos {
@@ -79,9 +80,9 @@ namespace dos {
 	* 
 	* @note - if file already exists, it is truncated to zero bytes on opening
 	*/
-	file::handle_t create_file_using_handle(char* path_name, uint16_t create_attributes) {
-		file::handle_t handle = 0;
-		uint16_t err_code = 0;
+	file::handle_t create_file_using_handle(char* path_name, file::attributes_t create_attributes) {
+		file::handle_t handle;
+		error_code_t err_code = 0;
 		__asm {
 			.8086
 			push	ds
@@ -121,8 +122,8 @@ namespace dos {
 	*    = error code if CF set  (see DOS ERROR CODES)
 	*/
 	file::handle_t open_file_using_handle(char* path_name, uint8_t access_attributes) {
-		file::handle_t handle = 0;
-		uint16_t err_code = 0;
+		file::handle_t handle;
+		error_code_t err_code = 0;
 		__asm {
 			.8086
 			push	ds
@@ -135,7 +136,7 @@ namespace dos {
 			jnc		OK
 			mov		err_code, ax
 			xor		ax, ax
-	oK:		mov		handle, ax
+	OK:		mov		handle, ax
 
 	END:	popf
 			pop		ds
@@ -144,6 +145,56 @@ namespace dos {
 		if (err_code) {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
+
+		return handle;
+	}
+
+	/**
+	* INT 21,43 - Get/Set File Attributes
+	* AH = 43h
+	* AL = 00 to get attribute
+	*    = 01 to set attribute
+	* DS:DX = pointer to an ASCIIZ path name
+	* CX = attribute to set
+	*
+	* |5|4|3|2|1|0|  CX  valid file attributes
+	*  | | | | | `---- 1 = read only
+	*  | | | | `----- 1 = hidden
+	*  | | | `------ 1 = system
+	*  | `--------- not used for this call
+	*  `---------- 1 = archive
+	*
+	* on return:
+	* AX = error code if CF set  (see DOS ERROR CODES)
+	* CX = the attribute if AL was 00
+	*/
+	file::attributes_t get_file_attributes(char* path_name){
+		file::attributes_t attributes;
+		error_code_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			lds		dx, path_name
+			xor		cx, cx
+			xor		al, al						; AL = 00 to get attribute
+			mov		ah, CHANGE_FILE_MODE
+			int		DOS_SERVICE
+			jnc		OK
+			mov		err_code, ax
+			xor		ax, ax
+	OK:		mov		attributes, ax
+
+	END:	popf
+			pop		ds
+		}
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
+
+		return attributes;
 	}
 
 }

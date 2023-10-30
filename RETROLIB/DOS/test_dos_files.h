@@ -15,6 +15,8 @@
 #include "dos_services_types.h"
 #include "dos_services_files.h"
 
+#include <stdio.h>
+
 namespace test_dos_files {
 
 	void run() {
@@ -41,21 +43,37 @@ namespace test_dos_files {
 			LOG(info.bytes_per_sector);
 			LOG(info.clusters_per_drive);
 		}
-		if (YESNO("* 141\ttest create file?")) {
-			char fpath[13] = "DOSTESTS.TXT";
+		if (YESNO("* 142\ttest create file?")) {
+			char fpath[13] = "";
+			INFO("* file create error...");
+			LOG(dos::create_file_using_handle(fpath)); // errors out
+			printf("* Enter filename: ");
+			scanf("%s", fpath);
 			LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
-			char ferr[13] = "";
-			LOG(dos::create_file_using_handle(ferr));
 		}
-		if (YESNO("* 141\ttest open file?")) {
+		if (YESNO("* 143\ttest change mode?")) {
+			char fpath[13] = "";
+			INFO("* file mode error");
+			LOG(dos::get_file_attributes(fpath)); // errors out
+			printf("* Enter filename: ");
+			scanf("%s", fpath);
+			LOG(dos::get_file_attributes(fpath));
 		}
-		if (YESNO("* 141\ttest write file?")) {
+		if (YESNO("* 144\ttest open file?")) {
+			char fpath[13] = "";
+			INFO("* file open error...");
+			LOG(dos::open_file_using_handle(fpath)); // errors out
+			printf("* Enter filename: ");
+			scanf("%s", fpath);
+			LOG(dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY));
 		}
-		if (YESNO("* 141\ttest read file?")) {
+		if (YESNO("* 145\ttest write file?")) {
 		}
-		if (YESNO("* 141\ttest close file?")) {
+		if (YESNO("* 146\ttest read file?")) {
 		}
-		if (YESNO("* 141\ttest delete file?")) {
+		if (YESNO("* 147\ttest close file?")) {
+		}
+		if (YESNO("* 148\ttest delete file?")) {
 		}
 	}
 

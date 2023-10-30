@@ -11,6 +11,7 @@
 #define DOS_SERVICES_FILES_H
 
 #include "dos_services_types.h"
+#include "dos_services_files_types.h"
 
 namespace dos {
 
@@ -30,11 +31,17 @@ namespace dos {
     file::handle_t open_file_using_handle(char* path_name, uint8_t access_attributes = file::ACCESS_READ_ONLY);
 
     // 3E  Close file using handle
+    
     // 3F  Read file or device using handle
     // 40  Write file or device using handle
     // 41  Delete file
     // 42  Move file pointer using handle
+    
     // 43  Change file mode
+    file::attributes_t get_file_attributes(char* path_name);
+
+    //error_code_t set_file_attributes(char* path_name);
+
     // 44  I/O control for devices (IOCTL)
     // 45  Duplicate file handle
     // 46  Force duplicate file handle
