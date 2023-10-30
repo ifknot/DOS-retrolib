@@ -43,37 +43,58 @@ namespace test_dos_files {
 			LOG(info.bytes_per_sector);
 			LOG(info.clusters_per_drive);
 		}
-		if (YESNO("* 142\ttest create file?")) {
+		{
 			char fpath[13] = "";
-			INFO("* file create error...");
-			LOG(dos::create_file_using_handle(fpath)); // errors out
-			printf("* Enter filename: ");
-			scanf("%s", fpath);
-			LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
-		}
-		if (YESNO("* 143\ttest change mode?")) {
-			char fpath[13] = "";
-			INFO("* file mode error");
-			LOG(dos::get_file_attributes(fpath)); // errors out
-			printf("* Enter filename: ");
-			scanf("%s", fpath);
-			LOG(dos::get_file_attributes(fpath));
-		}
-		if (YESNO("* 144\ttest open file?")) {
-			char fpath[13] = "";
-			INFO("* file open error...");
-			LOG(dos::open_file_using_handle(fpath)); // errors out
-			printf("* Enter filename: ");
-			scanf("%s", fpath);
-			LOG(dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY));
-		}
-		if (YESNO("* 145\ttest write file?")) {
-		}
-		if (YESNO("* 146\ttest read file?")) {
-		}
-		if (YESNO("* 147\ttest close file?")) {
-		}
-		if (YESNO("* 148\ttest delete file?")) {
+			dos::file::handle_t handle;
+			dos::file::attributes_t attr;
+			if (YESNO("* 142\ttest create file?")) {
+				INFO("* file create error...");
+				LOG(dos::create_file_using_handle(fpath)); // errors out
+				std::cout << "* Enter filename: ";
+				scanf("%s", fpath);
+				LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
+			}
+			if (YESNO("* 143\ttest change mode?")) {
+				fpath = "/0";
+				INFO("* file mode error");
+				LOG(dos::get_file_attributes(fpath)); // errors out
+				LOG(dos::set_file_attributes(fpath, attr));
+				std::cout << "* Enter filename: ";
+				scanf("%s", fpath);
+				LOG(dos::get_file_attributes(fpath));
+				std::cout << "* Enter attributes: ";
+				std::cin >> attr;
+				LOG(dos::set_file_attributes(fpath, attr));
+				LOG(dos::get_file_attributes(fpath));
+			}
+			if (YESNO("* 144\ttest open file?")) {
+				fpath = "/0";
+				INFO("* file open error...");
+				LOG(dos::open_file_using_handle(fpath)); // errors out
+				std::cout << "* Enter filename: ";
+				scanf("%s", fpath);
+				INFO("dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY");
+				handle = dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY);
+				LOG(handle);
+				LOG(dos::get_file_attributes(fpath));
+			}
+			if (YESNO("* 145\ttest write file?")) {
+			}
+			if (YESNO("* 146\ttest read file?")) {
+			}
+			if (YESNO("* 147\ttest close file?")) {
+
+			}
+			if (YESNO("* 148\ttest delete file?")) {
+				fpath = "/0";
+				INFO("* file delete error...");
+				LOG(dos::delete_file(fpath)); // errors out
+				std::cout << "* Enter filename: ";
+				scanf("%s", fpath);
+				LOG(dos::delete_file(fpath));
+				LOG(dos::get_file_attributes(fpath));
+				LOG(dos::delete_file(fpath));
+			}
 		}
 	}
 

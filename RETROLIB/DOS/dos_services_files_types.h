@@ -30,10 +30,17 @@ namespace dos {
 		* 4	reserved, must be zero (directory)
 		* 5	archive bit
 		* 7	if set, file is shareable under Novell NetWare
+		* 
+		* |5|4|3|2|1|0|  CX  valid file attributes
+		*  | | | | | `---- 1 = read only			(DOSBOX ignored)
+		*  | | | | `----- 1 = hidden				
+		*  | | | `------ 1 = system			
+		*  | `--------- not used for this call
+		*  `--
 		*/
 		enum create_attributes {
 			CREATE_READ_WRITE = 0,
-			CREATE_READ_ONLY,
+			CREATE_READ_ONLY,		
 			CREATE_HIDDEN,
 			CREATE_SYSTEM = 4,
 			CREATE_VOLUME = 8,

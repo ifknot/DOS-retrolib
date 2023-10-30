@@ -66,6 +66,7 @@ namespace dos {
 			std::cout << dos::error::messages[dos::error::INVALID_DRIVE_SPECIFIED] << std::endl;
 		}
 	}
+
 	/**
 	* INT 21, 3C - Create File Using Handle
 	* AH = 3C
@@ -150,6 +151,43 @@ namespace dos {
 	}
 
 	/**
+	* INT 21,41 - Delete File
+	* AH = 41h
+	* DS:DX = pointer to an ASCIIZ filename
+	* 
+	* on return:
+	* AX = error code if CF set  (see DOS ERROR CODES)
+	* 
+	* - marks first byte of file directory entry with E5 to indicate
+	*   the file has been deleted.  The rest of the directory entry
+	*   stays intact until reused.   FAT pointers are returned to DOS
+	* @note - documented as not accepting wildcards in filename but actually does in several DOS versions
+	*/
+	error_code_t delete_file(char* path_name) {
+		error_code_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			lds		dx, path_name
+			mov		ah, DELETE_FILE
+			int		DOS_SERVICE
+			jnc		END
+			mov		err_code, ax
+
+	END:	popf
+			pop		ds
+		}
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
+
+		return err_code;
+	}
+
+	/**
 	* INT 21,43 - Get/Set File Attributes
 	* AH = 43h
 	* AL = 00 to get attribute
@@ -168,7 +206,7 @@ namespace dos {
 	* AX = error code if CF set  (see DOS ERROR CODES)
 	* CX = the attribute if AL was 00
 	*/
-	file::attributes_t get_file_attributes(char* path_name){
+	file::attributes_t get_file_attributes(char* path_name) {
 		file::attributes_t attributes;
 		error_code_t err_code = 0;
 		__asm {
@@ -195,6 +233,36 @@ namespace dos {
 		}
 
 		return attributes;
+	}
+
+	/**
+	* @note DOSBOX does not allow
+	* @see file::attributes_t get_file_attributes(char* path_name)
+	*/
+	error_code_t set_file_attributes(char* path_name, file::attributes_t attributes) {
+		error_code_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			lds		dx, path_name
+			mov		cx, attributes
+			mov		al, 1					; AL = 01 to set attribute
+			mov		ah, CHANGE_FILE_MODE
+			int		DOS_SERVICE
+			jnc		END
+			mov		err_code, ax
+
+	END:	popf
+			pop		ds
+		}
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
+
+		return err_code;
 	}
 
 }

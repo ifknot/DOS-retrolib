@@ -2,6 +2,15 @@ RETROLIB/TEST/test_debug_macros.h(18): Warning! W388: col(23) integral constant 
 RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from RETROLIB/test_retrolib.h(18)
 RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from main.cpp(3)
 RETROLIB/TEST/test_debug_macros.h(23): Warning! W367: col(41) conditional expression in if statement is always true
+RETROLIB/DOS/test_dos_files.h(58): Error! E230: col(39) expression on left is an array
+RETROLIB/DOS/test_dos_files.h(58): Note! N717: col(39) left operand type is 'char [13] (lvalue)'
+RETROLIB/DOS/test_dos_files.h(58): Note! N718: col(39) right operand type is 'char [3] (lvalue)'
+RETROLIB/DOS/test_dos_files.h(71): Error! E230: col(39) expression on left is an array
+RETROLIB/DOS/test_dos_files.h(71): Note! N717: col(39) left operand type is 'char [13] (lvalue)'
+RETROLIB/DOS/test_dos_files.h(71): Note! N718: col(39) right operand type is 'char [3] (lvalue)'
+RETROLIB/DOS/test_dos_files.h(89): Error! E230: col(39) expression on left is an array
+RETROLIB/DOS/test_dos_files.h(89): Note! N717: col(39) left operand type is 'char [13] (lvalue)'
+RETROLIB/DOS/test_dos_files.h(89): Note! N718: col(39) right operand type is 'char [3] (lvalue)'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'messages'
 RETROLIB/DOS/dos_error_messages.h(58): Note! N392: col(20) definition: 'char const dos::error::messages[85][64]'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'classes'
