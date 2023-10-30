@@ -79,8 +79,8 @@ namespace dos {
 	* 
 	* @note - if file already exists, it is truncated to zero bytes on opening
 	*/
-	file::handle_t create_file_using_handle(char* path_name, uint16_t file_attributes) {
-		file::handle_t handle;
+	file::handle_t create_file_using_handle(char* path_name, uint16_t create_attributes) {
+		file::handle_t handle = 0;
 		uint16_t err_code = 0;
 		__asm {
 			.8086
@@ -88,7 +88,7 @@ namespace dos {
 			pushf
 
 			lds		dx, path_name
-			mov		cx, file_attributes
+			mov		cx, create_attributes
 			mov		ah, CREATE_FILE_USING_HANDLE
 			int		DOS_SERVICE
 			jnc		OK
@@ -105,6 +105,45 @@ namespace dos {
 		}
 
 		return handle;
+	}
+
+	/**
+	* INT 21,3D Open File Using Handle
+	* AH = 3D
+	* AL = open access mode
+	*      00  read only
+	*      01  write only
+	*      02  read/write
+	* DS:DX = pointer to an ASCIIZ file name
+	* 
+	* on return:
+	* AX = file handle if CF not set
+	*    = error code if CF set  (see DOS ERROR CODES)
+	*/
+	file::handle_t open_file_using_handle(char* path_name, uint8_t access_attributes) {
+		file::handle_t handle = 0;
+		uint16_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			lds		dx, path_name
+			mov		al, access_attributes
+			mov		ah, OPEN_FILE_USING_HANDLE
+			int		DOS_SERVICE
+			jnc		OK
+			mov		err_code, ax
+			xor		ax, ax
+	oK:		mov		handle, ax
+
+	END:	popf
+			pop		ds
+		}
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
 	}
 
 }

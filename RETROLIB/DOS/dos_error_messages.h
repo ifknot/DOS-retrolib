@@ -55,7 +55,7 @@ namespace dos {
         * The rest are obtained by issuing the "get extended error" function call
         * \see INT 21, 59
         */
-        char messages[85][MAX_ERR_STRING_LEN] = {
+        const char messages[85][MAX_ERR_STRING_LEN] = {
                 "00  Success ",
                 // DOS 2.0+
                 "01  Invalid function number ",
@@ -297,7 +297,7 @@ namespace dos {
         };
 
         // DOS 3.x+
-        char classes[16][MAX_ERR_STRING_LEN] = {
+        const char classes[16][MAX_ERR_STRING_LEN] = {
                 "00  no error class ",
                 "01  out of resource (storage space or I / O channels) ",
                 "02  temporary situation (file or record lock) ",
@@ -317,7 +317,7 @@ namespace dos {
         };
 
         // DOS 3.x+
-        char actions[8][MAX_ERR_STRING_LEN] = {
+        const char actions[8][MAX_ERR_STRING_LEN] = {
                 "00  no action ",
                 "01  retry, attempt a few more times and re-prompt ",
                 "02  delay retry, retry a few more times after a pause ",
@@ -329,7 +329,7 @@ namespace dos {
         };
 
         // DOS 3.x+
-        char locus[6][MAX_ERR_STRING_LEN] = {
+        const char locus[6][MAX_ERR_STRING_LEN] = {
                 "00  no locus ",
                 "01  unknown or not appropriate ",
                 "02  block device (disk error) ",

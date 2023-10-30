@@ -43,7 +43,7 @@ namespace test_dos_files {
 		}
 		if (YESNO("* 141\ttest create file?")) {
 			char fpath[13] = "DOSTESTS.TXT";
-			LOG(dos::create_file_using_handle(fpath, dos::file::READ_ONLY | dos::file::HIDDEN));
+			LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
 			char ferr[13] = "";
 			LOG(dos::create_file_using_handle(ferr));
 		}

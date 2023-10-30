@@ -20,10 +20,10 @@ namespace dos3x {
 		uint8_t eclass;
 		uint8_t eaction;
 		uint8_t elocus;
-		char* scode;
-		char* sclass;
-		char* saction;
-		char* slocus;
+		const char* scode;
+		const char* sclass;
+		const char* saction;
+		const char* slocus;
 
 	};
 

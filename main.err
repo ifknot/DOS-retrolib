@@ -2,3 +2,11 @@ RETROLIB/TEST/test_debug_macros.h(18): Warning! W388: col(23) integral constant 
 RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from RETROLIB/test_retrolib.h(18)
 RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from main.cpp(3)
 RETROLIB/TEST/test_debug_macros.h(23): Warning! W367: col(41) conditional expression in if statement is always true
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'messages'
+RETROLIB/DOS/dos_error_messages.h(58): Note! N392: col(27) definition: 'char const dos::error::messages[85][64]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'classes'
+RETROLIB/DOS/dos_error_messages.h(300): Note! N392: col(20) definition: 'char const dos::error::classes[16][64]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'actions'
+RETROLIB/DOS/dos_error_messages.h(320): Note! N392: col(20) definition: 'char const dos::error::actions[8][64]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'locus'
+RETROLIB/DOS/dos_error_messages.h(332): Note! N392: col(20) definition: 'char const dos::error::locus[6][64]'

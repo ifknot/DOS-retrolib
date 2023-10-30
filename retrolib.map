@@ -1,19 +1,7 @@
 Open Watcom Linker Version 2.0 beta Nov  1 2017 20:56:49 (64-bit)
 Copyright (c) 2002-2017 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/10/30 15:03:48
-Warning! W1027: file dos_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp): redefinition of char __far dos::error::messages[][64] ignored
-Warning! W1027: file dos_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp): redefinition of char __far dos::error::classes[][64] ignored
-Warning! W1027: file dos_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp): redefinition of char __far dos::error::actions[][64] ignored
-Warning! W1027: file dos_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp): redefinition of char __far dos::error::locus[][64] ignored
-Warning! W1027: file dos_services_3x.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp): redefinition of char __far dos::error::messages[][64] ignored
-Warning! W1027: file dos_services_3x.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp): redefinition of char __far dos::error::classes[][64] ignored
-Warning! W1027: file dos_services_3x.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp): redefinition of char __far dos::error::actions[][64] ignored
-Warning! W1027: file dos_services_3x.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp): redefinition of char __far dos::error::locus[][64] ignored
-Warning! W1027: file dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp): redefinition of char __far dos::error::messages[][64] ignored
-Warning! W1027: file dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp): redefinition of char __far dos::error::classes[][64] ignored
-Warning! W1027: file dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp): redefinition of char __far dos::error::actions[][64] ignored
-Warning! W1027: file dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp): redefinition of char __far dos::error::locus[][64] ignored
+Created on:       23/10/30 15:08:05
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -232,8 +220,8 @@ unexpect_DATA2         FAR_DATA       AUTO           0e8a:0149       00000000
 _NULL                  BEGDATA        DGROUP         0e9f:0000       00000020
 _AFTERNULL             BEGDATA        DGROUP         0ea1:0000       00000002
 CONST                  DATA           DGROUP         0ea1:0002       000000b6
-CONST2                 DATA           DGROUP         0eac:0008       0000010c
-_DATA                  DATA           DGROUP         0ebe:0000       00007956
+CONST2                 DATA           DGROUP         0ead:0000       0000741a
+_DATA                  DATA           DGROUP         15ef:0000       00000646
 XIB                    DATA           DGROUP         1653:0006       00000000
 XI                     DATA           DGROUP         1653:0006       00000036
 XIE                    DATA           DGROUP         1656:000c       00000000
@@ -266,16 +254,12 @@ Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
 0000:351a      __far std::allocator<char __far >::~allocator()
 0000:3553      __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::basic_string( std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far > const __far & )
 0000:36c0      __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::~basic_string()
-0e9f:01f0      char __far dos::error::messages[][64]
-0e9f:1730      char __far dos::error::classes[][64]
-0e9f:1b30      char __far dos::error::actions[][64]
-0e9f:1d30      char __far dos::error::locus[][64]
+0e9f:1da0      int unsigned const __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::npos
 0000:37c1      char __far * __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::alloc( int unsigned, int unsigned __far & )
 0000:327a+     void __far test_dos::run()
 0000:331c+     void __far test_lib_mem::run()
 0000:3464+     void __far test_retrolib::run()
 0000:34ee      main_
-0e9f:00d8      int unsigned const __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::npos
 Module: dos_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp)
 0000:3856      void __far dos::set_interrupt_vector( char unsigned, mem::address_t )
 0000:3890      mem::address_t __far dos::get_interrupt_vector( char unsigned )
@@ -349,9 +333,9 @@ Module: C:\WATCOM\lib286\plbxl.lib(opnew.cpp)
 0000:9a50      void __far * __far operator new( int unsigned )
 Module: C:\WATCOM\lib286\dos\clibl.lib(cstart)
 0e9f:0000*     __nullarea
-0e9f:7524*     __ovlflag
-0e9f:7525*     __intno
-0e9f:7526*     __ovlvec
+0e9f:752a*     __ovlflag
+0e9f:752b*     __intno
+0e9f:752c*     __ovlvec
 0000:4aa8      _cstart_
 0000:4b7b*     _Not_Enough_Memory_
 0000:4cad      __exit_
@@ -372,23 +356,23 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(xmsg.c)
 0000:4d2e      __exit_with_msg_
 0000:4d33      __fatal_runtime_error_
 Module: C:\WATCOM\lib286\dos\clibl.lib(crwdata)
-0e9f:752a      __curbrk
-0e9f:7532      __STACKLOW
-0e9f:7534      __STACKTOP
-0e9f:7536      __cbyte
-0e9f:7538      __child
-0e9f:753a      __no87
-0e9f:7547      ___FPE_handler
-0e9f:752c      __psp
-0e9f:753b      __get_ovl_stack
-0e9f:753f      __restore_ovl_stack
-0e9f:7543      __close_ovl_file
-0e9f:754b      __LpCmdLine
-0e9f:754f      __LpPgmName
-0e9f:752e      __osmajor
-0e9f:752f      __osminor
-0e9f:7530      __osmode
-0e9f:7531      __HShift
+0e9f:7530      __curbrk
+0e9f:7538      __STACKLOW
+0e9f:753a      __STACKTOP
+0e9f:753c      __cbyte
+0e9f:753e      __child
+0e9f:7540      __no87
+0e9f:754d      ___FPE_handler
+0e9f:7532      __psp
+0e9f:7541      __get_ovl_stack
+0e9f:7545      __restore_ovl_stack
+0e9f:7549      __close_ovl_file
+0e9f:7551      __LpCmdLine
+0e9f:7555      __LpPgmName
+0e9f:7534      __osmajor
+0e9f:7535      __osminor
+0e9f:7536      __osmode
+0e9f:7537      __HShift
 Module: C:\WATCOM\lib286\plbxl.lib(ostput.cpp)
 0000:9b20      std::ostream __far & __far std::ostream::put( char )
 Module: C:\WATCOM\lib286\plbxl.lib(ostflush.cpp)
@@ -421,7 +405,7 @@ Module: C:\WATCOM\lib286\plbxl.lib(iossetst.cpp)
 0000:a440+     __far __WATCOM_exception::~__WATCOM_exception()
 0000:a3d0      void __far std::ios::setstate( int )
 Module: C:\WATCOM\lib286\dos\clibl.lib(iob.c)
-0e9f:7554      ___iob
+0e9f:755a      ___iob
 0e9f:7c26      ___OpenStreams
 0e9f:7c2a      ___ClosedStreams
 Module: C:\WATCOM\lib286\dos\clibl.lib(fgetc.c)
@@ -449,7 +433,7 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(_snprint.c)
 0000:61c9      _snprintf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(enterdb.c)
 0000:61f8      __EnterWVIDEO_
-0e9f:76bc      ___WD_Present
+0e9f:76c2      ___WD_Present
 Module: C:\WATCOM\lib286\dos\clibl.lib(stack086.c)
 0000:621c      stackavail_
 Module: C:\WATCOM\lib286\dos\clibl.lib(sprintf.c)
@@ -459,7 +443,7 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(rterrmsg.c)
 Module: C:\WATCOM\lib286\dos\clibl.lib(abort.c)
 0000:628c      abort_
 0000:62a8+     __terminate_
-0e9f:76be+     ___abort
+0e9f:76c4+     ___abort
 Module: C:\WATCOM\lib286\plbxl.lib(stabdtor.cpp)
 0000:a8d4      __wcpp_4_destruct_internal__
 0000:a8f2*     __wcpp_4_destruct_all__
@@ -472,9 +456,9 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(ffree.c)
 Module: C:\WATCOM\lib286\dos\clibl.lib(fmalloc.c)
 0000:6300*     _fmalloc_
 0000:6300      malloc_
-0e9f:76c2+     ___fheapbeg
-0e9f:76c4      ___fheapRover
-0e9f:76c6      ___LargestSizeB4Rover
+0e9f:76c8+     ___fheapbeg
+0e9f:76ca      ___fheapRover
+0e9f:76cc      ___LargestSizeB4Rover
 Module: C:\WATCOM\lib286\dos\clibl.lib(cmain086.c)
 0000:6410      __CMain
 Module: C:\WATCOM\lib286\dos\clibl.lib(initrtns.c)
@@ -483,7 +467,7 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(initrtns.c)
 0000:64c6      __FiniRtns
 0000:64c6*     __FFiniRtns
 Module: C:\WATCOM\lib286\dos\clibl.lib(uselfn.c)
-0e9f:76c8      ___uselfn
+0e9f:76ce      ___uselfn
 Module: C:\WATCOM\lib286\dos\clibl.lib(dosseg)
 0000:652a      __DOSseg__
 Module: C:\WATCOM\lib286\plbxl.lib(vfun_err.cpp)
@@ -564,24 +548,24 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(errno.c)
 0000:6905      __get_errno_ptr_
 0e9f:7c2e+     _errno
 Module: C:\WATCOM\lib286\dos\clibl.lib(istable.c)
-0e9f:00da      __IsTable
+0e9f:73f0      __IsTable
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbisdbcs.c)
-0e9f:76ca      ___IsDBCS
+0e9f:76d0      ___IsDBCS
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbislead.c)
 0000:690c*     _ismbblead_
 0e9f:7c30      ___MBCSIsTable
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbtowc.c)
 0000:6928      mbtowc_
 Module: C:\WATCOM\lib286\dos\clibl.lib(bits.c)
-0e9f:01dc      __Bits
+0e9f:74f2      __Bits
 Module: C:\WATCOM\lib286\dos\clibl.lib(fdfs086.asm)
 0000:6a2a      __FDFS
 Module: C:\WATCOM\lib286\dos\clibl.lib(i4d.asm)
 0000:6a72*     __I4D
 0000:6ac1      __U4D
 Module: C:\WATCOM\lib286\dos\clibl.lib(noefgfmt.c)
-0e9f:76cc      ___EFG_printf
-0e9f:76d0      ___EFG_scanf
+0e9f:76d2      ___EFG_printf
+0e9f:76d6      ___EFG_scanf
 Module: C:\WATCOM\lib286\dos\clibl.lib(tolower.c)
 0000:6b55      tolower_
 Module: C:\WATCOM\lib286\dos\clibl.lib(i8m086.asm)
@@ -625,9 +609,9 @@ Module: C:\WATCOM\lib286\plbxl.lib(tsequiv.cpp)
 0000:cbb8      __wcpp_4_ts_equiv__
 Module: C:\WATCOM\lib286\dos\clibl.lib(nmalloc.c)
 0000:7bab      _nmalloc_
-0e9f:76d4      ___nheapbeg
-0e9f:76d6      ___MiniHeapRover
-0e9f:76d8      ___LargestSizeB4MiniHeapRover
+0e9f:76da      ___nheapbeg
+0e9f:76dc      ___MiniHeapRover
+0e9f:76de      ___LargestSizeB4MiniHeapRover
 Module: C:\WATCOM\lib286\dos\clibl.lib(mem.c)
 0000:7c90      __MemAllocator
 0000:7d56      __MemFree
@@ -651,8 +635,8 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(exit.c)
 0000:81b2+     __null_int23_exit_
 0000:81b3      exit_
 0000:81cb*     _exit_
-0e9f:76da+     ___int23_exit
-0e9f:76de+     ___FPE_handler_exit
+0e9f:76e0+     ___int23_exit
+0e9f:76e4+     ___FPE_handler_exit
 Module: C:\WATCOM\lib286\dos\clibl.lib(sgdef086)
 0e9f:7b46      __Start_XI
 0e9f:7b7c      __End_XI
@@ -710,7 +694,7 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(dosret.c)
 0000:8855*     __set_errno_dos_reterr_
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbinit.c)
 0000:88cd      __mbinit_
-0e9f:76f6+     ___MBCodePage
+0e9f:76fc+     ___MBCodePage
 Module: C:\WATCOM\lib286\dos\clibl.lib(wctomb.c)
 0000:8987      wctomb_
 Module: C:\WATCOM\lib286\dos\clibl.lib(itoa.c)
@@ -785,4 +769,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  00016f40 (94016.)
 Entry point address: 0000:4aa8
-Link time: 00:00.26
+Link time: 00:00.21
