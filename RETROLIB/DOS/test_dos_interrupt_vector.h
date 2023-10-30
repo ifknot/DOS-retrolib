@@ -35,7 +35,6 @@ namespace test_dos_interrupt_vector {
 		LOG(dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION));
 		ASSERT(old_ivec_equip_det.void_ptr == dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, old_ivec_equip_det.void_ptr);
 
-		INFO("* PASS!");
 	}
 
 }

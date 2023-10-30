@@ -14,17 +14,44 @@
 
 namespace dos {
 
-	/**
-	* DOS int 21h, 36h	Get Disk Free Space
-	*/
-	struct disk_space_info_t {
+	namespace file {
 
-		int16_t sectors_per_cluster;	// 0FFFFH if the drive number is invalid
-		int16_t available_clusters;
-		int16_t bytes_per_sector;
-		int16_t clusters_per_drive;
+		typedef uint16_t handle_t;
 
-	};
+		/**
+		* Bitfields for file attributes:
+		* 
+		* 0	read-only
+		* 1	hidden
+		* 2	system
+		* 3	volume label (ignored)
+		* 4	reserved, must be zero (directory)
+		* 5	archive bit
+		* 7	if set, file is shareable under Novell NetWare
+		*/
+		enum attributes {
+			READ_WRITE = 0,
+			READ_ONLY,
+			HIDDEN,
+			SYSTEM = 4,
+			VOLUME = 8,
+			ARCHIVE = 32,
+			SHAREABLE = 128,
+		};
+
+		/**
+		* DOS int 21h, 36h	Get Disk Free Space
+		*/
+		struct disk_space_info_t {
+
+			int16_t sectors_per_cluster;	// 0FFFFH if the drive number is invalid
+			int16_t available_clusters;
+			int16_t bytes_per_sector;
+			int16_t clusters_per_drive;
+
+		};
+
+	}
 
 	/**
 	* Offset Size		Description

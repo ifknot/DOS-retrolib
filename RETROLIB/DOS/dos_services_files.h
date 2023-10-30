@@ -15,14 +15,17 @@
 namespace dos {
 
     // 36  Get disk free space
-    void get_disk_free_space(uint8_t drive_number, disk_space_info_t* info);
+    void get_disk_free_space(uint8_t drive_number, file::disk_space_info_t* info);
 
     // 37  Get/set switch character (undocumented)
     // 38  Get/set country dependent information
     // 39  Create subdirectory (mkdir)
     // 3A  Remove subdirectory (rmdir)
     // 3B  Change current subdirectory (chdir) 
+    // 
     // 3C  Create file using handle
+    file::handle_t create_file_using_handle(char* path_name, uint16_t file_attributes = file::READ_ONLY);
+
     // 3D  Open file using handle
     // 3E  Close file using handle
     // 3F  Read file or device using handle

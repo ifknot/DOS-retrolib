@@ -91,7 +91,7 @@ namespace dos {
          * @return      the segment address of the reserved memory or 0 if request failed
          */
         uint16_t allocate_memory_blocks(uint16_t paragraphs) {
-            uint16_t err_code, available, mem_seg = 0;
+            uint16_t available, mem_seg, err_code = 0;
             __asm {
                 .8086
                 mov     bx, paragraphs              ; number requested paragraphs
@@ -105,10 +105,10 @@ namespace dos {
 
             }
 
-            if (mem_seg == 0) {
+            if (err_code) {
                 std::cout << dos::error::messages[err_code] << '\n';
                 if (err_code == dos::error::INSUFFICIENT_MEMORY) {
-                    std::cout << " largest block of memory available = " << std::hex << (available * 16) << " bytes\n";
+                    std::cout << " largest block of memory available = " << std::hex << (available * 16) << " bytes" << std::endl;
                 }
             }
 
@@ -148,53 +148,12 @@ namespace dos {
             }
 
             if (err_code) {
-                std::cout << dos::error::messages[err_code] << std::hex << segment << '\n';
-                return err_code;
+                std::cout << dos::error::messages[err_code] << std::hex << segment << std::endl;
             }
 
             return err_code;
         }
 
-        /**
-         * @brief Get extended error information (3.x+)
-         * AH = 59h
-         * BX = 00 for versions  3.0, 3.1, 3.2
-         * on return:
-         * AX = extended error code (see DOS ERROR CODES)
-         *    = 0 if no error
-         * BH = error class
-         * BL = suggested action
-         * CH = locus
-         *
-         * - may be called after any  INT 21  function or from
-         *   INT 24 when an error is returned
-         * - must be called immediately after the error occurs
-         * - registers CX, DX, DI, SI, BP, DS and ES are destroyed.
-         *
-         * @return std::string error message, class, action, locus
-         */
-        std::string get_extended_error_information() { // TODO: handle 22  Invalid disk change" ES:DI -> media ID structure
-            uint16_t err_code = 0;
-            uint8_t err_class, err_action, err_locus;
-            __asm {
-                .8086
-                xor     bx, bx                              ; BX = 0 DOS versions  3.0, 3.1, 3.2
-                mov     ah, GET_EXTENDED_ERROR_INFORMATION
-                int     DOS_SERVICE
-                mov     err_code, ax
-                mov     err_class, bh
-                mov     err_action, bl
-                mov     err_locus, ch
-            }
-
-            std::string info(dos::error::messages[err_code]);
-            if (err_code) {
-                info += dos::error::classes[err_class];
-                info += dos::error::actions[err_action];
-                info += dos::error::locus[err_locus];
-            }
-
-            return info;
-        }
+        
 
 }

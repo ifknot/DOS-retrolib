@@ -13,6 +13,13 @@ X\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp .AUTODEPEND
  *wpp RETROLIB\DOS\dos_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -b&
 t=dos -fo=.obj -ml -xs -xr
 
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_3x.obj : C:\Users\ifkno\DO&
+SBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp .AUTODEPEND
+ @C:
+ cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ *wpp RETROLIB\DOS\dos_services_3x.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2&
+ -bt=dos -fo=.obj -ml -xs -xr
+
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_files.obj : C:\Users\ifkno&
 \DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp .AUTODEPEND
  @C:
@@ -43,14 +50,14 @@ dos -fo=.obj -ml -xs -xr
 
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
 S16\RETROLIB\main.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services.obj &
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_files.obj C:\Users\ifkno\D&
-OSBOX\DOS16\RETROLIB\mem_address.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\me&
-m_dump_ostream.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj .AUTO&
-DEPEND
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_3x.obj C:\Users\ifkno\DOSB&
+OX\DOS16\RETROLIB\dos_services_files.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLI&
+B\mem_address.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_dump_ostream.obj &
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- @%write retrolib.lk1 FIL main.obj,dos_services.obj,dos_services_files.obj,m&
-em_address.obj,mem_dump_ostream.obj,mem_segoff.obj
+ @%write retrolib.lk1 FIL main.obj,dos_services.obj,dos_services_3x.obj,dos_&
+services_files.obj,mem_address.obj,mem_dump_ostream.obj,mem_segoff.obj
  @%append retrolib.lk1 
  *wlink name retrolib d all sys dos op m op maxe=25 op q op symf @retrolib.l&
 k1

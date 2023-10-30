@@ -27,7 +27,7 @@
 #define LOG(var)
 #else
 #define LOG(var) do { \
-					std::cout << #var << '=' << var << std::endl; \
+					std::cout << #var << '=' << std::dec << var << std::endl; \
 				} while(false)
 #endif
 
