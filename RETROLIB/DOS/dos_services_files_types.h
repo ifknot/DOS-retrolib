@@ -20,6 +20,14 @@ namespace dos {
 
 		typedef uint16_t attributes_t;
 
+		typedef int32_t position_t;		// N.B. signed offset
+
+		enum seek_attributes {
+			FSEEK_SET,
+			FSEEK_CUR,
+			FSEEK_END
+		};
+
 		/**
 		* Bitfields for create file attributes:
 		*

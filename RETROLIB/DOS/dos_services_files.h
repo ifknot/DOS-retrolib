@@ -37,12 +37,13 @@ namespace dos {
     uint16_t read_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer);
 
     // 40  Write file or device using handle
-    unint16_t write_file_using_handle(file::handle_t, uint16_t nbytes, char* buffer);
+    uint16_t write_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer);
     
     // 41  Delete file
     error_code_t delete_file(char* path_name);
     
     // 42  Move file pointer using handle
+    file::position_t move_file_pointer_using_handle(file::handle_t fhandle, uint8_t origin, file::position_t offset = 0);
     
     // 43  Change file mode
     file::attributes_t get_file_attributes(char* path_name);

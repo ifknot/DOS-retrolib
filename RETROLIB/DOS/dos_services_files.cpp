@@ -264,7 +264,7 @@ namespace dos {
 	* - if AX is not equal to CX on return, a partial write occurred
 	* - this function can be used to truncate a file to the current file position by writing zero bytes
 	*/
-	unint16_t write_file_using_handle(file::handle_t, uint16_t nbytes, char* buffer) {
+	uint16_t write_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer) {
 		uint16_t bytes_written = 0;
 		error_code_t err_code = 0;
 		__asm {
@@ -281,9 +281,9 @@ namespace dos {
 			mov		err_code, ax
 			jmp		END
 
-			OK : mov		bytes_read, ax
+	OK:		mov		bytes_written, ax
 
-			END : popf
+	END:	popf
 			pop		ds
 		}
 
@@ -337,6 +337,71 @@ namespace dos {
 #endif
 
 		return err_code;
+	}
+
+	/**
+	* INT 21,42 - Move File Pointer Using Handle
+	* AH = 42h
+	* AL = origin of move:
+	*      00 = beginning of file plus offset  (SEEK_SET)
+	*      01 = current location plus offset	(SEEK_CUR)
+	*      02 = end of file plus offset  (SEEK_END)
+	* BX = file handle
+	* CX:DX = (signed) offset from origin of new file position
+	* 
+	* on return:
+	* CF clear if successful
+	*     DX:AX = new file position in bytes from start of file
+	* CF set on error
+	*    AX = error code
+	* 
+	* @note WARNING: for origins 01h and 02h, the pointer may be positioned before the
+	* start of the file; no error is returned in that case (except under Windows NT), 
+	* but subsequent attempts at I/O will produce errors.
+	* If the new position is beyond the current end of file, the file will be extended by the next write! 
+	* For FAT32 drives, the file must have been opened with AX=6C00h with the "extended size"
+	* flag in order to expand the file beyond 2GB
+	* 
+	* @note BUG: using this method to grow a file from zero bytes to a very large size
+	* can corrupt the FAT in some versions of DOS; the file should first
+	* be grown from zero to one byte and then to the desired large size
+	*/
+	file::position_t move_file_pointer_using_handle(file::handle_t fhandle, uint8_t origin, file::position_t offset = 0) {
+		error_code_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			lds		si, offset
+			mov		dx, [si]
+			mov		cx, [si + 2]
+			mov		bx, fhandle
+			mov		al, origin
+			mov		ah, MOVE_FILE_POINTER_USING_HANDLE
+			int		DOS_SERVICE
+			jnc		OK
+			mov		err_code, ax
+			jmp		END
+
+	OK:		lds		di, offset
+			mov		[di], dx
+			mov		[di + 2], ax
+
+	END:	popf
+			pop		ds
+		}
+
+#ifndef NDEBUG
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
+
+#endif
+
+		return err_code;
+		return offset;
 	}
 
 	/**

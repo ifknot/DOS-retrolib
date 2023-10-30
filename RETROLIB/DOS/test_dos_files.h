@@ -63,7 +63,7 @@ namespace test_dos_files {
 				LOG(dos::get_file_attributes(fpath)); // errors out
 				LOG(dos::set_file_attributes(fpath, fattr));
 				std::cout << "* Enter filename: ";
-				scanf("%s", fpath);
+				LOG(scanf("%s", fpath));
 				LOG(dos::get_file_attributes(fpath));
 				std::cout << "* Enter attributes: ";
 				std::cin >> fattr;
@@ -75,23 +75,27 @@ namespace test_dos_files {
 				INFO("* file open error...");
 				LOG(dos::open_file_using_handle(fpath)); // errors out
 				std::cout << "* Enter filename: ";
-				scanf("%s", fpath);
-				INFO("dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY");
-				fhandle = dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY);
+				INFO(scanf("%s", fpath));
+				INFO("dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_WRITE");
+				fhandle = dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_WRITE);
 				LOG(fhandle);
 				LOG(dos::get_file_attributes(fpath));
 			}
 			if (YESNO("* 145\ttest write file?")) {
 				
-				std::cout << "* Enter data: ";
-				scanf("%s", buffer);
+				std::cout << "* Enter text data: ";
+				LOG(scanf("%s", buffer));
+				nbytes = 20;
+				LOG(buffer);
+				LOG(nbytes);
+				LOG(dos::write_file_using_handle(fhandle, nbytes, buffer));
 
 			}
 			if (YESNO("* 146\ttest read file?")) {
-				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
+				buffer[0] = '\0';
 				LOG(buffer);
-				std::cout << "* Enter nbytes: ";
-				std::cin >> nbytes;
+				
+				
 				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
 				LOG(buffer);
 			}
