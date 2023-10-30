@@ -22,6 +22,8 @@ TODO BIOS
 
 TODO DOS
 + [...] v0.3  complete on an **as needed basis**
+    + [x] 36  Get disk free space
+  
     + [ ] 3C  Create file using handle
     + [ ] 3D  Open file using handle
     + [ ] 3E  Close file using handle
