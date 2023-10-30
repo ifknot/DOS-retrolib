@@ -14,6 +14,7 @@
 
 #include "dos_services_types.h"
 #include "dos_services_files.h"
+#include "dos_error_messages.h"
 
 #include <stdio.h>
 
@@ -45,8 +46,8 @@ namespace test_dos_files {
 		}
 		{
 			char fpath[13] = "";
-			dos::file::handle_t handle;
-			dos::file::attributes_t attr;
+			dos::file::handle_t fhandle;
+			dos::file::attributes_t fattr;
 			if (YESNO("* 142\ttest create file?")) {
 				INFO("* file create error...");
 				LOG(dos::create_file_using_handle(fpath)); // errors out
@@ -55,27 +56,27 @@ namespace test_dos_files {
 				LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
 			}
 			if (YESNO("* 143\ttest change mode?")) {
-				fpath = "/0";
+				fpath[0] = '\0';
 				INFO("* file mode error");
 				LOG(dos::get_file_attributes(fpath)); // errors out
-				LOG(dos::set_file_attributes(fpath, attr));
+				LOG(dos::set_file_attributes(fpath, fattr));
 				std::cout << "* Enter filename: ";
 				scanf("%s", fpath);
 				LOG(dos::get_file_attributes(fpath));
 				std::cout << "* Enter attributes: ";
-				std::cin >> attr;
-				LOG(dos::set_file_attributes(fpath, attr));
+				std::cin >> fattr;
+				LOG(dos::set_file_attributes(fpath, fattr));
 				LOG(dos::get_file_attributes(fpath));
 			}
 			if (YESNO("* 144\ttest open file?")) {
-				fpath = "/0";
+				fpath[0] = '\0';
 				INFO("* file open error...");
 				LOG(dos::open_file_using_handle(fpath)); // errors out
 				std::cout << "* Enter filename: ";
 				scanf("%s", fpath);
 				INFO("dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY");
-				handle = dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY);
-				LOG(handle);
+				fhandle = dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY);
+				LOG(fhandle);
 				LOG(dos::get_file_attributes(fpath));
 			}
 			if (YESNO("* 145\ttest write file?")) {
@@ -83,15 +84,18 @@ namespace test_dos_files {
 			if (YESNO("* 146\ttest read file?")) {
 			}
 			if (YESNO("* 147\ttest close file?")) {
-
+				LOG(dos::close_file_using_handle(fhandle));
+				INFO("* file close error...");
+				LOG(dos::close_file_using_handle(fhandle)); // errors out
 			}
 			if (YESNO("* 148\ttest delete file?")) {
-				fpath = "/0";
+				fpath[0] = '\0';
 				INFO("* file delete error...");
 				LOG(dos::delete_file(fpath)); // errors out
 				std::cout << "* Enter filename: ";
 				scanf("%s", fpath);
 				LOG(dos::delete_file(fpath));
+				INFO("* more file delete errors...");
 				LOG(dos::get_file_attributes(fpath));
 				LOG(dos::delete_file(fpath));
 			}

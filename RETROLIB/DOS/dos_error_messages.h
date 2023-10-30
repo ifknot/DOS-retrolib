@@ -23,9 +23,9 @@ namespace dos {
 
     namespace error {
 
-            /**
-            * Useful for user code to raise first classic 12h codes
-            */
+        /**
+        * Useful for user code to raise first classic 12h codes
+        */
         enum codes {
                 SUCCESS = 0,
                 INVALID_FUNCTION_NUMBER,

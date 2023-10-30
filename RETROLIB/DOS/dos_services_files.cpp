@@ -82,7 +82,7 @@ namespace dos {
 	* @note - if file already exists, it is truncated to zero bytes on opening
 	*/
 	file::handle_t create_file_using_handle(char* path_name, file::attributes_t create_attributes) {
-		file::handle_t handle;
+		file::handle_t fhandle;
 		error_code_t err_code = 0;
 		__asm {
 			.8086
@@ -96,7 +96,7 @@ namespace dos {
 			jnc		OK
 			mov		err_code, ax
 			xor		ax,ax
-	OK:		mov		handle, ax
+	OK:		mov		fhandle, ax
 
 	END:	popf
 			pop		ds
@@ -106,7 +106,7 @@ namespace dos {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
 
-		return handle;
+		return fhandle;
 	}
 
 	/**
@@ -123,7 +123,7 @@ namespace dos {
 	*    = error code if CF set  (see DOS ERROR CODES)
 	*/
 	file::handle_t open_file_using_handle(char* path_name, uint8_t access_attributes) {
-		file::handle_t handle;
+		file::handle_t fhandle;
 		error_code_t err_code = 0;
 		__asm {
 			.8086
@@ -137,7 +137,7 @@ namespace dos {
 			jnc		OK
 			mov		err_code, ax
 			xor		ax, ax
-	OK:		mov		handle, ax
+	OK:		mov		fhandle, ax
 
 	END:	popf
 			pop		ds
@@ -147,7 +147,43 @@ namespace dos {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
 
-		return handle;
+		return fhandle;
+	}
+
+	/**
+	* INT 21,3E - Close File Using Handle
+	* AH = 3E
+	* BX = file handle to close
+	* 
+	* on return:
+	* AX = error code if CF set  (see DOS ERROR CODES)
+	* 
+	* - if file is opened for update, file time and date stamp
+	*   as well as file size are updated in the directory
+	* - handle is freed
+	*/
+	error_code_t close_file_using_handle(file::handle_t fhandle) {
+		error_code_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			mov		bx, fhandle
+			mov		ah, CLOSE_FILE_USING_HANDLE
+			int		DOS_SERVICE
+			jnc		END
+			mov		err_code, ax
+
+	END:	popf
+			pop		ds
+		}
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
+
+		return err_code;
 	}
 
 	/**

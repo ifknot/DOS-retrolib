@@ -31,7 +31,7 @@ namespace dos {
     file::handle_t open_file_using_handle(char* path_name, uint8_t access_attributes = file::ACCESS_READ_ONLY);
 
     // 3E  Close file using handle
-
+    error_code_t close_file_using_handle(file::handle_t fhandle);
     
     // 3F  Read file or device using handle
     
