@@ -23,12 +23,14 @@ namespace dos {
             __asm {
                 .8086
                 push    ds
+
                 lea     si, addr
-                mov     dx, [si]            ; offset (little endian)
-                mov     ds, [si + 2]        ; segment
-                mov     al, vec_num
-                mov     ah, SET_INTERRUPT_VECTOR
+                mov     dx, [si]                    ; copy offset from address_t (little endian)
+                mov     ds, [si + 2]                ; segment
+                mov     al, vec_num                 ; interrupt vector number
+                mov     ah, SET_INTERRUPT_VECTOR    ; 25h service
                 int     DOS_SERVICE
+
                 pop     ds
             }
 
@@ -50,12 +52,14 @@ namespace dos {
             __asm {
                 .8086
                 push    ds
-                mov     al, vec_num
-                mov     ah, GET_INTERRUPT_VECTOR
+
+                mov     al, vec_num                 ; interrupt vector number
+                mov     ah, GET_INTERRUPT_VECTOR    ; 35h service
                 int     DOS_SERVICE
                 lea     di, addr
-                mov     ds:[di], bx
-                mov     ds:[di + 2] , es
+                mov     [di], bx                    ; copy segment into address_t (little endian)
+                mov     [di + 2] , es               ; copy offset
+
                 pop     ds
             }
             return addr;
@@ -92,7 +96,7 @@ namespace dos {
                 .8086
                 mov     bx, paragraphs              ; number requested paragraphs
                 mov     ah, ALLOCATE_MEMORY_BLOCKS  ; allocate memory
-                int     DOS_SERVICE                 ; dos call
+                int     DOS_SERVICE                 ; 48h service
                 jnc     OK                          ; success CF = 0
                 mov     err_code, ax                ; CF set, and AX = 08 (Not Enough Mem)
                 mov     available, bx               ; size in paras of the largest block of memory available
@@ -137,7 +141,7 @@ namespace dos {
                 mov     ax, segment                         ; the segment to be released
                 mov     es, ax                              ; segment of the block to be returned(MCB + 1para)
                 mov     ah, FREE_ALLOCATED_MEMORY_BLOCKS    ; de-allocate memory
-                int     DOS_SERVICE                         ; dos call
+                int     DOS_SERVICE                         ; dos call 49h
                 jnc     OK                                  ; success CF = 0
                 mov     err_code, ax                        ; de-allocation failed ax is dos error code
         OK:

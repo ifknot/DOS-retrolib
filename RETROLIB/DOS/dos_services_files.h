@@ -15,7 +15,7 @@
 namespace dos {
 
     // 36  Get disk free space
-    void get_disk_free_space(uint16_t drive_number, disk_space_info_t* info);
+    void get_disk_free_space(uint8_t drive_number, disk_space_info_t* info);
 
     // 37  Get/set switch character (undocumented)
     // 38  Get/set country dependent information

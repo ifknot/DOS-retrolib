@@ -1,2 +1,0 @@
-RETROLIB\DOS\dos_services_files.cpp(42): Warning! W726: col(9) no reference to formal parameter 'drive_number'
-RETROLIB\DOS\dos_services_files.cpp(31): Note! N392: col(43) definition: 'unsigned short drive_number' in 'void dos::get_disk_free_space( unsigned short, dos::disk_space_info_t * )'

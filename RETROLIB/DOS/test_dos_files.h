@@ -25,6 +25,14 @@ namespace test_dos_files {
 		LOG(info.available_clusters);
 		LOG(info.bytes_per_sector);
 		LOG(info.clusters_per_drive);
+		uint32_t total_size = info.bytes_per_sector;
+		total_size *= info.sectors_per_cluster;
+		total_size *= info.clusters_per_drive;
+		uint32_t free_size = info.bytes_per_sector;
+		free_size *= info.sectors_per_cluster;
+		free_size *= info.available_clusters;
+		LOG(free_size);
+		LOG(total_size);
 	}
 
 }
