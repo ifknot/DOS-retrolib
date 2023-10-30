@@ -62,9 +62,13 @@ namespace dos {
 			pop		ds
 		}
 
+#ifndef NDEBUG
+
 		if (info->sectors_per_cluster == 0xFFFF) {
 			std::cout << dos::error::messages[dos::error::INVALID_DRIVE_SPECIFIED] << std::endl;
 		}
+
+#endif
 	}
 
 	/**
@@ -102,9 +106,13 @@ namespace dos {
 			pop		ds
 		}
 
+#ifndef NDEBUG
+		
 		if (err_code) {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
+
+#endif
 
 		return fhandle;
 	}
@@ -143,9 +151,13 @@ namespace dos {
 			pop		ds
 		}
 
+#ifndef NDEBUG
+
 		if (err_code) {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
+
+#endif
 
 		return fhandle;
 	}
@@ -158,8 +170,7 @@ namespace dos {
 	* on return:
 	* AX = error code if CF set  (see DOS ERROR CODES)
 	* 
-	* - if file is opened for update, file time and date stamp
-	*   as well as file size are updated in the directory
+	* - if file is opened for update, file time and date stamp as well as file size are updated in the directory
 	* - handle is freed
 	*/
 	error_code_t close_file_using_handle(file::handle_t fhandle) {
@@ -179,11 +190,64 @@ namespace dos {
 			pop		ds
 		}
 
+#ifndef NDEBUG
+
 		if (err_code) {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
 
+#endif
+
 		return err_code;
+	}
+
+	/**
+	* INT 21,3F - Read From File or Device Using Handle
+	* AH = 3F
+	* BX = file handle
+	* CX = number of bytes to read
+	* DS:DX = pointer to read buffer
+	* 
+	* on return:
+	* AX = number of bytes read is CF not set
+	*    = error code if CF set  (see DOS ERROR CODES)
+	*
+	* - read specified number of bytes from file into buffer DS:DX
+	* - when AX is not equal to CX then a partial read occurred due to end of file
+	* - if AX is zero, no data was read, and EOF occurred before read
+	*/
+	uint16_t read_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer) {
+		uint16_t bytes_read = 0;
+		error_code_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			lds		dx, buffer
+			mov		cx	nbytes
+			mov		bx, fhandle
+			mov		ah, READ_FILE_OR_DEVICE_USING_HANDLE
+			int		DOS_SERVICE
+			jnc		OK
+			mov		err_code, ax
+			jmp		END
+
+	OK:		mov		bytes_read, ax
+
+	END:	popf
+			pop		ds
+		}
+
+#ifndef NDEBUG
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
+
+#endif
+
+		return bytes_read;
 	}
 
 	/**
@@ -194,9 +258,9 @@ namespace dos {
 	* on return:
 	* AX = error code if CF set  (see DOS ERROR CODES)
 	* 
-	* - marks first byte of file directory entry with E5 to indicate
-	*   the file has been deleted.  The rest of the directory entry
-	*   stays intact until reused.   FAT pointers are returned to DOS
+	* - marks first byte of file directory entry with E5 to indicate the file has been deleted.  
+	* - The rest of the directory entry stays intact until reused.   
+	* - FAT pointers are returned to DOS
 	* @note - documented as not accepting wildcards in filename but actually does in several DOS versions
 	*/
 	error_code_t delete_file(char* path_name) {
@@ -216,9 +280,13 @@ namespace dos {
 			pop		ds
 		}
 
+#ifndef NDEBUG
+
 		if (err_code) {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
+
+#endif
 
 		return err_code;
 	}
@@ -264,9 +332,13 @@ namespace dos {
 			pop		ds
 		}
 
+#ifndef NDEBUG
+
 		if (err_code) {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
+
+#endif
 
 		return attributes;
 	}
@@ -294,9 +366,13 @@ namespace dos {
 			pop		ds
 		}
 
+#ifndef NDEBUG
+
 		if (err_code) {
 			std::cout << dos::error::messages[err_code] << std::endl;
 		}
+
+#endif
 
 		return err_code;
 	}

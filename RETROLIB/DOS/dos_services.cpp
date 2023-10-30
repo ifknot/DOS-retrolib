@@ -105,12 +105,16 @@ namespace dos {
 
             }
 
+#ifndef NDEBUG
+
             if (err_code) {
                 std::cout << dos::error::messages[err_code] << '\n';
                 if (err_code == dos::error::INSUFFICIENT_MEMORY) {
                     std::cout << " largest block of memory available = " << std::hex << (available * 16) << " bytes" << std::endl;
                 }
             }
+
+#endif
 
             return mem_seg;
         }
@@ -147,9 +151,13 @@ namespace dos {
         OK:
             }
 
+#ifndef NDEBUG
+
             if (err_code) {
                 std::cout << dos::error::messages[err_code] << std::hex << segment << std::endl;
             }
+
+#endif
 
             return err_code;
         }

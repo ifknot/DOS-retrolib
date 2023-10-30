@@ -80,6 +80,7 @@ namespace test_dos_files {
 				LOG(dos::get_file_attributes(fpath));
 			}
 			if (YESNO("* 145\ttest write file?")) {
+
 			}
 			if (YESNO("* 146\ttest read file?")) {
 			}

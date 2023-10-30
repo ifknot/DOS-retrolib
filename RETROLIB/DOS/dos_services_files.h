@@ -34,7 +34,7 @@ namespace dos {
     error_code_t close_file_using_handle(file::handle_t fhandle);
     
     // 3F  Read file or device using handle
-    
+    uint16_t read_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer);
 
     // 40  Write file or device using handle
     //unint16_t write_file_using_handle(file::handle_t)
