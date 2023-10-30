@@ -37,7 +37,7 @@ namespace dos {
     uint16_t read_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer);
 
     // 40  Write file or device using handle
-    //unint16_t write_file_using_handle(file::handle_t)
+    unint16_t write_file_using_handle(file::handle_t, uint16_t nbytes, char* buffer);
     
     // 41  Delete file
     error_code_t delete_file(char* path_name);

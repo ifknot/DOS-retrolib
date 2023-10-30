@@ -225,7 +225,7 @@ namespace dos {
 			pushf
 
 			lds		dx, buffer
-			mov		cx	nbytes
+			mov		cx,	nbytes
 			mov		bx, fhandle
 			mov		ah, READ_FILE_OR_DEVICE_USING_HANDLE
 			int		DOS_SERVICE
@@ -248,6 +248,54 @@ namespace dos {
 #endif
 
 		return bytes_read;
+	}
+
+	/**
+	* INT 21,40 - Write To File or Device Using Handle
+	* AH = 40h
+	* BX = file handle
+	* CX = number of bytes to write, a zero value truncates/extends the file to the current file position
+	* DS:DX = pointer to write buffer
+	*
+	* on return:
+	* AX = number of bytes written if CF not set
+	*    = error code if CF set  (see DOS ERROR CODES)
+	* 
+	* - if AX is not equal to CX on return, a partial write occurred
+	* - this function can be used to truncate a file to the current file position by writing zero bytes
+	*/
+	unint16_t write_file_using_handle(file::handle_t, uint16_t nbytes, char* buffer) {
+		uint16_t bytes_written = 0;
+		error_code_t err_code = 0;
+		__asm {
+			.8086
+			push	ds
+			pushf
+
+			lds		dx, buffer
+			mov		cx, nbytes
+			mov		bx, fhandle
+			mov		ah, WRITE_FILE_OR_DEVICE_USING_HANDLE
+			int		DOS_SERVICE
+			jnc		OK
+			mov		err_code, ax
+			jmp		END
+
+			OK : mov		bytes_read, ax
+
+			END : popf
+			pop		ds
+		}
+
+#ifndef NDEBUG
+
+		if (err_code) {
+			std::cout << dos::error::messages[err_code] << std::endl;
+		}
+
+#endif
+
+		return bytes_written;
 	}
 
 	/**

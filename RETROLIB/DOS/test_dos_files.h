@@ -46,8 +46,10 @@ namespace test_dos_files {
 		}
 		{
 			char fpath[13] = "";
+			char buffer[256] = "";
 			dos::file::handle_t fhandle;
 			dos::file::attributes_t fattr;
+			uint16_t nbytes = 0;
 			if (YESNO("* 142\ttest create file?")) {
 				INFO("* file create error...");
 				LOG(dos::create_file_using_handle(fpath)); // errors out
@@ -80,9 +82,18 @@ namespace test_dos_files {
 				LOG(dos::get_file_attributes(fpath));
 			}
 			if (YESNO("* 145\ttest write file?")) {
+				
+				std::cout << "* Enter data: ";
+				scanf("%s", buffer);
 
 			}
 			if (YESNO("* 146\ttest read file?")) {
+				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
+				LOG(buffer);
+				std::cout << "* Enter nbytes: ";
+				std::cin >> nbytes;
+				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
+				LOG(buffer);
 			}
 			if (YESNO("* 147\ttest close file?")) {
 				LOG(dos::close_file_using_handle(fhandle));
