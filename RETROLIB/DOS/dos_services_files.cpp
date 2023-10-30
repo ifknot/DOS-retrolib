@@ -366,25 +366,25 @@ namespace dos {
 	* can corrupt the FAT in some versions of DOS; the file should first
 	* be grown from zero to one byte and then to the desired large size
 	*/
-	file::position_t move_file_pointer_using_handle(file::handle_t fhandle, uint8_t origin, file::position_t offset = 0) {
+	file::position_t move_file_pointer_using_handle(file::handle_t fhandle, uint8_t forigin, file::position_t fposition) {
 		error_code_t err_code = 0;
 		__asm {
 			.8086
 			push	ds
 			pushf
 
-			lds		si, offset
+			lea		si, fposition
 			mov		dx, [si]
 			mov		cx, [si + 2]
 			mov		bx, fhandle
-			mov		al, origin
+			mov		al, forigin
 			mov		ah, MOVE_FILE_POINTER_USING_HANDLE
 			int		DOS_SERVICE
 			jnc		OK
 			mov		err_code, ax
 			jmp		END
 
-	OK:		lds		di, offset
+	OK:		lea		di, fposition
 			mov		[di], dx
 			mov		[di + 2], ax
 
@@ -400,8 +400,7 @@ namespace dos {
 
 #endif
 
-		return err_code;
-		return offset;
+		return fposition;
 	}
 
 	/**

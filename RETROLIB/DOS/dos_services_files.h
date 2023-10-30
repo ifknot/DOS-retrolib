@@ -43,7 +43,7 @@ namespace dos {
     error_code_t delete_file(char* path_name);
     
     // 42  Move file pointer using handle
-    file::position_t move_file_pointer_using_handle(file::handle_t fhandle, uint8_t origin, file::position_t offset = 0);
+    file::position_t move_file_pointer_using_handle(file::handle_t fhandle, uint8_t forigin, file::position_t fposition = 0);
     
     // 43  Change file mode
     file::attributes_t get_file_attributes(char* path_name);

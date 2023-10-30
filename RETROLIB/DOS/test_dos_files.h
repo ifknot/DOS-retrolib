@@ -94,7 +94,8 @@ namespace test_dos_files {
 			if (YESNO("* 146\ttest read file?")) {
 				buffer[0] = '\0';
 				LOG(buffer);
-				
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_CUR));
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
 				
 				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
 				LOG(buffer);
