@@ -104,18 +104,20 @@ namespace test_dos_files {
 				mem::address_t addr;
 				addr.void_ptr = (void*)buffer;
 				LOG(buffer);
-				INFO("* Enter nbytes: ");
-				std::cin >> nbytes;
-				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_CUR));
-				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_END));
+				INFO("* file size");
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
+				nbytes = dos::move_file_pointer_using_handle(fhandle, SEEK_END);
+				LOG(nbytes);
+				INFO("* read entire file");
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
+				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
+				mem::dump_ostream(std::cout, addr, nbytes);
+				INFO("* read random from file");
 				INFO("* Enter fpos: ");
 				std::cin >> fpos;
 				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET, fpos));
-				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
-				mem::dump_ostream(std::cout, addr, nbytes);
-				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
 				INFO("* Enter nbytes: ");
-				std::cin >> nbytes;
+				std::cin >> nbytes;				
 				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
 				mem::dump_ostream(std::cout, addr, nbytes);
 			}
