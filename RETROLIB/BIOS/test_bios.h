@@ -14,8 +14,6 @@ namespace test_bios {
 
 	void run() {
 
-
-
 	}
 
 }

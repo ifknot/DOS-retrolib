@@ -27,7 +27,10 @@ namespace test_lib_mem {
         }
         addr.segoff.offset = 0x6000;
         if (YESNO("* 220\tdump first 256 bytes ROM BASIC ?")) {
-            std::cout << mem::dump_ostream(std::cout, addr).segoff << std::endl;
+            mem::dump(addr);
+        }
+        if (YESNO("* 230\tdump first 256 bytes ROM BIOS to file ?")) {
+            LOG();
         }
         INFO("* PASS!");
     }

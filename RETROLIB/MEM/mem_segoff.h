@@ -21,7 +21,8 @@ namespace mem {
      */
     struct segoff_t {
 
-        uint16_t offset, segment;       // reverse order as Intel is little-endian
+        uint16_t offset;
+        uint16_t segment;       // reverse order as Intel is little-endian
 
     };
 

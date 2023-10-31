@@ -12,7 +12,7 @@
 
 #include "mem_constants.h"
 #include "mem_types.h"
-//#include "mem_dump_file.h"
+#include "mem_dump_file.h"
 #include "mem_dump_ostream.h"
 //#include "mem_load_file.h"
 //#include "mem_load_istream.h"

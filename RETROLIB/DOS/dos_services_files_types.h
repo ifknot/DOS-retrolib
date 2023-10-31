@@ -22,6 +22,8 @@ namespace dos {
 
 		typedef int32_t position_t;		// N.B. signed offset
 
+		typedef uint32_t size_t;
+
 		enum seek_attributes {
 			FSEEK_SET,
 			FSEEK_CUR,

@@ -18,18 +18,29 @@
 namespace mem {
 
 	/**
-	* @brief dump contents of memory to screen - defaults to 256 bytes 
-	* @note mimics the DOS DEBUG program layout
-	* 
-	* @return address_t - the end address of the paragraph 
+	* @brief convenience function dump memory to std::cout
 	*/
-	address_t dump_ostream(std::ostream& os, const address_t start, const uint16_t bytes = 256);
+	inline address_t dump(const address_t start, const uint32_t bytes = 256) {
+		return dump_ostream(std::cout, start, bytes);
+	}
 
 	/**
-	* @brief dumps a paragraph (16 bytes) of memory to the ostream as hex, ascii combo
+	* @brief dump contents of memory to output stream - defaults to 256 bytes 
 	* @note mimics the DOS DEBUG program layout
 	* 
 	* @return address_t - the end address of the paragraph 
+	* 
+	* @todo use a 32 bit byte count
+	*/
+	address_t dump_ostream(std::ostream& os, const address_t start, const uint16_t bytes = 256); 
+
+	/**
+	* @brief dumps a page (64K) of memory to file
+	*/
+	address_t dump_page_ostream(std::ostream& os, const address_t start, const uint16_t bytes = 256);
+
+	/**
+	* @brief dumps a paragraph (16 bytes) of memory to file
 	*/
 	address_t dump_paragraph_ostream(std::ostream& os, const address_t start);
 
