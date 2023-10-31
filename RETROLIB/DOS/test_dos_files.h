@@ -16,6 +16,8 @@
 #include "dos_services_files.h"
 #include "dos_error_messages.h"
 
+#include "../MEM/mem.h"
+
 #include <stdio.h>
 
 namespace test_dos_files {
@@ -46,14 +48,15 @@ namespace test_dos_files {
 		}
 		{
 			char fpath[13] = "";
-			char buffer[256] = "";
+			char buffer[255] = "";
 			dos::file::handle_t fhandle;
 			dos::file::attributes_t fattr;
 			uint16_t nbytes = 0;
+			dos::file::position_t fpos = 0;
 			if (YESNO("* 142\ttest create file?")) {
 				INFO("* file create error...");
 				LOG(dos::create_file_using_handle(fpath)); // errors out
-				std::cout << "* Enter filename: ";
+				INFO("* Enter filename: ");
 				scanf("%s", fpath);
 				LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
 			}
@@ -62,10 +65,10 @@ namespace test_dos_files {
 				INFO("* file mode error");
 				LOG(dos::get_file_attributes(fpath)); // errors out
 				LOG(dos::set_file_attributes(fpath, fattr));
-				std::cout << "* Enter filename: ";
+				INFO("* Enter filename: ");
 				LOG(scanf("%s", fpath));
 				LOG(dos::get_file_attributes(fpath));
-				std::cout << "* Enter attributes: ";
+				INFO("* Enter attributes: ");
 				std::cin >> fattr;
 				LOG(dos::set_file_attributes(fpath, fattr));
 				LOG(dos::get_file_attributes(fpath));
@@ -74,7 +77,7 @@ namespace test_dos_files {
 				fpath[0] = '\0';
 				INFO("* file open error...");
 				LOG(dos::open_file_using_handle(fpath)); // errors out
-				std::cout << "* Enter filename: ";
+				INFO("* Enter filename: ");
 				INFO(scanf("%s", fpath));
 				INFO("dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_WRITE");
 				fhandle = dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_WRITE);
@@ -82,34 +85,51 @@ namespace test_dos_files {
 				LOG(dos::get_file_attributes(fpath));
 			}
 			if (YESNO("* 145\ttest write file?")) {
-				
-				std::cout << "* Enter text data: ";
+				INFO("* Enter text data: ");
 				LOG(scanf("%s", buffer));
-				nbytes = 20;
 				LOG(buffer);
+				INFO("* Enter nbytes: ");
+				std::cin >> nbytes;
+				if (nbytes == 255) {
+					for (int i = 0; i < 255; ++i) buffer[i] = i;
+				}
 				LOG(nbytes);
+				INFO("* Enter fpos: ");
+				std::cin >> fpos;
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_END, fpos));
 				LOG(dos::write_file_using_handle(fhandle, nbytes, buffer));
-
 			}
 			if (YESNO("* 146\ttest read file?")) {
 				buffer[0] = '\0';
+				mem::address_t addr;
+				addr.void_ptr = (void*)buffer;
 				LOG(buffer);
+				INFO("* Enter nbytes: ");
+				std::cin >> nbytes;
 				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_CUR));
-				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
-				
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_END));
+				INFO("* Enter fpos: ");
+				std::cin >> fpos;
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET, fpos));
 				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
-				LOG(buffer);
+				mem::dump_ostream(std::cout, addr, nbytes);
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
+				INFO("* Enter nbytes: ");
+				std::cin >> nbytes;
+				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
+				mem::dump_ostream(std::cout, addr, nbytes);
 			}
 			if (YESNO("* 147\ttest close file?")) {
 				LOG(dos::close_file_using_handle(fhandle));
 				INFO("* file close error...");
 				LOG(dos::close_file_using_handle(fhandle)); // errors out
+				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
 			}
 			if (YESNO("* 148\ttest delete file?")) {
 				fpath[0] = '\0';
 				INFO("* file delete error...");
 				LOG(dos::delete_file(fpath)); // errors out
-				std::cout << "* Enter filename: ";
+				INFO("* Enter filename: ");
 				scanf("%s", fpath);
 				LOG(dos::delete_file(fpath));
 				INFO("* more file delete errors...");

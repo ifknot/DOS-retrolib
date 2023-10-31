@@ -348,10 +348,14 @@ namespace dos {
 	*      02 = end of file plus offset  (SEEK_END)
 	* BX = file handle
 	* CX:DX = (signed) offset from origin of new file position
+	* CX = high order word of number of bytes to move
+	* DX = low order word of number of bytes to move
 	* 
 	* on return:
 	* CF clear if successful
 	*     DX:AX = new file position in bytes from start of file
+	*     DX = high order word of number of bytes to move
+	*	  AX = low order word of number of bytes to move
 	* CF set on error
 	*    AX = error code
 	* 
@@ -373,20 +377,20 @@ namespace dos {
 			push	ds
 			pushf
 
-			lea		si, fposition
-			mov		dx, [si]
-			mov		cx, [si + 2]
+			lea		si, fposition						; DS:SI = address int32_t fposition
+			mov		dx, [si]							; DX low order word of fposition
+			mov		cx, [si + 2]						; CX hi order word of fposition
 			mov		bx, fhandle
-			mov		al, forigin
+			mov		al, forigin							; SEEK_SET, SEEK_CUR, SEEK_END
 			mov		ah, MOVE_FILE_POINTER_USING_HANDLE
 			int		DOS_SERVICE
 			jnc		OK
 			mov		err_code, ax
 			jmp		END
 
-	OK:		lea		di, fposition
-			mov		[di], dx
-			mov		[di + 2], ax
+	OK:		lea		di, fposition						; DS:DI = address int32_t fposition
+			mov		[di], ax							; low order word of fposition = AX
+			mov		[di + 2], dx						; hi order word of fposition = DX
 
 	END:	popf
 			pop		ds

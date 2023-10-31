@@ -24,12 +24,12 @@ TODO DOS
 + [...] v0.3  complete on an **as needed basis**
     + [x] 36  Get disk free space
   
-    + [ ] 3C  Create file using handle
-    + [ ] 3D  Open file using handle
-    + [ ] 3E  Close file using handle
-    + [ ] 3F  Read file or device using handle
-    + [ ] 40  Write file or device using handle
-    + [ ] 41  Delete file
+    + [x] 3C  Create file using handle
+    + [x] 3D  Open file using handle
+    + [x] 3E  Close file using handle
+    + [x] 3F  Read file or device using handle
+    + [x] 40  Write file or device using handle
+    + [x] 41  Delete file
 
 TODO MEM
 + [ ] v0.1
