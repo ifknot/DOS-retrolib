@@ -1,2 +1,2 @@
-FIL main.obj,dos_services.obj,dos_services_3x.obj,dos_services_files.obj,mem_address.obj,mem_dump_ostream.obj,mem_segoff.obj,mem_write_ostream.obj
+FIL main.obj,dos_services.obj,dos_services_3x.obj,dos_services_files.obj,mem_address.obj,mem_dump_ostream.obj,mem_save_to_file.obj,mem_segoff.obj,mem_write_ostream.obj
 

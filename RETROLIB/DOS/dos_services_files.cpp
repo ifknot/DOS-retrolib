@@ -85,7 +85,7 @@ namespace dos {
 	* 
 	* @note - if file already exists, it is truncated to zero bytes on opening
 	*/
-	file::handle_t create_file_using_handle(char* path_name, file::attributes_t create_attributes) {
+	file::handle_t create_file_using_handle(const char * path_name, file::attributes_t create_attributes) {
 		file::handle_t fhandle;
 		error_code_t err_code = 0;
 		__asm {
@@ -130,7 +130,7 @@ namespace dos {
 	* AX = file handle if CF not set
 	*    = error code if CF set  (see DOS ERROR CODES)
 	*/
-	file::handle_t open_file_using_handle(char* path_name, uint8_t access_attributes) {
+	file::handle_t open_file_using_handle(const char * path_name, uint8_t access_attributes) {
 		file::handle_t fhandle;
 		error_code_t err_code = 0;
 		__asm {
@@ -216,7 +216,7 @@ namespace dos {
 	* - when AX is not equal to CX then a partial read occurred due to end of file
 	* - if AX is zero, no data was read, and EOF occurred before read
 	*/
-	uint16_t read_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer) {
+	uint16_t read_file_using_handle(file::handle_t fhandle, char* buffer, uint16_t nbytes) {
 		uint16_t bytes_read = 0;
 		error_code_t err_code = 0;
 		__asm {
@@ -264,7 +264,7 @@ namespace dos {
 	* - if AX is not equal to CX on return, a partial write occurred
 	* - this function can be used to truncate a file to the current file position by writing zero bytes
 	*/
-	uint16_t write_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer) {
+	uint16_t write_file_using_handle(file::handle_t fhandle, char* buffer, uint16_t nbytes) {
 		uint16_t bytes_written = 0;
 		error_code_t err_code = 0;
 		__asm {

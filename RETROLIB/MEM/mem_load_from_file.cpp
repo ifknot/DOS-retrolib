@@ -1,19 +1,17 @@
 /**
  *
+ *  @file      mem_load_from_file.cpp
  *  @brief     
  *  @details   ~
  *  @author    Jeremy Thornton
- *  @date      27.10.2023
+ *  @date      1.11.2023
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef MEM_LOAD_FILE_H
-#define MEM_LOAD_FILE_H
+#include "mem_load_from_file.h"
 
 namespace mem {
 
 
 
 }
-
-#endif

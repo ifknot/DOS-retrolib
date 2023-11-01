@@ -26,7 +26,12 @@ namespace mem {
 	* @return size_t - the actual number of bytes written
 	*/
 	// TODO
-	//dos::file::size_t write_ostream(std::ostream& os, const address_t start, const uint32_t bytes);
+	//dos::file::size_t write_large_ostream(std::ostream& os, address_t start, uint32_t nbytes);
+
+	/**
+	* @brief write full 64K page of memory to ostream
+	*/
+	//dos::file::size_t write_page_ostream(std::ostream& os, address_t start);
 
 	/**
 	* @brief write *upto* a page (64K bytes or 4096 paragraphs) of memory to ostream
@@ -34,7 +39,7 @@ namespace mem {
 	* 
 	* @return size_t - the actual number of bytes written
 	*/
-	dos::file::size_t write_page_ostream(std::ostream& os, const address_t start, const uint16_t bytes);
+	dos::file::size_t write_ostream(std::ostream& os, address_t start, uint16_t nbytes);
 
 }
 

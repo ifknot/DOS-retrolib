@@ -25,19 +25,19 @@ namespace dos {
     // 3B  Change current subdirectory (chdir) 
     // 
     // 3C  Create file using handle
-    file::handle_t create_file_using_handle(char* path_name, file::attributes_t create_attributes = file::CREATE_READ_ONLY);
+    file::handle_t create_file_using_handle(const char * path_name, file::attributes_t create_attributes);
 
     // 3D  Open file using handle
-    file::handle_t open_file_using_handle(char* path_name, uint8_t access_attributes = file::ACCESS_READ_ONLY);
+    file::handle_t open_file_using_handle(const char * path_name, uint8_t access_attributes);
 
     // 3E  Close file using handle
     error_code_t close_file_using_handle(file::handle_t fhandle);
     
     // 3F  Read file or device using handle
-    uint16_t read_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer);
+    uint16_t read_file_using_handle(file::handle_t fhandle, char* buffer, uint16_t nbytes);
 
     // 40  Write file or device using handle
-    uint16_t write_file_using_handle(file::handle_t fhandle, uint16_t nbytes, char* buffer);
+    uint16_t write_file_using_handle(file::handle_t fhandle, char* buffer, uint16_t nbytes);
     
     // 41  Delete file
     error_code_t delete_file(char* path_name);

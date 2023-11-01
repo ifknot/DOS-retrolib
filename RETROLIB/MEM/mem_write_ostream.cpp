@@ -14,11 +14,11 @@
 
 namespace mem {
 
-    dos::file::size_t write_page_ostream(std::ostream& os, const address_t start, const uint16_t bytes) {
+    dos::file::size_t write_ostream(std::ostream& os, address_t start, uint16_t bytes) {
         char* pchar = (char*)start.void_ptr;
         int i;
         for (i = 0; i < bytes; ++i) {
-                os << *pchar++;
+             os << *pchar++;
         }
         return i;
     }

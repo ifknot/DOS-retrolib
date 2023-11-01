@@ -55,7 +55,7 @@ namespace test_dos_files {
 			dos::file::position_t fpos = 0;
 			if (YESNO("* 142\ttest create file?")) {
 				INFO("* file create error...");
-				LOG(dos::create_file_using_handle(fpath)); // errors out
+				LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_WRITE)); // errors out
 				INFO("* Enter filename: ");
 				scanf("%s", fpath);
 				LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
@@ -76,7 +76,7 @@ namespace test_dos_files {
 			if (YESNO("* 144\ttest open file?")) {
 				fpath[0] = '\0';
 				INFO("* file open error...");
-				LOG(dos::open_file_using_handle(fpath)); // errors out
+				LOG(dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_ONLY)); // errors out
 				INFO("* Enter filename: ");
 				INFO(scanf("%s", fpath));
 				INFO("dos::open_file_using_handle(fpath, dos::file::ACCESS_READ_WRITE");
@@ -97,7 +97,7 @@ namespace test_dos_files {
 				INFO("* Enter fpos: ");
 				std::cin >> fpos;
 				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_END, fpos));
-				LOG(dos::write_file_using_handle(fhandle, nbytes, buffer));
+				LOG(dos::write_file_using_handle(fhandle, buffer, nbytes));
 			}
 			if (YESNO("* 146\ttest read file?")) {
 				buffer[0] = '\0';
@@ -110,7 +110,7 @@ namespace test_dos_files {
 				LOG(nbytes);
 				INFO("* read entire file");
 				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
-				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
+				LOG(dos::read_file_using_handle(fhandle, buffer, nbytes));
 				mem::dump(addr, nbytes);
 				INFO("* read random from file");
 				INFO("* Enter fpos: ");
@@ -118,7 +118,7 @@ namespace test_dos_files {
 				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET, fpos));
 				INFO("* Enter nbytes: ");
 				std::cin >> nbytes;				
-				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
+				LOG(dos::read_file_using_handle(fhandle, buffer, nbytes));
 				mem::dump(addr, nbytes);
 			}
 			if (YESNO("* 147\ttest close file?")) {
