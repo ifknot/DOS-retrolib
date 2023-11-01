@@ -111,7 +111,7 @@ namespace test_dos_files {
 				INFO("* read entire file");
 				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));
 				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
-				mem::dump_ostream(std::cout, addr, nbytes);
+				mem::dump(addr, nbytes);
 				INFO("* read random from file");
 				INFO("* Enter fpos: ");
 				std::cin >> fpos;
@@ -119,7 +119,7 @@ namespace test_dos_files {
 				INFO("* Enter nbytes: ");
 				std::cin >> nbytes;				
 				LOG(dos::read_file_using_handle(fhandle, nbytes, buffer));
-				mem::dump_ostream(std::cout, addr, nbytes);
+				mem::dump(addr, nbytes);
 			}
 			if (YESNO("* 147\ttest close file?")) {
 				LOG(dos::close_file_using_handle(fhandle));

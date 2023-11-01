@@ -7,4 +7,13 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef 
+#ifndef MEM_LOAD_FILE_H
+#define MEM_LOAD_FILE_H
+
+namespace mem {
+
+
+
+}
+
+#endif

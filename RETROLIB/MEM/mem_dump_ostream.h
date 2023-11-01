@@ -15,32 +15,30 @@
 
 #include "mem_types.h"
 
+#include "../DOS/dos_services_files_types.h"
+
 namespace mem {
 
 	/**
 	* @brief convenience function dump memory to std::cout
 	*/
-	inline address_t dump(const address_t start, const uint32_t bytes = 256) {
-		return dump_ostream(std::cout, start, bytes);
-	}
+	address_t dump(const address_t start, const uint32_t bytes = 256);
 
 	/**
-	* @brief dump contents of memory to output stream - defaults to 256 bytes 
-	* @note mimics the DOS DEBUG program layout
+	* @brief dump formatted contents of memory to output stream - defaults to 256 bytes 
+	* @note mimics the DOS DEBUG format of output
 	* 
-	* @return address_t - the end address of the paragraph 
-	* 
-	* @todo use a 32 bit byte count
+	* @return address_t - the end address of the dumped memory
 	*/
-	address_t dump_ostream(std::ostream& os, const address_t start, const uint16_t bytes = 256); 
+	//address_t dump_ostream(std::ostream& os, const address_t start, const uint32_t bytes); 
 
 	/**
-	* @brief dumps a page (64K) of memory to file
+	* @brief debug formatted dumps *upto* a page (64K) of memory to ostream
 	*/
-	address_t dump_page_ostream(std::ostream& os, const address_t start, const uint16_t bytes = 256);
+	address_t dump_page_ostream(std::ostream& os, const address_t start, const uint16_t bytes);
 
 	/**
-	* @brief dumps a paragraph (16 bytes) of memory to file
+	* @brief debug fromatted dumps a paragraph (16 bytes) of memory to ostream
 	*/
 	address_t dump_paragraph_ostream(std::ostream& os, const address_t start);
 
