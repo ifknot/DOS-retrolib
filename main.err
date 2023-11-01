@@ -1,10 +1,9 @@
-RETROLIB/TEST/test_debug_macros.h(18): Warning! W388: col(23) integral constant will be truncated during assignment or initialization
-RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from RETROLIB/test_retrolib.h(18)
-RETROLIB/TEST/test_debug_macros.h(18): Note! N393: col(23) included from main.cpp(3)
-RETROLIB/TEST/test_debug_macros.h(23): Warning! W367: col(41) conditional expression in if statement is always true
-RETROLIB/DOS/test_dos_files.h(109): Warning! W389: col(77) integral value may be truncated during assignment or initialization
-RETROLIB/MEM/test_mem.h(50): Warning! W014: col(5) no reference to symbol 'fptr'
-RETROLIB/MEM/test_mem.h(29): Note! N392: col(15) definition: '__iobuf * fptr' in 'void test_lib_mem::run( void )'
+RETROLIB/DOS/test_dos_files.h(100): Warning! W389: col(90) integral value may be truncated during assignment or initialization
+RETROLIB/DOS/test_dos_files.h(100): Note! N393: col(90) included from RETROLIB/DOS/test_dos.h(9)
+RETROLIB/DOS/test_dos_files.h(100): Note! N393: col(90) included from RETROLIB/test_retrolib.h(20)
+RETROLIB/DOS/test_dos_files.h(100): Note! N393: col(90) included from main.cpp(3)
+RETROLIB/DOS/test_dos_files.h(113): Warning! W389: col(89) integral value may be truncated during assignment or initialization
+RETROLIB/DOS/test_dos_files.h(121): Warning! W389: col(89) integral value may be truncated during assignment or initialization
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'messages'
 RETROLIB/DOS/dos_error_messages.h(58): Note! N392: col(20) definition: 'char const dos::error::messages[85][64]'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'classes'

@@ -51,7 +51,7 @@ namespace test_dos_files {
 			char buffer[255] = "";
 			dos::file::handle_t fhandle;
 			dos::file::attributes_t fattr;
-			uint16_t nbytes = 0;
+			uint32_t nbytes = 0;
 			dos::file::position_t fpos = 0;
 			if (YESNO("* 142\ttest create file?")) {
 				INFO("* file create error...");

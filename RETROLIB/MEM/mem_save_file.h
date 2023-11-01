@@ -13,18 +13,22 @@
 namespace mem {
 
 	/**
-	* @brief save (unformatted) contents of memory to file - defaults to 256 bytes
-	* @note mimics the DOS DEBUG program layout
+	* @brief use DOS (3.x+) to save contents of memory to file 
+	* @note saves raw bytes
 	*
-	* @return size_t - the end address of the paragraph
+	* @return file::size_t - the actual byte count saved
 	*/
-	//dos::file::size_t save_file(char* path_name, , const address_t start, const uint32_t bytes = 256);
+	// TODO
+	//dos::file::size_t save_file(char* path_name, const address_t start, const uint32_t bytes);
 
 	/**
 	* @brief saves unformatted *upto* a page (64K bytes or 4096 paragraphs) of memory to file
-	* @
+	* @note saves raw bytes
+	*
+	* @return file::size_t - the actual byte count saved
 	*/
-	//dos::file::size_t save_page_file(dos::file::handle_t fhandle, const address_t start);
+	// TODO
+	//dos::file::size_t save_page_file(dos::file::handle_t fhandle, const address_t start, cont uint16_t bytes);
 
 }
 

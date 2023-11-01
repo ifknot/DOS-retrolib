@@ -30,6 +30,7 @@ namespace mem {
 	* 
 	* @return address_t - the end address of the dumped memory
 	*/
+	// TODO:
 	//address_t dump_ostream(std::ostream& os, const address_t start, const uint32_t bytes); 
 
 	/**

@@ -26,11 +26,10 @@ namespace test_lib_mem {
         addr.segoff.segment = 0xF000;
         addr.segoff.offset = ROM_BIOS;
         char fpath[13] = "";
-        FILE* fptr;
-        if (YESNO("* 210\tdump first 256 bytes ROM BIOS ?")) {
+        if (YESNO("* 210\t dump to SCREEN first 256 bytes ROM BIOS ?")) {
             std::cout << mem::dump(addr).segoff << std::endl;
         }
-        if (YESNO("* 210\tfile dump first 256 bytes ROM BIOS ?")) {
+        if (YESNO("* 210\tdump to FILE first 256 bytes ROM BIOS ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             std::ofstream f;
@@ -43,8 +42,19 @@ namespace test_lib_mem {
             mem::dump(addr);
         }
         addr.segoff.offset = ROM_BIOS;
-        if (YESNO("* 230\tsave (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
-            mem::save_page_ostream(std::cout, addr, 256);
+        if (YESNO("* 230\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
+            mem::write_page_ostream(std::cout, addr, 256);
+            INFO("done");
+        }
+        if (YESNO("* 240\twrite (unformatted) first 256 bytes ROM BIOS to FILE ?")) {
+            INFO("* Enter filename: ");
+            scanf("%s", fpath);
+            LOG(fpath);
+            std::ofstream f;
+            f.open(fpath);
+            mem::write_page_ostream(f, addr, 256);
+            f.close();
+            INFO("done");
         }
     }
 

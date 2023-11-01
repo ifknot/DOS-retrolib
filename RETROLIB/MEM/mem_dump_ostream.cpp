@@ -22,6 +22,7 @@ namespace mem {
 	address_t dump(const address_t start, const uint32_t bytes) {
 			return dump_page_ostream(std::cout, start, bytes);
 	}
+
 	address_t dump_page_ostream(std::ostream& os, const address_t start, const uint16_t bytes) {
 		address_t next = start;
 		uint16_t paras = (bytes % PARAGRAPH_SIZE) ? (bytes >> 4) + 1 : bytes >> 4; // convert size to paragraphs
