@@ -18,10 +18,10 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 dumps -> files -> arena_t -> bitmap_t -> blits
 
 TODO BIOS
-+ [...] v0.3 complete on an **as needed basis**
++ v0.3 complete on an **as needed basis**
 
 TODO DOS
-+ [...] v0.3  complete on an **as needed basis**
++ v0.3  complete on an **as needed basis**
 
 + [x] 25  Set interrupt vector
 + [x] 35  Get interrupt vector
