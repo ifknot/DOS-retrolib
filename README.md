@@ -22,6 +22,10 @@ TODO BIOS
 
 TODO DOS
 + [...] v0.3  complete on an **as needed basis**
++ [x] 25  Set interrupt vector
+
+TEST
++ [x] void set_interrupt_vector(uint8_t vec_num, mem::address_t addr);
 
 TODO MEM
 + [ ] v0.1
