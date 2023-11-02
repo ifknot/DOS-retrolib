@@ -45,13 +45,6 @@ TODO DOS
 + [x] 48  Allocate memory blocks
 + [x] 49  Free allocated memory blocks
 + [ ] 4A  Modify allocated memory blocks
-TEST
-+ [x] void set_interrupt_vector(uint8_t vec_num, mem::address_t addr);
-+ [x] mem::address_t get_interrupt_vector(uint8_t vec_num);
-+ [x] uint16_t allocate_memory_blocks(uint16_t paragraphs);
-+ [x] uint16_t free_allocated_memory_blocks(uint16_t segment);
-+ [x] 
-
 
 TODO MEM
 + [ ] v0.1
