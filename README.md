@@ -18,11 +18,8 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 dumps -> files -> arena_t -> bitmap_t -> blits
 
 TODO BIOS
-+ v0.3 complete on an **as needed basis**
 
 TODO DOS
-+ v0.3  complete on an **as needed basis**
-
 + [x] 25  Set interrupt vector
 + [x] 35  Get interrupt vector
 + [x] 36  Get disk free space
@@ -46,6 +43,8 @@ TODO DOS
 + [x] 48  Allocate memory blocks
 + [x] 49  Free allocated memory blocks
 + [ ] 4A  Modify allocated memory blocks
+
+TODO DOS 3.x+
 
 + [x] 59  Get extended error information (3.x+)
 + [ ] 5A  Create temporary file (3.x+)
