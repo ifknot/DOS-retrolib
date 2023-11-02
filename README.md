@@ -20,7 +20,7 @@ dumps -> files -> arena_t -> bitmap_t -> blits
 TODO BIOS
 + [...] v0.3 complete on an **as needed basis**
 
-TODO DOS
+TODO DOS (targeted at DOS 3.x+)
 + [...] v0.3  complete on an **as needed basis**
 + [x] 25  Set interrupt vector
 + [x] 35  Get interrupt vector
@@ -45,6 +45,8 @@ TODO DOS
 + [x] 48  Allocate memory blocks
 + [x] 49  Free allocated memory blocks
 + [ ] 4A  Modify allocated memory blocks
+
++ [x] 59  Get extended error information (3.x+)
 
 TODO MEM
 + [ ] v0.1
