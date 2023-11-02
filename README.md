@@ -22,6 +22,7 @@ TODO BIOS
 
 TODO DOS
 + [...] v0.3  complete on an **as needed basis**
+
 + [x] 25  Set interrupt vector
 + [x] 35  Get interrupt vector
 + [x] 36  Get disk free space
