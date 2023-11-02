@@ -23,16 +23,42 @@ TODO BIOS
 TODO DOS
 + [...] v0.3  complete on an **as needed basis**
 + [x] 25  Set interrupt vector
-
++ [x] 35  Get interrupt vector
++ [x] 36  Get disk free space
++ [ ] 37  Get/set switch character (undocumented)
++ [ ] 38  Get/set country dependent information
++ [ ] 39  Create subdirectory (mkdir)
++ [ ] 3A  Remove subdirectory (rmdir)
++ [ ] 3B  Change current subdirectory (chdir) 
++ [x] 3C  Create file using handle
++ [x] 3D  Open file using handle
++ [x] 3E  Close file using handle
++ [x] 3F  Read file or device using handle
++ [x] 40  Write file or device using handle
++ [x] 41  Delete file
++ [x] 42  Move file pointer using handle
++ [x] 43  Change file mode
++ [ ] 44  I/O control for devices (IOCTL)
++ [ ] 45  Duplicate file handle
++ [ ] 46  Force duplicate file handle
++ [ ] 47  Get current directory
++ [x] 48  Allocate memory blocks
++ [x] 49  Free allocated memory blocks
++ [ ] 4A  Modify allocated memory blocks
 TEST
 + [x] void set_interrupt_vector(uint8_t vec_num, mem::address_t addr);
++ [x] mem::address_t get_interrupt_vector(uint8_t vec_num);
++ [x] uint16_t allocate_memory_blocks(uint16_t paragraphs);
++ [x] uint16_t free_allocated_memory_blocks(uint16_t segment);
++ [x] 
+
 
 TODO MEM
 + [ ] v0.1
 + [x] mem::dump(ostream, ...)
-+ [ ] mem::file_dump(cstring, ...)
-+ [ ] mem::file_load(cstring, ...)
-+ [ ] mem::load(istream, ...)
++ [x] mem::save(cstring, ...)
++ [ ] mem::load(cstring, ...)
++ [x] mem::save(istream, ...)
 + [ ] arena_t
     + [ ] arena::functions(...)
 + [ ] get_available_low_memory
