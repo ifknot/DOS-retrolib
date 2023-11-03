@@ -66,7 +66,7 @@ namespace test_lib_mem {
             ASSERT(mem::save_to_file(fpath, addr, 256), ==, 256, "save bytes error");
             INFO("done");
         }
-        if (YESNO("* 260\tload file to screen memory ?")) {
+        if (YESNO("* 260\tload file to CGA screen memory ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             addr.segoff.segment = 0xB000;
