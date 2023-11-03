@@ -15,7 +15,30 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
 ### TODO:
 
-dumps -> files -> arena_t -> bitmap_t -> blits
++ [x] dumps ->
++ [x] files ->
++ [ ] arena_t ->
++ [ ] GFX essentials ->
++ [ ] bitmap_t ->
++ [ ] blits
+
+TODO MEM
++ [x] mem::dump(ostream, ...)
++ [x] mem::save(cstring, ...)
++ [x] mem::load(cstring, ...)
++ [x] mem::save(istream, ...)
++ [ ] arena_t
+    + [ ] arena::functions(...)
++ [ ] get_available_low_memory
+
+TODO GFX
++ [ ] video_adapter_t detect_video_adapter_type()
++ [ ] bitmap_t (universal)
+    + [ ] bmp::functions(...)
++ [ ] HGA
+    + [ ] hga::blits(...) universal bmp -> specialised vram
++ [ ] CGA
+    + [ ] cga::blits(...) universal bmp -> specialised vram
 
 TODO BIOS
 
@@ -66,23 +89,6 @@ TODO DOS 3.x+
 + [ ] 6B  DOS reserved
 + [ ] 6C  Extended open/create (4.x+)
 + [ ] F8  Set OEM INT 21 handler (functions F9-FF) (undocumented)
-
-TODO MEM
-+ [ ] v0.1
-+ [x] mem::dump(ostream, ...)
-+ [x] mem::save(cstring, ...)
-+ [ ] mem::load(cstring, ...)
-+ [x] mem::save(istream, ...)
-+ [ ] arena_t
-    + [ ] arena::functions(...)
-+ [ ] get_available_low_memory
-
-TODO GFX
-+ [ ] v0.5
-+ [ ] bitmap_t (universal)
-    + [ ] bmp::functions(...)
-+ [ ] HGA
-    + [ ] hga::blits(...) universal bmp -> specialised vram
 
 ## Usage
 
