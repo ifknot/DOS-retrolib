@@ -29,12 +29,12 @@ namespace test_dos_memory {
 		seg_mem_1K = dos::allocate_memory_blocks(64); // 1024K bytes == 64 x paragraphs (16 bytes per paragraph)
 		INFO("seg_mem_1K = dos::allocate_memory_blocks(64)");
 		LOG_AS(seg_mem_1K, std::hex);
-		ASSERT(seg_mem_1K != 0, seg_mem_1K, seg_mem_1K);
+		ASSERT(seg_mem_1K, !=, 0, "fail allocate mem");
 
 		mem::address_t mcb_1k; // set it up to point to the paragraph preceding the one returned
 		mcb_1k.segoff.segment = seg_mem_1K - 1;
 		mcb_1k.segoff.offset = 0;
-		ASSERT(*(char*)mcb_1k.void_ptr == 'M', *(char*)mcb_1k.void_ptr, 'M');
+		ASSERT(*(char*)mcb_1k.void_ptr, ==, 'M', "MCB not an M");
 		INFO("* MCB dump");
 		mem::dump(mcb_1k, 16);
 		
@@ -42,28 +42,27 @@ namespace test_dos_memory {
 		seg_mem_2K = dos::allocate_memory_blocks(128); // 2K
 		INFO("seg_mem_2K = dos::allocate_memory_blocks(128)");
 		LOG_AS(seg_mem_2K, std::hex);
-		ASSERT(seg_mem_2K != 0, seg_mem_2K, seg_mem_2K);
+		ASSERT(seg_mem_2K, !=, 0, "fail allocate mem");
 
 		mem::address_t mcb_2k;
 		mcb_2k.segoff.segment = seg_mem_2K - 1;
 		mcb_2k.segoff.offset = 0;
-		ASSERT(*(char*)mcb_2k.void_ptr == 'M', *(char*)mcb_2k.void_ptr, 'M');
+		ASSERT(*(char*)mcb_2k.void_ptr, ==, 'M', "MCB not an M");
 		INFO("* MCB dump");
 		mem::dump(mcb_2k, 16);
 
 		INFO("* free 2K");
-		ASSERT(dos::free_allocated_memory_blocks(seg_mem_2K) == 0, 0, 0);
-		LOG(dos::free_allocated_memory_blocks(seg_mem_2K));
+		ASSERT(dos::free_allocated_memory_blocks(seg_mem_2K), == , 0, "fail free");
 
 		INFO("* free 1K");
-		ASSERT(dos::free_allocated_memory_blocks(seg_mem_1K) == 0, 0, 0);
-		LOG(dos::free_allocated_memory_blocks(seg_mem_1K));
+		ASSERT(dos::free_allocated_memory_blocks(seg_mem_1K), ==, 0, "fail free");
+		
 
 		INFO("* allocate 2K at old 1K address");
 		seg_mem_2K = dos::allocate_memory_blocks(128); // 2K
 		INFO("seg_mem_2K = dos::allocate_memory_blocks(128)");
 		LOG_AS(seg_mem_2K, std::hex);
-		ASSERT(seg_mem_2K == seg_mem_1K, seg_mem_2K, seg_mem_2K);
+		ASSERT(seg_mem_2K, ==, seg_mem_1K, "not reused");
 
 		INFO("* try and free same 1K again");
 		LOG(dos::free_allocated_memory_blocks(seg_mem_1K)); // should error out re-free freed

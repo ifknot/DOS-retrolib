@@ -39,16 +39,16 @@ namespace test_lib_mem {
             mem::dump_ostream(f, addr, 256);
             f.close();
         }
-        addr.segoff.offset = ROM_BASIC;
         if (YESNO("* 220\tdump first 256 bytes ROM BASIC ?")) {
+            addr.segoff.offset = ROM_BASIC;
             mem::dump(addr, 256);
         }
-        addr.segoff.offset = ROM_BIOS;
         if (YESNO("* 230\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
+            addr.segoff.offset = ROM_BIOS;
             mem::write_ostream(std::cout, addr, 256);
             INFO("done");
         }
-        if (YESNO("* 240\twrite (unformatted) first 256 bytes ROM BIOS to FILE ?")) {
+        if (YESNO("* 240\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             LOG(fpath);
@@ -62,8 +62,17 @@ namespace test_lib_mem {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             LOG(fpath);
-            dos::create_file_using_handle(fpath, dos::file::ACCESS_WRITE_ONLY);
-            assert(mem::save_to_file(fpath, addr, 256) == 256);
+            LOG(dos::create_file_using_handle(fpath, dos::file::ACCESS_WRITE_ONLY));
+            ASSERT(mem::save_to_file(fpath, addr, 256), ==, 256, "save bytes error");
+            INFO("done");
+        }
+        if (YESNO("* 260\tload file to screen memory ?")) {
+            INFO("* Enter filename: ");
+            scanf("%s", fpath);
+            addr.segoff.segment = 0xB000;
+            addr.segoff.offset = 0x8800;
+            LOG(fpath);
+            ASSERT(mem::load_from_file(fpath, addr, 256), ==, 256, "load bytes error");
             INFO("done");
         }
     }

@@ -19,22 +19,23 @@
 namespace mem {
 
 	/**
-	* @brief use DOS (3.x+) to load raw contents of file to memory 
-	*
-	* @return file::size_t - the actual byte count loaded 
-	*/
-	// TODO
-	//dos::file::size_t load_large_from_file(char* path_name, const address_t start, const uint32_t bytes);
-
-	//dos::file::size_t load_page_from_file(char* path_name, const address_t start);
-
-	/**
-	* @brief loads *upto* a page (64K bytes or 4096 paragraphs) from file to memory
+	* @brief use DOS to load contents of a file to memory
+	* @note loads raw bytes
 	*
 	* @return file::size_t - the actual byte count loaded
 	*/
-	//dos::file::size_t save_to_file(char* path_name, const address_t start, const uint16_t nbytes) const;
+	// TODO
+	//dos::file::size_t load_large_from_file(const char* path_name, address_t start, uint32_t bytes);
 
+	//dos::file::size_t load_page_from_file(const char* path_name, address_t start);
+
+	/**
+	* @brief loads unformatted *upto* a page (64K bytes or 4096 paragraphs) of from file to memory
+	* @note loads raw bytes
+	*
+	* @return file::size_t - the actual byte count loaded
+	*/
+	dos::file::size_t load_from_file(const char* path_name, address_t start, uint16_t nbytes);
 }
 
 #endif

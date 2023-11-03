@@ -27,13 +27,13 @@ namespace test_dos_interrupt_vector {
 		new_ivec_eqip_det.void_ptr = (void*)0xF000BEEF;
 		dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, new_ivec_eqip_det);
 		LOG(dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION));
-		ASSERT(old_ivec_equip_det.void_ptr != dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, old_ivec_equip_det.void_ptr);
+		ASSERT(old_ivec_equip_det.void_ptr, !=, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, "vector not changed");
 		
 		INFO("* reset back to old vector");
 		INFO("dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, old_ivec_equip_det)");
 		dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, old_ivec_equip_det);
 		LOG(dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION));
-		ASSERT(old_ivec_equip_det.void_ptr == dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, old_ivec_equip_det.void_ptr);
+		ASSERT(old_ivec_equip_det.void_ptr, ==, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, "vector not reset to original");
 
 	}
 

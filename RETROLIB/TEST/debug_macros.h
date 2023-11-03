@@ -40,22 +40,24 @@
 #endif
 
 #ifndef VERBOSE
-#define DISPLAY
+#define DOT
 #else 
-define DISPLAY std::cout << '.';
+define DOT std::cout << '.';
 #endif
 
 #ifdef NDEBUG
 #define ASSERT(test, observe, expect)
 #else
-#define ASSERT(test, observe, expect) do { \
-							if(test) {DISPLAY}\
-							else { \
-								LOG(observe); \
-								LOG(expect); \
-								assert(test); \
-							} \
-						} while(false)
+#define ASSERT(test, compare, expected, msg) do { \
+				std::cout << "assert "<< #test << ' ' << #compare << ' ' << expected << std::endl; \
+				if(test compare expected) { \
+					DOT;\
+				} \
+				else { \
+					std::cout << "ERROR! "<< #test << ' ' << #compare << ' ' << std::dec << test << std::endl; \
+					assert(false && msg); \
+				} \
+			} while(false)
 #endif
 
 #ifdef NDEBUG
