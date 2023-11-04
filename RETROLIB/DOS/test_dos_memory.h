@@ -22,6 +22,7 @@
 namespace test_dos_memory {
 
 	void run() {
+		INFO("* testing DOS memory services...");
 		uint16_t seg_mem_1K = 0;
 		uint16_t seg_mem_2K = 0;
 		

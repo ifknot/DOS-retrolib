@@ -23,7 +23,7 @@
 namespace test_dos_files {
 
 	void run() {
-		INFO("* test DOS Services Files");
+		INFO("* testing DOS files services...");
 		if (YESNO("* 141\ttest disk free space?")) {
 			dos::file::disk_space_info_t info;
 			dos::get_disk_free_space(0, &info);

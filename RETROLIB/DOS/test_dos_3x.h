@@ -17,7 +17,7 @@
 namespace test_dos_3x {
 
 	void run() {
-		INFO("* test DOS 3.x+ services");
+		INFO("* testing DOS 3.x+ services...");
 		dos3x::extended_error_information_t info;
 		dos3x::get_extended_error_information(&info);
 		LOG(info.ecode);

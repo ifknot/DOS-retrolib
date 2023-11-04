@@ -17,6 +17,7 @@
 namespace test_dos_interrupt_vector {
 
 	void run() {
+		INFO("* testing DOS interupt services...");
 		INFO("* test get interupt vector");
 		mem::address_t old_ivec_equip_det = dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION);
 		LOG(old_ivec_equip_det);

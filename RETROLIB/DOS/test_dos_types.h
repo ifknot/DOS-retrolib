@@ -18,7 +18,7 @@
 namespace test_dos_types {
 
 	void run() {
-		INFO("* test DOS services types");
+		INFO("* testing DOS services types...");
 		char str[] = "hello";
 		mem::address_t addr;
 		addr.void_ptr = (void*)str;

@@ -22,6 +22,7 @@
 namespace test_lib_mem {
 
     void run() {
+        INFO("* testing lib memory services...");
         mem::address_t addr;
         uint16_t ROM_BIOS = 0xE000;
         uint16_t ROM_BASIC = 0x6000;
@@ -31,7 +32,7 @@ namespace test_lib_mem {
         if (YESNO("* 210\t dump to SCREEN first 256 bytes ROM BIOS ?")) {
             std::cout << mem::dump(addr, 256).segoff << std::endl;
         }
-        if (YESNO("* 210\tdump to FILE first 256 bytes ROM BIOS ?")) {
+        if (YESNO("* 220\tdump to FILE first 256 bytes ROM BIOS ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             std::ofstream f;
@@ -39,16 +40,16 @@ namespace test_lib_mem {
             mem::dump_ostream(f, addr, 256);
             f.close();
         }
-        if (YESNO("* 220\tdump first 256 bytes ROM BASIC ?")) {
+        if (YESNO("* 230\tdump first 256 bytes ROM BASIC ?")) {
             addr.segoff.offset = ROM_BASIC;
             mem::dump(addr, 256);
         }
-        if (YESNO("* 230\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
+        if (YESNO("* 240\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
             addr.segoff.offset = ROM_BIOS;
             mem::write_ostream(std::cout, addr, 256);
             INFO("done");
         }
-        if (YESNO("* 240\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
+        if (YESNO("* 250\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             LOG(fpath);
@@ -58,7 +59,7 @@ namespace test_lib_mem {
             f.close();
             INFO("done");
         }
-        if (YESNO("* 250\tsave first 256 bytes ROM BIOS to FILE ?")) {
+        if (YESNO("* 260\tsave first 256 bytes ROM BIOS to FILE ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             LOG(fpath);
@@ -66,7 +67,7 @@ namespace test_lib_mem {
             ASSERT(mem::save_to_file(fpath, addr, 256), ==, 256, "save bytes error");
             INFO("done");
         }
-        if (YESNO("* 260\tload file to CGA screen memory ?")) {
+        if (YESNO("* 270\tload file to CGA screen memory ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             addr.segoff.segment = 0xB000;

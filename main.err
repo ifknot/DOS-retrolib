@@ -1,6 +1,6 @@
 RETROLIB/DOS/test_dos_files.h(100): Warning! W389: col(90) integral value may be truncated during assignment or initialization
 RETROLIB/DOS/test_dos_files.h(100): Note! N393: col(90) included from RETROLIB/DOS/test_dos.h(9)
-RETROLIB/DOS/test_dos_files.h(100): Note! N393: col(90) included from RETROLIB/test_retrolib.h(20)
+RETROLIB/DOS/test_dos_files.h(100): Note! N393: col(90) included from RETROLIB/test_retrolib.h(16)
 RETROLIB/DOS/test_dos_files.h(100): Note! N393: col(90) included from main.cpp(3)
 RETROLIB/DOS/test_dos_files.h(113): Warning! W389: col(89) integral value may be truncated during assignment or initialization
 RETROLIB/DOS/test_dos_files.h(121): Warning! W389: col(89) integral value may be truncated during assignment or initialization

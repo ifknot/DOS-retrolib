@@ -11,15 +11,11 @@
 #define TEST_RETROLIB_H
 
 #include <iostream>
-
-
-#include "RETROLIB/TEST/debug_macros.h"
- // 000
-#include "RETROLIB/TEST/test_debug_macros.h"
-// 001
-#include "RETROLIB/DOS/test_dos.h"
-// 002
-#include "RETROLIB/MEM/test_mem.h"
+		
+#include "TEST/test_debug_macros.h"		// 000
+#include "DOS/test_dos.h"				// 100
+#include "MEM/test_mem.h"				// 200
+#include "BIOS/test_bios.h"
 
 namespace test_retrolib {
 
@@ -27,8 +23,9 @@ namespace test_retrolib {
 
 		std::cout << "test functions..." << std::endl;
 		//if (YESNO("* 000\ttest debug ?")) test_debug_macros::run();
-		if (YESNO("* 100\ttest DOS ?")) test_dos::run();
-		if (YESNO("* 200\ttest MEM ?")) test_lib_mem::run();
+		//if (YESNO("* 100\ttest DOS ?")) test_dos::run();
+		//if (YESNO("* 200\ttest MEM ?")) test_lib_mem::run();
+		if (YESNO("* 300\ttest BIOS ?")) test_bios::run();
 
 	}
 
