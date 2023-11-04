@@ -27,6 +27,14 @@
 
 namespace gfx {
 
+    /**
+    * MDA/HGA and CGA 6845 CRT Controller port numbers.
+    */
+    enum crtc_port_t {
+        crtc_port_MDA = 0x03B4,
+        crtc_port_CGA = 0x03D4
+    };
+
     static char video_adapter_names[10][32] = {
         "Unknown",
         "MDA",

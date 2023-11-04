@@ -7,13 +7,10 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef GFX_DETECT_H
-#define GFX_DETECT_H
+#ifndef HGA_H
+#define HGA_H
 
-namespace gfx {
-
-
-
-}
+#include "hga_constants.h"
+#include "hga_detect_adapter.h"
 
 #endif
