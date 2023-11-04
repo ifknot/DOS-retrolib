@@ -7,9 +7,10 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef  GFX_TYPES_H
-#define GFX_TYPES_H
+#ifndef GFX_H
+#define GFX_H
 
-
+#include "gfx_constants.h"
+#include "gfx_types.h"
 
 #endif

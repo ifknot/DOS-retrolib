@@ -7,9 +7,13 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef  GFX_TYPES_H
-#define GFX_TYPES_H
+#ifndef GFX_DETECT_H
+#define GFX_DETECT_H
+
+namespace gfx {
 
 
+
+}
 
 #endif
