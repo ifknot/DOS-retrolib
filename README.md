@@ -42,6 +42,23 @@ TODO GFX
 
 TODO BIOS
 
+ + [x] INT 10,0 - Set video mode
+ + [ ] INT 10,1 - Set cursor type
+ + [ ] INT 10,2 - Set cursor position
+ + [ ] INT 10,3 - Read cursor position
+ + [ ] INT 10,4 - Read light pen
+ + [ ] INT 10,5 - Select active display page
+ + [ ] INT 10,6 - Scroll active page up
+ + [ ] INT 10,7 - Scroll active page down
+ + [ ] INT 10,8 - Read character and attribute at cursor
+ + [ ] INT 10,9 - Write character and attribute at cursor
+ + [ ] INT 10,A - Write character at current cursor
+ + [ ] INT 10,B - Set color palette
+ + [ ] INT 10,C - Write graphics pixel at coordinate
+ + [ ] INT 10,D - Read graphics pixel at coordinate
+ + [ ] INT 10,E - Write text in teletype mode
+ + [x] INT 10,F - Get current video state
+
 TODO DOS
 + [x] 25  Set interrupt vector
 + [x] 35  Get interrupt vector
