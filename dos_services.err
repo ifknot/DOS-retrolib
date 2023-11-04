@@ -1,0 +1,6 @@
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'classes'
+RETROLIB\DOS\dos_error_messages.h(300): Note! N392: col(20) definition: 'char const dos::error::classes[16][64]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'actions'
+RETROLIB\DOS\dos_error_messages.h(320): Note! N392: col(20) definition: 'char const dos::error::actions[8][64]'
+C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'locus'
+RETROLIB\DOS\dos_error_messages.h(332): Note! N392: col(20) definition: 'char const dos::error::locus[6][64]'

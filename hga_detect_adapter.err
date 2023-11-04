@@ -1,0 +1,2 @@
+RETROLIB\GFX\HGA\hga_detect_adapter.cpp(66): Warning! W014: col(1) no reference to symbol 'video_adapter_names'
+RETROLIB\GFX\HGA\../gfx_constants.h(39): Note! N392: col(17) definition: 'char gfx::video_adapter_names[10][32]'

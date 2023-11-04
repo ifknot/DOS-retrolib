@@ -22,6 +22,8 @@ namespace test_gfx {
 		if (YESNO("* 410\ttest detect CRTC MDA/HGA & CGA ?")) {
 			LOG(gfx::detect_CRTC_at_port(gfx::crtc_port_MDA));
 			LOG(gfx::detect_CRTC_at_port(gfx::crtc_port_CGA));
+		}
+		if (YESNO("* 410\ttest detect video adapter ?")) {
 			LOG((int)hga::detect_adapter());
 			INFO(gfx::video_adapter_names[hga::detect_adapter()]);
 		}

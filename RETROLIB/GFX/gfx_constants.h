@@ -16,10 +16,10 @@
 */
 #define VIDEO_ADAPTER_UKNOWN        0
 #define VIDEO_ADAPTER_MDA           1
-#define VIDEO_ADAPTER_HGC           2
-#define VIDEO_ADAPTER_HGC_PLUS      3
-#define VIDEO_ADAPTER_HGC_INCOLOR   4
-#define VIDEO_ADAPTER_HGC_CLONE     5
+#define VIDEO_ADAPTER_HGA           2
+#define VIDEO_ADAPTER_HGA_PLUS      3
+#define VIDEO_ADAPTER_HGA_INCOLOR   4
+#define VIDEO_ADAPTER_HGA_CLONE     5
 #define VIDEO_ADAPTER_CGA           6
 #define VIDEO_ADAPTER_EGA           7
 #define VIDEO_ADAPTER_MCGA          8
@@ -32,6 +32,7 @@ namespace gfx {
     */
     enum crtc_port_t {
         crtc_port_MDA = 0x03B4,
+        crtc_port_HGA = 0x03B4,
         crtc_port_CGA = 0x03D4
     };
 
