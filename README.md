@@ -18,7 +18,7 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 + [x] dumps ->
 + [x] files ->
 + [ ] arena_t ->
-+ [ ] GFX essentials ->
++ [...] GFX essentials ->
 + [ ] bitmap_t ->
 + [ ] blits
 
@@ -32,7 +32,12 @@ TODO MEM
 + [ ] get_available_low_memory
 
 TODO GFX
-+ [ ] video_adapter_t detect_video_adapter_type()
++ [x] video_adapter_t detect_video_adapter_type()
++ [x] VGA
++ [x] EGA
++ [x] CGA
++ [x] HGA
++ [ ] MDA comptabile mode 
 + [ ] bitmap_t (universal)
     + [ ] bmp::functions(...)
 + [ ] HGA
