@@ -10,6 +10,11 @@
  */
 #include "hga_detect_adapter.h"
 
+#include "../gfx_constants.h"
+#include "../gfx_detect_crtc.h"
+
+#include "hga_constants.h"
+
 namespace hga {
 
 	uint8_t detect_adapter() {

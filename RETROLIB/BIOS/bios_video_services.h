@@ -40,7 +40,10 @@ namespace bios {
 
 	// INT 10,10 - Set/get palette registers (EGA/VGA)
 	// INT 10,11 - Character generator routine (EGA/VGA)
+	
 	// INT 10,12 - Video subsystem configuration (EGA/VGA)
+	video_subsystem_config_t video_subsystem_configuration(uint8_t subsystem, uint8_t option = 0);
+	
 	// INT 10,13 - Write string (BIOS after 1/10/86)
 	// INT 10,14 - Load LCD char font (convertible)
 	// INT 10,15 - Return physical display parms (convertible)
