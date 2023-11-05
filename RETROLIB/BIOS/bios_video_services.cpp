@@ -10,6 +10,8 @@
  */
 #include "bios_video_services.h"
 
+#include "bios_video_services_constants.h"
+
 namespace bios {
 
 	/**
@@ -58,6 +60,7 @@ namespace bios {
 
 	/**
 	* @brief INT 10,12 - Video Subsystem Configuration (EGA/VGA)
+	* -----------------------------------------------------------------------------------------------------
 	* AH = 12h
 	* BL = 10  return video configuration information
 	*
@@ -70,40 +73,75 @@ namespace bios {
 	*    = 3 if 256k EGA memory
 	* CH = feature bits
 	* CL = switch settings
-	*
+	* 
+	* Info: This obtains miscellaneous information about the EGA switch
+    *       settings and the current values of the "feature bits" as read
+    *       through those rarely-used RCA connectors on some EGA cards.
+	*  @note If upon return from this call, BL>4, then must be running on a CGA or MDA (not an EGA or VGA).
+	* -----------------------------------------------------------------------------------------------------
 	* BL = 20  select alternate print screen routine
+	* 
+	* Info: This redirects the INT 05H (print screen) vector to a handler within the EGA/VGA ROM-BIOS.
 	*
+    * On older PCs, XTs, and ATs, the default ROM-BIOS print-screen handler stops printing after 25 lines.
+	* The EGA/VGA handler correctly prints the number of lines specified in the byte at 0040:0084 in the BIOS Data Area.
+	*
+	* @note Most EGAs and VGAs set this automatically.  
+	* However, it is good practice to use this fn whenever change the number of video lines that are displayed in text mode.
+	* -----------------------------------------------------------------------------------------------------
 	* BL = 30  select scan lines for alphanumeric modes
 	*    AL = 0  200 scan lines
 	*       = 1  350 scan lines
 	*       = 2  400 scan lines
 	*
-	* on return: AL = 12
-	*
+	* on return: AL = 12 if a VGA is active
+	* 
+    * Info: This updates bits 0-3 in the EgaMiscInfo2Rec (at 0040:0088) and bits 4 and 7 of the VgaFlagsRec (at 0040:0089).
+	* Then, on the next INT 10H 00H call to switch to a text mode, the specified resolution will be in effect.
+	* -----------------------------------------------------------------------------------------------------
+	* @note Compatibility: VGA 
 	* BL = 31  select default palette loading
 	*    AL = 0 enable default palette loading
 	*       = 1 disable default palette loading
 	*
-	* on return: AL = 12
+	* on return: AL = 12 if a valid value was passed in AL
+    *
+    * Info: This changes how the BIOS handles the color palette on subsequent calls to INT 10H 00H (set video mode).  
+	* It updates bit 3 of the VgaFlagsRec (at 0040:0089).
 	*
+	* @note When automatic palette loading is enabled (the default setting), the BIOS reprograms the ATC 
+	* with the default palette values each time the video mode is reset.
+	* User can modify the VgaSavePtr2Rec to setup own palette to be used the default.
+	*
+	* @note When disabled, the current palette setting are left in place on mode changes.
+	* -----------------------------------------------------------------------------------------------------
+	* @note Compatibility: VGA 
 	* BL = 32  CPU access to video RAM
 	*    AL = 0  enable CPU access to video RAM and I/O ports
 	*       = 1  disable CPU access to video RAM and I/O ports
 	*
-	* on return: AL = 12
-	*
+	* on return: AL = 12 if a valid value was passed in AL
+	* 
+    * Info: You can use this to suppress CPU access to video RAM and I/O ports on VGA-compatible displays.  It updates bit 0 of the
+    * VgaFlagsRec (at 0040:0089).
+	* -----------------------------------------------------------------------------------------------------
+	* * @note Compatibility: VGA 
 	* BL = 33  Gray scale summing
 	*    AL = 0  enable gray scale summing
 	*       = 2  disable gray scale summing
 	*
-	* on return: AL = 12
-	*
+	* on return: AL = 12 if a valid value was passed in AL
+    *
+    * Info: This updates bit 1 of the VgaFlagsRec (at 0040:0089).
+	* On the next mode reset (via INT 10H 00H), if that bit is set, then the BIOS will automatically 
+	* reprogram the palette to display only shades of gray
+	* -----------------------------------------------------------------------------------------------------
 	* BL = 34  cursor emulation
 	*    AL = 0  enable cursor emulation
 	*       = 1  disable cursor emulation
 	*
 	* on return: AL = 12
-	*
+	* -----------------------------------------------------------------------------------------------------
 	* BL = 35  PS/2 video display switching
 	*    AL = 0 initial adapter video off
 	*       = 1 initial planar video on
@@ -111,16 +149,37 @@ namespace bios {
 	*       = 3 switch inactive video on
 	*    ES:DX pointer to 128 byte save area (when AL = 0, 2 or 3)
 	*
-	* on return: AL = 12
-	*
+	* on return: AL = 12  if a valid value was passed in AL
+    * 
+    * Info: ON PS/2 systems, this provides a means to switch between the built-in VGA (on the motherboard) 
+	* and another, incompatible display system.(!)
+	* -----------------------------------------------------------------------------------------------------
 	* BL = 36  video refresh control
 	*    AL = 0 enable refresh
 	*       = 1 disable refresh
 	*
-	* on return: AL = 12
+	* on return: AL = 12 if a valid value was passed in AL
+    * Info: This modifies bit 5 of the VGA's Sequencer Clocking Mode Register.
+    * Can draw complex graphics faster while refresh is disabled (it avoids some enforced wait states).  
+	* @note Be sure to re-enable refresh when finished updating video memory.
+	* -----------------------------------------------------------------------------------------------------
 	*/
-	video_subsystem_config_t video_subsystem_configuration(uint8_t subsystem, uint8_t option = 0) {
-
+	void video_subsystem_configuration(uint8_t subsystem, uint8_t option, video_subsystem_config_t* config) {
+		if (config && subsystem == RETURN_VIDEO_CONFIGURATION_INFORMATION) {
+			__asm {
+				.8086
+				mov		ah, VIDEO_SUBSYSTEM_CONFIGURATION
+				int		BIOS_VIDEO_SERVICES
+				lds		di, config
+				mov[di], bh								; color_mode (0 = colour, 1 = mono)					
+				mov		al, 64							; 64k 
+				inc		bl								; bring bl into valid mul range
+				mul		bl								; EGA memory BL (1 = 64k, 2 = 128k, 3 = 192k, 4 = 256k)
+				mov[di + 1], al							; ega_memory
+				mov[di + 2], ch							; feature_bits(values of those RCA connectors)
+				mov[di + 3], cl							; switch_settings 
+			}
+		}
 	}
 
 }

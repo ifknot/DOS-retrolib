@@ -41,7 +41,7 @@ namespace bios {
 	* CL = switch settings
 	*/
 	struct video_subsystem_config_t {
-		uint8_t		mode;
+		uint8_t		color_mode;
 		uint8_t		ega_memory;
 		uint8_t		feature_bits;
 		uint8_t		switch_settings;

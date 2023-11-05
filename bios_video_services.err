@@ -1,2 +1,4 @@
-RETROLIB\BIOS\bios_video_services.cpp(59): Warning! W014: col(1) no reference to symbol 'video_mode_names'
-RETROLIB\BIOS\bios_video_services_constants.h(79): Note! N392: col(16) definition: 'char const bios::video_mode_names[20][64]'
+RETROLIB\BIOS\bios_video_services.cpp(183): Warning! W726: col(9) no reference to formal parameter 'option'
+RETROLIB\BIOS\bios_video_services.cpp(167): Note! N392: col(71) definition: 'unsigned char option' in 'void bios::video_subsystem_configuration( unsigned char, unsigned char, bios::video_subsystem_config_t * )'
+RETROLIB\BIOS\bios_video_services.cpp(185): Warning! W014: col(1) no reference to symbol 'video_mode_names'
+RETROLIB\BIOS\bios_video_services_constants.h(100): Note! N392: col(16) definition: 'char const bios::video_mode_names[20][64]'
