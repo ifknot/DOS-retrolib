@@ -41,6 +41,17 @@ namespace test_bios_video {
 			bios::get_video_state(&new_vinfo);
 			INFO(bios::video_mode_names[new_vinfo.mode]);
 		}
+		if (YESNO("* 314\ttest EGA/VGA subsystem info?")) {
+			bios::video_subsystem_config_t info;
+			LOG_AS((int)bios::video_subsystem_configuration(bios::RETURN_VIDEO_CONFIGURATION_INFORMATION, 0, &info), std::hex);
+			LOG((int)info.color_mode);
+			LOG((int)info.ega_memory);
+			LOG((int)info.feature_bits);
+			LOG((int)info.switch_settings);
+		}
+		if (YESNO("* 315\ttest VGA enable access to video?")) {
+			LOG_AS((int)bios::video_subsystem_configuration(bios::CPU_ACCESS_TO_VIDEO_RAM, 0), std::hex);
+		}
 	}
 
 }
