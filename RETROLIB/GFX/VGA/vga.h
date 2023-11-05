@@ -7,9 +7,9 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef CGA_H
-#define CGA_H
+#ifndef VGA_H
+#define VGA_H
 
-#include "cga_detect_adapter.h"
+#include "vga_detect_adapter.h"
 
 #endif

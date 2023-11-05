@@ -7,9 +7,15 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef CGA_H
-#define CGA_H
+#ifndef EGA_DETECT_ADAPTER_H
+#define EGA_DETECT_ADAPTER_H
 
-#include "cga_detect_adapter.h"
+#include <stdint.h>
+
+namespace ega {
+
+	uint8_t detect_adapter();
+
+}
 
 #endif

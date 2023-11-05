@@ -120,7 +120,7 @@ namespace bios {
 	*    AL = 0  enable CPU access to video RAM and I/O ports
 	*       = 1  disable CPU access to video RAM and I/O ports
 	*
-	* on return: AL = 12 if a valid value was passed in AL
+	* on return: AL = 12h if a valid value was passed in AL
 	*
 	* Info: You can use this to suppress CPU access to video RAM and I/O ports on VGA-compatible displays.  It updates bit 0 of the
 	* VgaFlagsRec (at 0040:0089).

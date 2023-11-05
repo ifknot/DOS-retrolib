@@ -24,6 +24,8 @@
 #define VIDEO_ADAPTER_EGA           7
 #define VIDEO_ADAPTER_MCGA          8
 #define VIDEO_ADAPTER_VGA           9
+#define VIDEO_ADAPTER_SVGA          10
+#define VIDEO_ADAPTER_DUAL          11
 
 namespace gfx {
 
@@ -36,7 +38,7 @@ namespace gfx {
         crtc_port_CGA = 0x03D4
     };
 
-    static char video_adapter_names[10][32] = {
+    static char video_adapter_names[12][32] = {
         "Unknown",
         "MDA",
         "Hercules",
@@ -46,7 +48,9 @@ namespace gfx {
         "CGA",
         "EGA",
         "MCGA",
-        "VGA"
+        "VGA",
+        "SVGA",
+        "Dual headed"
     };
 
 }

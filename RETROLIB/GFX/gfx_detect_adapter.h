@@ -30,6 +30,9 @@ namespace gfx {
 	inline uint8_t detect_color_adapter() {
 		return detect_colour_adapter();
 	}
+
+	uint8_t detect_adapter();
+
 }
 
 #endif

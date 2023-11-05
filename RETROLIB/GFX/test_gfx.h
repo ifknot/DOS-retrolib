@@ -14,6 +14,7 @@
 
 #include "gfx.h"
 #include "HGA/hga.h"
+#include "CGA/cga.h"
 
 namespace test_gfx {
 
@@ -24,8 +25,12 @@ namespace test_gfx {
 			LOG(gfx::detect_CRTC_at_port(gfx::crtc_port_CGA));
 		}
 		if (YESNO("* 410\ttest detect video adapter ?")) {
-			LOG((int)hga::detect_adapter());
-			INFO(gfx::video_adapter_names[hga::detect_adapter()]);
+			LOG((int)gfx::detect_monochrome_adapter());
+			INFO(gfx::video_adapter_names[gfx::detect_monochrome_adapter()]);
+			LOG((int) gfx::detect_colour_adapter());
+			INFO(gfx::video_adapter_names[gfx::detect_colour_adapter()]);
+			LOG((int)gfx::detect_adapter());
+			INFO(gfx::video_adapter_names[gfx::detect_adapter()]);
 		}
 	}
 

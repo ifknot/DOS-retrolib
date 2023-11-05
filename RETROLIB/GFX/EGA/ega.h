@@ -7,9 +7,9 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef CGA_H
-#define CGA_H
+#ifndef EGA_H
+#define EGA_H
 
-#include "cga_detect_adapter.h"
+
 
 #endif
