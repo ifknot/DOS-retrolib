@@ -1,0 +1,2 @@
+RETROLIB\MEM\mem_arena.cpp(26): Warning! W726: col(9) no reference to formal parameter 'byte_count'
+RETROLIB\MEM\mem_arena.cpp(24): Note! N392: col(48) definition: 'unsigned long byte_count' in 'mem::dos_arena_t * mem::make_dos_arena( unsigned long )'
