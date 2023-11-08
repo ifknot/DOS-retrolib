@@ -45,7 +45,7 @@ TODO GFX
 + [ ] CGA
     + [ ] cga::blits(...) universal bmp -> specialised vram
 
-TODO BIOS
+TODO BIOS (as needed)
 
  + [x] INT 10,0 - Set video mode
  + [ ] INT 10,1 - Set cursor type
@@ -64,7 +64,7 @@ TODO BIOS
  + [ ] INT 10,E - Write text in teletype mode
  + [x] INT 10,F - Get current video state
 
-TODO DOS
+TODO DOS (as needed)
 + [x] 25  Set interrupt vector
 + [x] 35  Get interrupt vector
 + [x] 36  Get disk free space
@@ -89,7 +89,7 @@ TODO DOS
 + [x] 49  Free allocated memory blocks
 + [ ] 4A  Modify allocated memory blocks
 
-TODO DOS 3.x+
+TODO DOS 3.x+ (as needed)
 
 + [x] 59  Get extended error information (3.x+)
 + [ ] 5A  Create temporary file (3.x+)
