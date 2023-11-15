@@ -22,17 +22,17 @@
 
 namespace mem {
 
-	struct dos_arena_t;
-
-	dos_arena_t* new_dos_arena(mem_size_t byte_count);
-
 	namespace arena {
 
-		inline mem_size_t available(dos_arena_t* arena);
+		struct dos_arena_t;
+
+		dos_arena_t* new_dos_arena(mem_size_t byte_count);
+
+		mem_size_t available(dos_arena_t* arena);
 
 		//void delete_dos_arena(dos_arena_t* arena);
 
-		inline mem_size_t total(dos_arena_t* arena);
+		mem_size_t total(dos_arena_t* arena);
 
 		//char* raw_alloc(mem_size_t byte_request);
 
