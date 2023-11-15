@@ -20,29 +20,33 @@
 
 #include "mem_constants.h"
 
+#include <iostream>
+
 namespace mem {
 
 	namespace arena {
 
-		struct dos_arena_t;
+		struct arena_t;
 
-		dos_arena_t* new_dos_arena(mem_size_t byte_count);
+		arena_t* new_dos_arena(mem_size_t byte_count);
 
-		void delete_dos_arena(dos_arena_t* p);
+		void delete_dos_arena(arena_t* arena);
 
-		mem_size_t available(dos_arena_t* arena);
+		mem_size_t size(arena_t* arena);
 
-		//void delete_dos_arena(dos_arena_t* arena);
+		mem_size_t capacity(arena_t* arena);
 
-		mem_size_t total(dos_arena_t* arena);
+		char* raw_alloc(arena_t* arena, mem_size_t byte_request);
 
-		//char* raw_alloc(mem_size_t byte_request);
-
-		//template<typename T>
-		//T* alloc(arena_t* arena, uint32_t request) { return (T*)raw_alloc(sizeof(T) * request); }
+		template<typename T>
+		T* alloc(arena_t* arena, mem_size_t type_count) {
+			return (T*)raw_alloc(arena, sizeof(T) * type_count); 
+		}
 
 	}
 
 }
+
+std::ostream& operator<< (std::ostream& os, const mem::arena::arena_t& arena);
 
 #endif

@@ -1,4 +1,4 @@
-RETROLIB\MEM\mem_arena.cpp(53): Warning! W389: col(77) integral value may be truncated during assignment or initialization
+RETROLIB\MEM\mem_arena.cpp(50): Warning! W389: col(77) integral value may be truncated during assignment or initialization
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol '__yesno'
 RETROLIB\MEM\../TEST/debug_macros.h(84): Note! N392: col(21) definition: 'bool test::__yesno( char * )'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol '__pressenter'

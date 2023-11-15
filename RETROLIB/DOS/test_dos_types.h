@@ -22,12 +22,17 @@ namespace test_dos_types {
 	void run() {
 		INFO("* testing DOS services types...");
 		char str[] = "hello";
-		mem::address_t addr;
+		mem::address_t addr, bddr;
 		addr.memloc = (uint32_t)str;
 		std::cout << str << '\n'
 			<< addr.segoff << '\n'
 			<< addr << '\n'
 			<< std::hex << (uint32_t)str << '\n';
+		bddr.segoff.segment = addr.segoff.segment;
+		bddr.segoff.offset = addr.segoff.offset;
+		LOG(bddr);
+		LOG(bddr.memloc);
+		std::cout << ((char*)bddr.memloc) << '\n';
 	}
 
 }

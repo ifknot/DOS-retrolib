@@ -4,7 +4,7 @@ RETROLIB/DOS/test_dos_files.h(101): Note! N393: col(90) included from RETROLIB/t
 RETROLIB/DOS/test_dos_files.h(101): Note! N393: col(90) included from main.cpp(3)
 RETROLIB/DOS/test_dos_files.h(114): Warning! W389: col(89) integral value may be truncated during assignment or initialization
 RETROLIB/DOS/test_dos_files.h(122): Warning! W389: col(89) integral value may be truncated during assignment or initialization
-RETROLIB/MEM/test_mem_arena.h(38): Warning! W546: col(24) delete of a pointer to an undefined type
+RETROLIB/MEM/test_mem_arena.h(50): Warning! W546: col(24) delete of a pointer to an undefined type
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'messages'
 RETROLIB/DOS/dos_error_messages.h(58): Note! N392: col(20) definition: 'char const dos::error::messages[85][64]'
 C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'classes'

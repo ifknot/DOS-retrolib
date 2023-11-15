@@ -20,12 +20,12 @@ namespace mem {
 
 	namespace arena {
 
-		struct dos_arena_t {
+		struct arena_t {
 
-			char* top_ptr;
+			char* top;
 			address_t mcb;
-			mem_size_t available;
-			mem_size_t total;
+			mem_size_t size;
+			mem_size_t capacity;
 
 		};
 
@@ -39,38 +39,60 @@ namespace mem {
 		* However, the actual amount of allocatable RAM is restricted 640K or less (+ possible upper memory area)
 		* and will depend on installed RAM.
 		*/
-		dos_arena_t* new_dos_arena(mem_size_t byte_count) {
-			dos_arena_t* p = new(dos_arena_t);
-			p->top_ptr = NULL_PTR;
-			p->available = p->total = 0;
+		arena_t* new_dos_arena(mem_size_t byte_count) {
+			arena_t* p = new(arena_t);
+			p->top = NULL_PTR;
+			p->size = p->capacity = 0;
 			mem_size_t paragraphs = byte_count / PARAGRAPH_SIZE;
-			LOG(byte_count);
-			LOG(paragraphs);
 			if (byte_count % PARAGRAPH_SIZE) {	// if mod 16 then need another paragraph for the remainder
 				paragraphs++;
 			}
-			LOG(paragraphs);
 			p->mcb.segoff.segment = dos::allocate_memory_blocks(paragraphs);
 			p->mcb.segoff.offset = 0;
-			p->top_ptr = (char*)p->mcb.memloc;
-			LOG(p->mcb);
-			LOG_AS((int)p->mcb.memloc, std::hex);
-			LOG_AS((int)p->top_ptr, std::hex);
-			if (p->top_ptr) {
-				p->total = paragraphs * PARAGRAPH_SIZE;
-				p->available = p->total;
+			p->top = (char*)p->mcb.memloc;
+			if (p->top) {
+				p->capacity = paragraphs * PARAGRAPH_SIZE;
+				p->size = p->capacity;
 			}
 			return p;
 		}
 
-		void delete_dos_arena(dos_arena_t* p) {
-			dos::free_allocated_memory_blocks(p->mcb.segoff.segment);
+		void delete_dos_arena(arena_t* arena) {
+			dos::free_allocated_memory_blocks(arena->mcb.segoff.segment);
+			arena->top = NULL_PTR;
+			arena->mcb.memloc = arena->size = arena->capacity = 0;
 		}
 
-		mem_size_t available(dos_arena_t* arena) { return arena->available; }
+		char* raw_alloc(arena_t* arena, mem_size_t byte_request) {
+			char* p = NULL_PTR;
+			if (byte_request <= arena->size) {
+				arena->size -= byte_request;
+				p = arena->top;
+				arena->top += byte_request;
+			}
+#ifndef NDEBUG
+			else {
+				std::cout << "mem::arena::error\tInsufficient memory\nlargest block of memory available = " << std::dec << arena->size << " bytes" << std::endl;
+			}
+#endif			
+			return p;
+		}
 
-		mem_size_t total(dos_arena_t* arena) { return arena->total; }
+		mem_size_t size(arena_t* arena) { 
+			return arena->size; 
+		}
+
+		mem_size_t capacity(arena_t* arena) { 
+			return arena->capacity; 
+		}
 
 	}
 
+}
+
+std::ostream& operator<< (std::ostream& os, const mem::arena::arena_t& arena) {
+	os << std::hex << (uint32_t)arena.top << ','
+		<< std::dec << arena.size << ','
+		<< arena.capacity;
+	return os;
 }
