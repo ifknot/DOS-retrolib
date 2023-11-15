@@ -19,6 +19,7 @@
 #include "../MEM/mem.h"
 
 #include <stdio.h>
+#include <stdint.h>
 
 namespace test_dos_files {
 
@@ -102,7 +103,7 @@ namespace test_dos_files {
 			if (YESNO("* 146\ttest read file?")) {
 				buffer[0] = '\0';
 				mem::address_t addr;
-				addr.void_ptr = (void*)buffer;
+				addr.memloc = (uint32_t)buffer;
 				LOG(buffer);
 				INFO("* file size");
 				LOG(dos::move_file_pointer_using_handle(fhandle, SEEK_SET));

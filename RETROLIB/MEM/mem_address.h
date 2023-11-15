@@ -21,7 +21,7 @@ namespace mem {
      */
     union address_t {
 
-        void* void_ptr;
+        uint32_t memloc;
         segoff_t segoff;
         uint16_t words[2];
         uint8_t bytes[4];

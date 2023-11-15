@@ -110,7 +110,7 @@ namespace dos {
             if (err_code) {
                 std::cout << dos::error::messages[err_code] << '\n';
                 if (err_code == dos::error::INSUFFICIENT_MEMORY) {
-                    std::cout << " largest block of memory available = " << std::hex << (available * 16) << " bytes" << std::endl;
+                    std::cout << " largest block of memory available = " << std::dec << (available * 16) << " bytes" << std::endl;
                 }
             }
 

@@ -34,7 +34,7 @@ namespace mem {
 
     address_t dump_paragraph_ostream(std::ostream& os, address_t start) {
         os << start.segoff << ' ';                                      
-        const char* pbyte = (char*) start.void_ptr;                     // extract char* from address_t
+        const char* pbyte = (char*) start.memloc;                     // extract char* from address_t
         const char* pchar = pbyte;                                                                            // duplicate
         int i = 0;
         for (; i < PARAGRAPH_SIZE / 2; ++i) {                           // first 8 bytes as hex
@@ -51,7 +51,7 @@ namespace mem {
         }
         os << std::endl;
         address_t next;
-        next.void_ptr = (void*)pbyte;
+        next.memloc = (uint32_t)pbyte;
         return next;
     }
 

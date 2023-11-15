@@ -28,6 +28,8 @@ namespace mem {
 
 		dos_arena_t* new_dos_arena(mem_size_t byte_count);
 
+		void delete_dos_arena(dos_arena_t* p);
+
 		mem_size_t available(dos_arena_t* arena);
 
 		//void delete_dos_arena(dos_arena_t* arena);

@@ -15,7 +15,7 @@
 namespace mem {
 
     dos::file::size_t write_ostream(std::ostream& os, address_t start, uint16_t bytes) {
-        char* pchar = (char*)start.void_ptr;
+        char* pchar = (char*)start.memloc;
         int i;
         for (i = 0; i < bytes; ++i) {
              os << *pchar++;

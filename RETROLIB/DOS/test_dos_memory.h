@@ -35,7 +35,7 @@ namespace test_dos_memory {
 		mem::address_t mcb_1k; // set it up to point to the paragraph preceding the one returned
 		mcb_1k.segoff.segment = seg_mem_1K - 1;
 		mcb_1k.segoff.offset = 0;
-		ASSERT(*(char*)mcb_1k.void_ptr, ==, 'M', "MCB not an M");
+		ASSERT(*(char*)mcb_1k.memloc, ==, 'M', "MCB not an M");
 		INFO("* MCB dump");
 		mem::dump(mcb_1k, 16);
 		
@@ -48,7 +48,7 @@ namespace test_dos_memory {
 		mem::address_t mcb_2k;
 		mcb_2k.segoff.segment = seg_mem_2K - 1;
 		mcb_2k.segoff.offset = 0;
-		ASSERT(*(char*)mcb_2k.void_ptr, ==, 'M', "MCB not an M");
+		ASSERT(*(char*)mcb_2k.memloc, ==, 'M', "MCB not an M");
 		INFO("* MCB dump");
 		mem::dump(mcb_2k, 16);
 

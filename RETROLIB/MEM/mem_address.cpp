@@ -16,7 +16,7 @@ namespace mem {
 
 std::ostream& operator<< (std::ostream& os, const mem::address_t& addr) {
     os << std::hex << std::setfill('0')
-        << std::setw(8) << (uint32_t)addr.void_ptr
+        << std::setw(8) << (uint32_t)addr.memloc
         << std::dec;
     return os;
 }

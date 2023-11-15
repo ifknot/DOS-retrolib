@@ -15,13 +15,15 @@
 
 #include "dos.h"
 
+#include <stdint.h>
+
 namespace test_dos_types {
 
 	void run() {
 		INFO("* testing DOS services types...");
 		char str[] = "hello";
 		mem::address_t addr;
-		addr.void_ptr = (void*)str;
+		addr.memloc = (uint32_t)str;
 		std::cout << str << '\n'
 			<< addr.segoff << '\n'
 			<< addr << '\n'

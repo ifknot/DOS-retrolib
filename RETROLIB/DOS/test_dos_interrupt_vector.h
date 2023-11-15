@@ -25,16 +25,16 @@ namespace test_dos_interrupt_vector {
 		INFO("* test set interupt vector");
 		INFO("dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, 0xF000BEEF)");
 		mem::address_t new_ivec_eqip_det;
-		new_ivec_eqip_det.void_ptr = (void*)0xF000BEEF;
+		new_ivec_eqip_det.memloc = (uint32_t)0xF000BEEF;
 		dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, new_ivec_eqip_det);
 		LOG(dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION));
-		ASSERT(old_ivec_equip_det.void_ptr, !=, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, "vector not changed");
+		ASSERT(old_ivec_equip_det.memloc, !=, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).memloc, "vector not changed");
 		
 		INFO("* reset back to old vector");
 		INFO("dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, old_ivec_equip_det)");
 		dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, old_ivec_equip_det);
 		LOG(dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION));
-		ASSERT(old_ivec_equip_det.void_ptr, ==, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).void_ptr, "vector not reset to original");
+		ASSERT(old_ivec_equip_det.memloc, ==, dos::get_interrupt_vector(IEQUIPMENT_DETERMINATION).memloc, "vector not reset to original");
 
 	}
 
