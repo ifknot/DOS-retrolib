@@ -65,7 +65,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (info->sectors_per_cluster == 0xFFFF) {
-			std::cout << dos::error::messages[dos::error::INVALID_DRIVE_SPECIFIED] << std::endl;
+			std::cout << dos::error::messages[dos::error::INVALID_DRIVE_SPECIFIED] << "drive_number=" << drive_number << std::endl;
 		}
 
 #endif
@@ -109,7 +109,7 @@ namespace dos {
 #ifndef NDEBUG
 		
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_path=" << path_name << std::endl;
 		}
 
 #endif
@@ -154,7 +154,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_path=" << path_name << std::endl;
 		}
 
 #endif
@@ -193,7 +193,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_handle=" << fhandle << std::endl;
 		}
 
 #endif
@@ -242,7 +242,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_handle=" << fhandle << std::endl;
 		}
 
 #endif
@@ -290,7 +290,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_handle=" << fhandle << std::endl;
 		}
 
 #endif
@@ -331,7 +331,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_path=" << path_name << std::endl;
 		}
 
 #endif
@@ -399,7 +399,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_handle=" << fhandle << std::endl;
 		}
 
 #endif
@@ -451,7 +451,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_path=" << path_name << std::endl;
 		}
 
 #endif
@@ -485,7 +485,7 @@ namespace dos {
 #ifndef NDEBUG
 
 		if (err_code) {
-			std::cout << dos::error::messages[err_code] << std::endl;
+			std::cout << dos::error::messages[err_code] << "file_path=" << path_name << std::endl;
 		}
 
 #endif

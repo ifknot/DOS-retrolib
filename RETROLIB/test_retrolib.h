@@ -17,6 +17,7 @@
 #include "MEM/test_mem.h"				// 200
 #include "BIOS/test_bios.h"				// 300
 #include "GFX/test_gfx.h"				// 400
+#include "FILE/test_file.h"
 
 namespace test_retrolib {
 
@@ -24,10 +25,11 @@ namespace test_retrolib {
 
 		std::cout << "test functions..." << std::endl;
 		//if (YESNO("* 000\ttest debug ?")) test_debug_macros::run();
-		if (YESNO("* 100\ttest DOS ?")) test_dos::run();
-		if (YESNO("* 200\ttest MEM ?")) test_mem::run();
+		//if (YESNO("* 100\ttest DOS ?")) test_dos::run();
+		//if (YESNO("* 200\ttest MEM ?")) test_mem::run();
 		//if (YESNO("* 300\ttest BIOS ?")) test_bios::run();
 		//if (YESNO("* 400\ttest GFX ?")) test_gfx::run();
+		if (YESNO("* 500\ttest FILE ?")) test_file::run();
 	}
 
 }
