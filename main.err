@@ -1,15 +1,15 @@
-RETROLIB/DOS/test_dos_files.h(101): Warning! W389: col(90) integral value may be truncated during assignment or initialization
-RETROLIB/DOS/test_dos_files.h(101): Note! N393: col(90) included from RETROLIB/DOS/test_dos.h(9)
-RETROLIB/DOS/test_dos_files.h(101): Note! N393: col(90) included from RETROLIB/test_retrolib.h(16)
-RETROLIB/DOS/test_dos_files.h(101): Note! N393: col(90) included from main.cpp(3)
-RETROLIB/DOS/test_dos_files.h(114): Warning! W389: col(89) integral value may be truncated during assignment or initialization
-RETROLIB/DOS/test_dos_files.h(122): Warning! W389: col(89) integral value may be truncated during assignment or initialization
-RETROLIB/MEM/test_mem_arena.h(50): Warning! W546: col(24) delete of a pointer to an undefined type
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'messages'
-RETROLIB/DOS/dos_error_messages.h(58): Note! N392: col(20) definition: 'char const dos::error::messages[85][64]'
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'classes'
-RETROLIB/DOS/dos_error_messages.h(300): Note! N392: col(20) definition: 'char const dos::error::classes[16][64]'
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'actions'
-RETROLIB/DOS/dos_error_messages.h(320): Note! N392: col(20) definition: 'char const dos::error::actions[8][64]'
-C:\WATCOM\h\memory(128): Warning! W014: col(61) no reference to symbol 'locus'
-RETROLIB/DOS/dos_error_messages.h(332): Note! N392: col(20) definition: 'char const dos::error::locus[6][64]'
+RETROLIB\DOS\test_dos_files.h(101): Warning! W389: col(90) integral value may be truncated during assignment or initialization
+RETROLIB\DOS\test_dos_files.h(101): Note! N393: col(90) included from RETROLIB\DOS\test_dos.h(9)
+RETROLIB\DOS\test_dos_files.h(101): Note! N393: col(90) included from RETROLIB\test_retrolib.h(16)
+RETROLIB\DOS\test_dos_files.h(101): Note! N393: col(90) included from main.cpp(3)
+RETROLIB\DOS\test_dos_files.h(114): Warning! W389: col(89) integral value may be truncated during assignment or initialization
+RETROLIB\DOS\test_dos_files.h(122): Warning! W389: col(89) integral value may be truncated during assignment or initialization
+RETROLIB\MEM\test_mem_arena.h(50): Warning! W546: col(24) delete of a pointer to an undefined type
+C:\Users\ifkno\ow-snapshot\h\memory(128): Warning! W014: col(61) no reference to symbol 'messages'
+RETROLIB\DOS\dos_error_messages.h(58): Note! N392: col(20) definition: 'char const dos::error::messages[85][64]'
+C:\Users\ifkno\ow-snapshot\h\memory(128): Warning! W014: col(61) no reference to symbol 'classes'
+RETROLIB\DOS\dos_error_messages.h(300): Note! N392: col(20) definition: 'char const dos::error::classes[16][64]'
+C:\Users\ifkno\ow-snapshot\h\memory(128): Warning! W014: col(61) no reference to symbol 'actions'
+RETROLIB\DOS\dos_error_messages.h(320): Note! N392: col(20) definition: 'char const dos::error::actions[8][64]'
+C:\Users\ifkno\ow-snapshot\h\memory(128): Warning! W014: col(61) no reference to symbol 'locus'
+RETROLIB\DOS\dos_error_messages.h(332): Note! N392: col(20) definition: 'char const dos::error::locus[6][64]'

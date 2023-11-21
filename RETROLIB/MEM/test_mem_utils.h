@@ -42,7 +42,7 @@ namespace test_mem_utils {
             mem::write_ostream(std::cout, addr, 256);
             INFO("done");
         }
-        if (YESNO("* 215\twrite (unformatted) first 256 bytes ROM BIOS to ostream ?")) {
+        if (YESNO("* 215\twrite (unformatted) first 256 bytes ROM BIOS to ofstream ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             LOG(fpath);
@@ -52,7 +52,7 @@ namespace test_mem_utils {
             f.close();
             INFO("done");
         }
-        if (YESNO("* 216\tsave first 256 bytes ROM BIOS to FILE ?")) {
+        if (YESNO("* 216\tsave first 256 bytes ROM BIOS to DOS FILE ?")) {
             INFO("* Enter filename: ");
             scanf("%s", fpath);
             LOG(fpath);

@@ -1,4 +1,4 @@
 RETROLIB\GFX\VGA\vga_detect_adapter.cpp(33): Warning! W014: col(1) no reference to symbol 'video_mode_names'
-RETROLIB\GFX\VGA\../../BIOS/bios_video_services_constants.h(100): Note! N392: col(16) definition: 'char const bios::video_mode_names[20][64]'
+RETROLIB\GFX\VGA\..\..\BIOS\bios_video_services_constants.h(100): Note! N392: col(16) definition: 'char const bios::video_mode_names[20][64]'
 RETROLIB\GFX\VGA\vga_detect_adapter.cpp(33): Warning! W014: col(1) no reference to symbol 'video_adapter_names'
-RETROLIB\GFX\VGA\../gfx_constants.h(41): Note! N392: col(17) definition: 'char gfx::video_adapter_names[12][32]'
+RETROLIB\GFX\VGA\..\gfx_constants.h(41): Note! N392: col(17) definition: 'char gfx::video_adapter_names[12][32]'

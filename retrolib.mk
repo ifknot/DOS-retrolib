@@ -1,3 +1,3 @@
-project : C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe .SYMBOLIC
+project : C:\Users\ifkno\DOSBOX\RETROLIB\retrolib.exe .SYMBOLIC
 
-!include C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.mk1
+!include C:\Users\ifkno\DOSBOX\RETROLIB\retrolib.mk1

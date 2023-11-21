@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="archive\biosv02\bios_clock_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="archive\biosv02\bios_config_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="archive\biosv02\bios_keyboard_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="archive\biosv02\bios_memory_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="archive\biosv02\bios_video_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="archive\dos\dos_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\bios\bios_video_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\dos\dos_services.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\dos\dos_services_3x.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\dos\dos_services_files.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\file\file_utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\gfx\gfx_detect_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\gfx\gfx_detect_crtc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\gfx\cga\cga_detect_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\gfx\ega\ega_detect_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\gfx\hga\hga_detect_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\gfx\vga\vga_detect_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\mem\mem_address.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\mem\mem_arena.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\mem\mem_dump_ostream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\mem\mem_load_from_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\mem\mem_save_to_file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\mem\mem_segoff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="retrolib\mem\mem_write_ostream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="archive\abm\abm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\abm\abm_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\abm\abm_leading_zeros_count.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\abm\abm_population_count.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\abm\abm_trailing_zeros_count.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\abm\abm_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\abm\test_abm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_clock_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_clock_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_clock_services_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_keyboard_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_keyboard_scan_codes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_keyboard_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_memory_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_memory_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_video_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_video_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\bios_video_services_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\test_bios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv01\test_keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_clock_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_clock_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_clock_services_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_config_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_config_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_data_area_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_data_area_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_keyboard_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_keyboard_scan_codes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_keyboard_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_memory_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_memory_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_video_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_video_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\bios_video_services_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\test_bios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\test_clocks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\test_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\test_data_area.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\test_keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\test_memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\biosv02\test_video.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\dos\dos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\dos\dos_error_messages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\dos\dos_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\dos\dos_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\dos\dos_services_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\dos\test_dos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys_extension.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys_fpeek.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys_ignore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys_read_dsv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys_stream_size.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\fsys_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\fsys\test_fsys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\gfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\gfx_bitmap_t.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\gfx_code_page_437_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\gfx_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\gfx_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\test_gfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_cls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_default_font_8x8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_environment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_monospaced_font_t.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_read_light_pen_registers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_swap_buffers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_video_mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_vram_splash_bitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_vram_tile_16x16.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_vram_tile_8x8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_vram_tile_block.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_vram_write_bitmap_32x32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\hga_vsync.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\pbm_bitmap_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\test_herc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\hga\test_vram_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\pbm\pbm.create_simple_bitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\pbm\pbm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\pbm\pbm_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\pbm\pbm_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\gfx\pbm\test_pbm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\mem\mem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\mem\mem_arena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\mem\mem_contstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\mem\mem_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\mem\test_mem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\rnd\rnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\rnd\rnd_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\rnd\rnd_splitmix64.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\rnd\rnd_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\rnd\test_rnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\str\str.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\str\str_bits_to_binary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\str\str_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\str\str_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\str\test_str.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="archive\test\debug_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\test_retrolib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\bios\bios_video_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\bios\bios_video_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\bios\bios_video_services_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\bios\test_bios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\bios\test_bios_video.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_error_messages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services_3x.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services_3x_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services_files.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services_files_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services_files_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\dos_services_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\test_dos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\test_dos_3x.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\test_dos_files.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\test_dos_interrupt_vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\test_dos_memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\dos\test_dos_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\file\file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\file\file_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\file\file_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\file\file_utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\file\test_file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\gfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\gfx_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\gfx_detect_adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\gfx_detect_crtc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\gfx_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\test_gfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\cga\cga.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\cga\cga_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\cga\cga_detect_adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\ega\ega.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\ega\ega_detect_adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\hga\hga.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\hga\hga_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\hga\hga_detect_adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\mcga\mcga_detect_adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\vga\vga.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\gfx\vga\vga_detect_adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_address.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_arena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_dump_ostream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_load_from_file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_read_istream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_save_to_file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_segoff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\mem_write_ostream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\test_mem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\test_mem_arena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\mem\test_mem_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\sys\system_conventional_memory_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\sys\system_graphics_characters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\sys\system_ios_memloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\sys\system_low_memory_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\sys\system_upper_memory_constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\test\debug_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\test\test_debug_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="retrolib\txt\txt_write_char.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
