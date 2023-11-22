@@ -38,7 +38,7 @@ namespace bios {
     * @note 3. If the CMOS battery memory value or the DIP switch value is greater than the actual amount of
     * memory, then the actual amount of memory is returned by this interrupt.
     */
-    uint16_t report_memory_size_KiB();
+    uint16_t memory_size_KiB();
 
 }
 
