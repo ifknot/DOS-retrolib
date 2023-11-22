@@ -27,6 +27,7 @@ namespace test_dos_memory {
 	void run() {
 		INFO("* testing DOS memory services...");
 		LOG(bios::memory_size_KiB());
+		uint32_t start_bytes = mem::available_low_memory_bytes();
 		LOG(mem::available_low_memory_bytes());
 		uint16_t seg_mem_1K = 0;
 		uint16_t seg_mem_2K = 0;
@@ -78,6 +79,8 @@ namespace test_dos_memory {
 			LOG_AS(seg_mem_2K, std::hex);
 			ASSERT(seg_mem_2K, == , seg_mem_1K, "not reused");
 			LOG(mem::available_low_memory_bytes());
+			ASSERT(dos::free_allocated_memory_blocks(seg_mem_2K), == , 0, "fail free");
+			LOG(mem::available_low_memory_bytes());
 		}
 
 		if (YESNO("* test error conditions ?")) {
@@ -90,6 +93,8 @@ namespace test_dos_memory {
 			INFO("* try allocate too much");
 			LOG(dos::allocate_memory_blocks(40960)); // All 640K - should error out
 		}
+
+		ASSERT(start_bytes, == , mem::available_low_memory_bytes(), "memory leak!");
 	}
 
 }

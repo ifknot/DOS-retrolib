@@ -1,2 +1,0 @@
-RETROLIB\BIOS\bios_video_services.cpp(222): Warning! W014: col(1) no reference to symbol 'video_mode_names'
-RETROLIB\BIOS\bios_video_services_constants.h(100): Note! N392: col(16) definition: 'char const bios::video_mode_names[20][64]'
