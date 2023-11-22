@@ -66,8 +66,9 @@ namespace dos {
         }
 
         /**
-         * @breif INT 21,48 - Allocate Memory
-         *
+         * @brief INT 21,48 - Allocate Memory
+         * Allocates a specified number of memory paragraphs.
+         * 
          * AH = 48h
          * BX = number of memory paragraphs requested
          * @note paragraph is a memory unit of size 16 bytes,  relevant primarily (if not exclusively) in x86 real mode
@@ -79,15 +80,23 @@ namespace dos {
          *      if CF set, and AX = 08 (Not Enough Mem)
          * CF = 0 if successful
          *    = 1 if error
+         * 
+         * Error codes:   7          Memory control blocks destroyed
+         *                8          Insufficient memory
+         * @note 1. Call Function 59h for extended error code information (DOS 3.0 and above).
          *
          * - returns segment address of allocated memory block AX:0000
          * - each allocation requires a 16 byte overhead for the MCB
          * - returns maximum block size available if error
+         * 
+         * @note 2. By setting BX=FFFFh before calling, this function can be used to find the amount of 
+         * available memory, which will be returned in BX. (The call will return an error, which can be 
+         * ignored, since DOS cannot allocate more than 640k of memory.)
          *
          * @see  INT 21,49,  INT 21,4A
          *
          * @param       number of paragraphs (16 bytes) requested
-         * @param   segment* pointer to segment variable
+         * @param       segment* pointer to segment variable
          * @return      the segment address of the reserved memory or 0 if request failed
          */
         uint16_t allocate_memory_blocks(uint16_t paragraphs) {
