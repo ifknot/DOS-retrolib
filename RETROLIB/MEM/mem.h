@@ -16,5 +16,6 @@
 #include "mem_load_from_file.h"
 #include "mem_save_to_file.h"
 #include "mem_write_ostream.h"
+#include "mem_available_low_memory.h"
 
 #endif

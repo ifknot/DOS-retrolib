@@ -97,6 +97,14 @@ OS16\RETROLIB\RETROLIB\MEM\mem_arena.cpp .AUTODEPEND
  *wpp RETROLIB\MEM\mem_arena.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -bt=d&
 os -fo=.obj -ml -xs -xr
 
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_available_low_memory.obj : C:\Users&
+\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_available_low_memory.cpp .AUTO&
+DEPEND
+ @C:
+ cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ *wpp RETROLIB\MEM\mem_available_low_memory.cpp -i="C:\WATCOM/h" -w4 -e25 -z&
+q -od -d2 -bt=dos -fo=.obj -ml -xs -xr
+
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_dump_ostream.obj : C:\Users\ifkno\D&
 OSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_dump_ostream.cpp .AUTODEPEND
  @C:
@@ -143,19 +151,19 @@ fkno\DOSBOX\DOS16\RETROLIB\ega_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS1&
 etect_crtc.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_adapter.obj C&
 :\Users\ifkno\DOSBOX\DOS16\RETROLIB\vga_detect_adapter.obj C:\Users\ifkno\DO&
 SBOX\DOS16\RETROLIB\mem_address.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem&
-_arena.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_dump_ostream.obj C:\User&
-s\ifkno\DOSBOX\DOS16\RETROLIB\mem_load_from_file.obj C:\Users\ifkno\DOSBOX\D&
-OS16\RETROLIB\mem_save_to_file.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_&
-segoff.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_write_ostream.obj .AUTOD&
-EPEND
+_arena.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_available_low_memory.obj&
+ C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_dump_ostream.obj C:\Users\ifkno\DO&
+SBOX\DOS16\RETROLIB\mem_load_from_file.obj C:\Users\ifkno\DOSBOX\DOS16\RETRO&
+LIB\mem_save_to_file.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj&
+ C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_write_ostream.obj .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
  @%write retrolib.lk1 FIL main.obj,bios_video_services.obj,dos_services.obj,&
 dos_services_3x.obj,dos_services_files.obj,file_utilities.obj,cga_detect_ada&
 pter.obj,ega_detect_adapter.obj,gfx_detect_adapter.obj,gfx_detect_crtc.obj,h&
 ga_detect_adapter.obj,vga_detect_adapter.obj,mem_address.obj,mem_arena.obj,m&
-em_dump_ostream.obj,mem_load_from_file.obj,mem_save_to_file.obj,mem_segoff.o&
-bj,mem_write_ostream.obj
+em_available_low_memory.obj,mem_dump_ostream.obj,mem_load_from_file.obj,mem_&
+save_to_file.obj,mem_segoff.obj,mem_write_ostream.obj
  @%append retrolib.lk1 
  *wlink name retrolib d all sys dos op m op maxe=25 op q op symf @retrolib.l&
 k1

@@ -69,6 +69,9 @@ namespace test_mem_utils {
             ASSERT(mem::load_from_file(fpath, addr, 256), == , 256, "load bytes error");
             INFO("done");
         }
+        if (YESNO("* 218\tget user availble DOS memory ?")) {
+            LOG(mem::available_low_memory_bytes());
+        }
     }
 
 }

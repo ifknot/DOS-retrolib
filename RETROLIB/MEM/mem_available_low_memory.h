@@ -20,7 +20,7 @@ namespace mem {
     * available memory, which will be returned in BX. (The call will return an error, which can be ignored,
 	* since DOS cannot allocate more than 640k of memory.)
 	*/
-	uint32_t available_low_memory();
+	uint32_t available_low_memory_bytes();
 
 }
 
