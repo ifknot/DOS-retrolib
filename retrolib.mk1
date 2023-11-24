@@ -1,171 +1,168 @@
 !define BLANK ""
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.obj : C:\Users\ifkno\DOSBOX\DOS16\&
-RETROLIB\main.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\main.obj : C:\Users\ifkno\DOSBOX\RETROLIB\mai&
+n.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp main.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -x&
-s -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp main.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0 -e25 -zq -od -d2 -bt=do&
+s -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_memory_size.obj : C:\Users\ifkno\D&
-OSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_memory_size.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\bios_memory_size.obj : C:\Users\ifkno\DOSBOX\&
+RETROLIB\RETROLIB\BIOS\bios_memory_size.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\BIOS\bios_memory_size.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -&
-d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\BIOS\bios_memory_size.cpp -i="C:\Users\ifkno\ow-snapshot/h" -&
+w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_video_services.obj : C:\Users\ifkn&
-o\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_video_services.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\bios_video_services.obj : C:\Users\ifkno\DOSB&
+OX\RETROLIB\RETROLIB\BIOS\bios_video_services.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\BIOS\bios_video_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -o&
-d -d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\BIOS\bios_video_services.cpp -i="C:\Users\ifkno\ow-snapshot/h&
+" -w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services.obj : C:\Users\ifkno\DOSBO&
-X\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\dos_services.obj : C:\Users\ifkno\DOSBOX\RETR&
+OLIB\RETROLIB\DOS\dos_services.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\DOS\dos_services.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -b&
-t=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\DOS\dos_services.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0 -e&
+25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_3x.obj : C:\Users\ifkno\DO&
-SBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\dos_services_3x.obj : C:\Users\ifkno\DOSBOX\R&
+ETROLIB\RETROLIB\DOS\dos_services_3x.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\DOS\dos_services_3x.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2&
- -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\DOS\dos_services_3x.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0&
+ -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_files.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\dos_services_files.obj : C:\Users\ifkno\DOSBO&
+X\RETROLIB\RETROLIB\DOS\dos_services_files.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\DOS\dos_services_files.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od &
--d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\DOS\dos_services_files.cpp -i="C:\Users\ifkno\ow-snapshot/h" &
+-w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\file_utilities.obj : C:\Users\ifkno\DOS&
-BOX\DOS16\RETROLIB\RETROLIB\FILE\file_utilities.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\file_utilities.obj : C:\Users\ifkno\DOSBOX\RE&
+TROLIB\RETROLIB\FILE\file_utilities.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\FILE\file_utilities.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2&
- -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\FILE\file_utilities.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0&
+ -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\cga_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\CGA\cga_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\cga_detect_adapter.obj : C:\Users\ifkno\DOSBO&
+X\RETROLIB\RETROLIB\GFX\CGA\cga_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\GFX\CGA\cga_detect_adapter.cpp -i="C:\WATCOM/h" -w4 -e25 -zq &
--od -d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\GFX\CGA\cga_detect_adapter.cpp -i="C:\Users\ifkno\ow-snapshot&
+/h" -w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\ega_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\EGA\ega_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\ega_detect_adapter.obj : C:\Users\ifkno\DOSBO&
+X\RETROLIB\RETROLIB\GFX\EGA\ega_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\GFX\EGA\ega_detect_adapter.cpp -i="C:\WATCOM/h" -w4 -e25 -zq &
--od -d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\GFX\EGA\ega_detect_adapter.cpp -i="C:\Users\ifkno\ow-snapshot&
+/h" -w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\gfx_detect_adapter.obj : C:\Users\ifkno\DOSBO&
+X\RETROLIB\RETROLIB\GFX\gfx_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\GFX\gfx_detect_adapter.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od &
--d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\GFX\gfx_detect_adapter.cpp -i="C:\Users\ifkno\ow-snapshot/h" &
+-w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_crtc.obj : C:\Users\ifkno\DO&
-SBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_crtc.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\gfx_detect_crtc.obj : C:\Users\ifkno\DOSBOX\R&
+ETROLIB\RETROLIB\GFX\gfx_detect_crtc.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\GFX\gfx_detect_crtc.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2&
- -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\GFX\gfx_detect_crtc.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0&
+ -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\hga_detect_adapter.obj : C:\Users\ifkno\DOSBO&
+X\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\GFX\HGA\hga_detect_adapter.cpp -i="C:\WATCOM/h" -w4 -e25 -zq &
--od -d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\GFX\HGA\hga_detect_adapter.cpp -i="C:\Users\ifkno\ow-snapshot&
+/h" -w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\vga_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\VGA\vga_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\vga_detect_adapter.obj : C:\Users\ifkno\DOSBO&
+X\RETROLIB\RETROLIB\GFX\VGA\vga_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\GFX\VGA\vga_detect_adapter.cpp -i="C:\WATCOM/h" -w4 -e25 -zq &
--od -d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\GFX\VGA\vga_detect_adapter.cpp -i="C:\Users\ifkno\ow-snapshot&
+/h" -w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_address.obj : C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\RETROLIB\MEM\mem_address.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_address.obj : C:\Users\ifkno\DOSBOX\RETRO&
+LIB\RETROLIB\MEM\mem_address.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_address.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -bt&
-=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_address.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0 -e2&
+5 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_arena.obj : C:\Users\ifkno\DOSBOX\D&
-OS16\RETROLIB\RETROLIB\MEM\mem_arena.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_arena.obj : C:\Users\ifkno\DOSBOX\RETROLI&
+B\RETROLIB\MEM\mem_arena.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_arena.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -bt=d&
-os -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_arena.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0 -e25 &
+-zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_available_low_memory.obj : C:\Users&
-\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_available_low_memory.cpp .AUTO&
-DEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_available_low_memory.obj : C:\Users\ifkno&
+\DOSBOX\RETROLIB\RETROLIB\MEM\mem_available_low_memory.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_available_low_memory.cpp -i="C:\WATCOM/h" -w4 -e25 -z&
-q -od -d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_available_low_memory.cpp -i="C:\Users\ifkno\ow-snapsh&
+ot/h" -w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_dump_ostream.obj : C:\Users\ifkno\D&
-OSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_dump_ostream.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_dump_ostream.obj : C:\Users\ifkno\DOSBOX\&
+RETROLIB\RETROLIB\MEM\mem_dump_ostream.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_dump_ostream.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d&
-2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_dump_ostream.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w&
+0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_load_from_file.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_load_from_file.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_load_from_file.obj : C:\Users\ifkno\DOSBO&
+X\RETROLIB\RETROLIB\MEM\mem_load_from_file.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_load_from_file.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od &
--d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_load_from_file.cpp -i="C:\Users\ifkno\ow-snapshot/h" &
+-w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_save_to_file.obj : C:\Users\ifkno\D&
-OSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_save_to_file.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_save_to_file.obj : C:\Users\ifkno\DOSBOX\&
+RETROLIB\RETROLIB\MEM\mem_save_to_file.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_save_to_file.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d&
-2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_save_to_file.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w&
+0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj : C:\Users\ifkno\DOSBOX\&
-DOS16\RETROLIB\RETROLIB\MEM\mem_segoff.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_segoff.obj : C:\Users\ifkno\DOSBOX\RETROL&
+IB\RETROLIB\MEM\mem_segoff.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_segoff.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -d2 -bt=&
-dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_segoff.cpp -i="C:\Users\ifkno\ow-snapshot/h" -w0 -e25&
+ -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_write_ostream.obj : C:\Users\ifkno\&
-DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_write_ostream.cpp .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\mem_write_ostream.obj : C:\Users\ifkno\DOSBOX&
+\RETROLIB\RETROLIB\MEM\mem_write_ostream.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
- *wpp RETROLIB\MEM\mem_write_ostream.cpp -i="C:\WATCOM/h" -w4 -e25 -zq -od -&
-d2 -bt=dos -fo=.obj -ml -xs -xr
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
+ *wpp RETROLIB\MEM\mem_write_ostream.cpp -i="C:\Users\ifkno\ow-snapshot/h" -&
+w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
-S16\RETROLIB\main.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_memory_size.&
-obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_video_services.obj C:\Users\if&
-kno\DOSBOX\DOS16\RETROLIB\dos_services.obj C:\Users\ifkno\DOSBOX\DOS16\RETRO&
-LIB\dos_services_3x.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_fi&
-les.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\file_utilities.obj C:\Users\ifk&
-no\DOSBOX\DOS16\RETROLIB\cga_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\&
-RETROLIB\ega_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_det&
-ect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_crtc.obj C:\&
-Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_adapter.obj C:\Users\ifkno\DOSB&
-OX\DOS16\RETROLIB\vga_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLI&
-B\mem_address.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_arena.obj C:\User&
-s\ifkno\DOSBOX\DOS16\RETROLIB\mem_available_low_memory.obj C:\Users\ifkno\DO&
-SBOX\DOS16\RETROLIB\mem_dump_ostream.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLI&
-B\mem_load_from_file.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_save_to_fi&
-le.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj C:\Users\ifkno\DO&
-SBOX\DOS16\RETROLIB\mem_write_ostream.obj .AUTODEPEND
+C:\Users\ifkno\DOSBOX\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\RETROLIB&
+\main.obj C:\Users\ifkno\DOSBOX\RETROLIB\bios_memory_size.obj C:\Users\ifkno&
+\DOSBOX\RETROLIB\bios_video_services.obj C:\Users\ifkno\DOSBOX\RETROLIB\dos_&
+services.obj C:\Users\ifkno\DOSBOX\RETROLIB\dos_services_3x.obj C:\Users\ifk&
+no\DOSBOX\RETROLIB\dos_services_files.obj C:\Users\ifkno\DOSBOX\RETROLIB\fil&
+e_utilities.obj C:\Users\ifkno\DOSBOX\RETROLIB\cga_detect_adapter.obj C:\Use&
+rs\ifkno\DOSBOX\RETROLIB\ega_detect_adapter.obj C:\Users\ifkno\DOSBOX\RETROL&
+IB\gfx_detect_adapter.obj C:\Users\ifkno\DOSBOX\RETROLIB\gfx_detect_crtc.obj&
+ C:\Users\ifkno\DOSBOX\RETROLIB\hga_detect_adapter.obj C:\Users\ifkno\DOSBOX&
+\RETROLIB\vga_detect_adapter.obj C:\Users\ifkno\DOSBOX\RETROLIB\mem_address.&
+obj C:\Users\ifkno\DOSBOX\RETROLIB\mem_arena.obj C:\Users\ifkno\DOSBOX\RETRO&
+LIB\mem_available_low_memory.obj C:\Users\ifkno\DOSBOX\RETROLIB\mem_dump_ost&
+ream.obj C:\Users\ifkno\DOSBOX\RETROLIB\mem_load_from_file.obj C:\Users\ifkn&
+o\DOSBOX\RETROLIB\mem_save_to_file.obj C:\Users\ifkno\DOSBOX\RETROLIB\mem_se&
+goff.obj C:\Users\ifkno\DOSBOX\RETROLIB\mem_write_ostream.obj .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSBOX\RETROLIB
  @%write retrolib.lk1 FIL main.obj,bios_memory_size.obj,bios_video_services.&
 obj,dos_services.obj,dos_services_3x.obj,dos_services_files.obj,file_utiliti&
 es.obj,cga_detect_adapter.obj,ega_detect_adapter.obj,gfx_detect_adapter.obj,&
