@@ -24,12 +24,12 @@ namespace test_file {
 			LOG(file::get_extension(fpath));
 		}
 		if (YESNO("* 502\ttest get file size?")) {
-			char fpath[] = "testing.dat";
+			char fpath[13] = "testing0.dat";
 			LOG(file::get_size(fpath)); // error displayed
 			LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_WRITE));
 			LOG(file::get_size(fpath));
 			LOG(dos::delete_file(fpath));
-			LOG(file::get_size("main.cpp"));
+			LOG(file::get_size("dither1.pbm"));
 		}
 
 	}

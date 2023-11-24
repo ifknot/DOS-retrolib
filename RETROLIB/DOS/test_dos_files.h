@@ -58,7 +58,7 @@ namespace test_dos_files {
 				INFO("* file create error...");
 				LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_WRITE)); // errors out
 				INFO("* Enter filename: ");
-				scanf("%s", fpath);
+				LOG(scanf("%s", fpath));
 				LOG(dos::create_file_using_handle(fpath, dos::file::CREATE_READ_ONLY | dos::file::CREATE_HIDDEN));
 			}
 			if (YESNO("* 143\ttest change mode?")) {
