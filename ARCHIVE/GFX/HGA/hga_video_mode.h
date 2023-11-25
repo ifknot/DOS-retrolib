@@ -44,7 +44,7 @@ namespace hga {
 
     /**
     *  @brief  program CRTC for    text mode
-    *  @details Since the Hercules card(s) use the same CRTC 6845 processor as the IBM card(s), the internal registers of the 6845 and theri meaning are identical to the IBM MDA.
+    *  @details Since the Hercules card(s) use the same CRTC 6845 processor as the IBM card(s), the internal registers of the 6845 and their meaning are identical to the IBM MDA.
     *  The index register and data register are also located at the same address and the following values must be assigned to the various registers in the text and graphics modes respectibvely.
     *  @note values as per Hercules recommended
     */

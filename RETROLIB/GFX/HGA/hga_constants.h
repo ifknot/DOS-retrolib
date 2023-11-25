@@ -18,6 +18,34 @@
 #ifndef HGA_CONSTANTS_H
 #define HGA_CONSTANTS_H
 
+/**
+*  Hercules macro definitions for assembly
+*/
+#define HGA_SCREEN_X_MIN 0
+#define HGA_SCREEN_X_MAX 720
+#define HGA_SCREEN_Y_MIN 0
+#define HGA_SCREEN_Y_MAX 348
+#define HGA_SCREEN_Y_SCALE 0.483
+#define HGA_PIXELS_PER_BYTE 8
+#define HGA_BYTES_PER_LINE 90
+#define HGA_WORDS_PER_LINE 45
+#define HGA_BYTES_PER_PAGE 32768
+#define HGA_WORDS_PER_PAGE 16384
+#define HGA_CHARS_PER_PAGE 2000
+
+/**
+*  @def   HGA_VIDEO_RAM_SEGMENT
+*  @brief Hercules VRAM starts at B000:0000
+*  @details The Hercules display adapter displays in both text mode and graphics mode,
+*  with a graphics resolution of 720x348 pixels, and contains enough RAM for 2 page displays.
+*  Each display page is 32K, having the capacity to host a 4K text page and a graphics page.
+*  B000:0000 - B000:7FFF   First Page
+*  B000:8000 - B000:FFFF   Second Page
+*/
+#define HGA_VIDEO_RAM_SEGMENT   0B000h
+#define HGA_PAGE_2_OFFSET       800h
+#define HGA_BANK_OFFSET         2000h
+
 // Write a CRTC register number (0 to 11h) to this port to select the CRTC register that will appear at port 03B5h
 #define HGA_CRTC_ADDRESS_PORT       3B4h
 

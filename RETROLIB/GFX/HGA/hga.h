@@ -12,5 +12,6 @@
 
 #include "hga_constants.h"
 #include "hga_detect_adapter.h"
+#include "hga_video_mode.h"
 
 #endif
