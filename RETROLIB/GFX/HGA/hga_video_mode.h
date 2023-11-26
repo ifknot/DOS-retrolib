@@ -14,10 +14,6 @@
 
 #include "hga_video_mode_presets.h"
 
-#include "hga_constants.h"
-
-#include <iostream>
-
 namespace hga {
 
     /**
@@ -40,7 +36,6 @@ namespace hga {
     *  @brief  enter Hercules graphics "full" mode with 2 frame buffers
     */
     inline void graphics_mode() {
-        std::cout << "hello\n";
         video_mode(hga::crtc_presets_graphics_mode, hga::graphics_config_default, hga::graphics_ctrl_default);
     }
 

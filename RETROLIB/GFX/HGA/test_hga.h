@@ -20,9 +20,11 @@ namespace test_hga {
 		INFO("* testing HGA functions...");		
 		if (YESNO("* 431\ttest set HGA graphics mode ?")) {
 			hga::graphics_mode();
+			hga::graphics::cls(0xAA);
 		}
 		if (YESNO("* 432\ttest set HGA text mode ?")) {
 			hga::text_mode();
+			hga::cls('X', hga::BLACK_ON_GREEN);
 		}
 	}
 
