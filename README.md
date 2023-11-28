@@ -33,17 +33,17 @@ TODO MEM
 
 TODO GFX
 + [x] video_adapter_t detect_video_adapter_type()
-+ [x] VGA
-+ [x] EGA
-+ [x] CGA
-+ [x] HGA
-+ [ ] MDA comptabile mode 
++ [ ] VGA
++ [ ] EGA
++ [ ] CGA
++ [...] HGA
+    + [x] hga mode text & graphics
+    + [x] hga cls
+    + [x] hga graphics cls
+    + [ ] hga::blits(...) universal bmp -> specialised vram
++ [ ] MDA 
 + [ ] bitmap_t (universal)
     + [ ] bmp::functions(...)
-+ [ ] HGA
-    + [ ] hga::blits(...) universal bmp -> specialised vram
-+ [ ] CGA
-    + [ ] cga::blits(...) universal bmp -> specialised vram
 
 TODO BIOS (as needed)
 
