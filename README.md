@@ -19,8 +19,9 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 + [x] files ->
 + [x] arena_t ->
 + [...] GFX essentials ->
-+ [ ] bitmap_t ->
-+ [ ] blits
+    + [ ] bitmap_t ->
+    + [ ] load_raw_pbm 
+    + [ ] blits
 
 TODO MEM
 + [x] mem::dump(ostream, ...)
@@ -34,7 +35,7 @@ TODO MEM
 TODO GFX
 + [x] video_adapter_t detect_video_adapter_type()
 + [...] VGA
-    +[x] detect
+    + [x] detect
 + [...] EGA
     + [x] detect
 + [...] CGA
@@ -47,6 +48,7 @@ TODO GFX
     + [ ] blits(...) universal bmp -> specialised vram
 + [...] MDA
       + [x] detect 
++ [ ] load_raw_pbm
 + [ ] bitmap_t (universal)
     + [ ] bmp::functions(...)
 
