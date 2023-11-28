@@ -33,15 +33,20 @@ TODO MEM
 
 TODO GFX
 + [x] video_adapter_t detect_video_adapter_type()
-+ [ ] VGA
-+ [ ] EGA
-+ [ ] CGA
++ [...] VGA
+    +[x] detect
++ [...] EGA
+    + [x] detect
++ [...] CGA
+      + [x] detect
 + [...] HGA
-    + [x] hga mode text & graphics
-    + [x] hga cls
-    + [x] hga graphics cls
-    + [ ] hga::blits(...) universal bmp -> specialised vram
-+ [ ] MDA 
+    + [x] detect
+    + [x] mode text & graphics
+    + [x] cls
+    + [x] graphics cls
+    + [ ] blits(...) universal bmp -> specialised vram
++ [...] MDA
+      + [x] detect 
 + [ ] bitmap_t (universal)
     + [ ] bmp::functions(...)
 
