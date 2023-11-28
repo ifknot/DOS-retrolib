@@ -17,7 +17,7 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 
 + [x] dumps ->
 + [x] files ->
-+ [ ] arena_t ->
++ [x] arena_t ->
 + [...] GFX essentials ->
 + [ ] bitmap_t ->
 + [ ] blits
@@ -27,9 +27,9 @@ TODO MEM
 + [x] mem::save(cstring, ...)
 + [x] mem::load(cstring, ...)
 + [x] mem::save(istream, ...)
-+ [ ] arena_t
-    + [ ] arena::functions(...)
-+ [ ] get_available_low_memory
++ [x] arena_t
+    + [x] arena::functions(...)
++ [x] get_available_low_memory
 
 TODO GFX
 + [x] video_adapter_t detect_video_adapter_type()
