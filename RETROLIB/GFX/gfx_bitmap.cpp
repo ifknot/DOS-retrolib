@@ -21,12 +21,13 @@ namespace gfx {
 
 	namespace bmp {
 
-		void load_file_pbm(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* arena) {
+		void load_file_pbm(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool, bool auto_invert) {
 			const char* raw_ext = file::get_extension(file_path);
 			char pbm_ext[] = "   ";
 			str::copy_convert_to_upper(raw_ext, pbm_ext);
-			if (strcmp(pbm_ext, PBM_EXT) == 0) {
-				file::file_size_t sz = file::get_size(file_path);
+			file::file_size_t sz = file::get_size(file_path);
+			if (sz && strcmp(pbm_ext, PBM_EXT) == 0) {
+				
 				LOG(sz);
 			}
 
