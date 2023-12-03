@@ -8,7 +8,9 @@ namespace gfx {
 
 	namespace bmp {
 
-		const char PBM_EXT[] = "PBM";
+		const char      PBM_EXT[]       = "PBM";    // valid file extension for portable bitmap
+        const uint16_t  PBM_MAGIC       = 0x3450;   // little endian ascii 4P
+        const int       PBM_MIN_SIZE    = 6;        // minimum valid size - a 1 byte image
 
         enum colour_type_t {
             GREYSCALE = 0,
@@ -24,11 +26,11 @@ namespace gfx {
         * (heavily influenced by the PNG IHDR format)
         *
         * Image     type  Colour type       Allowed bit depths            Each pixel is a...
-        * Greyscale             0                  1, 2, 4, 8, 16                greyscale sample
-        * Truecolour            2                  8, 16                               RGB triple
-        * Indexed-colour  3                  1, 2, 4, 8                    palette index
-        * Greyscale alpha 4                  8, 16                               greyscale sample & alpha value (0 transparent 255 opaque)
-        * Truecolour alpha      6                  8, 16                               RGB triple & alpha value
+        * Greyscale             0                  1, 2, 4, 8, 16           greyscale sample
+        * Truecolour            2                  8, 16                    RGB triple
+        * Indexed-colour        3                  1, 2, 4, 8               palette index
+        * Greyscale alpha       4                  8, 16                    greyscale sample & alpha value (0 transparent 255 opaque)
+        * Truecolour alpha      6                  8, 16                    RGB triple & alpha value
         *
         * Palette data - true colour (256 shades red, green, blue)
         * Always for colour type 3, possible for colour types 2 and 6
@@ -70,5 +72,8 @@ namespace gfx {
 	}
 
 }
+
+
+// TODO operator << 
 
 #endif

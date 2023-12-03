@@ -11,6 +11,7 @@
 #define	FILE_EXTENSION_H
 
 #include "file_types.h"
+#include "../DOS/dos_services_files_types.h"
 
 namespace file {
 
@@ -27,6 +28,12 @@ namespace file {
 	*  @retval  file_size_t or 0 if not found
 	*/
 	file_size_t get_size(const char* file_path);
+
+	file_size_t get_size(const dos::file::handle_t handle);
+
+	file_size_t skip_white_space(const dos::file::handle_t handle, const char* whitespaces);
+
+	file_size_t skip_line(const dos::file::handle_t handle);
 
 }
 

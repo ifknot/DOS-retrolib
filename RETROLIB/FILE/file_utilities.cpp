@@ -36,4 +36,20 @@ namespace file {
 		return (file_size_t)fpos;
 	}
 
+	file_size_t get_size(const dos::file::handle_t fhandle) {
+		dos::file::position_t fpos = dos::move_file_pointer_using_handle(fhandle, dos::file::FSEEK_END);
+		dos::move_file_pointer_using_handle(fhandle, dos::file::FSEEK_SET);
+		return (file_size_t)fpos;
+	}
+
+	file_size_t skip_white_space(const dos::file::handle_t handle, const char* whitespaces) {
+		// TODO:
+		return file_size_t();
+	}
+
+	file_size_t skip_line(const dos::file::handle_t handle) {
+		// TODO
+		return file_size_t();
+	}
+
 }
