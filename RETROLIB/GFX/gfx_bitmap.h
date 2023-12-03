@@ -2,17 +2,21 @@
 #ifndef GFX_BITMAP_H
 #define GFX_BITMAP_H
 
+#include "../MEM/mem.h"
+
 namespace gfx {
 
-  namespace bmp {
+	namespace bmp {
 
-  struct bitmap_t {
+		const char PBM_EXT[] = "PBM";
 
-  };
+		struct bitmap_t {
 
-  void load_pbm_bitmap(const char* file_path, bitmap_t* bmp);
+		};
 
-  }
+		void load_file_pbm(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* arena);
+
+	}
 
 }
 

@@ -62,6 +62,13 @@ C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\ega_detect_adapter.obj : C:\Users\ifkno&
  *wpp RETROLIB\GFX\EGA\ega_detect_adapter.cpp -i="C:\WATCOM/h" -w0 -e25 -zq &
 -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_bitmap.obj : C:\Users\ifkno\DOSBOX\&
+DOS16\RETROLIB\RETROLIB\GFX\gfx_bitmap.cpp .AUTODEPEND
+ @C:
+ cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ *wpp RETROLIB\GFX\gfx_bitmap.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt=&
+dos -fo=.obj -ml -xs -xr
+
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_adapter.obj : C:\Users\ifkno&
 \DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_adapter.cpp .AUTODEPEND
  @C:
@@ -169,6 +176,13 @@ DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_write_ostream.cpp .AUTODEPEND
  *wpp RETROLIB\MEM\mem_write_ostream.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -&
 d2 -bt=dos -fo=.obj -ml -xs -xr
 
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\str_to_upper.obj : C:\Users\ifkno\DOSBO&
+X\DOS16\RETROLIB\RETROLIB\STR\str_to_upper.cpp .AUTODEPEND
+ @C:
+ cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ *wpp RETROLIB\STR\str_to_upper.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -b&
+t=dos -fo=.obj -ml -xs -xr
+
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
 S16\RETROLIB\main.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_memory_size.&
 obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_video_services.obj C:\Users\if&
@@ -176,27 +190,30 @@ kno\DOSBOX\DOS16\RETROLIB\dos_services.obj C:\Users\ifkno\DOSBOX\DOS16\RETRO&
 LIB\dos_services_3x.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_fi&
 les.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\file_utilities.obj C:\Users\ifk&
 no\DOSBOX\DOS16\RETROLIB\cga_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\&
-RETROLIB\ega_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_det&
-ect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_crtc.obj C:\&
-Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_graphics_cls.obj C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\hga_cls.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_&
-adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_video_mode.obj C:\Users&
-\ifkno\DOSBOX\DOS16\RETROLIB\vga_detect_adapter.obj C:\Users\ifkno\DOSBOX\DO&
-S16\RETROLIB\mem_address.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_arena.&
-obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_available_low_memory.obj C:\Use&
-rs\ifkno\DOSBOX\DOS16\RETROLIB\mem_dump_ostream.obj C:\Users\ifkno\DOSBOX\DO&
-S16\RETROLIB\mem_load_from_file.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem&
-_save_to_file.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj C:\Use&
-rs\ifkno\DOSBOX\DOS16\RETROLIB\mem_write_ostream.obj .AUTODEPEND
+RETROLIB\ega_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_bit&
+map.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_adapter.obj C:\Users&
+\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_crtc.obj C:\Users\ifkno\DOSBOX\DOS16&
+\RETROLIB\hga_graphics_cls.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_cls.&
+obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_adapter.obj C:\Users\ifk&
+no\DOSBOX\DOS16\RETROLIB\hga_video_mode.obj C:\Users\ifkno\DOSBOX\DOS16\RETR&
+OLIB\vga_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_address&
+.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_arena.obj C:\Users\ifkno\DOSBO&
+X\DOS16\RETROLIB\mem_available_low_memory.obj C:\Users\ifkno\DOSBOX\DOS16\RE&
+TROLIB\mem_dump_ostream.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_load_fr&
+om_file.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_save_to_file.obj C:\Use&
+rs\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj C:\Users\ifkno\DOSBOX\DOS16\RE&
+TROLIB\mem_write_ostream.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\str_to_upp&
+er.obj .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
  @%write retrolib.lk1 FIL main.obj,bios_memory_size.obj,bios_video_services.&
 obj,dos_services.obj,dos_services_3x.obj,dos_services_files.obj,file_utiliti&
-es.obj,cga_detect_adapter.obj,ega_detect_adapter.obj,gfx_detect_adapter.obj,&
-gfx_detect_crtc.obj,hga_graphics_cls.obj,hga_cls.obj,hga_detect_adapter.obj,&
-hga_video_mode.obj,vga_detect_adapter.obj,mem_address.obj,mem_arena.obj,mem_&
-available_low_memory.obj,mem_dump_ostream.obj,mem_load_from_file.obj,mem_sav&
-e_to_file.obj,mem_segoff.obj,mem_write_ostream.obj
+es.obj,cga_detect_adapter.obj,ega_detect_adapter.obj,gfx_bitmap.obj,gfx_dete&
+ct_adapter.obj,gfx_detect_crtc.obj,hga_graphics_cls.obj,hga_cls.obj,hga_dete&
+ct_adapter.obj,hga_video_mode.obj,vga_detect_adapter.obj,mem_address.obj,mem&
+_arena.obj,mem_available_low_memory.obj,mem_dump_ostream.obj,mem_load_from_f&
+ile.obj,mem_save_to_file.obj,mem_segoff.obj,mem_write_ostream.obj,str_to_upp&
+er.obj
  @%append retrolib.lk1 
  *wlink name retrolib d all sys dos op m op maxe=25 op q op symf @retrolib.l&
 k1

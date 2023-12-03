@@ -13,6 +13,7 @@
 #include "../TEST/debug_macros.h"
 
 #include "gfx.h"
+#include "../MEM/mem.h"
 
 #include "HGA/test_hga.h"
 
@@ -34,6 +35,19 @@ namespace test_gfx {
 		}
 		if (YESNO("* 430\ttest HGA functions ?")) {
 			test_hga::run();
+		}
+		if (YESNO("* 440\ttest bitmap load functions ?")) {
+			char fpath[13] = "";
+			mem::arena::arena_t* pool = mem::arena::new_dos_arena(1024);
+			gfx::bmp::bitmap_t bmp;
+
+			while (YESNO("test file?")) {
+				INFO("enter file name : ");
+				scanf("%s", fpath);
+				gfx::bmp::load_file_pbm(fpath, &bmp, pool);
+			}
+
+			mem::arena::delete_dos_arena(pool);
 		}
 	}
 
