@@ -14,7 +14,7 @@
 #include <string.h>
 
 #include "../FILE/file.h"
-#include "../STR/str_to_upper.h"
+#include "../STR/str_toolbox.h"
 #include "../DOS/dos_services_files.h"
 
 #include "../TEST/debug_macros.h"

@@ -8,26 +8,40 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#include "str_to_upper.h"
+#include "str_toolbox.h"
 
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-#include "str_toolbox.h"
+
 
 namespace str {
+
+	int ignore_token(const char* cstr, char delim, int pos) {
+		while (cstr[pos] != '\0' && cstr[pos] != delim) {
+			++pos;
+		}
+		return ++pos;
+	}
+
+	int skip_chars(const char* cstr, const char* chars, int pos) {
+		while (cstr[pos] != '\0' && strchr(chars, cstr[pos])) {
+			++pos;
+		}
+		return pos;
+	}
 
 	int in_place_to_upper(char* cstr, int begin, int end) {
 		if (!end) {
 			end = strlen(cstr);
 		}
-		for(int i = begin; i < end; ++i) {
+		for (int i = begin; i < end; ++i) {
 			cstr[i] = toupper(cstr[i]);
 		}
 		return end - begin;
 	}
 
-	int in_place_to_lower(char* s, int begin, int end) {
+	int in_place_to_lower(char* cstr, int begin, int end) {
 		if (!end) {
 			end = strlen(cstr);
 		}
@@ -37,22 +51,36 @@ namespace str {
 		return end - begin;
 	}
 
-	int copy_convert_to_upper(const char* source, char* destination, int begin, int end) {
+	int copy_convert_to_upper(const char* src, char* dst, int begin, int end) {
+		int len = strlen(src);
 		if (!end) {
-			end = strlen(cstr);
+			end = len;
+		}
+		for (int i = 0; i < begin; ++i) {
+			dst[i] = src[i];
 		}
 		for (int i = begin; i < end; ++i) {
-			destination[i] = toupper(source[i]);
+			dst[i] = toupper(src[i]);
+		}
+		for (int i = end; i < len; ++i) {
+			dst[i] = src[i];
 		}
 		return end - begin;
 	}
 
-	int copy_convert_to_lower(const char* source, char* destination, int begin, int end) {
+	int copy_convert_to_lower(const char* src, char* dst, int begin, int end) {
+		int len = strlen(src);
 		if (!end) {
-			end = strlen(cstr);
+			end = len;
+		}
+		for (int i = 0; i < begin; ++i) {
+			dst[i] = src[i];
 		}
 		for (int i = begin; i < end; ++i) {
-			destination[i] = tolower(source[i]);
+			dst[i] = tolower(src[i]);
+		}
+		for (int i = end; i < len; ++i) {
+			dst[i] = src[i];
 		}
 		return end - begin;
 	}
