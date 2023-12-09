@@ -48,6 +48,7 @@ namespace test_gfx {
 					gfx::bmp::load_file_pbm(fpath, &bmp, pool);
 					LOG(*pool);
 				}
+				LOG(bmp);
 			}
 
 			mem::arena::delete_dos_arena(pool);

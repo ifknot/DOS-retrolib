@@ -63,22 +63,21 @@ namespace gfx {
 				return;
 			}
 
-			mem::dump(data, 128);
 			uint32_t mem_start = data.memloc;
-			data.memloc += str::ignore_line((char*)data.memloc);			// skip the magic number line
+			data.memloc += str::ignore_line((char*)data.memloc);			// skip the magic 
 			while ('#' == *(char*)data.memloc) {							// skip any subsequent comments  
 				data.memloc += str::ignore_line((char*)data.memloc);
 			}
-			bmp->width = atoi((const char*)data.memloc));					// extract the width
+			bmp->width = atoi((const char*)data.memloc);					// extract the width
 			data.memloc += str::ignore_token((char*)data.memloc, ' ');		// skip the width token
-			bmp->height = atoi((const char*)data.memloc));					// extract the height
+			bmp->height = atoi((const char*)data.memloc);					// extract the height
 			data.memloc += str::ignore_line((char*)data.memloc);			// skip line to start raw pixel data
 			bmp->raster_data = (char*)data.memloc;							// data.memloc now points to start of raster date
-			bmp->raster_size = data.memloc - mem_start;						// calculate raster size
+			bmp->raster_size = fsize - (data.memloc - mem_start);			// calculate raster size
 			bmp->bit_depth = 1;												// 1 bits per pixel
 			bmp->colour_type = GREYSCALE;									// greyscale
-			bmp->raster_data = NULL_PTR;									// no palette data
-			bmp->raster_size = 0;											
+			bmp->palette_data = NULL_PTR;									// no palette data
+			bmp->palette_size = 0;											
 
 			dos::close_file_using_handle(fhandle);
 		}
@@ -87,14 +86,9 @@ namespace gfx {
 
 }
 
-/*
-
-// 5. is it a valid P4 file ?
-			uint16_t magic;
-			dos::read_file_using_handle(fhandle, (char*)&magic, 2);
-			if (magic != PBM_MAGIC) {
-				std::cout << "Error load_file_pbm invalid magic number - expected 3450h - found " << std::hex << magic << 'h' << std::endl;
-				return;
-			}
-
-*/
+std::ostream& operator<< (std::ostream& os, const gfx::bmp::bitmap_t& bmp) {
+	os << bmp.width << ',' << bmp.height << ',' << (int)bmp.bit_depth << ',' << (int)bmp.colour_type
+		<< ',' << std::hex << (uint32_t)bmp.raster_data << ',' << std::dec << bmp.raster_size
+		<< ',' << std::hex << (uint32_t)bmp.palette_data << ',' << std::dec << bmp.palette_size;
+	return os;
+}

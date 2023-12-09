@@ -42,9 +42,9 @@ namespace gfx {
             uint16_t height;              // raster rectangle dimensions
             uint8_t bit_depth;            // bits per pixel (1, 2, 4, 8 , 16) or palette index
             uint8_t colour_type;          // Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
-            uint8_t* raster_data;         // ptr to pixel data raster image
+            char* raster_data;            // ptr to pixel data raster image
             uint32_t raster_size;         // size of the pixel data
-            uint8_t* palette_data;        // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
+            char* palette_data;           // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
             uint32_t palette_size;        // size of the palette data
 
         };
@@ -53,7 +53,8 @@ namespace gfx {
         * @brief Load a Portable BitMap .pbm monochrome image into arena memory
         * and populate the bitmap_t descriptor correctly
         * @note white = 0, black = 1 and, therefore, to display correctly image will need inverting
-        * this can be acheived by setting auto_invert = true or calling bitmap::invert seperately
+        * this can be acheived by setting auto_invert = true, or calling bitmap::invert seperately - or preconverting the actual file data 
+        * 
         * @url https://en.wikipedia.org/wiki/Netpbm
         */
 		void load_file_pbm(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool, bool auto_invert = true);
@@ -73,7 +74,6 @@ namespace gfx {
 
 }
 
-
-// TODO operator << 
+std::ostream& operator<< (std::ostream& os, const gfx::bmp::bitmap_t& addr);
 
 #endif
