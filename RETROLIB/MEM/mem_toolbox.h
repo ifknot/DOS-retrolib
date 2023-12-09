@@ -75,6 +75,8 @@ namespace mem {
 	*/
 	dos::file::size_t load_from_file(const char* path_name, address_t start, uint16_t nbytes);
 
+	dos::file::size_t load_from_file_using_handle(dos::file::handle_t fhandle, address_t start, uint16_t nbytes);
+
 	/**
 	* @brief use DOS to save contents of memory to file
 	* @note saves raw bytes

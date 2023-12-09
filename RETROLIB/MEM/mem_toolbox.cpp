@@ -73,11 +73,16 @@ namespace mem {
     }
 
     dos::file::size_t load_from_file(const char* path_name, address_t start, uint16_t nbytes) {
-        dos::file::size_t bytes_loaded = 0;
         dos::file::handle_t fhandle = dos::open_file_using_handle(path_name, dos::file::ACCESS_READ_ONLY);
+        dos::file::size_t bytes_loaded = load_from_file_using_handle(fhandle, start, nbytes);
+        dos::close_file_using_handle(fhandle);
+        return bytes_loaded;
+    }
+
+    dos::file::size_t load_from_file_using_handle(dos::file::handle_t fhandle, address_t start, uint16_t nbytes) {
+        dos::file::size_t bytes_loaded = 0;
         if (fhandle) {
-            bytes_loaded = dos::read_file_using_handle(fhandle, (char*)start.memloc, nbytes);
-            dos::close_file_using_handle(fhandle);
+            bytes_loaded = dos::read_file_using_handle(fhandle, (char*)start.memloc, nbytes); 
         }
         return bytes_loaded;
     }

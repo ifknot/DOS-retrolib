@@ -9,7 +9,7 @@ namespace gfx {
 	namespace bmp {
 
 		const char      PBM_EXT[]       = "PBM";    // valid file extension for portable bitmap
-        const uint16_t  PBM_MAGIC       = 0x3450;   // little endian ascii 4P
+        const uint16_t  PBM_MAGIC_RAW       = 0x3450;   // little endian ascii 4P
         const int       PBM_MIN_SIZE    = 6;        // minimum valid size - a 1 byte image
 
         enum colour_type_t {

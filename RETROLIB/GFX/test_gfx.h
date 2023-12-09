@@ -39,12 +39,14 @@ namespace test_gfx {
 		if (YESNO("* 440\ttest bitmap load functions ?")) {
 			char fpath[13] = "";
 			mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
+			LOG(*pool);
 			gfx::bmp::bitmap_t bmp;
 
 			while (YESNO("test file?")) {
 				INFO("enter file name : ");
 				if (scanf("%s", fpath)) {
 					gfx::bmp::load_file_pbm(fpath, &bmp, pool);
+					LOG(*pool);
 				}
 			}
 
