@@ -30,7 +30,7 @@ namespace mem {
 
 		arena_t* new_dos_arena(mem_size_t byte_count);
 
-		void delete_dos_arena(arena_t* arena);
+		mem_size_t delete_dos_arena(arena_t* arena);
 
 		mem_size_t size(arena_t* arena);
 
@@ -38,9 +38,16 @@ namespace mem {
 
 		char* raw_alloc(arena_t* arena, mem_size_t byte_request);
 
+		char* raw_dealloc(arena_t* arena, mem_size_t byte_request);
+
 		template<typename T>
 		T* alloc(arena_t* arena, mem_size_t type_count) {
 			return (T*)raw_alloc(arena, sizeof(T) * type_count); 
+		}
+
+		template<typename T>
+		T* dealloc(arena_t* arena, mem_size_t type_count) {
+			return (T*)raw_dealloc(arena, sizeof(T) * type_count);
 		}
 
 	}

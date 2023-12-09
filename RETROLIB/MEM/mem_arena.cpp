@@ -22,10 +22,11 @@ namespace mem {
 
 		struct arena_t {
 
-			char* top;
-			address_t mcb;
-			mem_size_t size;
-			mem_size_t capacity;
+			char* pfree;				// pointer to the start of free memory pool
+			mem_size_t size;			// current amount of free memory (bytes) pool 	
+
+			address_t mcb;				// base address of the DOS memory block used by the arena pool
+			mem_size_t capacity;		// starting size of the memory (bytes) pool
 
 		};
 
@@ -40,50 +41,74 @@ namespace mem {
 		* and will depend on installed RAM.
 		*/
 		arena_t* new_dos_arena(mem_size_t byte_count) {
-			arena_t* p = new(arena_t);
-			p->top = NULL_PTR;
-			p->size = p->capacity = 0;
-			mem_size_t paragraphs = byte_count / PARAGRAPH_SIZE;
-			if (byte_count % PARAGRAPH_SIZE) {	// if mod 16 then need another paragraph for the remainder
+			arena_t* arena = new(arena_t);
+			arena->pfree = NULL_PTR;									// setup default values...
+			arena->mcb.memloc = arena->size = arena->capacity = 0;
+			mem_size_t paragraphs = byte_count / PARAGRAPH_SIZE;	// calculate the number of paragraphs to request fron DOS
+			if (byte_count % PARAGRAPH_SIZE) {		// if mod 16 then need another paragraph for the remainder
 				paragraphs++;
 			}
-			p->mcb.segoff.segment = dos::allocate_memory_blocks(paragraphs);
-			p->mcb.segoff.offset = 0;
-			p->top = (char*)p->mcb.memloc;
-			if (p->top) {
-				p->capacity = paragraphs * PARAGRAPH_SIZE;
-				p->size = p->capacity;
+			arena->mcb.segoff.segment = dos::allocate_memory_blocks(paragraphs);	// ask DOS for the memory 
+			if (arena->mcb.segoff.segment) {							// success DOS could fulfill the memory request				
+				arena->pfree = (char*)arena->mcb.memloc;					// initialize values...
+				arena->size = arena->capacity = paragraphs * PARAGRAPH_SIZE;
 			}
-			return p;
+
+#ifndef NDEBUG
+
+			else {
+				std::cout << "ERROR memory request too large for DOS to provide!";
+			}
+
+#endif
+			return arena;
 		}
 
-		void delete_dos_arena(arena_t* arena) {
-			dos::free_allocated_memory_blocks(arena->mcb.segoff.segment);
-			arena->top = NULL_PTR;
+		mem_size_t delete_dos_arena(arena_t* arena) {
+			mem_size_t sz = arena->capacity;						// capture the capacity of the arena
+			dos::free_allocated_memory_blocks(arena->mcb.segoff.segment);	// ask DOS to free the memory block
+			arena->pfree = NULL_PTR;								// restore default values 
 			arena->mcb.memloc = arena->size = arena->capacity = 0;
+			delete arena;											// free up arena_t memory
+			return sz;												// return amount freed up
+		}
+
+		mem_size_t size(arena_t* arena) {
+			return arena->size;
+		}
+
+		mem_size_t capacity(arena_t* arena) {
+			return arena->capacity;
 		}
 
 		char* raw_alloc(arena_t* arena, mem_size_t byte_request) {
-			char* p = NULL_PTR;
-			if (byte_request <= arena->size) {
-				arena->size -= byte_request;
-				p = arena->top;
-				arena->top += byte_request;
+			char* p = NULL_PTR;						// default return to null
+			if (byte_request <= arena->size) {		// can fulfill request 
+				arena->size -= byte_request;		// shrink pool size
+				p = arena->pfree;					// initialize return value points to requested block
+				arena->pfree += byte_request;		// now point to the start of remaining free memory 
 			}
 #ifndef NDEBUG
 			else {
-				std::cout << "mem::arena::error\tInsufficient memory\nlargest block of memory available = " << std::dec << arena->size << " bytes" << std::endl;
+				std::cout << "ERROR memory request too large for ARENA to ALLOC!\nLargest block of memory available = " << std::dec << arena->size << " bytes." << std::endl;
 			}
 #endif			
 			return p;
 		}
 
-		mem_size_t size(arena_t* arena) { 
-			return arena->size; 
-		}
-
-		mem_size_t capacity(arena_t* arena) { 
-			return arena->capacity; 
+		char* raw_dealloc(arena_t* arena, mem_size_t byte_request) {
+			char* p = NULL_PTR;						// default return to null
+			if (byte_request <= arena->capacity) {	// can fulfill request 
+				arena->size += byte_request;		// grow pool size
+				arena->pfree -= byte_request;		// now point to the start of enlarged free memory
+				p = arena->pfree;					// initialize return value points to resized pool 
+			}
+#ifndef NDEBUG
+			else {
+				std::cout << "ERROR memory request too large for ARENA to DEALLOC!\nLargest block of memory available = " << std::dec << arena->capacity << " bytes." << std::endl;
+			}
+#endif			
+			return p;
 		}
 
 	}
@@ -91,7 +116,7 @@ namespace mem {
 }
 
 std::ostream& operator<< (std::ostream& os, const mem::arena::arena_t& arena) {
-	os << std::hex << (uint32_t)arena.top << ','
+	os << std::hex << (uint32_t)arena.pfree << ','
 		<< std::dec << arena.size << ','
 		<< arena.capacity;
 	return os;
