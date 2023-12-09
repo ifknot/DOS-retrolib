@@ -25,7 +25,7 @@ namespace mem {
 			char* pfree;				// pointer to the start of free memory pool
 			mem_size_t size;			// current amount of free memory (bytes) pool 	
 
-			address_t mcb;				// base address of the DOS memory block used by the arena pool
+			address_t pool;				// base address of the DOS memory block used by the arena pool
 			mem_size_t capacity;		// starting size of the memory (bytes) pool
 
 		};
@@ -42,15 +42,15 @@ namespace mem {
 		*/
 		arena_t* new_dos_arena(mem_size_t byte_count) {
 			arena_t* arena = new(arena_t);
-			arena->pfree = NULL_PTR;									// setup default values...
-			arena->mcb.memloc = arena->size = arena->capacity = 0;
+			arena->pfree = NULL_PTR;								// setup default values...
+			arena->pool.memloc = arena->size = arena->capacity = 0;
 			mem_size_t paragraphs = byte_count / PARAGRAPH_SIZE;	// calculate the number of paragraphs to request fron DOS
 			if (byte_count % PARAGRAPH_SIZE) {		// if mod 16 then need another paragraph for the remainder
 				paragraphs++;
 			}
-			arena->mcb.segoff.segment = dos::allocate_memory_blocks(paragraphs);	// ask DOS for the memory 
-			if (arena->mcb.segoff.segment) {							// success DOS could fulfill the memory request				
-				arena->pfree = (char*)arena->mcb.memloc;					// initialize values...
+			arena->pool.segoff.segment = dos::allocate_memory_blocks(paragraphs);	// ask DOS for the memory 
+			if (arena->pool.segoff.segment) {						// success DOS could fulfill the memory request				
+				arena->pfree = (char*)arena->pool.memloc;			// initialize values...
 				arena->size = arena->capacity = paragraphs * PARAGRAPH_SIZE;
 			}
 
@@ -66,9 +66,7 @@ namespace mem {
 
 		mem_size_t delete_dos_arena(arena_t* arena) {
 			mem_size_t sz = arena->capacity;						// capture the capacity of the arena
-			dos::free_allocated_memory_blocks(arena->mcb.segoff.segment);	// ask DOS to free the memory block
-			arena->pfree = NULL_PTR;								// restore default values 
-			arena->mcb.memloc = arena->size = arena->capacity = 0;
+			dos::free_allocated_memory_blocks(arena->pool.segoff.segment);	// ask DOS to free the memory block
 			delete arena;											// free up arena_t memory
 			return sz;												// return amount freed up
 		}

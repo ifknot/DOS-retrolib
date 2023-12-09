@@ -14,9 +14,7 @@
 
 #include "../TEST/debug_macros.h"
 
-#include "../MEM/mem_dump_ostream.h"
-#include "../MEM/mem_address.h"
-#include "../MEM/mem_available_low_memory.h"
+#include "../MEM/mem.h"
 
 #include "../BIOS/bios_memory_size.h"
 
