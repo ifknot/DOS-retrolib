@@ -34,24 +34,29 @@ TODO MEM
 
 TODO GFX
 + [x] video_adapter_t detect_video_adapter_type()
++ [x] bitmap_t (universal)
+    + [...] bmp::functions(...)
 + [...] VGA
     + [x] detect
 + [...] EGA
     + [x] detect
 + [...] CGA
       + [x] detect
+      + [...] mode3
+          + [ ] switch mode
+      + [...] mode4
+          + [ ] switch mode
+      + [...] mode6
+          + [ ] switch mode
 + [...] HGA
     + [x] detect
-    + [x] mode text & graphics
+    + [x] switch mode text & graphics
     + [x] cls
     + [x] graphics cls
+    + [x] load_raw_pbm
     + [ ] blits(...) universal bmp -> specialised vram
 + [...] MDA
       + [x] detect 
-+ [ ] load_raw_pbm
-+ [ ] bitmap_t (universal)
-    + [ ] bmp::functions(...)
-
 TODO BIOS (as needed)
 
  + [x] INT 10,0 - Set video mode
