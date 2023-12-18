@@ -19,8 +19,8 @@ Tested using [DOSBOX](https://www.dosbox.com/) and my IBM XT
 + [x] files ->
 + [x] arena_t ->
 + [...] GFX essentials ->
-    + [ ] bitmap_t ->
-    + [ ] load_raw_pbm 
+    + [x] bitmap_t ->
+    + [x] load_raw_pbm 
     + [ ] blits
 
 TODO MEM
@@ -42,21 +42,27 @@ TODO GFX
     + [x] detect
 + [...] CGA
       + [x] detect
-      + [...] mode3
-          + [ ] switch mode
-      + [...] mode4
-          + [ ] switch mode
-      + [...] mode6
-          + [ ] switch mode
+
+  + [...] mode3
+
+    + [ ] switch mode
+
+  + [...] mode4
+
+    + [ ] switch mode
+      
+  + [...] mode6
+
+    + [ ] switch mode
 + [...] HGA
     + [x] detect
-    + [x] switch mode text & graphics
+    + [x] switch mode
     + [x] cls
     + [x] graphics cls
     + [x] load_raw_pbm
     + [ ] blits(...) universal bmp -> specialised vram
 + [...] MDA
-      + [x] detect 
+    + [x] detect 
 TODO BIOS (as needed)
 
  + [x] INT 10,0 - Set video mode
