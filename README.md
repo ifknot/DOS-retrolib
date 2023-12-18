@@ -41,7 +41,8 @@ TODO GFX
 + [...] EGA
     + [x] detect
 + [...] CGA
-      + [x] detect
+
+  + [x] detect
 
   + [...] mode3
 
