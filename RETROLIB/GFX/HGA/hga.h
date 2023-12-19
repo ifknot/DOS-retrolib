@@ -16,6 +16,4 @@
 #include "hga_cls.h"
 #include "hga_attributes.h"
 
-#include "GRAPHICS/hga_graphics_cls.h"
-
 #endif

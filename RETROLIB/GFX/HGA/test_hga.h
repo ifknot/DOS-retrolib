@@ -13,6 +13,7 @@
 #include "../../TEST/debug_macros.h"
 
 #include "hga.h"
+#include "GRAPHICS/hga_graphics.h"
 
 namespace test_hga {
 
@@ -21,6 +22,8 @@ namespace test_hga {
 		if (YESNO("* 431\ttest set HGA graphics mode ?")) {
 			hga::graphics_mode();
 			hga::graphics::cls(0xAA);
+
+			
 		}
 		if (YESNO("* 432\ttest set HGA text mode ?")) {
 			hga::text_mode();

@@ -20,7 +20,7 @@
 namespace test_gfx {
 
 	void run() {
-		INFO("* testing lib graphics services...");
+		INFO("* testing lib Graphics Adapter services...");
 		if (YESNO("* 410\ttest detect CRTC MDA/HGA & CGA ?")) {
 			LOG(gfx::detect_CRTC_at_port(gfx::crtc_port_MDA));
 			LOG(gfx::detect_CRTC_at_port(gfx::crtc_port_CGA));
@@ -45,7 +45,7 @@ namespace test_gfx {
 			while (YESNO("test file?")) {
 				INFO("enter file name : ");
 				if (scanf("%s", fpath)) {
-					gfx::bmp::load_file_pbm(fpath, &bmp, pool);
+					gfx::bmp::pbm::load_file(fpath, &bmp, pool);
 					LOG(*pool);
 				}
 				LOG(bmp);

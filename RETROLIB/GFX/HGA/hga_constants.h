@@ -21,17 +21,20 @@
 /**
 *  Hercules macro definitions for assembly
 */
-#define HGA_SCREEN_X_MIN    0
-#define HGA_SCREEN_X_MAX    720
-#define HGA_SCREEN_Y_MIN    0
-#define HGA_SCREEN_Y_MAX    348
-#define HGA_SCREEN_Y_SCALE  0.483
-#define HGA_PIXELS_PER_BYTE 8
-#define HGA_BYTES_PER_LINE  90
-#define HGA_WORDS_PER_LINE  45
-#define HGA_BYTES_PER_PAGE  32768
-#define HGA_WORDS_PER_PAGE  16384
-#define HGA_CHARS_PER_PAGE  2000
+#define HGA_SCREEN_X_MIN        0
+#define HGA_SCREEN_X_MAX        720
+#define HGA_SCREEN_Y_MIN        0
+#define HGA_SCREEN_Y_MAX        348
+#define HGA_SCREEN_Y_SCALE      0.483
+#define HGA_PIXELS_PER_BYTE     8
+#define HGA_BYTES_PER_LINE      90
+#define HGA_WORDS_PER_LINE      45
+#define HGA_BYTES_PER_SCREEN  32768
+#define HGA_WORDS_PER_SCREEN  16384
+#define HGA_CHARS_PER_SCREEN  2000
+
+#define HGA_BUFFER_0        0xB000
+#define HGA_BUFFER_1        0xB800
 
 /**
 *  @def   HGA_VIDEO_RAM_SEGMENT
@@ -127,5 +130,18 @@
 
 // HGA Status Register at I/O address (same as CGA)
 #define HGA_STATUS_REG                  3DAh
+
+namespace hga {
+
+    static char video_adapter_names[6][32] = {
+        "Unknown",
+        "MDA",
+        "Hercules",
+        "Hercules Plus",
+        "Hercules InColor",
+        "Hercules Clone"
+    };
+
+}
 
 #endif

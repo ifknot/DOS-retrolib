@@ -12,11 +12,18 @@
 
 #include <stdint.h>
 
+#include "../hga_constants.h"
+
 namespace hga {
 
 	namespace graphics {
 
-		void cls(uint8_t byte_pattern = 0);
+		/**
+		* @brief Fast fill the specified HGA VRAM buffer with an 8 bit byte pattern - defaults to 0 (black)
+		* @details 
+		* @note No sanity checking! Expects vram_segment to be valid.
+		*/
+		void cls(uint8_t byte_pattern = 0, uint16_t vram_segment = HGA_BUFFER_0);
 
 	}
 

@@ -28,7 +28,7 @@ namespace hga {
             xor     di, di
             mov     ah, attribute                    
             mov     al, character              
-            mov     cx, HGA_CHARS_PER_PAGE      ; 80 columns x 25 rows = 2000 characters per screen
+            mov     cx, HGA_CHARS_PER_SCREEN    ; 80 columns x 25 rows = 2000 characters per screen
             cld                                 ; increment mode
             rep     stosw                       ; fill screen with atrribute:ascii word
 

@@ -49,26 +49,31 @@ namespace gfx {
 
         };
 
-        /**
-        * @brief Load a Portable BitMap .pbm monochrome image into arena memory
-        * and populate the bitmap_t descriptor correctly
-        * @note white = 0, black = 1 and, therefore, to display correctly image will need inverting
-        * this can be acheived by setting auto_invert = true, or calling bitmap::invert seperately - or preconverting the actual file data 
-        * 
-        * @url https://en.wikipedia.org/wiki/Netpbm
-        */
-		void load_file_pbm(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool, bool auto_invert = true);
+        namespace pbm {
+
+            /**
+            * @brief Load a Portable BitMap .pbm monochrome image into arena memory
+            * and populate the bitmap_t descriptor correctly
+            * @note white = 0, black = 1 and, therefore, to display correctly image will need inverting
+            * this can be acheived by setting auto_invert = true, or calling bitmap::invert seperately - or preconverting the actual file data
+            *
+            * @url https://en.wikipedia.org/wiki/Netpbm
+            */
+            void load_file(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool, bool auto_invert = true);
+
+            //void invert(bitmap_t* bmp);
+        }
 
         /**
        * @brief Convert bitmap_t pixel data to its negative image depending on its colour type
        * @details
        * Monochrome/Grayscale negative image is a total inversion, in which light areas appear dark and vice versa.
-       * Colour image is additionally color-reversed, with red areas appearing cyan, greens appearing magenta, and blues appearing yellow, and vice versa.
+       * Colour image is additionally colour-reversed, with red areas appearing cyan, greens appearing magenta, and blues appearing yellow, and vice versa.
        * @note the Alpha component of the image will be the same as the original image
        */
        //void invert(bitmap_t* bmp);
        //switch colour_type
-       //case GREYSCALE: not each byte
+       //case GREYSCALE: !not each byte
 
 	}
 
