@@ -1,14 +1,14 @@
 /**
  *
- *  @file      hga_graphics_cls.cpp
+ *  @file      hga_graphics_toolbox.cpp
  *  @brief     
  *  @details   ~
  *  @author    Jeremy Thornton
- *  @date      26.11.2023
+ *  @date      20.12.2023
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#include "hga_graphics_cls.h"
+#include "hga_graphics_toolbox.h"
 
 namespace hga {
 
@@ -32,6 +32,27 @@ namespace hga {
 
 				popf 
 				pop		bp
+			}
+		}
+
+		void select_buffer(uint8_t select) {
+			__asm {
+				.8086
+				push	bp
+				pushf 
+
+				mov     dx, HGA_CONTROL_REGISTER
+				mov		al, select 
+				and		al, 00000001b
+				jz      J0                          
+				mov     al, 10001010b               ; screen on buffer 1 second display page buffer B000 : 800
+				jmp     J1
+		J0:     mov     al, 00001010b               ; screen on buffer 0 default display page buffer B000 : 000
+		J1:     out     dx, al
+    
+				popf
+				pop		bp
+
 			}
 		}
 

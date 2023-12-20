@@ -61,7 +61,6 @@ namespace gfx {
             */
             void load_file(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool, bool auto_invert = true);
 
-            //void invert(bitmap_t* bmp);
         }
 
         /**
@@ -73,7 +72,7 @@ namespace gfx {
        */
        //void invert(bitmap_t* bmp);
        //switch colour_type
-       //case GREYSCALE: !not each byte
+       //case GREYSCALE: 
 
 	}
 

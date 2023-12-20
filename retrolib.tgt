@@ -321,8 +321,8 @@ WVList
 0
 75
 MItem
-46
-RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_cls.cpp
+50
+RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_toolbox.cpp
 76
 WString
 6

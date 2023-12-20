@@ -26,10 +26,13 @@ namespace test_hga_graphics {
 				hga::graphics::cls(0xAA);
 				uint16_t buffer = HGA_BUFFER_0;
 				if (YESNO("switch buffer ?")) {
-					buffer = HGA_BUFFER_1;
-					//hga_graphics::select_buffer(1);
+					hga::graphics::select_buffer(1);
+					hga::graphics::cls(1, HGA_BUFFER_1);
 				}
-
+				if (YESNO("switch back ?")) {
+					hga::graphics::select_buffer(0);
+					hga::graphics::cls(0xEE, HGA_BUFFER_0);
+				}
 				
 				if (YESNO("")) {
 					hga::text_mode();
