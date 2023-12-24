@@ -321,8 +321,8 @@ WVList
 0
 75
 MItem
-50
-RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_toolbox.cpp
+47
+RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_blit.cpp
 76
 WString
 6
@@ -339,8 +339,8 @@ WVList
 0
 79
 MItem
-28
-RETROLIB\GFX\HGA\hga_cls.cpp
+50
+RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_toolbox.cpp
 80
 WString
 6
@@ -375,8 +375,8 @@ WVList
 0
 87
 MItem
-35
-RETROLIB\GFX\HGA\hga_video_mode.cpp
+32
+RETROLIB\GFX\HGA\hga_toolbox.cpp
 88
 WString
 6
