@@ -13,6 +13,8 @@
 #include "../../../TEST/debug_macros.h"
 
 #include "../hga.h"
+#include "../../gfx.h"
+#include "../../../MEM/mem.h"
 
 namespace test_hga_graphics {
 
@@ -21,22 +23,47 @@ namespace test_hga_graphics {
 		uint8_t hga = hga::detect_adapter();
 		if(hga) {
 			INFO(hga::video_adapter_names[hga]);
-			if (YESNO("* 700\tswitch to HGA graphics mode and clear screen?")) {
+			if (YESNO("* 710\tswitch to HGA graphics mode and clear screen ?")) {
 				hga::graphics_mode();
-				hga::graphics::cls(0xAA);
-				uint16_t buffer = HGA_BUFFER_0;
+				hga::graphics::cls(HGA_BUFFER_0, 0xAA);
 				if (YESNO("switch buffer ?")) {
 					hga::graphics::select_buffer(1);
-					hga::graphics::cls(1, HGA_BUFFER_1);
+					hga::graphics::cls(HGA_BUFFER_1, 1);
+
 				}
 				if (YESNO("switch back ?")) {
 					hga::graphics::select_buffer(0);
-					hga::graphics::cls(0xEE, HGA_BUFFER_0);
+					hga::graphics::cls(HGA_BUFFER_0, 0xEE);
 				}
 				
 				if (YESNO("")) {
 					hga::text_mode();
 					hga::cls();
+				}
+			}
+			if (YESNO("* 720 load bitmap ?")) {
+				char fpath[13] = "";
+				mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
+				LOG(*pool);
+				gfx::bmp::bitmap_t bmp;
+
+				INFO("enter file name : ");
+				if (scanf("%s", fpath)) {
+					gfx::bmp::pbm::load_file(fpath, &bmp, pool);
+					LOG(*pool);
+				}
+				LOG(bmp);
+				if (YESNO("* 721\tswitch to HGA graphics mode and display bitmap?")) {
+					hga::graphics_mode();
+					hga::graphics::select_buffer(1);
+					hga::graphics::cls(HGA_BUFFER_1, 1);
+
+					hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data);
+
+					if (YESNO("")) {
+						hga::text_mode();
+						hga::cls();
+					}
 				}
 			}
 		}

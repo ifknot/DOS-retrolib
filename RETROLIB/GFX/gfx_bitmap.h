@@ -38,14 +38,14 @@ namespace gfx {
         */
         struct bitmap_t {
 
-            uint16_t width;               // max 65535 x 65535 image
-            uint16_t height;              // raster rectangle dimensions
-            uint8_t bit_depth;            // bits per pixel (1, 2, 4, 8 , 16) or palette index
-            uint8_t colour_type;          // Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
-            char* raster_data;            // ptr to pixel data raster image
-            uint32_t raster_size;         // size of the pixel data
-            char* palette_data;           // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
-            uint32_t palette_size;        // size of the palette data
+            uint16_t    width;          // max 65535 x 65535 image
+            uint16_t    height;         // raster rectangle dimensions
+            uint8_t     bit_depth;      // bits per pixel (1, 2, 4, 8 , 16) or palette index
+            uint8_t     colour_type;    // Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
+            char*       raster_data;    // ptr to pixel data raster image
+            uint32_t    raster_size;    // size of the pixel data
+            char*       palette_data;   // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
+            uint32_t    palette_size;   // size of the palette data
 
         };
 
@@ -59,20 +59,9 @@ namespace gfx {
             *
             * @url https://en.wikipedia.org/wiki/Netpbm
             */
-            void load_file(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool, bool auto_invert = true);
+            void load_file(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool);
 
         }
-
-        /**
-       * @brief Convert bitmap_t pixel data to its negative image depending on its colour type
-       * @details
-       * Monochrome/Grayscale negative image is a total inversion, in which light areas appear dark and vice versa.
-       * Colour image is additionally colour-reversed, with red areas appearing cyan, greens appearing magenta, and blues appearing yellow, and vice versa.
-       * @note the Alpha component of the image will be the same as the original image
-       */
-       //void invert(bitmap_t* bmp);
-       //switch colour_type
-       //case GREYSCALE: 
 
 	}
 

@@ -10,16 +10,13 @@
 #ifndef HGA_GRPAHICS_BLIT_H
 #define	HGA_GRPAHICS_BLIT_H
 
+#include <stdint.h>
+
 namespace hga {
 
 	namespace graphics {
-
-		/**
-		* @brief blit contiguous 720x348 raster image into banked HGA VRAM
-		* @details 
-		* @note No sanity checking! Expects raster_data & vram_segment to be valid.
-		*/
-		void blit_full_screen(char* raster_data, uint16_t vram_segment = HGA_BUFFER_0);
+		
+		void blit(uint16_t vram_segment, char* raster_data);
 
 	}
 

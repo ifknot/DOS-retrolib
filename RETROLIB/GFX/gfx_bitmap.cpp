@@ -27,7 +27,7 @@ namespace gfx {
 
 		namespace pbm {
 
-			void load_file(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool, bool auto_invert) {
+			void load_file(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool) {
 				const char* raw_ext = file::get_extension(file_path);
 				char pbm_ext[] = "   ";
 				mem::address_t data;

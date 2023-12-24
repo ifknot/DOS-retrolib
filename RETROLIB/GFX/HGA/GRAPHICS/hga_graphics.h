@@ -10,6 +10,7 @@
 #ifndef HGA_GRAPHICS_H
 #define HGA_GRAPHICS_H
 
+#include "hga_graphics_blit.h"
 #include "hga_graphics_toolbox.h"
 
 #endif

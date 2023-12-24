@@ -14,7 +14,7 @@ namespace hga {
 
 	namespace graphics {
 
-		void cls(uint8_t byte_pattern, uint16_t vram_segment) {
+		void cls(uint16_t vram_segment, uint8_t byte_pattern) {
 			__asm {
 				.8086
 				push	bp

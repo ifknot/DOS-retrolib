@@ -23,7 +23,7 @@ namespace hga {
 		* @details
 		* @note No sanity checking! Expects vram_segment to be valid.
 		*/
-		void cls(uint8_t byte_pattern = 0, uint16_t vram_segment = HGA_BUFFER_0);
+		void cls(uint16_t vram_segment = HGA_BUFFER_0, uint8_t byte_pattern = 0);
 
 		/**
 		* @brief select which of the 2 HGA adapter VRAM buffers ( 0 or 1 ) to be displayed on screen 
