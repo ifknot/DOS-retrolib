@@ -77,14 +77,17 @@ namespace hga {
 				shr		ax, 1						; AX = w div 8
 				shr		ax, 1
 				shr		ax, 1						; 8086 single shifts only
-				test	w, 7						; mod 7
-				jz		SKIP						; zero so no remainder
-				inc		ax							; AX = (w div 8) + overlap byte
+				//test	w, 7						; mod 7
+				//jz		SKIP						; zero so no remainder
+				//inc		ax							; AX = (w div 8) + overlap byte
 		SKIP:	mov		dx, HGA_BYTES_PER_LINE		
-				sub		dx, ax						; DX = screen byte width - rectangle byte width
+				//sub		dx, ax						; DX = screen byte width - rectangle byte width
 
-				mov		bx, h						; BX = rectangle height constant (faster to reload cx)
-				mov		cx, bx						; CX = height loop counter
+				mov		cx, h						; CX = rectangle height counter
+				*mov ax,cx
+				shr,1 etc
+				*** something w SI + (h/8)
+				
 
 				mov		ax, y						; select starting bank
 				and		ax, 3						; mask only lower 3 bits i.e. 0..3
@@ -111,21 +114,21 @@ namespace hga {
 		BANK1:	add		di, 2000h				;TODO use AX as pre sum
 				sub		di, dx						; bank 1 = DI + (2000h - rectangle byte width)
 				mov		cx, dx						; rectangle byte width
-				rep		movsw						; copy raster line to vram line bank 1	
+				rep		movsb						; copy raster line to vram line bank 1	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 
-		BANK2:	add		di, 2000h				
+		BANK2:	add		di, 2000h
 				sub		di, dx						; bank 2 = DI + (2000h - rectangle byte width)
 				mov		cx, dx						; rectangle byte width
-				rep		movsw						; copy raster line to vram line bank 2	
+				rep		movsb						; copy raster line to vram line bank 2	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 
-		BANK3:	add		di, 2000h				
+		BANK3:	add		di, 2000h
 				sub		di, dx						; bank 3 = DI + (2000h - rectangle byte width)
 				mov		cx, dx						; rectangle byte width
-				rep		movsw						; copy raster line to vram line bank 3	
+				rep		movsb						; copy raster line to vram line bank 3	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 
