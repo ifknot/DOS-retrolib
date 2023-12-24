@@ -10,10 +10,9 @@
 #ifndef HGA_H
 #define HGA_H
 
+#include "hga_attributes.h"
 #include "hga_constants.h"
 #include "hga_detect_adapter.h"
-#include "hga_video_mode.h"
-#include "hga_cls.h"
-#include "hga_attributes.h"
+#include "hga_toolbox.h"
 
 #endif
