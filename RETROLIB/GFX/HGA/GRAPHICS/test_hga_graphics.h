@@ -56,11 +56,10 @@ namespace test_hga_graphics {
 				if (YESNO("* 721\tswitch to HGA graphics mode and display bitmap?")) {
 					hga::graphics_mode();
 					hga::graphics::select_buffer(1);
-
-					for (int i = 0; i < 316; ++i) {
-						hga::graphics::cls(HGA_BUFFER_1, 0);
-						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 0, 32, i, 32);
-					}
+					hga::graphics::cls(HGA_BUFFER_1, 0);
+					//for (int i = 0; i < 340; i+=1) {
+						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 0, 0, 360, 348);
+					//}
 
 					if (YESNO("")) {
 						hga::text_mode();

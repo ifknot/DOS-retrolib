@@ -61,81 +61,83 @@ namespace hga {
 				push	bp
 				pushf
 
-				mov		ax, y 
-				shr		ax,	1						; y div 4 (4 banks of VRAM)
-				shr		ax, 1						; 8086 single shifts only
-				mov		cl, HGA_BYTES_PER_LINE		; 
-				mul		cl							; AX = (y div 4) * 90
-				mov		di, ax
-
 				mov		ax, vram_segment
-				mov		es, ax						; ES:DI point to VRAM destination
+				mov		es, ax
+				mov		ax, y
+				shr		ax, 1; y div 4 (4 banks of VRAM)
+				shr		ax, 1; 8086 single shifts only
+				mov		cx, HGA_BYTES_PER_LINE
+				mul		cx; AX = (y div 4) * 90
+				mov		di, ax; ES:DI point to VRAM destination
 
-				lds		si, raster_data				; DS:SI point to pixel data source
-									
-				mov		ax, w
-				shr		ax, 1						; AX = w div 8
-				shr		ax, 1
-				shr		ax, 1						; 8086 single shifts only
+				lds		si, raster_data
+				mov		ax, y
+				mul		cx; AX = y * 90
+				add		si, ax; DS:SI point to pixel data source
+
+				mov		dx, w
+				shr		dx, 1; DX = w div 8
+				shr		dx, 1
+				shr		dx, 1; 8086 single shifts only
 				//test	w, 7						; mod 7
 				//jz		SKIP						; zero so no remainder
-				//inc		ax							; AX = (w div 8) + overlap byte
-		SKIP:	mov		dx, HGA_BYTES_PER_LINE		
-				//sub		dx, ax						; DX = screen byte width - rectangle byte width
+				//inc		dx							; AX = (w div 8) + overlap byte
 
-				mov		cx, h						; CX = rectangle height counter
-				*mov ax,cx
-				shr,1 etc
-				*** something w SI + (h/8)
-				
+				mov		ax, HGA_BYTES_PER_LINE
+				sub		ax, dx						; AX = SI increment 
 
-				mov		ax, y						; select starting bank
-				and		ax, 3						; mask only lower 3 bits i.e. 0..3
-		CASE3:  cmp		ax, 3
+
+				mov		bx, h						; BX = rectangle height counter
+
+				mov		cx, y						; select starting bank
+				and		cx, 3						; mask only lower 3 bits i.e. 0..3
+		CASE3:  cmp		cx, 3
 				jne		CASE2 
 				add		di, 6000h					; 4th bank offset 
 				jmp		BANK3						; start on 4th bank 
-		CASE2:  cmp		ax, 2
+		CASE2:  cmp		cx, 2
 				jne		CASE1 
 				add		di, 4000h					; 3rd bank offset 
 				jmp		BANK2						; start on 3rd bank
-		CASE1:  cmp		ax, 2
+		CASE1:  cmp		cx, 1
 				jne		CASE0
 				add		di, 2000h					; 2nd bank offset 
 				jmp		BANK1						; start on 2nd bank 
 		CASE0:										; fall through to zero offset 1st bank
 
-		BANK0:	mov		bx, cx						; update copy of lines per bank count
-				mov		cx, dx						; rectangle byte width
+		BANK0:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 0
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
+				add		si, ax
+				add		di, 2000h				;TODO use AX as pre sum
 
-		BANK1:	add		di, 2000h				;TODO use AX as pre sum
-				sub		di, dx						; bank 1 = DI + (2000h - rectangle byte width)
+		BANK1:	sub		di, dx						; bank 1 = DI + (2000h - rectangle byte width)
 				mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 1	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
+				add		si, ax
+				add		di, 2000h
 
-		BANK2:	add		di, 2000h
-				sub		di, dx						; bank 2 = DI + (2000h - rectangle byte width)
+		BANK2:	sub		di, dx						; bank 2 = DI + (2000h - rectangle byte width)
 				mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 2	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
+				add		si, ax
+				add		di, 2000h
 
-		BANK3:	add		di, 2000h
-				sub		di, dx						; bank 3 = DI + (2000h - rectangle byte width)
+		BANK3:	sub		di, dx						; bank 3 = DI + (2000h - rectangle byte width)
 				mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 3	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 
 				sub		di, 6000h					; bank 0 next line = DI - 6000h
+				add		di, ax
 
-				mov		cx, bx						; restore lines per bank loop counter
-				loop	BANK0
+				jmp		BANK0
 
 		END:	popf
 				pop		bp
