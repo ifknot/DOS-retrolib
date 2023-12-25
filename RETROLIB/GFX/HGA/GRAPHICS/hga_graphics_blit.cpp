@@ -84,9 +84,6 @@ namespace hga {
 				mul		cx							; AX = y * 90
 				add		si, ax						; DS:SI point to pixel data source
 
-				
-				
-
 				mov		cx, y								
 				mov		w, bx						; w = rectangle byte width
 				mov		y, HGA_BANK_OFFSET			; y = 2000h - (w div 8) - (x div 8)
@@ -94,7 +91,7 @@ namespace hga {
 				//shr		ax, 1					; AX = (x div 8)
 				//shr		ax, 1
 				//shr		ax, 1
-				//sub		dx, ax					; (w div 8) - (x div 8)
+				//sub		bx, ax					; (w div 8) - (x div 8)
 				sub		y, bx						
 				
 				mov		dx, h						; putting h into DX enables faster dec reg (3 clocks) vs dec mem (15 clocks!)
@@ -102,7 +99,7 @@ namespace hga {
 				mov		ax, HGA_BYTES_PER_LINE		; AX = SI increment
 				sub		ax, bx						; 90 - rect_byte_width - (x div 8)
 
-				and		cx, 3						; mask only lower 3 bits i.e. 0..3
+				and		cx, 3						; mask y lower 3 bits i.e. 0..3
 		CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 				jne		CASE2 
 				add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
@@ -117,31 +114,31 @@ namespace hga {
 				jmp		BANK1						; start on 2nd bank 
 		CASE0:										; fall through to zero offset 1st bank
 
-		BANK0:	mov		cx, w						; width counter (use 8 clock reg,mem releases DX to use in faster 3 clock reg,reg sums)
+		BANK0:	mov		cx, w						; width counter (use 8 clock reg,mem releases BX to use in faster 3 clock reg,reg sums)
 				rep		movsb						; copy source rect line to vram line bank 0
 				dec		dx							; dec line count (3 clocks)
-				jz		END							; BX = 0 all done
+				jz		END							; DX = 0 all done
 				add		si, ax						; advance source to next line
 				add		di, y						; next bank (use a 9 clock reg,mem to save 3 reg,reg 3 clocks each)
 			
 		BANK1:	mov		cx, w						; rectangle byte width
 				rep		movsb						; copy source rect line to vram line bank 1	
 				dec		dx							; dec line count (3 clocks)
-				jz		END							; BX = 0 all done
+				jz		END							; DX = 0 all lines copied to VRAM
 				add		si, ax						; advance source to next line
 				add		di, y						; next bank
 
 		BANK2:	mov		cx, w						; rectangle byte width
 				rep		movsb						; copy source rect line to vram line bank 2	
 				dec		dx							; dec line count (3 clocks)
-				jz		END							; BX = 0 all done
+				jz		END							; DX = 0 all lines copied to VRAM
 				add		si, ax						; advance source to next line
 				add		di, y						; next bank
 
 		BANK3:	mov		cx, w						; rectangle byte width
 				rep		movsb						; copy source rect line to vram line bank 3	
 				dec		dx							; dec line count (3 clocks)
-				jz		END							; BX = 0 all done
+				jz		END							; DX = 0 all lines copied to VRAM
 				add		si, ax						; advance source to next line
 				sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
 				add		di, ax						// (use a 9 clock reg,mem to save 3 reg,reg 3 clocks each)  
