@@ -57,7 +57,7 @@ namespace hga {
 
 		void blit(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 			__asm {
-				.8086
+				.8086								; NB clock cycle comments refer to 8086
 				push	bp
 				pushf
 
@@ -80,17 +80,22 @@ namespace hga {
 				shr		dx, 1
 				shr		dx, 1						; 8086 single shifts only
 				//test	w, 7						; mod 7
-				//jz		SKIP						; zero so no remainder
-				//inc		dx							; AX = (w div 8) + overlap byte
+				//jz		SKIP					; zero so no remainder
+				//inc		dx						; AX = (w div 8) + overlap byte
 
-				mov		ax, HGA_BYTES_PER_LINE
-				sub		ax, dx						; AX = SI increment 
+				mov		ax, HGA_BYTES_PER_LINE		; AX = SI increment
+				sub		ax, dx						; 90 - rect_byte_width - (x div 8)
 
-				mov		bx, h						; BX = rectangle height counter
+				mov		bx, h						; BX = rectangle height counter	
 
-				mov		cx, y						; select starting bank
+				mov		cx, y						
+				mov		y, 2000h					; y = 2000h - (w div 8) - (x div 8)
+				sub		y, dx
+			//	sub		y, (x div 8)
+				mov		w, dx						; w = rectangle byte width
+
 				and		cx, 3						; mask only lower 3 bits i.e. 0..3
-		CASE3:  cmp		cx, 3
+		CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 				jne		CASE2 
 				add		di, 6000h					; 4th bank offset 
 				jmp		BANK3						; start on 4th bank 
@@ -104,29 +109,26 @@ namespace hga {
 				jmp		BANK1						; start on 2nd bank 
 		CASE0:										; fall through to zero offset 1st bank
 
-		BANK0:	mov		cx, dx						; rectangle byte width
+		BANK0:	mov		cx, w						; width counter (use 8 clock reg,mem releases DX to use in faster 3 clock reg,reg sums)
 				rep		movsb						; copy raster line to vram line bank 0
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
-				add		di, 2000h				
-				sub		di, dx						; bank 1 = DI + (2000h - rectangle byte width)
-
+				add		di, y						; next bank (use a 9 clock reg,mem to save 3 reg,reg 3 clocks each)
+			
 		BANK1:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 1	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
-				add		di, 2000h
-				sub		di, dx						; bank 2 = DI + (2000h - rectangle byte width)
+				add		di, y						; next bank
 
 		BANK2:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 2	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
-				add		di, 2000h
-				sub		di, dx						; bank 3 = DI + (2000h - rectangle byte width)
+				add		di, y						; next bank
 
 		BANK3:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 3	
@@ -134,7 +136,7 @@ namespace hga {
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
 				sub		di, 6000h					; bank 0 next line = DI - 6000h
-				add		di, ax
+				add		di, ax						// (use a 9 clock reg,mem to save 3 reg,reg 3 clocks each)  
 
 				jmp		BANK0
 
