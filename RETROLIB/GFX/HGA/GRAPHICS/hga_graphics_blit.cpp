@@ -31,19 +31,19 @@ namespace hga {
 		LINES: mov		bx, cx						; copy of lines per bank count
 
 		BANK0: mov		cx, HGA_WORDS_PER_LINE		; 45 16it words per line
-				rep		movsw						; copy raster line to vram line bank 0
+				rep		movsw						; copy source rect line to vram line bank 0
 
 		BANK1:	add		di, 1FA6h					; bank 1 = DI + (2000h - 90)
 				mov		cx, HGA_WORDS_PER_LINE
-				rep		movsw						; copy raster line to vram line bank 1
+				rep		movsw						; copy source rect line to vram line bank 1
 
 		BANK2:	add		di, 1FA6h					; bank 2 = DI + (2000h - 90)
 				mov		cx, HGA_WORDS_PER_LINE
-				rep		movsw						; copy raster line to vram line bank 2
+				rep		movsw						; copy source rect line to vram line bank 2
 
 		BANK3:	add		di, 1FA6h					; bank 3 = DI + (2000h - 90)
 				mov		cx, HGA_WORDS_PER_LINE		
-				rep		movsw						; copy raster line to vram line bank 3
+				rep		movsw						; copy source rect line to vram line bank 3
 
 				sub		di, 6000h					; bank 0 next line = DI - 6000h
 
@@ -61,6 +61,15 @@ namespace hga {
 				push	bp
 				pushf
 
+				mov		bx, w
+				shr		bx, 1						; BX = (w div 8)
+				shr		bx, 1
+				shr		bx, 1						; 8086 single shifts only
+				//test	w, 7						; mod 7
+				//jz		SKIP					; zero so no remainder
+				//inc		bx						; AX = (w div 8) + overlap byte
+				// if even width jmp to faster movsw version 
+
 				mov		ax, vram_segment
 				mov		es, ax
 				mov		ax, y
@@ -75,67 +84,66 @@ namespace hga {
 				mul		cx							; AX = y * 90
 				add		si, ax						; DS:SI point to pixel data source
 
-				mov		dx, w
-				shr		dx, 1						; DX = w div 8
-				shr		dx, 1
-				shr		dx, 1						; 8086 single shifts only
-				//test	w, 7						; mod 7
-				//jz		SKIP					; zero so no remainder
-				//inc		dx						; AX = (w div 8) + overlap byte
+				
+				
+
+				mov		cx, y								
+				mov		w, bx						; w = rectangle byte width
+				mov		y, HGA_BANK_OFFSET			; y = 2000h - (w div 8) - (x div 8)
+				//mov		ax, x
+				//shr		ax, 1					; AX = (x div 8)
+				//shr		ax, 1
+				//shr		ax, 1
+				//sub		dx, ax					; (w div 8) - (x div 8)
+				sub		y, bx						
+				
+				mov		dx, h						; putting h into DX enables faster dec reg (3 clocks) vs dec mem (15 clocks!)
 
 				mov		ax, HGA_BYTES_PER_LINE		; AX = SI increment
-				sub		ax, dx						; 90 - rect_byte_width - (x div 8)
-
-				mov		bx, h						; BX = rectangle height counter	
-
-				mov		cx, y						
-				mov		y, 2000h					; y = 2000h - (w div 8) - (x div 8)
-				sub		y, dx
-			//	sub		y, (x div 8)
-				mov		w, dx						; w = rectangle byte width
+				sub		ax, bx						; 90 - rect_byte_width - (x div 8)
 
 				and		cx, 3						; mask only lower 3 bits i.e. 0..3
 		CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 				jne		CASE2 
-				add		di, 6000h					; 4th bank offset 
+				add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
 				jmp		BANK3						; start on 4th bank 
 		CASE2:  cmp		cx, 2
 				jne		CASE1 
-				add		di, 4000h					; 3rd bank offset 
+				add		di, HGA_BANK_OFFSET * 2		; 3rd bank offset
 				jmp		BANK2						; start on 3rd bank
 		CASE1:  cmp		cx, 1
 				jne		CASE0
-				add		di, 2000h					; 2nd bank offset 
+				add		di, HGA_BANK_OFFSET			; 2nd bank offset
 				jmp		BANK1						; start on 2nd bank 
 		CASE0:										; fall through to zero offset 1st bank
 
 		BANK0:	mov		cx, w						; width counter (use 8 clock reg,mem releases DX to use in faster 3 clock reg,reg sums)
-				rep		movsb						; copy raster line to vram line bank 0
-				dec		bx							; dec line count 
+				rep		movsb						; copy source rect line to vram line bank 0
+				dec		dx							; dec line count (3 clocks)
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
 				add		di, y						; next bank (use a 9 clock reg,mem to save 3 reg,reg 3 clocks each)
 			
-		BANK1:	mov		cx, dx						; rectangle byte width
-				rep		movsb						; copy raster line to vram line bank 1	
-				dec		bx							; dec line count 
+		BANK1:	mov		cx, w						; rectangle byte width
+				rep		movsb						; copy source rect line to vram line bank 1	
+				dec		dx							; dec line count (3 clocks)
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
 				add		di, y						; next bank
 
-		BANK2:	mov		cx, dx						; rectangle byte width
-				rep		movsb						; copy raster line to vram line bank 2	
-				dec		bx							; dec line count 
+		BANK2:	mov		cx, w						; rectangle byte width
+				rep		movsb						; copy source rect line to vram line bank 2	
+				dec		dx							; dec line count (3 clocks)
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
 				add		di, y						; next bank
 
-		BANK3:	mov		cx, dx						; rectangle byte width
-				rep		movsb						; copy raster line to vram line bank 3	
-				dec		bx							; dec line count 
+		BANK3:	mov		cx, w						; rectangle byte width
+				rep		movsb						; copy source rect line to vram line bank 3	
+				dec		dx							; dec line count (3 clocks)
 				jz		END							; BX = 0 all done
 				add		si, ax						; advance source to next line
-				sub		di, 6000h					; bank 0 next line = DI - 6000h
+				sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
 				add		di, ax						// (use a 9 clock reg,mem to save 3 reg,reg 3 clocks each)  
 
 				jmp		BANK0
