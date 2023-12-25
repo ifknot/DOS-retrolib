@@ -64,28 +64,27 @@ namespace hga {
 				mov		ax, vram_segment
 				mov		es, ax
 				mov		ax, y
-				shr		ax, 1; y div 4 (4 banks of VRAM)
-				shr		ax, 1; 8086 single shifts only
+				shr		ax, 1						; y div 4 (4 banks of VRAM)
+				shr		ax, 1						; 8086 single shifts only
 				mov		cx, HGA_BYTES_PER_LINE
-				mul		cx; AX = (y div 4) * 90
-				mov		di, ax; ES:DI point to VRAM destination
+				mul		cx							; AX = (y div 4) * 90
+				mov		di, ax						; ES:DI point to VRAM destination
 
 				lds		si, raster_data
 				mov		ax, y
-				mul		cx; AX = y * 90
-				add		si, ax; DS:SI point to pixel data source
+				mul		cx							; AX = y * 90
+				add		si, ax						; DS:SI point to pixel data source
 
 				mov		dx, w
-				shr		dx, 1; DX = w div 8
+				shr		dx, 1						; DX = w div 8
 				shr		dx, 1
-				shr		dx, 1; 8086 single shifts only
+				shr		dx, 1						; 8086 single shifts only
 				//test	w, 7						; mod 7
 				//jz		SKIP						; zero so no remainder
 				//inc		dx							; AX = (w div 8) + overlap byte
 
 				mov		ax, HGA_BYTES_PER_LINE
 				sub		ax, dx						; AX = SI increment 
-
 
 				mov		bx, h						; BX = rectangle height counter
 
@@ -109,15 +108,15 @@ namespace hga {
 				rep		movsb						; copy raster line to vram line bank 0
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
-				add		si, ax
-				add		di, 2000h				;TODO use AX as pre sum
+				add		si, ax						; advance source to next line
+				add		di, 2000h				
 				sub		di, dx						; bank 1 = DI + (2000h - rectangle byte width)
 
 		BANK1:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 1	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
-				add		si, ax
+				add		si, ax						; advance source to next line
 				add		di, 2000h
 				sub		di, dx						; bank 2 = DI + (2000h - rectangle byte width)
 
@@ -125,7 +124,7 @@ namespace hga {
 				rep		movsb						; copy raster line to vram line bank 2	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
-				add		si, ax
+				add		si, ax						; advance source to next line
 				add		di, 2000h
 				sub		di, dx						; bank 3 = DI + (2000h - rectangle byte width)
 
@@ -133,7 +132,7 @@ namespace hga {
 				rep		movsb						; copy raster line to vram line bank 3	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
-
+				add		si, ax						; advance source to next line
 				sub		di, 6000h					; bank 0 next line = DI - 6000h
 				add		di, ax
 
