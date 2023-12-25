@@ -111,25 +111,25 @@ namespace hga {
 				jz		END							; BX = 0 all done
 				add		si, ax
 				add		di, 2000h				;TODO use AX as pre sum
+				sub		di, dx						; bank 1 = DI + (2000h - rectangle byte width)
 
-		BANK1:	sub		di, dx						; bank 1 = DI + (2000h - rectangle byte width)
-				mov		cx, dx						; rectangle byte width
+		BANK1:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 1	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 				add		si, ax
 				add		di, 2000h
+				sub		di, dx						; bank 2 = DI + (2000h - rectangle byte width)
 
-		BANK2:	sub		di, dx						; bank 2 = DI + (2000h - rectangle byte width)
-				mov		cx, dx						; rectangle byte width
+		BANK2:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 2	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done
 				add		si, ax
 				add		di, 2000h
+				sub		di, dx						; bank 3 = DI + (2000h - rectangle byte width)
 
-		BANK3:	sub		di, dx						; bank 3 = DI + (2000h - rectangle byte width)
-				mov		cx, dx						; rectangle byte width
+		BANK3:	mov		cx, dx						; rectangle byte width
 				rep		movsb						; copy raster line to vram line bank 3	
 				dec		bx							; dec line count 
 				jz		END							; BX = 0 all done

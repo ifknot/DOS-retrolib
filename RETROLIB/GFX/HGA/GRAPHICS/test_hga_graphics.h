@@ -57,9 +57,11 @@ namespace test_hga_graphics {
 					hga::graphics_mode();
 					hga::graphics::select_buffer(1);
 					hga::graphics::cls(HGA_BUFFER_1, 0);
-					//for (int i = 0; i < 340; i+=1) {
-						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 0, 0, 360, 348);
-					//}
+
+					for (int i = 0; i < 340; i+=3) {
+						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 0, i, 720, 3);
+					}
+					//hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data);
 
 					if (YESNO("")) {
 						hga::text_mode();
