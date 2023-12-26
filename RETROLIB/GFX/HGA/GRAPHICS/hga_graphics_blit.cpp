@@ -100,11 +100,11 @@ namespace hga {
 				// test		ax, 1
 				// jz		EVEN					; even width jmp to faster movsw version 
 	
-				// calculate next line offset BX = 90 - (w div 8) - (x div 8)
+				// calculate next line offset AX = 90 - (w div 8) - (x div 8)
 				mov		cx, HGA_BYTES_PER_LINE		; 90
 				sub		cx, ax						; 90 - (w div 8)
 				sub		cx, bx						; 90 - (w div 8) - (x div 8)
-				mov		bx, cx
+				mov		ax, cx						; AX = 90 - (w div 8) - (x div 8)
 				
 
 				// using dec reg(3 clocks x 4 per loop = 12 clocks) vs dec mem(15 clocks x 4 per loop = 60 clocks!)
@@ -127,36 +127,44 @@ namespace hga {
 				jmp		BANK1						; start on 2nd bank 
 		CASE0:										; fall through to zero offset 1st bank
 
-		BANK0:	mov		cx, w						; width counter (use 8 clock reg,mem releases BX to use in faster 3 clock reg,reg sums)
+		BANK0:	add		si, bx						; start offset RAM source  
+				add		di, bx						; start offset VRAM destination
+				mov		cx, w						; width counter (use 8 clock reg,mem releases BX to use in faster 3 clock reg,reg sums)
 				rep		movsb						; copy source rect line to vram line bank 0
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all done
-				add		si, bx						; RAM source next line
-				add		di, bx						; VRAM next line
+				add		si, ax						; RAM source next line
+				add		di, ax						; VRAM next line
 				add		di, 1FA6h					; bank 1 = DI + (2000h - 90)
 			
-		BANK1:	mov		cx, w						; rectangle byte width
+		BANK1:	add		si, bx						; start offset RAM source  
+				add		di, bx						; start offset VRAM destination	
+				mov		cx, w						; rectangle byte width
 				rep		movsb						; copy source rect line to vram line bank 1	
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all lines copied to VRAM
-				add		si, bx						; RAM source next line
-				add		di, bx						; VRAM next line
+				add		si, ax						; RAM source next line
+				add		di, ax						; VRAM next line
 				add		di, 1FA6h					; bank 2 = DI + (2000h - 90)
 
-		BANK2:	mov		cx, w						; rectangle byte width
+		BANK2:	add		si, bx						; start offset RAM source  
+				add		di, bx						; start offset VRAM destination
+				mov		cx, w						; rectangle byte width
 				rep		movsb						; copy source rect line to vram line bank 2	
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all lines copied to VRAM
-				add		si, bx						; RAM source next line
-				add		di, bx						; VRAM next line
+				add		si, ax						; RAM source next line
+				add		di, ax						; VRAM next line
 				add		di, 1FA6h					; bank 3 = DI + (2000h - 90)
 
-		BANK3:	mov		cx, w						; rectangle byte width
+		BANK3:	add		si, bx						; start offset RAM source  
+				add		di, bx						; start offset VRAM destination
+				mov		cx, w						; rectangle byte width
 				rep		movsb						; copy source rect line to vram line bank 3	
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all lines copied to VRAM
-				add		si, bx						; RAM source next line
-				add		di, bx						; VRAM next line
+				add		si, ax						; RAM source next line
+				add		di, ax						; VRAM next line
 				sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
 
 				jmp		BANK0
