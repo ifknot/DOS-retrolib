@@ -61,15 +61,7 @@ namespace hga {
 				push	bp
 				pushf
 
-				mov		bx, w
-				shr		bx, 1						; BX = (w div 8)
-				shr		bx, 1
-				shr		bx, 1						; 8086 single shifts only
-				//test	w, 7						; mod 7
-				//jz		SKIP					; zero so no remainder
-				//inc		bx						; AX = (w div 8) + overlap byte
-				// if even width jmp to faster movsw version 
-
+				// setup VRAM destination pointer ES:DI
 				mov		ax, vram_segment
 				mov		es, ax
 				mov		ax, y
@@ -79,26 +71,50 @@ namespace hga {
 				mul		cx							; AX = (y div 4) * 90
 				mov		di, ax						; ES:DI point to VRAM destination
 
+				// setup RAM source pointer DS:SI 
 				lds		si, raster_data
 				mov		ax, y
 				mul		cx							; AX = y * 90
 				add		si, ax						; DS:SI point to pixel data source
-
-				mov		cx, y								
-				mov		w, bx						; w = rectangle byte width
-				mov		y, HGA_BANK_OFFSET			; y = 2000h - (w div 8) - (x div 8)
-				//mov		ax, x
-				//shr		ax, 1					; AX = (x div 8)
-				//shr		ax, 1
-				//shr		ax, 1
-				//sub		bx, ax					; (w div 8) - (x div 8)
-				sub		y, bx						
 				
-				mov		dx, h						; putting h into DX enables faster dec reg (3 clocks) vs dec mem (15 clocks!)
+				// calculate w = w div 8 and increment if mod 8 != 0 
+				mov		bx, w						
+				mov		ax, bx						; copy w (2 clocks)
+				shr		bx, 1						; BX = (w div 8)
+				shr		bx, 1
+				shr		bx, 1						; 8086 single shifts only
+				//and	ax, 7						; mod 8 != 0? (4 clocks vs test w, 7 mem,imm 11 clocks)
+				//jz		SKIP					; zero so no remainder
+				//inc		bx						; increment byte width for partial byte overlap
+		SKIP:	mov		w, bx						; w = (w div 8) 'rect byte width'
 
+				//select movsb (odd rect byte width) or movsw (even rect byte width) blit routine
+				// test		bx, 1
+				// jz		EVEN					; even width jmp to faster movsw version 
+
+				// calculate (x div 8)
+				mov		ax, x
+				shr		ax, 1						; AX = (x div 8)
+				shr		ax, 1
+				shr		ax, 1	
+
+				// calculate y = 2000h - (w div 8) - (x div 8) offset for next line VRAM bank		
+				mov		dx, HGA_BANK_OFFSET			; 2000h	
+				sub		dx, bx						; - (w div 8)
+				sub		dx, ax						; - (x div 8)
+				mov		cx, y						; copy y
+				mov		y, dx						; x = 2000h - (w div 8) - (x div 8) 'next bank offset'
+				
+										
+
+				// calculate 
 				mov		ax, HGA_BYTES_PER_LINE		; AX = SI increment
 				sub		ax, bx						; 90 - rect_byte_width - (x div 8)
 
+				// setup rect line count putting h into DX enables loop dec reg(3 clocks x 3 per loop ) vs dec mem(15 clocks x 3 per loop !)
+				mov		dx, h
+
+				// use CX mod 3 to select the start VRAM bank						
 				and		cx, 3						; mask y lower 3 bits i.e. 0..3
 		CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 				jne		CASE2 

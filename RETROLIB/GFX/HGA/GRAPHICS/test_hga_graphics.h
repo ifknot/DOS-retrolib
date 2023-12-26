@@ -58,7 +58,7 @@ namespace test_hga_graphics {
 					hga::graphics::select_buffer(1);
 					
 					hga::graphics::cls(HGA_BUFFER_1, 0);
-					hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 8, 174, 180, 82);
+					hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 0, 174, 180, 82);
 					
 					//for (int i = 0; i < 340; i+=1) {
 						//hga::graphics::cls(HGA_BUFFER_1, 0);
