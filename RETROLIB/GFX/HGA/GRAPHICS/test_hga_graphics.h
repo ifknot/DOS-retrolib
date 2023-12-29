@@ -62,7 +62,7 @@ namespace test_hga_graphics {
 					
 					for (int i = 0; i < 340; i+=1) {
 						hga::graphics::cls(HGA_BUFFER_1, 0);
-						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, i, i, 360, 172);
+						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data[0], i, i, 360, 172);
 						//YESNO("");
 					}
 					
