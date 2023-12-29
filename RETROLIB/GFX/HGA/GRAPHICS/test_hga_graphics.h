@@ -57,14 +57,14 @@ namespace test_hga_graphics {
 					hga::graphics_mode();
 					hga::graphics::select_buffer(1);
 					
-					hga::graphics::cls(HGA_BUFFER_1, 0);
-					hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 8, 174, 360, 87);
+					//hga::graphics::cls(HGA_BUFFER_1, 0);
+					//hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 8, 174, 360, 87);
 					
-					//for (int i = 0; i < 340; i+=1) {
-						//hga::graphics::cls(HGA_BUFFER_1, 0);
-						//hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, 8, i, 360, 1);
+					for (int i = 0; i < 340; i+=1) {
+						hga::graphics::cls(HGA_BUFFER_1, 0);
+						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, i, i, 360, 172);
 						//YESNO("");
-					//}
+					}
 					
 					//hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data);
 
