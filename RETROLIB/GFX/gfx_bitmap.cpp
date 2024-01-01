@@ -74,7 +74,7 @@ namespace gfx {
 				data.memloc += str::ignore_token((char*)data.memloc, ' ');		// skip the width token
 				bmp->height = atoi((const char*)data.memloc);					// extract the height
 				data.memloc += str::ignore_line((char*)data.memloc);			// skip line to start raw pixel data
-				bmp->raster_data = (char*)data.memloc;							// data.memloc now points to start of raster date
+				bmp->raster_data[0] = (char*)data.memloc;							// data.memloc now points to start of raster date
 				bmp->raster_size = fsize - (data.memloc - mem_start);			// calculate raster size
 				bmp->bit_depth = 1;												// 1 bits per pixel
 				bmp->colour_type = GREYSCALE;									// greyscale

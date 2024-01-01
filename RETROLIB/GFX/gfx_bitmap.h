@@ -42,7 +42,7 @@ namespace gfx {
             uint16_t    height;         // raster rectangle dimensions
             uint8_t     bit_depth;      // bits per pixel (1, 2, 4, 8 , 16) or palette index
             uint8_t     colour_type;    // Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
-            char*       raster_data;    // ptr to pixel data raster image
+            char*       raster_data[8]; // ptr to pixel data raster image and any pre x-shifted optimisations for bit depths 1,2, and 4
             uint32_t    raster_size;    // size of the pixel data
             char*       palette_data;   // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
             uint32_t    palette_size;   // size of the palette data

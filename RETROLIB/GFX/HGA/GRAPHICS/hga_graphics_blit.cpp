@@ -5,7 +5,7 @@
  *  @details   ~
  *  @author    Jeremy Thornton
  *  @date      19.12.2023
- *  @copyright © Jeremy Thornton, 2023. All right reserved.
+ *  @copyright Â© Jeremy Thornton, 2023. All right reserved.
  *
  */
 #include "hga_graphics_blit.h"
@@ -116,16 +116,19 @@ namespace hga {
 		CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 				jne		CASE2 
 				add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
+				// wait for v refresh
 				jmp		BANK3						; start on 4th bank 
 		CASE2:  cmp		cx, 2
 				jne		CASE1 
 				add		di, HGA_BANK_OFFSET * 2		; 3rd bank offset
+				// wait for v refresh
 				jmp		BANK2						; start on 3rd bank
 		CASE1:  cmp		cx, 1
 				jne		CASE0
 				add		di, HGA_BANK_OFFSET			; 2nd bank offset
+				// wait for v refresh
 				jmp		BANK1						; start on 2nd bank 
-		CASE0:										; fall through to zero offset 1st bank
+		CASE0:		// wait for v refresh								; fall through to zero offset 1st bank
 
 		BANK0:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination
