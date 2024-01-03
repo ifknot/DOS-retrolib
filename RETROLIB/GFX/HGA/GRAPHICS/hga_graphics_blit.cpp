@@ -16,7 +16,7 @@ namespace hga {
 
 	namespace graphics {
 
-		void blit(uint16_t vram_segment, char* raster_data) {
+		void blit_vram_bmp(uint16_t vram_segment, char* raster_data) {
 			__asm {
 				.8086
 				push	bp
@@ -55,63 +55,64 @@ namespace hga {
 			}
 		}
 
-		void blit(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
+		void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 			__asm {
-				.8086								; NB clock cycle comments refer to 8086
+				.8086; NB clock cycle comments refer to 8086
 				push	bp
 				pushf
-
-					
 
 				// setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
 				mov		ax, vram_segment
 				mov		es, ax
-				mov		ax, y						; AX = (y div 4)
-				shr		ax, 1 
-				shr		ax, 1						
-				mov		cx, HGA_BYTES_PER_LINE		; CX = 90
-				mul		cx							; AX = (y div 4) * 90
-				mov		bx, x						; BX = (x div 8)
-				shr		bx, 1						
+				mov		ax, y; AX = (y div 4)
+				shr		ax, 1
+				shr		ax, 1
+				mov		cx, HGA_BYTES_PER_LINE; CX = 90
+				mul		cx; AX = (y div 4) * 90
+				mov		bx, x; BX = (x div 8)
 				shr		bx, 1
 				shr		bx, 1
-				add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
-				mov		di, ax						; ES:DI point to VRAM destination
+				shr		bx, 1
+				add		ax, bx; AX = (y div 4) * 90) + (x div 8)
+				mov		di, ax; ES:DI point to VRAM destination
 
 				// setup RAM source pointer DS:SI = (y * 90) + (x div 8)
 				lds		si, raster_data
 				mov		ax, y
-				mul		cx							; AX = (y * 90)
-				add		ax, bx						; AX = (y * 90) + (x div 8)
-				add		si, ax						; DS:SI point to pixel data source
-				
+				mul		cx; AX = (y * 90)
+				add		ax, bx; AX = (y * 90) + (x div 8)
+				add		si, ax; DS:SI point to pixel data source
+
 				// calculate w = (w div 8) + ((w mod 8) != 0 ? 1 : 0)
-				mov		ax, w						
-				mov		cx, ax						; copy w (2 clocks)
-				shr		ax, 1						; AX = (w div 8)
+				mov		ax, w
+				mov		cx, ax; copy w(2 clocks)
+				shr		ax, 1; AX = (w div 8)
 				shr		ax, 1
-				shr		ax, 1						
-				and		cx, 7						; mod 8 != 0? (4 clocks vs test w, 7 mem,imm 11 clocks)
-				jz		SKIP						; zero so no remainder
-				inc		ax							; increment byte width - partial byte overlap
-		SKIP:	mov		w, ax						; w = (w div 8) 
+				shr		ax, 1
+				and cx, 7; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
+				jz		SKIP; zero so no remainder
+				inc		ax; increment byte width - partial byte overlap
+				SKIP : mov		w, ax; w = (w div 8)
 
 				//select movsb (odd w) or movsw (even w) blit routine
 				// test		ax, 1
 				// jz		EVEN					; even width jmp to faster movsw version 
-	
+
 				// calculate next line offset AX = 90 - (w div 8) - (x div 8)
-				mov		cx, HGA_BYTES_PER_LINE		; 90
-				sub		cx, ax						; 90 - (w div 8)
-				sub		cx, bx						; 90 - (w div 8) - (x div 8)
-				mov		ax, cx						; AX = 90 - (w div 8) - (x div 8)
-				
+				mov		cx, HGA_BYTES_PER_LINE; 90
+				sub		cx, ax; 90 - (w div 8)
+				sub		cx, bx; 90 - (w div 8) - (x div 8)
+				mov		ax, cx; AX = 90 - (w div 8) - (x div 8)
+
 
 				// using dec reg(3 clocks x 4 per loop = 12 clocks) vs dec mem(15 clocks x 4 per loop = 60 clocks!)
 				mov		dx, h
 
 				// use CX mod 3 to select the start VRAM bank	
-				mov		cx, y						
+				mov		cx, y
+				// safe to use BP as all args using [BP + ] no longer needed to access		
+				mov		bp, w						; last of all, with all args used, load BP width
+
 				and		cx, 3						; mask y lower 3 bits i.e. 0..3
 		CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 				jne		CASE2 
@@ -132,7 +133,7 @@ namespace hga {
 
 		BANK0:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination
-				mov		cx, w						; width counter (use 8 clock reg,mem releases BX to use in faster 3 clock reg,reg sums)
+				mov		cx, bp						; width counter (mov reg, reg 2 clocks)
 				rep		movsb						; copy source rect line to vram line bank 0
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all done
@@ -142,7 +143,7 @@ namespace hga {
 			
 		BANK1:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination	
-				mov		cx, w						; rectangle byte width
+				mov		cx, bp						; width counter(mov reg, reg 2 clocks)
 				rep		movsb						; copy source rect line to vram line bank 1	
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all lines copied to VRAM
@@ -152,7 +153,7 @@ namespace hga {
 
 		BANK2:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination
-				mov		cx, w						; rectangle byte width
+				mov		cx, bp						; width counter(mov reg, reg 2 clocks)
 				rep		movsb						; copy source rect line to vram line bank 2	
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all lines copied to VRAM
@@ -162,7 +163,7 @@ namespace hga {
 
 		BANK3:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination
-				mov		cx, w						; rectangle byte width
+				mov		cx, bp						; width counter(mov reg, reg 2 clocks)
 				rep		movsb						; copy source rect line to vram line bank 3	
 				dec		dx							; dec line count (3 clocks)
 				jz		END							; DX = 0 all lines copied to VRAM

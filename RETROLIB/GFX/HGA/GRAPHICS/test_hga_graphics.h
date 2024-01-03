@@ -58,7 +58,7 @@ namespace test_hga_graphics {
 					hga::graphics::select_buffer(1);
 					
 					hga::graphics::cls(HGA_BUFFER_1, 0);
-					hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data);
+					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data[0]);
 
 					if (YESNO("")) {
 						hga::text_mode();
@@ -71,7 +71,7 @@ namespace test_hga_graphics {
 
 					for (int i = 0; i < 340; i += 1) {
 						hga::graphics::cls(HGA_BUFFER_1, 0);
-						hga::graphics::blit(HGA_BUFFER_1, bmp.raster_data, i, i, 360, 87);
+						hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data[0], i, i, 360, 87);
 						//YESNO("");
 					}
 
