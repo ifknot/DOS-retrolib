@@ -1,7 +1,7 @@
-Open Watcom Linker Version 2.0 beta Nov 25 2023 01:55:44 (64-bit)
+Open Watcom Linker Version 2.0 beta Nov 21 2023 16:15:01 (64-bit)
 Copyright (c) 2002-2023 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       24/01/03 14:24:05
+Created on:       24/01/03 20:43:01
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -342,7 +342,7 @@ STACK                  STACK          DGROUP         2a8f:0000       00000800
 Address        Symbol
 =======        ======
 
-Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
+Module: main.obj(C:\Users\ifkno\DOSBOX\RETROLIB\main.cpp)
 0000:01a4+     void __far test_debug_macros::run()
 0000:03c3+     void __far test_dos_types::run()
 0000:0686+     void __far test_dos_interrupt_vector::run()
@@ -368,20 +368,20 @@ Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
 0000:a1ee+     void __far test_hga_graphics::run()
 0000:a73a+     void __far test_retrolib::run()
 0000:a7a9      main_
-Module: bios_memory_size.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_memory_size.cpp)
+Module: bios_memory_size.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\BIOS\bios_memory_size.cpp)
 0000:abb3      short unsigned __far bios::memory_size_KiB()
-Module: bios_video_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_video_services.cpp)
+Module: bios_video_services.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\BIOS\bios_video_services.cpp)
 0000:abe2      void __far bios::set_video_mode( char unsigned )
 0000:ac0f      void __far bios::get_video_state( bios::video_state_t __far * )
 0000:ac45      char unsigned __far bios::video_subsystem_configuration( char unsigned, char unsigned, bios::video_subsystem_config_t __far * )
-Module: dos_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp)
+Module: dos_services.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\DOS\dos_services.cpp)
 0000:ad59      void __far dos::set_interrupt_vector( char unsigned, mem::address_t )
 0000:ad93      mem::address_t __far dos::get_interrupt_vector( char unsigned )
 0000:addb      short unsigned __far dos::allocate_memory_blocks( short unsigned )
 0000:af27      short unsigned __far dos::free_allocated_memory_blocks( short unsigned )
-Module: dos_services_3x.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp)
+Module: dos_services_3x.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp)
 0000:b014      void __far dos3x::get_extended_error_information( dos3x::extended_error_information_t __far * )
-Module: dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp)
+Module: dos_services_files.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\DOS\dos_services_files.cpp)
 0000:b0d4      void __far dos::get_disk_free_space( char unsigned, dos::file::disk_space_info_t __far * )
 0000:b1c8      short unsigned __far dos::create_file_using_handle( char const __far *, short unsigned )
 0000:b2a6      short unsigned __far dos::open_file_using_handle( char const __far *, char unsigned )
@@ -392,42 +392,42 @@ Module: dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS
 0000:b752      long __far dos::move_file_pointer_using_handle( short unsigned, char unsigned, long )
 0000:b866      short unsigned __far dos::get_file_attributes( char __far * )
 0000:b943      short unsigned __far dos::set_file_attributes( char __far *, short unsigned )
-Module: file_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\FILE\file_toolbox.cpp)
+Module: file_toolbox.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\FILE\file_toolbox.cpp)
 0000:ba1d      char const __far * __far file::get_extension( char const __far * )
 0000:baab      long unsigned __far file::get_size( char const __far * )
 0000:bb1a      long unsigned __far file::get_size( short unsigned )
 0000:bb7e+     long unsigned __far file::skip_white_space( short unsigned, char const __far * )
 0000:bbb3+     long unsigned __far file::skip_line( short unsigned )
-Module: cga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\CGA\cga_detect_adapter.cpp)
+Module: cga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\CGA\cga_detect_adapter.cpp)
 0000:bbe6      char unsigned __far cga::detect_adapter()
-Module: ega_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\EGA\ega_detect_adapter.cpp)
+Module: ega_detect_adapter.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\EGA\ega_detect_adapter.cpp)
 0000:bc25      char unsigned __far ega::detect_adapter()
-Module: gfx_bitmap.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_bitmap.cpp)
+Module: gfx_bitmap.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\gfx_bitmap.cpp)
 0000:bc77      void __far gfx::bmp::pbm::load_file( char const __far *, gfx::bmp::bitmap_t __far *, mem::arena::arena_t __far * )
 0000:c08d      std::ostream __far & __far operator <<( std::ostream __far &, gfx::bmp::bitmap_t const __far & )
-Module: gfx_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_adapter.cpp)
+Module: gfx_detect_adapter.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\gfx_detect_adapter.cpp)
 0000:c38f      char unsigned __far gfx::detect_monochrome_adapter()
 0000:c3ba      char unsigned __far gfx::detect_colour_adapter()
 0000:c413      char unsigned __far gfx::detect_adapter()
-Module: gfx_detect_crtc.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_crtc.cpp)
+Module: gfx_detect_crtc.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\gfx_detect_crtc.cpp)
 0000:c476      bool __far gfx::detect_CRTC_at_port( short unsigned )
-Module: hga_graphics_blit.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_blit.cpp)
+Module: hga_graphics_blit.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_blit.cpp)
 0000:c4de      void __far hga::graphics::blit_vram_bmp( short unsigned, char __far * )
 0000:c542      void __far hga::graphics::blit_vram_bmp( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned )
-Module: hga_graphics_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_toolbox.cpp)
+Module: hga_graphics_toolbox.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_toolbox.cpp)
 0000:c63f      void __far hga::graphics::cls( short unsigned, char unsigned )
 0000:c67d      void __far hga::graphics::select_buffer( char unsigned )
-Module: hga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp)
+Module: hga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp)
 0000:c6b9      char unsigned __far hga::detect_adapter()
-Module: hga_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_toolbox.cpp)
+Module: hga_toolbox.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\HGA\hga_toolbox.cpp)
 0000:c740      void __far hga::cls( char, char )
 0000:c77f      void __far hga::video_mode( char unsigned const __far *, char unsigned, char unsigned )
-Module: vga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\VGA\vga_detect_adapter.cpp)
+Module: vga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\GFX\VGA\vga_detect_adapter.cpp)
 0000:c7d4      char unsigned __far vga::detect_adapter()
-Module: mem_address.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_address.cpp)
+Module: mem_address.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\MEM\mem_address.cpp)
 0000:c9d7      std::ostream __far & __far operator <<int __far ><( std::ostream __far &, smanip<int __far > const __far & )
 0000:c821      std::ostream __far & __far operator <<( std::ostream __far &, mem::address_t const __far & )
-Module: mem_arena.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_arena.cpp)
+Module: mem_arena.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\MEM\mem_arena.cpp)
 0000:ca40      mem::arena::arena_t __far * __far mem::arena::new_dos_arena( long unsigned )
 0000:cb8a      long unsigned __far mem::arena::delete_dos_arena( mem::arena::arena_t __far * )
 0000:cbec      long unsigned __far mem::arena::size( mem::arena::arena_t __far * )
@@ -435,9 +435,9 @@ Module: mem_arena.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_aren
 0000:cc68      char __far * __far mem::arena::raw_alloc( mem::arena::arena_t __far *, long unsigned )
 0000:cdb0      char __far * __far mem::arena::raw_dealloc( mem::arena::arena_t __far *, long unsigned )
 0000:cef8      std::ostream __far & __far operator <<( std::ostream __far &, mem::arena::arena_t const __far & )
-Module: mem_segoff.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_segoff.cpp)
+Module: mem_segoff.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\MEM\mem_segoff.cpp)
 0000:d004      std::ostream __far & __far operator <<( std::ostream __far &, mem::segoff_t const __far & )
-Module: mem_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_toolbox.cpp)
+Module: mem_toolbox.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\MEM\mem_toolbox.cpp)
 0000:d2de      long unsigned __far mem::available_low_memory_bytes()
 0000:d378      mem::address_t __far mem::dump( mem::address_t, long unsigned )
 0000:d3d5      mem::address_t __far mem::dump_ostream( std::ostream __far &, mem::address_t, short unsigned )
@@ -446,90 +446,90 @@ Module: mem_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_to
 0000:d994      long unsigned __far mem::load_from_file_using_handle( short unsigned, mem::address_t, short unsigned )
 0000:da03      long unsigned __far mem::save_to_file( char const __far *, mem::address_t, short unsigned )
 0000:da8f      long unsigned __far mem::write_ostream( std::ostream __far &, mem::address_t, short unsigned )
-Module: str_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\STR\str_toolbox.cpp)
+Module: str_toolbox.obj(C:\Users\ifkno\DOSBOX\RETROLIB\RETROLIB\STR\str_toolbox.cpp)
 0000:db03      int __far str::ignore_token( char const __far *, char, int )
 0000:db5a      int __far str::skip_chars( char const __far *, char const __far *, int )
 0000:dbd2      int __far str::in_place_to_upper( char __far *, int, int )
 0000:dc4e      int __far str::in_place_to_lower( char __far *, int, int )
 0000:dcca      int __far str::copy_convert_to_upper( char const __far *, char __far *, int, int )
 0000:dd9f      int __far str::copy_convert_to_lower( char const __far *, char __far *, int, int )
-Module: C:\WATCOM\lib286\dos\clibl.lib(stk086.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(stk086.asm)
 0de8:0005      __STK
 0de8:0025      __STKOVERFLOW_
-Module: C:\WATCOM\lib286\plbxl.lib(manendl.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(manendl.cpp)
 0de8:774b      std::ostream __far & __far std::endl( std::ostream __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(ioicout.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ioicout.cpp)
 1e7b:bf28      std::ostream __near std::cout
 0de8:77c9+     __far cout_initfini::cout_initfini()
 0de8:77d6+     __far cout_initfini::~cout_initfini()
-Module: C:\WATCOM\lib286\plbxl.lib(ostincch.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostincch.cpp)
 0de8:77f6      std::ostream __far & __far std::ostream::operator <<( char const __far * )
-Module: C:\WATCOM\lib286\plbxl.lib(ostinomn.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostinomn.cpp)
 0de8:78a6      std::ostream __far & __far std::ostream::operator <<( std::ostream __far & (__far *)())
-Module: C:\WATCOM\lib286\dos\clibl.lib(scanf.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(scanf.c)
 0de8:00a4+     vscanf_
 0de8:00d2      scanf_
-Module: C:\WATCOM\lib286\dos\clibl.lib(getchar.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(getchar.c)
 0de8:00ec      getchar_
-Module: C:\WATCOM\lib286\plbxl.lib(mandec.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(mandec.cpp)
 0de8:78b9      std::ios __far & __far std::dec( std::ios __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(ostincha.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostincha.cpp)
 0de8:78c8      std::ostream __far & __far std::ostream::operator <<( char )
-Module: C:\WATCOM\lib286\plbxl.lib(ostiniom.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostiniom.cpp)
 0de8:79ba      std::ostream __far & __far std::ostream::operator <<( std::ios __far & (__far *)())
-Module: C:\WATCOM\lib286\plbxl.lib(ostinulo.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostinulo.cpp)
 0de8:79e2      std::ostream __far & __far std::ostream::operator <<( long unsigned )
-Module: C:\WATCOM\lib286\plbxl.lib(manhex.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(manhex.cpp)
 0de8:7b53      std::ios __far & __far std::hex( std::ios __far & )
-Module: C:\WATCOM\lib286\dos\clibl.lib(assert99.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(assert99.c)
 0de8:012d      _assert99_
 0de8:02ca*     __assert99_
-Module: C:\WATCOM\lib286\plbxl.lib(ostinslo.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostinslo.cpp)
 0de8:7b62      std::ostream __far & __far std::ostream::operator <<( long )
-Module: C:\WATCOM\lib286\dos\clibl.lib(i4m.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(i4m.asm)
 0de8:0300      __I4M
 0de8:0300      __U4M
-Module: C:\WATCOM\lib286\plbxl.lib(ioicin.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ioicin.cpp)
 1e7b:bf98      std::istream __near std::cin
 0de8:7ce7+     __far cin_initfini::cin_initfini()
-Module: C:\WATCOM\lib286\plbxl.lib(istexush.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istexush.cpp)
 0de8:7d03      std::istream __far & __far std::istream::operator >>( short unsigned __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(istexulo.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istexulo.cpp)
 0de8:7d7d      std::istream __far & __far std::istream::operator >>( long unsigned __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(istexslo.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istexslo.cpp)
 0de8:7dfd      std::istream __far & __far std::istream::operator >>( long __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(cppdata.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(cppdata.cpp)
 1e7b:bfc8      __wint_thread_data
 1e7b:bfec      __compiled_under_generic
-Module: C:\WATCOM\lib286\plbxl.lib(fsregist.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(fsregist.cpp)
 0de8:7e80+     __wcpp_4_dispatch_dummy__
 0de8:7eb9      __wcpp_4_fs_lookup__
 0de8:7fc8      __wcpp_4_fs_handler_rtn__
 0de8:8136      __wcpp_4_unwind_global__
 0de8:81af      __wcpp_4_raise_exception__
-Module: C:\WATCOM\lib286\plbxl.lib(ofsconde.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ofsconde.cpp)
 0de8:8204      __far std::ofstream::ofstream()
-Module: C:\WATCOM\lib286\plbxl.lib(flfoprot.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfoprot.cpp)
 1e7b:a594      int const __far std::filebuf::openprot
-Module: C:\WATCOM\lib286\plbxl.lib(fsbopen.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(fsbopen.cpp)
 0de8:831a      void __far std::fstreambase::open( char const __far *, int, int )
-Module: C:\WATCOM\lib286\plbxl.lib(fsbclose.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(fsbclose.cpp)
 0de8:838e      void __far std::fstreambase::close()
-Module: C:\WATCOM\lib286\plbxl.lib(ofsdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ofsdestr.cpp)
 0de8:83dc      __far std::ofstream::~ofstream()
-Module: C:\WATCOM\lib286\plbxl.lib(istexsin.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istexsin.cpp)
 0de8:84f7      std::istream __far & __far std::istream::operator >>( int __far & )
-Module: C:\WATCOM\lib286\dos\clibl.lib(memcpy.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(memcpy.c)
 0de8:0318      memcpy_
-Module: C:\WATCOM\lib286\plbxl.lib(opdel.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(opdel.cpp)
 0de8:8577      void __far operator delete( void __far * )
-Module: C:\WATCOM\lib286\plbxl.lib(opnew.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(opnew.cpp)
 0de8:8585      void __far * __far operator new( int unsigned )
-Module: C:\WATCOM\lib286\plbxl.lib(undefed.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(undefed.cpp)
 0de8:85fd      __wcpp_4_undefed_cdtor__
-Module: C:\WATCOM\lib286\plbxl.lib(undefmbd.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(undefmbd.cpp)
 1e7b:bfee      ___wcpp_4_data_undefined_member_data_
-Module: C:\WATCOM\lib286\dos\clibl.lib(cstart)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(cstart)
 1e7b:0000*     __nullarea
 1e7b:b704*     __ovlflag
 1e7b:b705*     __intno
@@ -538,33 +538,33 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(cstart)
 0de8:04eb      __exit_
 0de8:0508      __do_exit_with_msg_
 0de8:05e7      __GETDS
-Module: C:\WATCOM\lib286\dos\clibl.lib(cmodel.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(cmodel.asm)
 0de8:05f2      _big_code_
 0de8:05f2*     CodeModelMismatch
-Module: C:\WATCOM\lib286\plbxl.lib(fsroot.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(fsroot.cpp)
 1e7b:be98      ___wcpp_4_data_init_fs_root_
-Module: C:\WATCOM\lib286\dos\clibl.lib(strrchr.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(strrchr.c)
 0de8:05f2      strrchr_
-Module: C:\WATCOM\lib286\dos\clibl.lib(strcmp.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(strcmp.c)
 0de8:0618      strcmp_
-Module: C:\WATCOM\lib286\dos\clibl.lib(atoi.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(atoi.c)
 0de8:0640      atoi_
-Module: C:\WATCOM\lib286\plbxl.lib(mansetw.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(mansetw.cpp)
 1e7b:bff0      sapp<int __far > __near std::setw
-Module: C:\WATCOM\lib286\plbxl.lib(mansfill.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(mansfill.cpp)
 1e7b:bff4      sapp<int __far > __near std::setfill
-Module: C:\WATCOM\lib286\dos\clibl.lib(strchr.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(strchr.c)
 0de8:06b0      strchr_
-Module: C:\WATCOM\lib286\dos\clibl.lib(strlen.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(strlen.c)
 0de8:06cf      strlen_
-Module: C:\WATCOM\lib286\dos\clibl.lib(toupper.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(toupper.c)
 0de8:06e4      toupper_
-Module: C:\WATCOM\lib286\dos\clibl.lib(tolower.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(tolower.c)
 0de8:06f2      tolower_
-Module: C:\WATCOM\lib286\dos\clibl.lib(xmsg.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(xmsg.c)
 0de8:0700      __exit_with_msg_
 0de8:0705      __fatal_runtime_error_
-Module: C:\WATCOM\lib286\dos\clibl.lib(crwdata)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(crwdata)
 1e7b:b70a      __curbrk
 1e7b:b712      __STACKLOW
 1e7b:b714      __STACKTOP
@@ -582,171 +582,171 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(crwdata)
 1e7b:b70f      __osminor
 1e7b:b710      __osmode
 1e7b:b711      __HShift
-Module: C:\WATCOM\lib286\plbxl.lib(ostput.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostput.cpp)
 0de8:8650      std::ostream __far & __far std::ostream::put( char )
-Module: C:\WATCOM\lib286\plbxl.lib(ostflush.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostflush.cpp)
 0de8:8722      std::ostream __far & __far std::ostream::flush()
-Module: C:\WATCOM\lib286\dos\clibl.lib(iobaddr.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(iobaddr.c)
 0de8:0720      __get_std_stream_
 0de8:0720*     __get_std_file_
-Module: C:\WATCOM\lib286\plbxl.lib(sdfconfp.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(sdfconfp.cpp)
 0de8:8773      __far stdiobuf::stdiobuf( __iobuf __far * )
-Module: C:\WATCOM\lib286\plbxl.lib(stablcl.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stablcl.cpp)
 0de8:8791      __wcpp_4_lcl_register__
-Module: C:\WATCOM\lib286\plbxl.lib(ostconsf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostconsf.cpp)
 0de8:8796      __far std::ostream::ostream( std::streambuf __far * )
-Module: C:\WATCOM\lib286\plbxl.lib(ostdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostdestr.cpp)
 0de8:8879      __far std::ostream::~ostream()
-Module: C:\WATCOM\lib286\plbxl.lib(sdfdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(sdfdestr.cpp)
 0de8:896b      __far stdiobuf::~stdiobuf()
-Module: C:\WATCOM\lib286\plbxl.lib(moddtorr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(moddtorr.cpp)
 1e7b:bec8      ___wcpp_4_data_module_dtor_ref_
-Module: C:\WATCOM\lib286\plbxl.lib(ostopfx.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostopfx.cpp)
 0de8:8a54      int __far std::ostream::do_opfx()
-Module: C:\WATCOM\lib286\plbxl.lib(iouwrtit.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(iouwrtit.cpp)
 0de8:8ac3      int __far __WATCOM_ios::writeitem( std::ostream __far &, char const __far *, int, int )
-Module: C:\WATCOM\lib286\plbxl.lib(iossetst.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(iossetst.cpp)
 0de8:8e86+     __far std::ios::failure::failure( std::ios::failure const __far & )
 0de8:8e94+     __far std::ios::failure::~failure()
 0de8:8e95+     __far __WATCOM_exception::__WATCOM_exception( __WATCOM_exception const __far & )
 0de8:8e96+     __far __WATCOM_exception::~__WATCOM_exception()
 0de8:8e4d      void __far std::ios::setstate( int )
-Module: C:\WATCOM\lib286\dos\clibl.lib(iob.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(iob.c)
 1e7b:b734      ___iob
 1e7b:bff8      ___OpenStreams
 1e7b:bffc      ___ClosedStreams
-Module: C:\WATCOM\lib286\dos\clibl.lib(fgetc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fgetc.c)
 0de8:073e+     __fill_buffer_
 0de8:0833      fgetc_
-Module: C:\WATCOM\lib286\dos\clibl.lib(ungetc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(ungetc.c)
 0de8:08dd      ungetc_
-Module: C:\WATCOM\lib286\dos\clibl.lib(scnf.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(scnf.c)
 0de8:17cc      __scnf_
-Module: C:\WATCOM\lib286\plbxl.lib(pure_err.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(pure_err.cpp)
 0de8:8e97      __wcpp_4_pure_error__
-Module: C:\WATCOM\lib286\plbxl.lib(ostdlshf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostdlshf.cpp)
 0de8:8ebb      std::ostream __far & __far std::ostream::do_lshift( char )
-Module: C:\WATCOM\lib286\plbxl.lib(ioufgtba.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ioufgtba.cpp)
 0de8:8f02      int __far __FlagsToBase( long )
-Module: C:\WATCOM\lib286\plbxl.lib(ostadpre.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostadpre.cpp)
 0de8:8f20      void __far __AddPrefix( char, char __far *, int __far &, int, long )
-Module: C:\WATCOM\lib286\dos\clibl.lib(ltoa.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(ltoa.c)
 0de8:1a33      ultoa_
 0de8:1aa2      ltoa_
-Module: C:\WATCOM\lib286\dos\clibl.lib(_istrupr.gas)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(_istrupr.gas)
 0de8:1ad2      strupr_
-Module: C:\WATCOM\lib286\dos\clibl.lib(_snprint.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(_snprint.c)
 0de8:1b09+     _vsnprintf_
 0de8:1b6e      _snprintf_
-Module: C:\WATCOM\lib286\dos\clibl.lib(enterdb.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(enterdb.c)
 0de8:1b8f      __EnterWVIDEO_
 1e7b:b89c      __WD_Present
-Module: C:\WATCOM\lib286\dos\clibl.lib(stack086.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(stack086.c)
 0de8:1bb3      stackavail_
-Module: C:\WATCOM\lib286\dos\clibl.lib(sprintf.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(sprintf.c)
 0de8:1bc7      sprintf_
-Module: C:\WATCOM\lib286\dos\clibl.lib(rterrmsg.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(rterrmsg.c)
 0de8:1be8      __rterr_msg_
-Module: C:\WATCOM\lib286\dos\clibl.lib(abort.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(abort.c)
 0de8:1c1b      abort_
 0de8:1c33*     __terminate_
 1e7b:b89e+     ___abort
-Module: C:\WATCOM\lib286\plbxl.lib(istconsf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istconsf.cpp)
 0de8:8f8c      __far std::istream::istream( std::streambuf __far * )
-Module: C:\WATCOM\lib286\plbxl.lib(istdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istdestr.cpp)
 0de8:9082      __far std::istream::~istream()
-Module: C:\WATCOM\lib286\plbxl.lib(istipfx.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istipfx.cpp)
 0de8:9174      int __far std::istream::ipfx( int )
-Module: C:\WATCOM\lib286\plbxl.lib(istgetul.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istgetul.cpp)
 0de8:91c3      int __far __getunsignedlong( std::streambuf __far *, long unsigned __far &, long unsigned, long, long )
-Module: C:\WATCOM\lib286\plbxl.lib(stabdtor.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stabdtor.cpp)
 0de8:96e3      __wcpp_4_destruct_internal__
 0de8:9701*     __wcpp_4_destruct_all__
 0de8:9703*     __wcpp_4_destruct__
-Module: C:\WATCOM\lib286\plbxl.lib(stabdisp.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stabdisp.cpp)
 0de8:99f4      __wcpp_4_dispatchable__
-Module: C:\WATCOM\lib286\plbxl.lib(fsbconde.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(fsbconde.cpp)
 0de8:9a6f      __far std::fstreambase::fstreambase()
-Module: C:\WATCOM\lib286\plbxl.lib(ostconde.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ostconde.cpp)
 0de8:9b6d      __far std::ostream::ostream()
-Module: C:\WATCOM\lib286\plbxl.lib(iosconde.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(iosconde.cpp)
 0de8:9bc0      __far std::ios::ios()
-Module: C:\WATCOM\lib286\plbxl.lib(fsbdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(fsbdestr.cpp)
 0de8:9bd1      __far std::fstreambase::~fstreambase()
-Module: C:\WATCOM\lib286\plbxl.lib(iosdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(iosdestr.cpp)
 0de8:9cd4      __far std::ios::~ios()
-Module: C:\WATCOM\lib286\plbxl.lib(flfopen.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfopen.cpp)
 0de8:9d7c      std::filebuf __far * __far std::filebuf::open( char const __far *, int, int )
-Module: C:\WATCOM\lib286\plbxl.lib(iosclear.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(iosclear.cpp)
 0de8:9e2b      int __far std::ios::clear( int )
-Module: C:\WATCOM\lib286\plbxl.lib(flfclose.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfclose.cpp)
 0de8:9e43      std::filebuf __far * __far std::filebuf::close()
-Module: C:\WATCOM\lib286\plbxl.lib(dtorarst.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(dtorarst.cpp)
 0de8:9e88      __wcpp_4_dtor_array_store__
-Module: C:\WATCOM\lib286\plbxl.lib(opdelarr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(opdelarr.cpp)
 0de8:9eb1      void __far operator delete []( void __far * )
-Module: C:\WATCOM\lib286\dos\clibl.lib(ffree.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(ffree.c)
 0de8:1c41      _ffree_
 0de8:1c41      free_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fmalloc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fmalloc.c)
 0de8:1c89      _fmalloc_
 0de8:1c89      malloc_
 1e7b:b8a2+     ___fheapbeg
 1e7b:b8a4      ___fheapRover
 1e7b:b8a6      ___LargestSizeB4Rover
-Module: C:\WATCOM\lib286\plbxl.lib(fatalerr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(fatalerr.cpp)
 0de8:9eb6      __wcpp_4_fatal_runtime_error__
-Module: C:\WATCOM\lib286\dos\clibl.lib(cmain086.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(cmain086.c)
 0de8:1d99      __CMain
-Module: C:\WATCOM\lib286\dos\clibl.lib(initrtns.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(initrtns.c)
 0de8:1deb      __InitRtns
 0de8:1deb*     __FInitRtns
 0de8:1e42      __FiniRtns
 0de8:1e42*     __FFiniRtns
-Module: C:\WATCOM\lib286\dos\clibl.lib(uselfn.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(uselfn.c)
 1e7b:b8a8      ___uselfn
-Module: C:\WATCOM\lib286\dos\clibl.lib(dosseg)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(dosseg)
 0de8:1ea2      __DOSseg__
-Module: C:\WATCOM\lib286\dos\clibl.lib(istable.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(istable.c)
 1e7b:a596      __IsTable
-Module: C:\WATCOM\lib286\plbxl.lib(vfun_err.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(vfun_err.cpp)
 0de8:9ed3      __wcpp_4_undef_vfun__
-Module: C:\WATCOM\lib286\plbxl.lib(stfdsgtn.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfdsgtn.cpp)
 0de8:9ef7      int __far std::streambuf::do_sgetn( char __far *, int )
-Module: C:\WATCOM\lib286\plbxl.lib(stfdspun.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfdspun.cpp)
 0de8:9f97      int __far std::streambuf::do_sputn( char const __far *, int )
-Module: C:\WATCOM\lib286\plbxl.lib(stfpbfai.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfpbfai.cpp)
 0de8:a079      int __far std::streambuf::pbackfail( int )
-Module: C:\WATCOM\lib286\plbxl.lib(sdfoverf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(sdfoverf.cpp)
 0de8:a07d      int __far stdiobuf::overflow( int )
-Module: C:\WATCOM\lib286\plbxl.lib(sdfundrf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(sdfundrf.cpp)
 0de8:a25f      int __far stdiobuf::underflow()
-Module: C:\WATCOM\lib286\plbxl.lib(stfsbuf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfsbuf.cpp)
 0de8:a3db      std::streambuf __far * __far std::streambuf::setbuf( char __far *, int )
-Module: C:\WATCOM\lib286\plbxl.lib(stfseeko.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfseeko.cpp)
 0de8:a452      long __far std::streambuf::seekoff( long, int, int )
-Module: C:\WATCOM\lib286\plbxl.lib(stfseekp.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfseekp.cpp)
 0de8:a45e      long __far std::streambuf::seekpos( long, int )
-Module: C:\WATCOM\lib286\plbxl.lib(sdfsync.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(sdfsync.cpp)
 0de8:a47f      int __far stdiobuf::sync()
-Module: C:\WATCOM\lib286\plbxl.lib(stfdoall.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfdoall.cpp)
 0de8:a4ab      int __far std::streambuf::doallocate()
-Module: C:\WATCOM\lib286\plbxl.lib(stfconde.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfconde.cpp)
 0de8:a4e8      __far std::streambuf::streambuf()
-Module: C:\WATCOM\lib286\plbxl.lib(stabmod.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stabmod.cpp)
 0de8:a556      __wcpp_4_module_dtor__
 0de8:a5a8      __wcpp_4_mod_register__
-Module: C:\WATCOM\lib286\plbxl.lib(iosinit.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(iosinit.cpp)
 0de8:a5cc      void __far std::ios::init( std::streambuf __far * )
-Module: C:\WATCOM\lib286\plbxl.lib(stfdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfdestr.cpp)
 0de8:a627      __far std::streambuf::~streambuf()
-Module: C:\WATCOM\lib286\dos\clibl.lib(flush.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(flush.c)
 0de8:1ea3      __flush_
-Module: C:\WATCOM\lib286\plbxl.lib(opnewarr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(opnewarr.cpp)
 0de8:a651      void __far * __far operator new []( int unsigned )
-Module: C:\WATCOM\lib286\plbxl.lib(iosfail.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(iosfail.cpp)
 0de8:a656      __far std::ios::failure::failure( int )
-Module: C:\WATCOM\lib286\plbxl.lib(stabthrw.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stabthrw.cpp)
 0de8:aeda+     __far std::exception::exception()
 0de8:af30+     __far std::exception::exception( std::exception const __far & )
 0de8:afab+     __far std::exception::exception( char const __far * )
@@ -759,154 +759,154 @@ Module: C:\WATCOM\lib286\plbxl.lib(stabthrw.cpp)
 0de8:addf      __wcpp_4_throw__
 0de8:ae3b*     __wcpp_4_throw_zero__
 0de8:ae7b*     __wcpp_4_rethrow__
-Module: C:\WATCOM\lib286\dos\clibl.lib(initfile.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(initfile.c)
 0de8:1fdb      __InitFiles_
-Module: C:\WATCOM\lib286\dos\clibl.lib(ioexit.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(ioexit.c)
 0de8:2136*     fcloseall_
 0de8:213d      __full_io_exit_
-Module: C:\WATCOM\lib286\dos\clibl.lib(flushall.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(flushall.c)
 0de8:2147      __flushall_
 0de8:21a4*     flushall_
-Module: C:\WATCOM\lib286\dos\clibl.lib(gtche.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(gtche.c)
 0de8:21a9      getche_
-Module: C:\WATCOM\lib286\dos\clibl.lib(ioalloc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(ioalloc.c)
 0de8:21c3      __ioalloc_
-Module: C:\WATCOM\lib286\dos\clibl.lib(qread.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(qread.c)
 0de8:225d      __qread_
-Module: C:\WATCOM\lib286\dos\clibl.lib(errno.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(errno.c)
 0de8:227d      __get_errno_ptr_
 1e7b:c000+     _errno
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbisdbcs.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbisdbcs.c)
 1e7b:b8aa      ___IsDBCS
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbislead.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbislead.c)
 0de8:2284*     _ismbblead_
 1e7b:c002      ___MBCSIsTable
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbtowc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbtowc.c)
 0de8:22a0      mbtowc_
-Module: C:\WATCOM\lib286\dos\clibl.lib(bits.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(bits.c)
 1e7b:a698      __Bits
-Module: C:\WATCOM\lib286\dos\clibl.lib(fdfs086.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fdfs086.asm)
 0de8:23a2      __FDFS
-Module: C:\WATCOM\lib286\dos\clibl.lib(i4d.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(i4d.asm)
 0de8:23ea*     __I4D
 0de8:2439      __U4D
-Module: C:\WATCOM\lib286\dos\clibl.lib(noefgfmt.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(noefgfmt.c)
 1e7b:b8ac      ___EFG_printf
 1e7b:b8b0      ___EFG_scanf
-Module: C:\WATCOM\lib286\dos\clibl.lib(i8m086.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(i8m086.asm)
 0de8:24e9*     __I8M
 0de8:24e9      __U8M
 0de8:24ce*     __I8ME
 0de8:24ce*     __U8ME
-Module: C:\WATCOM\lib286\plbxl.lib(prwdata.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(prwdata.cpp)
 1e7b:c104      __wint_pure_error_flag
 1e7b:c106      __wint_undef_vfun_flag
 1e7b:c108      __wint_module_init
-Module: C:\WATCOM\lib286\dos\clibl.lib(alphabet.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(alphabet.c)
 0de8:2633      ___Alphabet
-Module: C:\WATCOM\lib286\dos\clibl.lib(strupr.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(strupr.c)
 0de8:2658      _strupr_
-Module: C:\WATCOM\lib286\dos\clibl.lib(prtf.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(prtf.c)
 0de8:31cb      __prtf_
-Module: C:\WATCOM\lib286\dos\clibl.lib(vsprintf.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(vsprintf.c)
 0de8:341c      vsprintf_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fputs.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fputs.c)
 0de8:3447      fputs_
-Module: C:\WATCOM\lib286\plbxl.lib(istdipfx.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istdipfx.cpp)
 0de8:b298      int __far std::istream::do_ipfx( int )
-Module: C:\WATCOM\lib286\plbxl.lib(istgsign.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istgsign.cpp)
 0de8:b344      int __far __getsign( std::streambuf __far *, char __far & )
-Module: C:\WATCOM\lib286\dos\clibl.lib(isdigit.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(isdigit.c)
 0de8:34e6      isdigit_
-Module: C:\WATCOM\lib286\dos\clibl.lib(isxdigit.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(isxdigit.c)
 0de8:350f      isxdigit_
-Module: C:\WATCOM\lib286\plbxl.lib(istgbase.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istgbase.cpp)
 0de8:b389      int __far __getbase( std::streambuf __far *, int __far &, int __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(istgnum.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istgnum.cpp)
 0de8:b513      int __far __getnumber( std::streambuf __far *, long unsigned __far &, int, int __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(stabtrav.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stabtrav.cpp)
 0de8:b709      __wcpp_4_stab_entry__
 0de8:b722*     __wcpp_4_stab_trav_comp__
 0de8:b83f      __wcpp_4_stab_trav_init__
 0de8:b86d      __wcpp_4_stab_trav_next__
 0de8:b8e3      __wcpp_4_stab_trav_move__
-Module: C:\WATCOM\lib286\plbxl.lib(callterm.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(callterm.cpp)
 0de8:b8f2      __wcpp_4_corrupted_stack__
 0de8:b8fe      __wcpp_4_call_terminate__
-Module: C:\WATCOM\lib286\plbxl.lib(allocexc.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(allocexc.cpp)
 0de8:b936      __wcpp_4_alloc_exc__
 0de8:bc18      __wcpp_4_free_exc__
 0de8:bc81      __wcpp_4_find_active__
 0de8:bce0      __wcpp_4_dtor_free_exc__
-Module: C:\WATCOM\lib286\plbxl.lib(stabadt.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stabadt.cpp)
 0de8:bde7+     void __far * __far dtor_the_array( _RTARCTOR __far * )
 0de8:be49+     __far _RTARCTOR::~_RTARCTOR()
 0de8:be64      __wcpp_4_dtor_array__
-Module: C:\WATCOM\lib286\plbxl.lib(tsequiv.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(tsequiv.cpp)
 0de8:befb      __wcpp_4_ts_refed__
 0de8:bf19+     __wcpp_4_ts_pnted__
 0de8:bf33      __wcpp_4_ts_equiv__
-Module: C:\WATCOM\lib286\plbxl.lib(flfconde.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfconde.cpp)
 0de8:c08f      __far std::filebuf::filebuf()
-Module: C:\WATCOM\lib286\plbxl.lib(flfdestr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfdestr.cpp)
 0de8:c0aa      __far std::filebuf::~filebuf()
-Module: C:\WATCOM\lib286\plbxl.lib(ioufrxal.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ioufrxal.cpp)
 0de8:c19c      void __far __WATCOM_ios::free_xalloc_storage( std::ios __far * )
-Module: C:\WATCOM\lib286\dos\clibl.lib(plusopen.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(plusopen.c)
 0de8:3538      __plusplus_open_
-Module: C:\WATCOM\lib286\dos\clibl.lib(close.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(close.c)
 0de8:3618      close_
-Module: C:\WATCOM\lib286\dos\clibl.lib(nmalloc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(nmalloc.c)
 0de8:361d      _nmalloc_
 1e7b:b8b4      ___nheapbeg
 1e7b:b8b6      ___MiniHeapRover
 1e7b:b8b8      ___LargestSizeB4MiniHeapRover
-Module: C:\WATCOM\lib286\dos\clibl.lib(mem.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mem.c)
 0de8:3700      __MemAllocator
 0de8:37c6      __MemFree
-Module: C:\WATCOM\lib286\dos\clibl.lib(nfree.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(nfree.c)
 0de8:393d      _nfree_
 1e7b:c10c+     ___MiniHeapFreeRover
-Module: C:\WATCOM\lib286\dos\clibl.lib(growseg.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(growseg.c)
 0de8:3a3a      __GrowSeg_
-Module: C:\WATCOM\lib286\dos\clibl.lib(allocseg.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(allocseg.c)
 0de8:3b09      __AllocSeg_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fmemneed.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fmemneed.c)
 0de8:3ba8      __fmemneed_
-Module: C:\WATCOM\lib286\dos\clibl.lib(heapgrow.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(heapgrow.c)
 0de8:3bab*     _heapgrow_
 0de8:3bab*     _fheapgrow_
 0de8:3bac      _nheapgrow_
-Module: C:\WATCOM\lib286\dos\clibl.lib(exit.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(exit.c)
 0de8:3c23+     __null_int23_exit_
 0de8:3c24      exit_
 0de8:3c53*     _exit_
 1e7b:b8ba+     ___int23_exit
 1e7b:b8be+     ___FPE_handler_exit
-Module: C:\WATCOM\lib286\dos\clibl.lib(___argc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(___argc.c)
 1e7b:c10e      ____Argv
 1e7b:c112      ____Argc
-Module: C:\WATCOM\lib286\dos\clibl.lib(sgdef086)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(sgdef086)
 1e7b:be86      __Start_XI
 1e7b:bec8      __End_XI
 1e7b:bec8      __Start_YI
 1e7b:bee0      __End_YI
-Module: C:\WATCOM\lib286\dos\clibl.lib(fwrite.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fwrite.c)
 0de8:3c6c      fwrite_
-Module: C:\WATCOM\lib286\dos\clibl.lib(memmove.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(memmove.c)
 0de8:3e6a      memmove_
-Module: C:\WATCOM\lib286\plbxl.lib(stfsetb.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfsetb.cpp)
 0de8:c1c9      void __far std::streambuf::setb( char __far *, char __far *, int )
-Module: C:\WATCOM\lib286\dos\clibl.lib(liballoc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(liballoc.c)
 0de8:3ee0      _plib_malloc_
 0de8:3ee5      _plib_free_
-Module: C:\WATCOM\lib286\dos\clibl.lib(__lseek.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(__lseek.c)
 0de8:3eea      __lseek_
-Module: C:\WATCOM\lib286\dos\clibl.lib(qwrit.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(qwrit.c)
 0de8:3f24      __qwrite_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fsync.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fsync.c)
 0de8:3f86      fsync_
-Module: C:\WATCOM\lib286\plbxl.lib(exc_pr.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(exc_pr.cpp)
 0de8:c24c      __far _EXC_PR::_EXC_PR( _RTCTL __far *, RW_DTREG __far *, EXCSTATE )
 0de8:c2c5      __far _EXC_PR::~_EXC_PR()
 0de8:c2e4      __far _EXC_PR_FREE::_EXC_PR_FREE( _RTCTL __far *, RW_DTREG __far *, EXCSTATE, ACTIVE_EXC __far * )
@@ -915,191 +915,191 @@ Module: C:\WATCOM\lib286\plbxl.lib(exc_pr.cpp)
 0de8:c372      __far _EXC_PR_FNEXC::_EXC_PR_FNEXC( _RTCTL __far *, RW_DTREG __far *, RW_DTREG __far *, ACTIVE_EXC __far * )
 0de8:c3c0      __far _EXC_PR_FNEXC::~_EXC_PR_FNEXC()
 0de8:c3c3      __far _EXC_PR_DTOR::~_EXC_PR_DTOR()
-Module: C:\WATCOM\lib286\plbxl.lib(unexpect.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(unexpect.cpp)
 0de8:c3f7      void __far std::unexpected()
-Module: C:\WATCOM\lib286\dos\clibl.lib(stjmp086.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(stjmp086.asm)
 0de8:3f8c*     _setjmp_
 0de8:3fe1      longjmp_
-Module: C:\WATCOM\lib286\plbxl.lib(stabinit.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stabinit.cpp)
 0de8:c484      __wcpp_4_exc_setup__
-Module: C:\WATCOM\lib286\plbxl.lib(ljmpinit.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ljmpinit.cpp)
 1e7b:bebc      ___wcpp_4_data_init_longjmp_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fclose.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fclose.c)
 0de8:403e+     __doclose_
 0de8:4102      __shutdown_stream_
 0de8:411c*     fclose_
 1e7b:c114+     ___RmTmpFileFn
-Module: C:\WATCOM\lib286\dos\clibl.lib(freefp.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(freefp.c)
 0de8:4167      __freefp_
 0de8:41dc      __purgefp_
-Module: C:\WATCOM\lib286\dos\clibl.lib(chktty.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(chktty.c)
 0de8:4218      __chktty_
-Module: C:\WATCOM\lib286\dos\clibl.lib(dosret.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(dosret.c)
 0de8:4243      __set_errno_dos_
 0de8:42cf*     __set_errno_dos_reterr_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbinit.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbinit.c)
 0de8:433f      __mbinit_
 1e7b:b8d6      ___MBCodePage
-Module: C:\WATCOM\lib286\dos\clibl.lib(wctomb.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(wctomb.c)
 0de8:43b4      wctomb_
-Module: C:\WATCOM\lib286\dos\clibl.lib(itoa.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(itoa.c)
 0de8:43dd+     utoa_
 0de8:443a      itoa_
-Module: C:\WATCOM\lib286\dos\clibl.lib(lltoa.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(lltoa.c)
 0de8:445e      ulltoa_
 0de8:4542*     lltoa_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fputc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fputc.c)
 0de8:45a4      fputc_
-Module: C:\WATCOM\lib286\plbxl.lib(manws.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(manws.cpp)
 0de8:c5a9      std::istream __far & __far std::ws( std::istream __far & )
-Module: C:\WATCOM\lib286\plbxl.lib(bittest.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(bittest.cpp)
 0de8:c5e9      __wcpp_4_bit_test__
 0de8:c60c      __wcpp_4_bit_off__
-Module: C:\WATCOM\lib286\plbxl.lib(termnate.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(termnate.cpp)
 0de8:c62d      void __far std::terminate()
-Module: C:\WATCOM\lib286\plbxl.lib(areaexc.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(areaexc.cpp)
 1e7b:b8f0      ___EXC_AREA
-Module: C:\WATCOM\lib286\plbxl.lib(tssize.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(tssize.cpp)
 0de8:c688      __wcpp_4_ts_size__
-Module: C:\WATCOM\lib286\plbxl.lib(flfpbfai.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfpbfai.cpp)
 0de8:c6c3      int __far std::filebuf::pbackfail( int )
-Module: C:\WATCOM\lib286\plbxl.lib(flfoverf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfoverf.cpp)
 0de8:c7d5      int __far std::filebuf::overflow( int )
-Module: C:\WATCOM\lib286\plbxl.lib(flfundrf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfundrf.cpp)
 0de8:ca25      int __far std::filebuf::underflow()
-Module: C:\WATCOM\lib286\plbxl.lib(flfsetbf.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfsetbf.cpp)
 0de8:cb8b      std::streambuf __far * __far std::filebuf::setbuf( char __far *, int )
-Module: C:\WATCOM\lib286\plbxl.lib(flfseeko.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfseeko.cpp)
 0de8:cc0c      long __far std::filebuf::seekoff( long, int, int )
-Module: C:\WATCOM\lib286\plbxl.lib(flfsync.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(flfsync.cpp)
 0de8:cc83      int __far std::filebuf::sync()
-Module: C:\WATCOM\lib286\dos\clibl.lib(stat.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(stat.c)
 0de8:46fa      stat_
-Module: C:\WATCOM\lib286\dos\clibl.lib(open.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(open.c)
 0de8:4be5      open_
 0de8:4c0c      _sopen_
-Module: C:\WATCOM\lib286\dos\clibl.lib(_clse.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(_clse.c)
 0de8:4c2b      __close_
-Module: C:\WATCOM\lib286\dos\clibl.lib(nmemneed.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(nmemneed.c)
 0de8:4c63      __nmemneed_
-Module: C:\WATCOM\lib286\dos\clibl.lib(grownear.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(grownear.c)
 0de8:4ce5      __LastFree_
 0de8:4d5d      __ExpandDGROUP_
-Module: C:\WATCOM\lib286\dos\clibl.lib(heapen.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(heapen.c)
 0de8:4e62*     _heapenable_
 1e7b:bcf0      ___heap_enabled
-Module: C:\WATCOM\lib286\dos\clibl.lib(amblksiz.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(amblksiz.c)
 1e7b:bcf2      __amblksiz
-Module: C:\WATCOM\lib286\dos\clibl.lib(iomode.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(iomode.c)
 0de8:4e73      __GetIOMode_
 0de8:4e98      __SetIOMode_nogrow_
 1e7b:bcf4      ___NFiles
 1e7b:bcf6      ___init_mode
 1e7b:bd1e      ___io_mode
-Module: C:\WATCOM\lib286\dos\clibl.lib(filedos.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(filedos.c)
 0de8:4ebb*     _dos_close_
 0de8:4ec9      _dos_commit_
-Module: C:\WATCOM\lib286\dos\clibl.lib(ljmphdl.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(ljmphdl.c)
 1e7b:bd22      ___longjmp_handler
-Module: C:\WATCOM\lib286\plbxl.lib(ljmpdtor.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(ljmpdtor.cpp)
 0de8:cdf3      __wcpp_4_lj_handler__
-Module: C:\WATCOM\lib286\dos\clibl.lib(isatt.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(isatt.c)
 0de8:4ed9      isatty_
-Module: C:\WATCOM\lib286\dos\clibl.lib(doserrno.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(doserrno.c)
 0de8:4ef5      __get_doserrno_ptr_
 1e7b:c118+     __doserrno
-Module: C:\WATCOM\lib286\dos\clibl.lib(getltdos.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(getltdos.c)
 0de8:4efc      dos_get_dbcs_lead_table_
-Module: C:\WATCOM\lib286\dos\clibl.lib(getcpdos.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(getcpdos.c)
 0de8:4f25      dos_get_code_page_
-Module: C:\WATCOM\lib286\plbxl.lib(istpeek.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istpeek.cpp)
 0de8:cdfa      int __far std::istream::peek()
-Module: C:\WATCOM\lib286\dos\clibl.lib(isspace.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(isspace.c)
 0de8:4f35      isspace_
-Module: C:\WATCOM\lib286\plbxl.lib(istget.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(istget.cpp)
 0de8:ce70      int __far std::istream::get()
-Module: C:\WATCOM\lib286\dos\clibl.lib(lseek.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(lseek.c)
 0de8:4f5e      lseek_
-Module: C:\WATCOM\lib286\dos\clibl.lib(write.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(write.c)
 0de8:50cb      write_
-Module: C:\WATCOM\lib286\dos\clibl.lib(_itell__.gas)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(_itell__.gas)
 0de8:52b4      tell_
-Module: C:\WATCOM\lib286\dos\clibl.lib(read.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(read.c)
 0de8:52b9      read_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbschr.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbschr.c)
 0de8:53af      _mbschr_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbscmp.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbscmp.c)
 0de8:5435      _mbscmp_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbspbrk.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbspbrk.c)
 0de8:54ce      _mbspbrk_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fullpath.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fullpath.c)
 0de8:57e4      _fullpath_
-Module: C:\WATCOM\lib286\dos\clibl.lib(gtcwd.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(gtcwd.c)
 0de8:58aa      getcwd_
-Module: C:\WATCOM\lib286\dos\clibl.lib(chdir.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(chdir.c)
 0de8:5958      chdir_
-Module: C:\WATCOM\lib286\dos\clibl.lib(finddos.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(finddos.c)
 0de8:5967      _dos_findfirst_
 0de8:599a*     _dos_findnext_
 0de8:59ad      _dos_findclose_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fstat.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fstat.c)
 0de8:59b0      fstat_
-Module: C:\WATCOM\lib286\dos\clibl.lib(d2ttime.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(d2ttime.c)
 0de8:5afd      _d2ttime_
-Module: C:\WATCOM\lib286\dos\clibl.lib(opendos.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(opendos.c)
 0de8:5b6a      _dos_open_
-Module: C:\WATCOM\lib286\dos\clibl.lib(umaskval.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(umaskval.c)
 1e7b:bd26      ___umaskval
-Module: C:\WATCOM\lib286\dos\clibl.lib(creatdos.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(creatdos.c)
 0de8:5b90      _dos_creat_
 0de8:5bb4*     _dos_creatnew_
-Module: C:\WATCOM\lib286\dos\clibl.lib(stiomode.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(stiomode.c)
 0de8:5bd5+     __grow_iomode_
 0de8:5c9b+     __shrink_iomode_
 0de8:5cd6      __SetIOMode_
-Module: C:\WATCOM\lib286\dos\clibl.lib(textmode.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(textmode.c)
 1e7b:bd28      __fmode
-Module: C:\WATCOM\lib286\dos\clibl.lib(sbrk.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(sbrk.c)
 0de8:5d39      __brk_
 0de8:5d9e*     sbrk_
-Module: C:\WATCOM\lib286\dos\clibl.lib(error086.asm)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(error086.asm)
 0de8:5dae      __doserror_
 0de8:5dbc      __doserror1_
-Module: C:\WATCOM\lib286\dos\clibl.lib(tell.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(tell.c)
 0de8:5dc8      _tell_
-Module: C:\WATCOM\lib286\dos\clibl.lib(iomodtty.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(iomodtty.c)
 0de8:5dd9      __ChkTTYIOMode_
 0de8:5e17*     __IOMode_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbconv.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbconv.c)
 0de8:5e27      _mbvtop_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbclen.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbclen.c)
 0de8:5e3c      _mbclen_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbterm.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbterm.c)
 0de8:5e6a      _mbterm_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbccmp.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbccmp.c)
 0de8:5eac      _mbccmp_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbsinc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbsinc.c)
 0de8:5efe      _mbsinc_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbsnextc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbsnextc.c)
 0de8:5f3a      _mbsnextc_
-Module: C:\WATCOM\lib286\dos\clibl.lib(_getdcwd.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(_getdcwd.c)
 0de8:5f6b      __getdcwd_
-Module: C:\WATCOM\lib286\dos\clibl.lib(strncpy.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(strncpy.c)
 0de8:5f80      strncpy_
-Module: C:\WATCOM\lib286\dos\clibl.lib(filelen.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(filelen.c)
 0de8:5fbc      _filelength_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mktime.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mktime.c)
 0de8:601a      mktime_
-Module: C:\WATCOM\lib286\dos\clibl.lib(frealloc.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(frealloc.c)
 0de8:60d4*     _frealloc_
 0de8:60d4      realloc_
-Module: C:\WATCOM\lib286\dos\clibl.lib(locmktim.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(locmktim.c)
 0de8:61ac      __local_mktime_
-Module: C:\WATCOM\lib286\dos\clibl.lib(gmtime.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(gmtime.c)
 0de8:63b6      __brktime_
 0de8:6519+     _gmtime_
 0de8:653d*     gmtime_
-Module: C:\WATCOM\lib286\dos\clibl.lib(tzset.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(tzset.c)
 1e7b:bd2a      ___start_dst
 1e7b:bd3c      ___end_dst
 1e7b:be50*     _tzname
@@ -1110,42 +1110,42 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(tzset.c)
 0de8:6568*     __CacheOSTZ_
 0de8:6aca+     __parse_tz_
 0de8:6c16      tzset_
-Module: C:\WATCOM\lib286\dos\clibl.lib(timeutil.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(timeutil.c)
 0de8:6d76      __isindst_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fmsize.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fmsize.c)
 0de8:7069*     _msize_
 0de8:7069      _fmsize_
-Module: C:\WATCOM\lib286\dos\clibl.lib(nexpand.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(nexpand.c)
 0de8:707a      _nexpand_
-Module: C:\WATCOM\lib286\dos\clibl.lib(fexpand.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(fexpand.c)
 0de8:70ca      _fexpand_
 0de8:70ca*     _expand_
-Module: C:\WATCOM\lib286\dos\clibl.lib(leapyear.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(leapyear.c)
 0de8:70ff      ___diyr
 0de8:7119      ___dilyr
 0de8:7133      __leapyear_
-Module: C:\WATCOM\lib286\dos\clibl.lib(getenv.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(getenv.c)
 0de8:715d      getenv_
-Module: C:\WATCOM\lib286\dos\clibl.lib(_expand.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(_expand.c)
 0de8:722c      __HeapManager_expand_
-Module: C:\WATCOM\lib286\dos\clibl.lib(bexpand.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(bexpand.c)
 0de8:73ac      _bexpand_
-Module: C:\WATCOM\lib286\dos\clibl.lib(environ.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(environ.c)
 1e7b:c12e      ___env_mask
 1e7b:c132      _environ
 1e7b:c136      __wenviron
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbcupper.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbcupper.c)
 0de8:7405      _mbctoupper_
-Module: C:\WATCOM\lib286\dos\clibl.lib(bfree.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(bfree.c)
 0de8:7428      _bfree_
-Module: C:\WATCOM\lib286\dos\clibl.lib(setenvp.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(setenvp.c)
 0de8:746b      __setenvp_
 0de8:7570      __freeenvp_
-Module: C:\WATCOM\lib286\dos\clibl.lib(mbdtoupp.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(mbdtoupp.c)
 0de8:75f4      _mbdtoupper_
-Module: C:\WATCOM\lib286\dos\clibl.lib(clearenv.c)
+Module: C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib(clearenv.c)
 0de8:7602      clearenv_
-Module: C:\WATCOM\lib286\plbxl.lib(stfsync.cpp)
+Module: C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib(stfsync.cpp)
 0de8:cf1d      int __far std::streambuf::sync()
 
 
@@ -1153,8 +1153,8 @@ Module: C:\WATCOM\lib286\plbxl.lib(stfsync.cpp)
                         |   Libraries Used   |
                         +--------------------+
 
-C:\WATCOM\lib286\plbxl.lib
-C:\WATCOM\lib286\dos\clibl.lib
+C:\Users\ifkno\ow-snapshot\lib286\plbxl.lib
+C:\Users\ifkno\ow-snapshot\lib286\dos\clibl.lib
 
 
                         +-----------------------+
@@ -1164,4 +1164,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  0002b0f0 (176368.)
 Entry point address: 0de8:033a
-Link time: 00:00.26
+Link time: 00:00.14

@@ -12,23 +12,29 @@
 
 #include <stdint.h>
 
+#include "../../gfx_rect.h"
+
 namespace hga {
 
 	namespace graphics {
 		
 		/**
-		* @brief fast raster bit block transfer 32768 bytes from memory to the 4 banks of a VRAM buffer 
+		* @brief fast raster bit block transfer 32768 bytes from bitmap memory to the 4 banks of a VRAM buffer 
 		* @note hard coded HGA screen rectangle (0,0,720,480)
 		*/
 		void blit_vram_bmp(uint16_t vram_segment, char* raster_data);
 
 		/**
-		* @brief fast rectangular block (x,y,w,h) transfer raster bytes from memory to the same location in 4 banks of a VRAM buffer
+		* @brief fast rectangular block (x,y,w,h) transfer raster bytes from bitmap memory to the same location in 4 banks of a VRAM buffer
 		* @note x and w values are rounded to the enclosing byte boundry 
 		*/
 		void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h);
 
-		//void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t x, uint16_t y, uint16_t ox, uint16_t oy, uint16_t ow, uint16_t oh);
+		/**
+		* @brief fast rectangular block (ox,oy,ow,oh) transfer raster bytes from source bitmap memory to destination bitmap memory at position (x,y)
+		* @note expects an xshifted bitmap with pre-rendered offsets for mod 7 x values
+		*/
+		void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t x, uint16_t y, uint16_t ox, uint16_t oy, uint16_t ow, uint16_t oh);
 
 		//void blit_bmp_bmp(char* raster_destination, char* raster_source, char* raster_mask, uint16_t x, uint16_t y, uint16_t ox, uint16_t oy, uint16_t ow, uint16_t oh);
 
