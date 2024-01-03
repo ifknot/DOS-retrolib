@@ -64,46 +64,45 @@ namespace hga {
 				// setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
 				mov		ax, vram_segment
 				mov		es, ax
-				mov		ax, y; AX = (y div 4)
+				mov		ax, y						; AX = (y div 4)
 				shr		ax, 1
 				shr		ax, 1
-				mov		cx, HGA_BYTES_PER_LINE; CX = 90
-				mul		cx; AX = (y div 4) * 90
-				mov		bx, x; BX = (x div 8)
+				mov		cx, HGA_BYTES_PER_LINE		; CX = 90
+				mul		cx							; AX = (y div 4) * 90
+				mov		bx, x						; BX = (x div 8)
 				shr		bx, 1
 				shr		bx, 1
 				shr		bx, 1
-				add		ax, bx; AX = (y div 4) * 90) + (x div 8)
-				mov		di, ax; ES:DI point to VRAM destination
+				add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
+				mov		di, ax						; ES:DI point to VRAM destination
 
 				// setup RAM source pointer DS:SI = (y * 90) + (x div 8)
 				lds		si, raster_data
 				mov		ax, y
-				mul		cx; AX = (y * 90)
-				add		ax, bx; AX = (y * 90) + (x div 8)
-				add		si, ax; DS:SI point to pixel data source
+				mul		cx							; AX = (y * 90)
+				add		ax, bx						; AX = (y * 90) + (x div 8)
+				add		si, ax						; DS:SI point to pixel data source
 
 				// calculate w = (w div 8) + ((w mod 8) != 0 ? 1 : 0)
 				mov		ax, w
-				mov		cx, ax; copy w(2 clocks)
-				shr		ax, 1; AX = (w div 8)
+				mov		cx, ax						; copy w(2 clocks)
+				shr		ax, 1						; AX = (w div 8)
 				shr		ax, 1
 				shr		ax, 1
-				and cx, 7; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
-				jz		SKIP; zero so no remainder
-				inc		ax; increment byte width - partial byte overlap
-				SKIP : mov		w, ax; w = (w div 8)
+				and		cx, 7						; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
+				jz		SKIP						; zero so no remainder
+				inc		ax							; increment byte width - partial byte overlap
+		SKIP:	mov		w, ax						; w = (w div 8)
 
 				//select movsb (odd w) or movsw (even w) blit routine
 				// test		ax, 1
 				// jz		EVEN					; even width jmp to faster movsw version 
 
 				// calculate next line offset AX = 90 - (w div 8) - (x div 8)
-				mov		cx, HGA_BYTES_PER_LINE; 90
-				sub		cx, ax; 90 - (w div 8)
-				sub		cx, bx; 90 - (w div 8) - (x div 8)
-				mov		ax, cx; AX = 90 - (w div 8) - (x div 8)
-
+				mov		cx, HGA_BYTES_PER_LINE		; 90
+				sub		cx, ax						; 90 - (w div 8)
+				sub		cx, bx						; 90 - (w div 8) - (x div 8)
+				mov		ax, cx						; AX = 90 - (w div 8) - (x div 8)
 
 				// using dec reg(3 clocks x 4 per loop = 12 clocks) vs dec mem(15 clocks x 4 per loop = 60 clocks!)
 				mov		dx, h
