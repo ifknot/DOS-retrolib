@@ -31,10 +31,10 @@ namespace hga {
 		void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h);
 
 		/**
-		* @brief fast rectangular block (ox,oy,ow,oh) transfer raster bytes from source bitmap memory to destination bitmap memory at position (x,y)
+		* @brief fast rectangular block (x,y,w,h) transfer raster bytes from source bitmap memory to destination bitmap memory at position (xx,yy)
 		* @note expects an xshifted bitmap with pre-rendered offsets for mod 7 x values
 		*/
-		void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t x, uint16_t y, uint16_t ox, uint16_t oy, uint16_t ow, uint16_t oh);
+		void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t xx, uint16_t yy, uint16_t x, uint16_t y, uint16_t w, uint16_t h);
 
 		//void blit_bmp_bmp(char* raster_destination, char* raster_source, char* raster_mask, uint16_t x, uint16_t y, uint16_t ox, uint16_t oy, uint16_t ow, uint16_t oh);
 

@@ -67,8 +67,8 @@ namespace hga {
 				mov		ax, y						; AX = (y div 4)
 				shr		ax, 1
 				shr		ax, 1
-				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
-				mul		cx						; AX = (y div 4) * 90
+				mov		cx, HGA_BYTES_PER_LINE		; CX = 90
+				mul		cx							; AX = (y div 4) * 90
 				mov		bx, x						; BX = (x div 8)
 				shr		bx, 1
 				shr		bx, 1
@@ -79,7 +79,7 @@ namespace hga {
 				// setup RAM source pointer DS:SI = (y * 90) + (x div 8)
 				lds		si, raster_data
 				mov		ax, y
-				mul		cx						; AX = (y * 90) (CX extant = 90)
+				mul		cx							; AX = (y * 90) (CX extant = 90)
 				add		ax, bx						; AX = (y * 90) + (x div 8)
 				add		si, ax						; DS:SI point to pixel data source
 
@@ -91,13 +91,8 @@ namespace hga {
 				shr		ax, 1
 				and		cx, 7						; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
 				jz		SKIP						; zero so no remainder
-				inc		ax						; increment byte width - partial byte overlap
-				// is push & pop BP faster?
-		SKIP:		mov		w, ax						; w = (w div 8)
-
-				//select movsb (odd w) or movsw (even w) blit routine
-				// test		ax, 1
-				// jz		EVEN					; even width jmp to faster movsw version 
+				inc		ax							; increment byte width - partial byte overlap
+		SKIP:	mov		w, ax						; w = (w div 8)
 
 				// calculate next line offset AX = 90 - (w div 8) - (x div 8)
 				mov		cx, HGA_BYTES_PER_LINE		; 90
@@ -178,32 +173,37 @@ namespace hga {
 			}
 		}
 
-		void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t x, uint16_t y, uint16_t ox, uint16_t oy, uint16_t ow, uint16_t oh) {
+		void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t xx, uint16_t yy, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 			__asm {
 				.8086
 				pushf 
 				push 	bp
 
-				//setup destination ES:DI and source DS:SI bitmap raster memory = (y * 90) + (x div 8)
-				les 		di, raster_destination
-				mov		ax, y
-				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
-				mul		cx						; AX = (y * 90)
-				mov		di, x						; DI = (x div 8)
-				shr		di, 1
-				shr		di, 1
-				shr		di, 1
-				add		di, ax						; ES:DI = (x div 8) + (y * 90)
+				//setup destination ES:DI and source DS:SI bitmap raster memory = (yy * 90) + (xx div 8)
+				les 	di, raster_destination
+				mov		ax, yy
+				mov		cx, HGA_BYTES_PER_LINE		; CX = 90
+				mul		cx							; AX = (yy * 90)
+				mov		bx, xx						; BX = (xx div 8)
+				shr		bx, 1
+				shr		bx, 1
+				shr		bx, 1
+				add		ax, bx						; AX = (yy * 90) + (xx div 8)
+				mov		di, ax						; ES:DI points to bitmap destination
 				
 
-				lds 		si, raster_source
-				mov		ax, oy
-				mul		cx						; AX = (y * 90) (extant CX) 
-				mov		si, ox						; SI = (ox div 8)
-				shr		si, 1
-				shr		si, 1
-				shr		si, 1
-				add		si, ax						; DS:SI = (ox div 8) + (oy * 90)
+				lds 	si, raster_source
+				mov		ax, y
+				mul		cx							; AX = (y * 90) (extant CX) 
+				mov		dx, x						; DX = (x div 8)
+				shr		dx, 1
+				shr		dx, 1
+				shr		dx, 1
+				add		ax, dx						; AX = (y * 90) + (x div 8)
+				mov		si, ax						; DS:SI points to bitmap source
+
+				// select xshifted source
+				mov		cx, 
 
 				// calculate w = (w div 8) + ((w mod 8) != 0 ? 1 : 0)
 				mov		ax, w
@@ -213,22 +213,25 @@ namespace hga {
 				shr		ax, 1
 				and		cx, 7						; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
 				jz		SKIP						; zero so no remainder
-				inc		ax						; increment byte width - partial byte overlap
-		SKIP:		mov		w, ax						; w = (w div 8)
-				cmp 		ax, 1
-				je 		BYTE						; skip to movsb 1 byte width
-
+				inc		ax							; increment byte width - partial byte overlap
+		SKIP:	mov		w, ax						; w = (w div 8)
 				
-
-				// calculate next line offset AX = 90 - (w div 8) - (x div 8)
+				// calculate next line offset AX = 90 - (w div 8)
 				mov		cx, HGA_BYTES_PER_LINE		; 90
 				sub		cx, ax						; 90 - (w div 8)
-				sub		cx, bx						; 90 - (w div 8) - (x div 8)
-				mov		ax, cx						; AX = 90 - (w div 8) - (x div 8)
+				mov		ax, cx						; AX = 90 - (w div 8)
 
-		BYTE: 		// movsb column
+				add		si, dx
+				add		di, bx
+				mov		cx, w
+				rep		movsb 
+				add		si, ax 
+				sub		si, dx
+				add		di, ax
+				sub		di, bx
+
 	
-		END:		pop 	bp
+		END:	pop 	bp
 				popf
 		}
 
