@@ -57,7 +57,7 @@ namespace hga {
 
 		void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 			__asm {
-				.8086; NB clock cycle comments refer to 8086
+				.8086								; NB clock cycle comments refer to 8086
 				push	bp
 				pushf
 
@@ -175,6 +175,39 @@ namespace hga {
 		END:	popf
 				pop		bp
 			}
+		}
+
+		void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t x, uint16_t y, uint16_t ox, uint16_t oy, uint16_t ow, uint16_t oh) {
+			__asm {
+				.8086
+				pushf 
+				push 	bp
+
+				//setup source ES:DI and destination DS:DI bitmap raster memory = (y * 90) + (x div 8)
+				les 		di, raster_destination
+				mov		ax, y
+				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
+				mul		cx
+				mov		bx, x						; BX = (x div 8)
+				shr		bx, 1
+				shr		bx, 1
+				shr		bx, 1
+				add		ax, bx						; AX = (y * 90) + (x div 8)
+				mov		di, ax						; ES:DI point to VRAM destination
+
+				lds 		di, raster_source
+				mov		ax, oy
+				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
+				mul		cx
+				mov		bx, ox						; BX = (ox div 8)
+				shr		bx, 1
+				shr		bx, 1
+				shr		bx, 1
+				add		ax, bx						; AX = (oy * 90) + (ox div 8)
+				mov		di, ax						; ES:DI point to VRAM destination
+	
+				pop 	bp
+				popf
 		}
 
 	}
