@@ -91,8 +91,9 @@ namespace hga {
 				shr		ax, 1
 				and		cx, 7						; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
 				jz		SKIP						; zero so no remainder
-				inc		ax							; increment byte width - partial byte overlap
-		SKIP:	mov		w, ax						; w = (w div 8)
+				inc		ax						; increment byte width - partial byte overlap
+				// is push & pop BP faster?
+		SKIP:		mov		w, ax						; w = (w div 8)
 
 				//select movsb (odd w) or movsw (even w) blit routine
 				// test		ax, 1
@@ -187,26 +188,47 @@ namespace hga {
 				les 		di, raster_destination
 				mov		ax, y
 				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
-				mul		cx
-				mov		bx, x						; BX = (x div 8)
-				shr		bx, 1
-				shr		bx, 1
-				shr		bx, 1
-				add		ax, bx						; AX = (y * 90) + (x div 8)
-				mov		di, ax						; ES:DI point to VRAM destination
+				mul		cx						; AX = (y * 90)
+				mov		di, x						; DI = (x div 8)
+				shr		di, 1
+				shr		di, 1
+				shr		di, 1
+				add		di, ax						; ES:DI = (x div 8) + (y * 90)
+				
 
 				lds 		si, raster_source
 				mov		ax, oy
-				//mov		cx, HGA_BYTES_PER_LINE				; CX = 90
-				mul		cx						; extant CX = 90 
-				mov		bx, ox						; BX = (ox div 8)
-				shr		bx, 1
-				shr		bx, 1
-				shr		bx, 1
-				add		ax, bx						; AX = (oy * 90) + (ox div 8)
-				mov		si, ax						; ES:DI point to VRAM destination
+				mul		cx						; AX = (y * 90) (extant CX) 
+				mov		si, ox						; SI = (ox div 8)
+				shr		si, 1
+				shr		si, 1
+				shr		si, 1
+				add		si, ax						; DS:SI = (ox div 8) + (oy * 90)
+
+				// calculate w = (w div 8) + ((w mod 8) != 0 ? 1 : 0)
+				mov		ax, w
+				mov		cx, ax						; copy w(2 clocks)				
+				shr		ax, 1						; AX = (w div 8)
+				shr		ax, 1
+				shr		ax, 1
+				and		cx, 7						; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
+				jz		SKIP						; zero so no remainder
+				inc		ax						; increment byte width - partial byte overlap
+		SKIP:		mov		w, ax						; w = (w div 8)
+				cmp 		ax, 1
+				je 		BYTE						; skip to movsb 1 byte width
+
+				
+
+				// calculate next line offset AX = 90 - (w div 8) - (x div 8)
+				mov		cx, HGA_BYTES_PER_LINE		; 90
+				sub		cx, ax						; 90 - (w div 8)
+				sub		cx, bx						; 90 - (w div 8) - (x div 8)
+				mov		ax, cx						; AX = 90 - (w div 8) - (x div 8)
+
+		BYTE: 		// movsb column
 	
-				pop 	bp
+		END:		pop 	bp
 				popf
 		}
 
