@@ -67,8 +67,8 @@ namespace hga {
 				mov		ax, y						; AX = (y div 4)
 				shr		ax, 1
 				shr		ax, 1
-				mov		cx, HGA_BYTES_PER_LINE		; CX = 90
-				mul		cx							; AX = (y div 4) * 90
+				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
+				mul		cx						; AX = (y div 4) * 90
 				mov		bx, x						; BX = (x div 8)
 				shr		bx, 1
 				shr		bx, 1
@@ -79,7 +79,7 @@ namespace hga {
 				// setup RAM source pointer DS:SI = (y * 90) + (x div 8)
 				lds		si, raster_data
 				mov		ax, y
-				mul		cx							; AX = (y * 90)
+				mul		cx						; AX = (y * 90) (CX extant = 90)
 				add		ax, bx						; AX = (y * 90) + (x div 8)
 				add		si, ax						; DS:SI point to pixel data source
 
@@ -183,7 +183,7 @@ namespace hga {
 				pushf 
 				push 	bp
 
-				//setup source ES:DI and destination DS:DI bitmap raster memory = (y * 90) + (x div 8)
+				//setup destination ES:DI and source DS:SI bitmap raster memory = (y * 90) + (x div 8)
 				les 		di, raster_destination
 				mov		ax, y
 				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
@@ -195,16 +195,16 @@ namespace hga {
 				add		ax, bx						; AX = (y * 90) + (x div 8)
 				mov		di, ax						; ES:DI point to VRAM destination
 
-				lds 		di, raster_source
+				lds 		si, raster_source
 				mov		ax, oy
-				mov		cx, HGA_BYTES_PER_LINE				; CX = 90
-				mul		cx
+				//mov		cx, HGA_BYTES_PER_LINE				; CX = 90
+				mul		cx						; extant CX = 90 
 				mov		bx, ox						; BX = (ox div 8)
 				shr		bx, 1
 				shr		bx, 1
 				shr		bx, 1
 				add		ax, bx						; AX = (oy * 90) + (ox div 8)
-				mov		di, ax						; ES:DI point to VRAM destination
+				mov		si, ax						; ES:DI point to VRAM destination
 	
 				pop 	bp
 				popf
