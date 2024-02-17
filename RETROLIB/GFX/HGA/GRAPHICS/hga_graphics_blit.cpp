@@ -57,7 +57,7 @@ namespace hga {
 
 		void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 			__asm {
-				.8086; NB clock cycle comments refer to 8086
+				.8086								; NB clock cycle comments refer to 8086
 				push	bp
 				pushf
 
@@ -94,10 +94,6 @@ namespace hga {
 				inc		ax							; increment byte width - partial byte overlap
 		SKIP:	mov		w, ax						; w = (w div 8)
 
-				//select movsb (odd w) or movsw (even w) blit routine
-				// test		ax, 1
-				// jz		EVEN					; even width jmp to faster movsw version 
-
 				// calculate next line offset AX = 90 - (w div 8) - (x div 8)
 				mov		cx, HGA_BYTES_PER_LINE		; 90
 				sub		cx, ax						; 90 - (w div 8)
@@ -116,19 +112,16 @@ namespace hga {
 		CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 				jne		CASE2 
 				add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
-				// wait for v refresh
 				jmp		BANK3						; start on 4th bank 
 		CASE2:  cmp		cx, 2
 				jne		CASE1 
 				add		di, HGA_BANK_OFFSET * 2		; 3rd bank offset
-				// wait for v refresh
 				jmp		BANK2						; start on 3rd bank
 		CASE1:  cmp		cx, 1
 				jne		CASE0
 				add		di, HGA_BANK_OFFSET			; 2nd bank offset
-				// wait for v refresh
 				jmp		BANK1						; start on 2nd bank 
-		CASE0:		// wait for v refresh								; fall through to zero offset 1st bank
+		CASE0:										; fall through to zero offset 1st bank
 
 		BANK0:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination
@@ -138,7 +131,7 @@ namespace hga {
 				jz		END							; DX = 0 all done
 				add		si, ax						; RAM source next line
 				add		di, ax						; VRAM next line
-				add		di, 1FA6h					; bank 1 = DI + (2000h - 90)
+				add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 			
 		BANK1:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination	
@@ -148,7 +141,7 @@ namespace hga {
 				jz		END							; DX = 0 all lines copied to VRAM
 				add		si, ax						; RAM source next line
 				add		di, ax						; VRAM next line
-				add		di, 1FA6h					; bank 2 = DI + (2000h - 90)
+				add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 2 = DI + (2000h - 90)
 
 		BANK2:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination
@@ -158,7 +151,7 @@ namespace hga {
 				jz		END							; DX = 0 all lines copied to VRAM
 				add		si, ax						; RAM source next line
 				add		di, ax						; VRAM next line
-				add		di, 1FA6h					; bank 3 = DI + (2000h - 90)
+				add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 3 = DI + (2000h - 90)
 
 		BANK3:	add		si, bx						; start offset RAM source  
 				add		di, bx						; start offset VRAM destination
