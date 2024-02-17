@@ -20,7 +20,7 @@ namespace mem {
 
 	namespace arena {
 
-		struct arena_t {
+		struct arena_t {	// 128 bytes
 
 			char* pfree;				// pointer to the start of free memory pool
 			mem_size_t size;			// current amount of free memory (bytes) pool 	

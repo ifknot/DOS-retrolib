@@ -40,12 +40,12 @@ namespace test_gfx {
 			char fpath[13] = "";
 			mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
 			LOG(*pool);
-			gfx::bmp::bitmap_t bmp;
+			gfx::bmp::bitmap_t* bmp = gfx::bmp::new_bitmap(pool);
 
 			while (YESNO("test file?")) {
 				INFO("enter file name : ");
 				if (scanf("%s", fpath)) {
-					gfx::bmp::pbm::load_file(fpath, &bmp, pool);
+					gfx::bmp::pbm::load_file(pool, fpath, bmp);
 					LOG(*pool);
 				}
 				LOG(bmp);

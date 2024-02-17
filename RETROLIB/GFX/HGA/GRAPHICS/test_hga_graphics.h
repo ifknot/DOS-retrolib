@@ -23,6 +23,7 @@ namespace test_hga_graphics {
 		uint8_t hga = hga::detect_adapter();
 		if(hga) {
 			INFO(hga::video_adapter_names[hga]);
+			/*
 			if (YESNO("* 710\tswitch to HGA graphics mode and clear screen ?")) {
 				hga::graphics_mode();
 				hga::graphics::cls(HGA_BUFFER_0, 0xAA);
@@ -41,7 +42,9 @@ namespace test_hga_graphics {
 					hga::cls();
 				}
 			}
-			if (YESNO("* 720 load bitmap ?")) {
+			*/
+			/*
+			if (YESNO("* 720 load fullscreen bitmap ?")) {
 				char fpath[13] = "";
 				mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
 				LOG(*pool);
@@ -80,6 +83,22 @@ namespace test_hga_graphics {
 						hga::cls();
 					}
 				}
+				mem::arena::delete_dos_arena(pool);
+			}*/
+			if (YESNO("* 730\ttest blit bmp->bmp blit bmp->vram ?")) {
+				mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
+				if (YESNO("* 731\tcreate & blit screen buffer bmp ?")) {
+					gfx::bmp::bitmap_t* bmp = gfx::bmp::new_bitmap(pool, 720, 348, 1, 0);
+					LOG(*bmp);
+					LOG(*pool);
+				}
+				if (YESNO("* 732\tclear & blit screen buffer bmp ?")) {
+				}
+				if (YESNO("* 733\tload sprite bmp ?")) {
+				}
+				if (YESNO("* 734\tblit sprite to buffer & blit screen buffer bmp ?")) {
+				}
+				mem::arena::delete_dos_arena(pool);
 			}
 		}
 		else {

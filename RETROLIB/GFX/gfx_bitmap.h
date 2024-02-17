@@ -36,18 +36,15 @@ namespace gfx {
         * Always for colour type 3, possible for colour types 2 and 6
         * Invalid for colour types 0 and 4.
         */
-        struct bitmap_t {
+        struct bitmap_t;
 
-            uint16_t    width;          // max 65535 x 65535 image
-            uint16_t    height;         // raster rectangle dimensions
-            uint8_t     bit_depth;      // bits per pixel (1, 2, 4, 8 , 16) or palette index
-            uint8_t     colour_type;    // Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
-            char*       raster_data[8]; // ptr to pixel data raster image and any pre x-shifted optimisations for bit depths 1,2, and 4
-            uint32_t    raster_size;    // size of the pixel data
-            char*       palette_data;   // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
-            uint32_t    palette_size;   // size of the palette data
-
-        };
+        bitmap_t* new_bitmap(
+            mem::arena::arena_t* pool,
+            uint16_t width = 0,
+            uint16_t height = 0,
+            uint8_t bit_depth = 0,
+            uint8_t colour_type = 0
+        );
 
         namespace pbm {
 
@@ -59,7 +56,7 @@ namespace gfx {
             *
             * @url https://en.wikipedia.org/wiki/Netpbm
             */
-            void load_file(const char* file_path, bitmap_t* bmp, mem::arena::arena_t* pool);
+            void load_file(mem::arena::arena_t* pool, const char* file_path, bitmap_t* bmp);
 
         }
 
