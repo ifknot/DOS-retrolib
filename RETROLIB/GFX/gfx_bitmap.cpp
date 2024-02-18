@@ -38,29 +38,57 @@ namespace gfx {
 
 		};
 
-		bitmap_t* new_bitmap(mem::arena::arena_t* pool, uint16_t width, uint16_t height, uint8_t bit_depth, uint8_t colour_type) {
+		bitmap_t* new_bitmap(
+			mem::arena::arena_t* pool, 
+			uint16_t width, 
+			uint16_t height, 
+			uint8_t bit_depth, 
+			uint8_t colour_type,
+			char* raster_data[],
+			uint32_t raster_size,
+			char* palette_data,
+			uint32_t palette_size
+		) {
 			bitmap_t* bmp = (bitmap_t * )mem::arena::raw_alloc(pool, sizeof(bitmap_t));
 			bmp->width = width;
 			bmp->height = height;
 			bmp->bit_depth = bit_depth;
 			bmp->colour_type = colour_type;
-			bmp->raster_data[0] = NULL_PTR;
-			bmp->raster_data[1] = NULL_PTR;
-			bmp->raster_data[2] = NULL_PTR;
-			bmp->raster_data[3] = NULL_PTR;
-			bmp->raster_data[4] = NULL_PTR;
-			bmp->raster_data[5] = NULL_PTR;
-			bmp->raster_data[6] = NULL_PTR;
-			bmp->raster_data[7] = NULL_PTR;
-			bmp->raster_size = 0;
+			if(!raster_)
 			bmp->palette_data = NULL_PTR;
 			bmp->palette_size = 0;
 			return bmp;
 		}
 
+		void new_raster_data(mem::arena::arena_t* pool, bitmap_t* bmp) {			
+				switch bit_depth {
+				case 1:	// fall through
+				case 2: // .
+				case 4: // .
+				case 8: // .
+					bmp->raster_size = (width * height) / (8 / bit_depth);
+					break;
+				case 16:
+					bmp->raster_size = width * height * 2;
+					break;
+	#ifndef NDEBUG
+				default:
+					std::cout << "ERROR new_bitmap ILLEGAL bit depth " << bit_depth << std::endl;
+	#endif
+				}
+				bmp->raster_data[0] = 
+				bmp->raster_data[1] = 
+				bmp->raster_data[2] = 
+				bmp->raster_data[3] = 
+				bmp->raster_data[4] = 
+				bmp->raster_data[5] = 
+				bmp->raster_data[6] = 
+				bmp->raster_data[7] = mem::arena::raw_alloc(pool, bmp->raster_size);
+		}
+
 		namespace pbm {
 
-			void load_file(mem::arena::arena_t* pool, const char* file_path, bitmap_t* bmp) {
+			void load_file(mem::arena::arena_t* pool, bitmap_t* bmp, const char* file_path) {
 				const char* raw_ext = file::get_extension(file_path);
 				char pbm_ext[] = "   ";
 				mem::address_t data;

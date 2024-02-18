@@ -42,9 +42,17 @@ namespace gfx {
             mem::arena::arena_t* pool,
             uint16_t width = 0,
             uint16_t height = 0,
-            uint8_t bit_depth = 0,
-            uint8_t colour_type = 0
+            uint8_t bit_depth = 1,
+            uint8_t colour_type = 0,
+            char* raster_data[] = NULL_PTR,
+            uint32_t raster_size = 0,   
+            char* palette_data = NULL_PTR,
+            uint32_t palette_size = 0
         );
+
+        void new_raster_data(mem::arena::arena_t* pool, bitmap_t* bmp);
+
+        void new_palette_data(mem::arena::arena_t* pool, bitmap_t* bmp, uint32_t palette_size);
 
         namespace pbm {
 
@@ -56,7 +64,7 @@ namespace gfx {
             *
             * @url https://en.wikipedia.org/wiki/Netpbm
             */
-            void load_file(mem::arena::arena_t* pool, const char* file_path, bitmap_t* bmp);
+            void load_file(mem::arena::arena_t* pool, bitmap_t* bmp, const char* file_path);
 
         }
 
