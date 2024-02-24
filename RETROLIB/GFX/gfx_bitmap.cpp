@@ -25,26 +25,13 @@ namespace gfx {
 
 	namespace bmp {
 
-		struct bitmap_t {	// 50 bytes
-
-			uint16_t    width;          // max 65535 x 65535 image
-			uint16_t    height;         // raster rectangle dimensions
-			uint8_t     bit_depth;      // bits per pixel (1, 2, 4, 8 , 16) or palette index
-			uint8_t     colour_type;    // Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
-			char*		raster_data[8]; // ptr to pixel data raster image and any pre x-shifted optimisations for bit depths 1,2, and 4
-			uint32_t    raster_size;    // size of the pixel data
-			char*		palette_data;   // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
-			uint32_t    palette_size;   // size of the palette data
-
-		};
-
 		bitmap_t* new_bitmap(
 			mem::arena::arena_t* pool, 
 			uint16_t width, 
 			uint16_t height, 
 			uint8_t bit_depth, 
 			uint8_t colour_type,
-			char* raster_data[],
+			char** raster_data,
 			uint32_t raster_size,
 			char* palette_data,
 			uint32_t palette_size
@@ -54,36 +41,61 @@ namespace gfx {
 			bmp->height = height;
 			bmp->bit_depth = bit_depth;
 			bmp->colour_type = colour_type;
-			if(!raster_)
-			bmp->palette_data = NULL_PTR;
-			bmp->palette_size = 0;
+			bmp->raster_size = raster_size;
+			new_raster_data(bmp, pool, width, height, raster_data);
+			bmp->palette_data = palette_data;
+			bmp->palette_size = palette_size;
 			return bmp;
 		}
 
-		void new_raster_data(mem::arena::arena_t* pool, bitmap_t* bmp) {			
-				switch bit_depth {
+		void new_raster_data(bitmap_t* bmp, mem::arena::arena_t* pool, uint16_t width, uint16_t height, char* raster_data[]) {
+			if(width and height) { // caller wants to use passed width and height arguements and extant bit_depth to calculate a new raster_size 
+				switch (bmp->bit_depth) {
 				case 1:	// fall through
 				case 2: // .
 				case 4: // .
 				case 8: // .
-					bmp->raster_size = (width * height) / (8 / bit_depth);
+					bmp->raster_size = ((uint32_t)width * (uint32_t)height) / (8 / bmp->bit_depth);
 					break;
 				case 16:
 					bmp->raster_size = width * height * 2;
 					break;
 	#ifndef NDEBUG
 				default:
-					std::cout << "ERROR new_bitmap ILLEGAL bit depth " << bit_depth << std::endl;
+					std::cout << "ERROR new_bitmap ILLEGAL bit depth " << bmp->bit_depth << std::endl;
 	#endif
 				}
-				bmp->raster_data[0] = 
-				bmp->raster_data[1] = 
-				bmp->raster_data[2] = 
-				bmp->raster_data[3] = 
-				bmp->raster_data[4] = 
-				bmp->raster_data[5] = 
-				bmp->raster_data[6] = 
-				bmp->raster_data[7] = mem::arena::raw_alloc(pool, bmp->raster_size);
+			}
+			if (raster_data) { // copy the passed raster_data array arguement
+				bmp->raster_data[0] = raster_data[0];
+				bmp->raster_data[1] = raster_data[1];
+				bmp->raster_data[2] = raster_data[2];
+				bmp->raster_data[3] = raster_data[3];
+				bmp->raster_data[4] = raster_data[4];
+				bmp->raster_data[5] = raster_data[5];
+				bmp->raster_data[6] = raster_data[6];
+				bmp->raster_data[7] = raster_data[7];
+			}
+			else if(bmp->raster_size) { // caller wants to reserve space for raster data in passed memory pool and assign same to every pointer in the array
+				bmp->raster_data[0] =
+					bmp->raster_data[1] =
+					bmp->raster_data[2] =
+					bmp->raster_data[3] =
+					bmp->raster_data[4] =
+					bmp->raster_data[5] =
+					bmp->raster_data[6] =
+					bmp->raster_data[7] = mem::arena::raw_alloc(pool, bmp->raster_size);
+			}
+			else { // all null pointers in the array 
+				bmp->raster_data[0] =
+					bmp->raster_data[1] =
+					bmp->raster_data[2] =
+					bmp->raster_data[3] =
+					bmp->raster_data[4] =
+					bmp->raster_data[5] =
+					bmp->raster_data[6] =
+					bmp->raster_data[7] = NULL_PTR;
+			}
 		}
 
 		namespace pbm {
@@ -153,16 +165,17 @@ namespace gfx {
 
 std::ostream& operator<< (std::ostream& os, const gfx::bmp::bitmap_t& bmp) {
 	os << bmp.width << ',' << bmp.height << ',' << (int)bmp.bit_depth << ',' << (int)bmp.colour_type << '\n' 
-		<< std::hex << (uint32_t)bmp.raster_data[0] << '\n'
-		<< std::hex << (uint32_t)bmp.raster_data[1] << '\n'
-		<< std::hex << (uint32_t)bmp.raster_data[2] << '\n'
-		<< std::hex << (uint32_t)bmp.raster_data[3] << '\n'
-		<< std::hex << (uint32_t)bmp.raster_data[4] << '\n'
-		<< std::hex << (uint32_t)bmp.raster_data[5] << '\n'
-		<< std::hex << (uint32_t)bmp.raster_data[6] << '\n'
-		<< std::hex << (uint32_t)bmp.raster_data[7] << '\n'
+		<< std::hex << std::setfill('0') << std::setw(8) 
+		<< (uint32_t)bmp.raster_data[0] << '\n'
+		<< (uint32_t)bmp.raster_data[1] << '\n'
+		<< (uint32_t)bmp.raster_data[2] << '\n'
+		<< (uint32_t)bmp.raster_data[3] << '\n'
+		<< (uint32_t)bmp.raster_data[4] << '\n'
+		<< (uint32_t)bmp.raster_data[5] << '\n'
+		<< (uint32_t)bmp.raster_data[6] << '\n'
+		<< (uint32_t)bmp.raster_data[7] << '\n'
 		<< std::dec << bmp.raster_size << '\n'
-		<< std::hex << (uint32_t)bmp.palette_data << '\n' 
+		<< std::hex << std::setfill('0') << std::setw(8) << (uint32_t)bmp.palette_data << '\n'
 		<< std::dec << bmp.palette_size;
 	return os;
 }
