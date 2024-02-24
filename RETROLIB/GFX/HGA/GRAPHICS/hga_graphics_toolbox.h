@@ -12,7 +12,11 @@
 
 #include <stdint.h>
 
+#include "hga_graphics_palette.h"
+
 #include "../hga_constants.h"
+
+#include "../../gfx_bitmap.h"
 
 namespace hga {
 

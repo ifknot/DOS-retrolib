@@ -98,6 +98,24 @@ namespace gfx {
 			}
 		}
 
+		void fill(gfx::bmp::bitmap_t* bmp, gfx::colours::high_colour_t colour) {
+			__asm {
+				.8086
+				push bp
+				pushf
+
+				lds		si, bmp
+				les		di, [si + OFFSET_RASTER_DATA]
+				mov		cx, [si+ OFFSET_RASTER_SIZE]
+				mov		ax, colour
+				cld
+				rep		stosw
+
+				popf
+				pop bp
+			}
+		}
+
 		namespace pbm {
 
 			void load_file(mem::arena::arena_t* pool, bitmap_t* bmp, const char* file_path) {

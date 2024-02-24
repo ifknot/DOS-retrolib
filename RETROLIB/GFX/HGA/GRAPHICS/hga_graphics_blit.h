@@ -19,10 +19,22 @@ namespace hga {
 	namespace graphics {
 		
 		/**
+		* @brief paint the VRAM buffer with a repeating byte 
+		*/
+		//void blit_vram_byte(uint16_t vram_segment, char byte);
+
+		/**
+		* @brief paint the VRAM buffer with a repeating word
+		*/
+		//void blit_vram_byte(uint16_t vram_segment, uint16_t word);
+
+		/**
 		* @brief fast raster bit block transfer 32768 bytes from bitmap memory to the 4 banks of a VRAM buffer 
 		* @note hard coded HGA screen rectangle (0,0,720,480)
 		*/
 		void blit_vram_bmp(uint16_t vram_segment, char* raster_data);
+
+		//void blit_vram_byte(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h);
 
 		/**
 		* @brief fast rectangular block (x,y,w,h) transfer raster bytes from bitmap memory to the same location in 4 banks of a VRAM buffer

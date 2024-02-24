@@ -87,21 +87,19 @@ namespace test_hga_graphics {
 			}*/
 			if (YESNO("* 730\ttest blit bmp->bmp blit bmp->vram ?")) {
 				mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536 * 2);
+				gfx::bmp::bitmap_t* bmp;
 				LOG(*pool);
 				if (YESNO("* 731\tcreate & blit screen buffer bmp ?")) {
-					gfx::bmp::bitmap_t* bmp = gfx::bmp::new_bitmap(pool, 720, 348, 1, 0);
+					bmp = gfx::bmp::new_bitmap(pool, 720, 348, 1, 0);
 					LOG(*bmp);
 					LOG(*pool);
 				}
 				if (YESNO("* 732\tclear & blit screen buffer bmp ?")) {
-					gfx::bmp::bitmap_t* bmp = gfx::bmp::new_bitmap(pool, 720, 348, 1, 0);
-					LOG(*bmp);
-					LOG(*pool);
 					hga::graphics_mode();
 					hga::graphics::select_buffer(1);
-					
-						hga::graphics::cls(HGA_BUFFER_1, 0xAA);
-						hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp->raster_data[0]);
+
+					gfx::bmp::fill(bmp, hga::graphics::BRIGHT);
+					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp->raster_data[0]);
 
 					if (YESNO("")) {
 						hga::text_mode();
