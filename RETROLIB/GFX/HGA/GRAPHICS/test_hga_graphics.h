@@ -23,7 +23,7 @@ namespace test_hga_graphics {
 		uint8_t hga = hga::detect_adapter();
 		if(hga) {
 			INFO(hga::video_adapter_names[hga]);
-			/*
+			
 			if (YESNO("* 710\tswitch to HGA graphics mode and clear screen ?")) {
 				hga::graphics_mode();
 				hga::graphics::cls(HGA_BUFFER_0, 0xAA);
@@ -42,8 +42,8 @@ namespace test_hga_graphics {
 					hga::cls();
 				}
 			}
-			*/
-			/*
+			
+			
 			if (YESNO("* 720 load fullscreen bitmap ?")) {
 				char fpath[13] = "";
 				mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
@@ -52,7 +52,7 @@ namespace test_hga_graphics {
 
 				INFO("enter file name : ");
 				if (scanf("%s", fpath)) {
-					gfx::bmp::pbm::load_file(fpath, &bmp, pool);
+					gfx::bmp::pbm::load_file(pool, &bmp, fpath);
 					LOG(*pool);
 				}
 				LOG(bmp);
@@ -84,7 +84,7 @@ namespace test_hga_graphics {
 					}
 				}
 				mem::arena::delete_dos_arena(pool);
-			}*/
+			}
 			if (YESNO("* 730\ttest blit bmp->bmp blit bmp->vram ?")) {
 				mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536 * 2);
 				gfx::bmp::bitmap_t* bmp;
