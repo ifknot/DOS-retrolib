@@ -16,6 +16,9 @@
 
 #include "../MEM/mem_address.h"
 
+#include "dos_services_constants.h"
+#include "dos_services_types.h"
+
 namespace dos {
 
         // 0  Program terminate

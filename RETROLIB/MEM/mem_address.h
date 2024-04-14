@@ -25,6 +25,7 @@ namespace mem {
         segoff_t segoff;
         uint16_t words[2];
         uint8_t bytes[4];
+        void* ptr;
 
     };
 
