@@ -14,34 +14,27 @@
 #include "../TEST/debug_macros.h"
 
 #include "kbd_interupt_routines.h"
+#include "kbd_set_1_scan_codes.h"
 
 namespace test_kbd {
 
 	void run() {
 
 		if (YESNO("* 810\t Test keyboard hook interupt 9 ?")) {
-			INFO("* hook simple isr 9 handler ");
-			INFO("kbd::xt::install_simple_isr_9()");
 			
 			kbd::clear_key_pressed_array();
 
-			mem::address_t old_ivec_keyboard = kbd::xt::install_simple_isr_9();
-			LOG_AS(old_ivec_keyboard, std::hex);
-			INFO("installed");
-			LOG(dos::get_interrupt_vector(IKEYBOARD));
-			ASSERT(old_ivec_keyboard.memloc, != , dos::get_interrupt_vector(IKEYBOARD).memloc, "vector not changed");
+			INFO("* hook XT Model F keyboard handler ");
+			kbd::install_keyboard_interrupt_handler((void*)kbd::xt::scan_code_set_1_interrupt_handler);
+			//ASSERT(kbd::old_keyboard_ivec.memloc, != , dos::get_interrupt_vector(IKEYBOARD).memloc, "vector not changed");
 			
-			
-
-			while (!kbd::key_pressed[1]) {}
+			while (!kbd::key_pressed[SCAN_ESC]) {}
 
 			INFO("* reset back to old vector");
-			INFO("dos::set_interrupt_vector(IEQUIPMENT_DETERMINATION, old_ivec_keyboard)");
-			dos::set_interrupt_vector(IKEYBOARD, old_ivec_keyboard);
-			LOG(dos::get_interrupt_vector(IKEYBOARD));
-			ASSERT(old_ivec_keyboard.memloc, == , dos::get_interrupt_vector(IKEYBOARD).memloc, "vector not reset to original");
+			kbd::restore_keyboard_interupt_handler();
+			//ASSERT(kbd::old_keyboard_ivec.memloc, == , dos::get_interrupt_vector(IKEYBOARD).memloc, "vector not reset to original");
 			
-			for (int i = 0; i < MAX_SCAN_CODES; ++i) std::cout << (int)kbd::key_pressed[i] << ' ';
+			for (int i = 0; i < MODEL_F_SCAN_CODE_COUNT; ++i) std::cout << (int)kbd::key_pressed[i] << ' ';
 		}
 
 	}

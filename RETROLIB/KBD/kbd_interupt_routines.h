@@ -31,13 +31,23 @@ namespace kbd {
 	*/
 	volatile uint8_t key_states[MAX_SCAN_CODES];
 	
-	static mem::address_t old_kbd_isr;
+	static mem::address_t old_keyboard_ivec;
 
 	namespace xt {
 
-		void interrupt far interrupt_handler();
-
-		mem::address_t install_simple_isr_9();
+		/**
+		* @brief scan code set 1 (Model F) keyboard interupt handler increments key_pressed[scan_code] array every time key pressed 
+		* @note Does NOT forward to DOS keyboard handler
+		* @details The keyboard controller, by default, will send scan codes in 
+		* Scan Code Set 1 (reference the IBM Technical References for a complete list of scan codes).
+		* Scan codes in this set come as make/break codes. 
+		* The make code is the normal scan code of the key, and the break code is the 
+		* make code bitwise "OR"ed with 0x80 (the high bit is set).
+		* 
+		* On keyboards after the original IBM Model F 83-key, an 0xE0 is prepended to 
+		* some keys that didn't exist on the original keyboard.
+		*/
+		void scan_code_set_1_interrupt_handler();
 
 	}
 

@@ -11,7 +11,13 @@
 #define KBD_CONSTANTS_H
 
 #define MAX_SCAN_CODES 256
+#define MODEL_F_SCAN_CODE_COUNT 128
+
+/**
+* PIC stands for Programmable Interrupt Controller
+*/
 #define PIC_OPERATION_COMMAND_PORT 20h
+#define PIC_END_IRQ 20h
 
  /**
  * PPI stands for Programmable Peripheral Interface(which is the Intel 8255A chip)

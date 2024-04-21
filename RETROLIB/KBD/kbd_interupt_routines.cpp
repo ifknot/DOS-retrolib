@@ -22,40 +22,33 @@ namespace kbd {
 		* @note 2. On IBM PC ATs and newer, writing and reading port 0x61 does nothing 
 		*(onstensibly), and using it to clear the keyboard isn't necessary.
 		*/
-		void interrupt far interrupt_handler() {
+		void interrupt far scan_code_set_1_interrupt_handler() {
 			__asm {
 				.8086
 				sti						; disable interrupts
-				pushf
 
-				lea		bx, key_pressed
-
+				lea		bx, key_pressed	; DS:BX points to key pressed arr
+				
 				in		al, PPI_PORT_B	; get current keyboard state
-				mov		cl, al			; store in CL
+				mov		cl, al			; store original in CL
+				or		al, 80h			; set the 7th bit
+				out		PPI_PORT_B, al	; send to PPI port B (clear keyboard)
+				
 				in		al, PPI_PORT_A	; get key scan code
+				test	al, 80h			; is bit 7 set?
+				jnz		SKIP			; only count key presses
 				
-				add		bl, al
-				mov		[bx], al
+				add		bl, al			; index key press arr by scan code
+				add		[bx], 1			; increment scan code key presses
 				
-				mov		al, cl			; current settings PPI port B
-				or		al, 80h			; set the 7th bit of PPI port B (clear keyboard)
-				out		PPI_PORT_B, al
-				mov		al, cl 
+	SKIP:		mov		al, cl			; original settings PPI port B
 				out		PPI_PORT_B, al	; clear the 7th bit of the PPI (enable keyboard)
-				mov		al, 20h
-				out		PIC_OPERATION_COMMAND_PORT, al ; Send a "Non Specific End of Interrupt" command to the PIC
 
-				popf
-				cli						; enable interrupts
+				mov		al, PIC_END_IRQ	; Send a "Non Specific End of Interrupt" command to the PIC
+				out		PIC_OPERATION_COMMAND_PORT, al 
+
+				cli						; re-enable interrupts
 			}
-		}
-
-		mem::address_t install_simple_isr_9() {
-			mem::address_t old_isr_9 = dos::get_interrupt_vector(IKEYBOARD);
-			mem::address_t new_isr_9;
-			new_isr_9.ptr = (void*)interrupt_handler;
-			dos::set_interrupt_vector(IKEYBOARD, new_isr_9);
-			return old_isr_9;
 		}
 
 	}
@@ -66,13 +59,13 @@ namespace kbd {
 
 	void install_keyboard_interrupt_handler(void* new_kbd_isr_ptr) {
 		mem::address_t new_kbd_isr;
-		old_kbd_isr = dos::get_interrupt_vector(IKEYBOARD);
+		old_keyboard_ivec = dos::get_interrupt_vector(IKEYBOARD);
 		new_kbd_isr.ptr = new_kbd_isr_ptr;
 		dos::set_interrupt_vector(IKEYBOARD, new_kbd_isr);
 	}
 
 	void restore_keyboard_interupt_handler() {
-		dos::set_interrupt_vector(IKEYBOARD, old_kbd_isr);
+		dos::set_interrupt_vector(IKEYBOARD, old_keyboard_ivec);
 	}
 
 }
