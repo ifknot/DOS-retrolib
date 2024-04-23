@@ -37,7 +37,7 @@ namespace test_gfx {
 			test_hga::run();
 		}
 		if (YESNO("* 440\ttest bitmap load functions ?")) {
-			char fpath[13] = "";
+			char fpath[32] = "";	// enough for a file 2 directories deep
 			mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
 			LOG(*pool);
 			gfx::bmp::bitmap_t* bmp = gfx::bmp::new_bitmap(pool);

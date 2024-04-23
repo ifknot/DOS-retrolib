@@ -1,4 +1,13 @@
-/****/
+/**
+ *
+ *  @file      gfx_bitmap.h
+ *  @brief
+ *  @details   ~
+ *  @author    Jeremy Thornton
+ *  @date      2.12.2023
+ *  @copyright © Jeremy Thornton, 2023. All right reserved.
+ *
+ */
 #ifndef GFX_BITMAP_H
 #define GFX_BITMAP_H
 
@@ -12,10 +21,14 @@ namespace gfx {
 
 	namespace bmp {
 
-		const char      PBM_EXT[]       = "PBM";    // valid file extension for portable bitmap
-        const uint16_t  PBM_MAGIC_RAW       = 0x3450;   // little endian ascii 4P
-        const int       PBM_MIN_SIZE    = 6;        // minimum valid size - a 1 byte image
+		const char      PBM_EXT[]       = "PBM";        // valid file extension for portable bitmap
+        const uint16_t  PBM_MAGIC_RAW   = 0x3450;       // little endian ascii '4P'
+        const int       PBM_MIN_SIZE    = 6;            // minimum valid size - a 1 byte of raster data image
 
+        /**
+        * Raster image colour types
+        * @see bitmap_t
+        */
         enum colour_type_t {
             GREYSCALE = 0,
             TRUECOLOUR = 2,
@@ -25,11 +38,11 @@ namespace gfx {
         };
 
         /**
-        * @brief Raster image descriptor - 128 bytes
+        * @brief Raster image descriptor - 40 bytes
         * @details Describes how to interpret the pixel data array
         * (heavily influenced by the PNG IHDR format)
         *
-        * Image     type  Colour type       Allowed bit depths            Each pixel is a...
+        * Image type          Colour type      Allowed bit depths           Each pixel is a...
         * Greyscale             0                  1, 2, 4, 8, 16           greyscale sample
         * Truecolour            2                  8, 16                    RGB triple
         * Indexed-colour        3                  1, 2, 4, 8               palette index
