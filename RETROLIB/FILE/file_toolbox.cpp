@@ -19,7 +19,7 @@
 
 namespace file {
 
-	const char* get_extension(const char* pfile_path) {
+	const char* get_extension_ptr(const char* pfile_path) {
 		const char* p = strrchr(pfile_path, file::EXTENSION_DELIM);
 		if (!p || p == pfile_path) {
 			return 0;

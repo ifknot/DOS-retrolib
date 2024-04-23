@@ -31,85 +31,61 @@ namespace gfx {
 			uint16_t height, 
 			uint8_t bit_depth, 
 			uint8_t colour_type,
-			char** raster_data,
+			char* raster_data,
 			uint32_t raster_size,
 			char* palette_data,
 			uint32_t palette_size
 		) {
-			bitmap_t* bmp = (bitmap_t * )mem::arena::raw_alloc(pool, sizeof(bitmap_t));
+			if (sizeof(bitmap_t) > mem::arena::size(pool)) {						// is there enough avaiable memory in the pool?
+#ifndef NDEBUG
+				std::cout << "Error new_bitmap no room in arena memory pool for bitmap_t! - sizeof(bitmap_t) = " << sizeof(bitmap_t) << " arena pool size = " << mem::arena::size(pool) << std::endl;
+#endif
+				return;																// nope, return															
+			}
+			bitmap_t* bmp = (bitmap_t*)mem::arena::raw_alloc(pool, sizeof(bitmap_t));
 			bmp->width = width;
 			bmp->height = height;
 			bmp->bit_depth = bit_depth;
 			bmp->colour_type = colour_type;
 			bmp->raster_size = raster_size;
-			new_raster_data(bmp, pool, width, height, raster_data);
+			set_raster_data(bmp, width, height, raster_data);
 			bmp->palette_data = palette_data;
 			bmp->palette_size = palette_size;
 			return bmp;
 		}
 
-		void new_raster_data(bitmap_t* bmp, mem::arena::arena_t* pool, uint16_t width, uint16_t height, char* raster_data[]) {
-			if(width and height) { // caller wants to use passed width and height arguements and extant bit_depth to calculate a new raster_size 
-				switch (bmp->bit_depth) {
-				case 1:	// fall through
-				case 2: // .
-				case 4: // .
-				case 8: // .
-					bmp->raster_size = ((uint32_t)width * (uint32_t)height) / (8 / bmp->bit_depth);
-					break;
-				case 16:
-					bmp->raster_size = width * height * 2;
-					break;
-	#ifndef NDEBUG
-				default:
-					std::cout << "ERROR new_bitmap ILLEGAL bit depth " << bmp->bit_depth << std::endl;
-	#endif
-				}
+		void set_raster_data(bitmap_t* bmp, uint16_t width, uint16_t height, char* raster_data[]) {
+			switch (bmp->bit_depth) {
+			case 1:	// fall through
+			case 2: // .
+			case 4: // .
+			case 8: // .
+				bmp->raster_size = ((uint32_t)width * (uint32_t)height) / (8 / bmp->bit_depth);
+				break;
+			case 16:
+				bmp->raster_size = width * height * 2;
+				break;
+#ifndef NDEBUG
+			default:
+				std::cout << "ERROR new_bitmap ILLEGAL bit depth " << bmp->bit_depth << std::endl;
+#endif
 			}
-			if (raster_data) { // copy the passed raster_data array arguement
-				bmp->raster_data[0] = raster_data[0];
-				bmp->raster_data[1] = raster_data[1];
-				bmp->raster_data[2] = raster_data[2];
-				bmp->raster_data[3] = raster_data[3];
-				bmp->raster_data[4] = raster_data[4];
-				bmp->raster_data[5] = raster_data[5];
-				bmp->raster_data[6] = raster_data[6];
-				bmp->raster_data[7] = raster_data[7];
-			}
-			else if(bmp->raster_size) { // caller wants to reserve space for raster data in passed memory pool and assign same to every pointer in the array
-				bmp->raster_data[0] =
-					bmp->raster_data[1] =
-					bmp->raster_data[2] =
-					bmp->raster_data[3] =
-					bmp->raster_data[4] =
-					bmp->raster_data[5] =
-					bmp->raster_data[6] =
-					bmp->raster_data[7] = mem::arena::raw_alloc(pool, bmp->raster_size);
-			}
-			else { // all null pointers in the array 
-				bmp->raster_data[0] =
-					bmp->raster_data[1] =
-					bmp->raster_data[2] =
-					bmp->raster_data[3] =
-					bmp->raster_data[4] =
-					bmp->raster_data[5] =
-					bmp->raster_data[6] =
-					bmp->raster_data[7] = NULL_PTR;
-			}
+			bmp->raster_data = raster_data;
 		}
 
-		void fill(gfx::bmp::bitmap_t* bmp, gfx::colours::high_colour_t colour) {
+		void fill(gfx::bmp::bitmap_t* bmp, uint8_t byte) {
 			__asm {
 				.8086
 				push bp
 				pushf
 
-				lds		si, bmp
-				les		di, [si + OFFSET_RASTER_DATA]
-				mov		cx, [si+ OFFSET_RASTER_SIZE]
-				mov		ax, colour
-				cld
-				rep		stosw
+				lds		si, bmp								; DS:[SI] points to the bitmap_t metadata
+				les		di, [si + OFFSET_RASTER_DATA]		; ES:[DI] points to raster data area
+				mov		cx, [si + OFFSET_RASTER_SIZE]		; CX is the size of the raster data area
+				mov		al, byte							; AL is the repeated byte
+				cld											; increment DI
+				rep		stosw								; chain store byte in AL into ES:[DI] update SI repeat CX times
+
 
 				popf
 				pop bp
@@ -119,9 +95,10 @@ namespace gfx {
 		namespace pbm {
 
 			void load_file(mem::arena::arena_t* pool, bitmap_t* bmp, const char* file_path) {
-				const char* raw_ext = file::get_extension(file_path);
+				mem::address_t file_data;
+
+				const char* raw_ext = file::get_extension_ptr(file_path);
 				char pbm_ext[] = "   ";
-				mem::address_t data;
 
 				str::copy_convert_to_upper(raw_ext, pbm_ext);
 				if (strcmp(pbm_ext, PBM_EXT) != 0) {
@@ -137,39 +114,39 @@ namespace gfx {
 				}
 
 				file::file_size_t fsize = file::get_size(fhandle);
-				if (fsize > mem::arena::size(pool)) {
+				if (fsize > mem::arena::size(pool)) {									// is there enough avaiable memory in the pool?
 #ifndef NDEBUG
 					std::cout << "Error load_file_pbm file too large for arena memory pool! - file size = " << fsize << " arena pool size = " << mem::arena::size(pool) << std::endl;
 #endif
-					return;
+					return;																// nope, return															
 				}
 
-				data.memloc = (uint32_t)mem::arena::raw_alloc(pool, fsize);		// allocate memory for whole file
-				mem::load_from_file_using_handle(fhandle, data, fsize);			// load file into memory
+				file_data.memloc = (uint32_t)mem::arena::raw_alloc(pool, fsize);		// allocate pool memory for whole file
+				mem::load_from_file_using_handle(fhandle, file_data, fsize);			// load file into memory
 
-				if (PBM_MAGIC_RAW != *(uint16_t*)data.memloc) {					// check if a valid 
-					mem::arena::raw_dealloc(pool, fsize);
-					dos::close_file_using_handle(fhandle);
+				if (PBM_MAGIC_RAW != *(uint16_t*)file_data.memloc) {					// check if a valid PBM data
+					mem::arena::raw_dealloc(pool, fsize);								// nope then release pool memory
+					dos::close_file_using_handle(fhandle);								// close the file
 #ifndef NDEBUG
 					std::cout << "Error load_file_pbm incorrect magic number not P4 portable bitmap format RAW" << std::endl;
 #endif
-					return;
+					return;																// return
 				}
 
-				uint32_t mem_start = data.memloc;
-				data.memloc += str::ignore_line((char*)data.memloc);			// skip the magic 
-				while ('#' == *(char*)data.memloc) {							// skip any subsequent comments  
-					data.memloc += str::ignore_line((char*)data.memloc);
+				uint32_t mem_start = file_data.memloc;
+				file_data.memloc += str::ignore_line((char*)file_data.memloc);			// skip the magic 
+				while ('#' == *(char*)file_data.memloc) {								// skip any subsequent comments  
+					file_data.memloc += str::ignore_line((char*)file_data.memloc);
 				}
-				bmp->width = atoi((const char*)data.memloc);					// extract the width
-				data.memloc += str::ignore_token((char*)data.memloc, ' ');		// skip the width token
-				bmp->height = atoi((const char*)data.memloc);					// extract the height
-				data.memloc += str::ignore_line((char*)data.memloc);			// skip line to start raw pixel data
-				bmp->raster_data[0] = (char*)data.memloc;						// data.memloc now points to start of raster date
-				bmp->raster_size = fsize - (data.memloc - mem_start);			// calculate raster size
-				bmp->bit_depth = 1;												// 1 bits per pixel
-				bmp->colour_type = GREYSCALE;									// greyscale
-				bmp->palette_data = NULL_PTR;									// no palette data
+				bmp->width = atoi((const char*)file_data.memloc);						// extract the width
+				file_data.memloc += str::ignore_token((char*)file_data.memloc, ' ');	// skip the width token
+				bmp->height = atoi((const char*)file_data.memloc);						// extract the height
+				file_data.memloc += str::ignore_line((char*)file_data.memloc);			// skip line to start raw pixel data
+				bmp->raster_data = (char*)file_data.memloc;								// file_data.memloc points to start of raster date
+				bmp->raster_size = fsize - (file_data.memloc - mem_start);				// calculate raster size
+				bmp->bit_depth = 1;														// 1 bits per pixel
+				bmp->colour_type = GREYSCALE;											// greyscale
+				bmp->palette_data = NULL_PTR;											// no palette data
 				bmp->palette_size = 0;
 
 				dos::close_file_using_handle(fhandle);

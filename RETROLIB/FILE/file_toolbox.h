@@ -16,11 +16,11 @@
 namespace file {
 
 	/**
-	*  @brief	Retrieve file extension, if there is one
-	*  @param	const char* file_path
-	*  @retval  string file extension or empty string if not found
+	*  @brief	Retrieve position of file extension (if there is one) in file path 
+	*  @param	const char* file_path, ptr to extant file path C string
+	*  @retval  const char* position of start of extension in file_path
 	*/
-	const char* get_extension(const char* file_path);
+	const char* get_extension_ptr(const char* file_path);
 
 	/**
 	*  @brief	Retrieve file size

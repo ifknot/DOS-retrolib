@@ -42,19 +42,19 @@ namespace gfx {
         */
         struct bitmap_t {	
 
-            uint16_t    width;          // 0 max 65535 x 65535 image
-            uint16_t    height;         // 2 raster rectangle dimensions
-            uint8_t     bit_depth;      // 4 bits per pixel (1, 2, 4, 8 , 16) or palette index
-            uint8_t     colour_type;    // 5 Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
-            char*       raster_data[8]; // 6 ptr to pixel data raster image and any pre x-shifted optimisations for bit depths 1,2, and 4
-            uint16_t    raster_size;    // 38 size of the pixel data
-            char*       palette_data;   // 40 ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
-            uint16_t    palette_size;   // 44 size of the palette data
+            uint16_t    width;          // max 65535 x 65535 image
+            uint16_t    height;         // raster rectangle dimensions
+            uint8_t     bit_depth;      // bits per pixel (1, 2, 4, 8 , 16) or palette index
+            uint8_t     colour_type;    // Greyscale 0, Truecolour 2, Indexed colour 3, Greyscale alpha 4, Truecolour alpha 6
+            char*       raster_data;    // ptr to pixel data raster image and any pre x-shifted optimisations for bit depths 1,2, and 4
+            uint16_t    raster_size;    // size of the pixel data
+            char*       palette_data;   // ptr to palette data - 24-bit values for the RGB color space, 16,777,216 color variations
+            uint16_t    palette_size;   // size of the palette data
 
         };
 
 #define OFFSET_RASTER_DATA 6
-#define OFFSET_RASTER_SIZE 38
+#define OFFSET_RASTER_SIZE 10
 
         /**
         * @brief helper function to create a new bitmap in an arena_t memory pool with over-rideable default settings 
@@ -65,7 +65,7 @@ namespace gfx {
             uint16_t height = 0,
             uint8_t bit_depth = 1,
             uint8_t colour_type = 0,
-            char* raster_data[8] = NULL_PTR,  
+            char* raster_data = NULL_PTR,  
             uint32_t raster_size = 0,
             char* palette_data = NULL_PTR,
             uint32_t palette_size = 0
@@ -73,28 +73,13 @@ namespace gfx {
 
         /**
         * @brief helper function to set up raster data in a bitmap_t 
-        * @note behaviour is defined by passed arguments
-        * @details
-        * 
-        * new_raster_data(bmp, pool) 
-        * - reserve memory in pool as per extant bit_depth, width and height and calculate raster_size
-        * 
-        * new_raster_data(bmp, pool, width, height) 
-        * - reserve memory in pool as per extant bit_depth, passed width and height and calculate raster_size  
-        * @note sets the whole raster_data pointer array to the same reserved memory pointer
-        * 
-        * new_raster_data(bmp, pool, width, height, raster_data)
-        * - with extant bit_depth set width and height, calculate new raster_size and set raster_data pointer array
-        * @note the array of raster_data pointers is COPIED to the bitmap's array of raster_data pointers
-        *
         */
-        void new_raster_data(bitmap_t* bmp, mem::arena::arena_t* pool, uint16_t width = 0, uint16_t height = 0, char* raster_data[] = NULL_PTR);
+        void set_raster_data(bitmap_t* bmp, uint16_t width, uint16_t height, char* raster_data[]);
 
         /**
-        * @brief fill a bitmap with a colour
-        * @note undefined behaviour for odd raster_size bitmap_t
+        * @brief fill a bitmap with a repeating byte
         */
-        void fill(gfx::bmp::bitmap_t* bmp, gfx::colours::high_colour_t colour);
+        void fill(gfx::bmp::bitmap_t* bmp, uint8_t byte);
 
         namespace pbm {
 
