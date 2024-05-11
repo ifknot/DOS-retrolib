@@ -16,6 +16,8 @@
 #include "../../gfx.h"
 #include "../../../MEM/mem.h"
 
+#include "hga_graphics.h"
+
 namespace test_hga_graphics {
 
 	void run() {
@@ -61,7 +63,7 @@ namespace test_hga_graphics {
 					hga::graphics::select_buffer(1);
 					
 					hga::graphics::cls(HGA_BUFFER_1, 0);
-					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data[0]);
+					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data);
 
 					if (YESNO("")) {
 						hga::text_mode();
@@ -74,7 +76,7 @@ namespace test_hga_graphics {
 
 					for (int i = 10; i < 20; i += 1) {
 						hga::graphics::cls(HGA_BUFFER_1, 0);
-						hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data[0], i, i, 360, 88);
+						hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data, i, i, 360, 88);
 						YESNO("");
 					}
 
@@ -90,7 +92,7 @@ namespace test_hga_graphics {
 				gfx::bmp::bitmap_t* bmp;
 				LOG(*pool);
 				if (YESNO("* 731\tcreate & blit screen buffer bmp ?")) {
-					bmp = gfx::bmp::new_bitmap(pool, 720, 348, 1, 0);
+					bmp = gfx::bmp::new_bitmap(pool, 720, 348, 1, gfx::bmp::GREYSCALE);
 					LOG(*bmp);
 					LOG(*pool);
 				}
@@ -98,11 +100,12 @@ namespace test_hga_graphics {
 					hga::graphics_mode();
 					hga::graphics::select_buffer(1);
 
-					gfx::bmp::fill(bmp, hga::graphics::BRIGHT);
-					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp->raster_data[0]);
+					//gfx::bmp::fill(bmp, hga::graphics::BRIGHT);
+					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp->raster_data);
 
 					if (YESNO("")) {
 						hga::text_mode();
+						LOG(sizeof(*bmp));
 					}
 				}
 				if (YESNO("* 733\tload sprite bmp ?")) {

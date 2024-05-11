@@ -1,0 +1,2 @@
+RETROLIB\GFX\gfx_bitmap.cpp(51): Error! E341: col(40) number of arguments for function 'set_raster_data' is incorrect
+RETROLIB\GFX\gfx_bitmap.h(92): Note! N392: col(14) definition: 'void gfx::bmp::set_raster_data( mem::arena::arena_t *, gfx::bmp::bitmap_t *, unsigned short, unsigned short, char * )'
