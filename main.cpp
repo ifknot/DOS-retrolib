@@ -3,9 +3,11 @@
 #include "RETROLIB/test_retrolib.h"
 
 /**
-* @todo hcg::graphics:: 
-* [ ] bmp_x_offsets_t
-* [ ] make_bmp_x_offsets(bmp_x_offsets_t* bmpoff)
+* @todo 
+* [] hcg::graphics:: is hcg and hcg is mda
+* [] bmp_x_offsets_t
+* [] make_bmp_x_offsets(gfx::bitmap_t* bmp, bmp_x_offsets_t* bmpoff)
+* 
 * 
 * Use the bitmap palette ptr to address hcg::graphics::bmp_x_offsets_t
 * HCG bitmap expects a bitmap with 8 horizontal single pixel x-steps offset images for the each sprite animation frames
@@ -14,6 +16,16 @@
 * e.g. 32x32 pixel frame would need 40x32 pixels per frame with 8 offsets being 320 pixels the nearest pwoer of 2 width then 512 pixels ie 64bytes wide 
 * leaving 64K image map 1024 vertical pixels which for the 32x32 frame example would be a maximum of 32 animation frames 
 * whilst memory consuming this approach enables fast animation using precalcuated offset frames for x 0..7 positions
+* 
+* [] plot_pixel
+* [] hsync_plot_pixel
+* [] read_pixel
+* [] hline (fast)
+* [] vline (fast)
+* [] rectangle (fast)
+* [] line (bresenham)
+* [] circle
+* [] elipse
 */
 
 int main() {
