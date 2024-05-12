@@ -1,0 +1,17 @@
+RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx_bitmap.h(87): Error! E006: col(9) syntax error; probable cause: missing ';'
+RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx_bitmap.h(87): Note! N393: col(9) included from RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx.h(17)
+RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx_bitmap.h(87): Note! N393: col(9) included from RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(16)
+RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx_bitmap.h(87): Note! N393: col(9) included from RETROLIB\test_retrolib.h(22)
+RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx_bitmap.h(87): Note! N393: col(9) included from main.cpp(3)
+RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx_bitmap.h(123): Error! E498: col(55) syntax error before 'bitmap_t'; probable cause: incorrectly spelled type name
+RETROLIB\GFX\HGA\GRAPHICS\..\..\gfx_bitmap.h(127): Error! E121: col(9) syntax error
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(31): Error! E341: col(51) number of arguments for function 'cls' is incorrect
+RETROLIB\GFX\HGA\GRAPHICS\hga_graphics_toolbox.h(34): Note! N392: col(55) definition: 'void hga::graphics::cls( [unsigned short ])'
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(57): Error! E239: col(56) nested type class 'pbm' has not been declared
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(57): Error! E926: col(56) syntax error: 'gfx::bmp::pbm::load_file' has not been declared as a member
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(60): Error! E157: col(40) left expression must be integral
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(60): Note! N717: col(40) left operand type is 'std::ostream (lvalue)'
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(60): Note! N718: col(40) right operand type is 'gfx::bmp::bitmap_t (lvalue)'
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(96): Error! E157: col(49) left expression must be integral
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(96): Note! N717: col(49) left operand type is 'std::ostream (lvalue)'
+RETROLIB\GFX\HGA\GRAPHICS\test_hga_graphics.h(96): Note! N718: col(49) right operand type is 'gfx::bmp::bitmap_t (lvalue)'

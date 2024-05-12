@@ -30,13 +30,13 @@ namespace test_hga_graphics {
 				hga::graphics_mode();
 				hga::graphics::cls(HGA_BUFFER_0, 0xAA);
 				if (YESNO("switch buffer ?")) {
-					hga::graphics::select_buffer(1);
-					hga::graphics::cls(HGA_BUFFER_1, 1);
+					hga::graphics::select_display_buffer(1);
+					hga::graphics::fill_vram_buffer(HGA_BUFFER_1, 1);
 
 				}
 				if (YESNO("switch back ?")) {
-					hga::graphics::select_buffer(0);
-					hga::graphics::cls(HGA_BUFFER_0, 0xEE);
+					hga::graphics::select_display_buffer(0);
+					hga::graphics::fill_vram_buffer(HGA_BUFFER_0, 0xEE);
 				}
 				
 				if (YESNO("")) {
@@ -60,9 +60,9 @@ namespace test_hga_graphics {
 				LOG(bmp);
 				if (YESNO("* 721\tswitch to HGA graphics mode and display bitmap?")) {
 					hga::graphics_mode();
-					hga::graphics::select_buffer(1);
+					hga::graphics::select_display_buffer(1);
 					
-					hga::graphics::cls(HGA_BUFFER_1, 0);
+					hga::graphics::cls(HGA_BUFFER_1);
 					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data);
 
 					if (YESNO("")) {
@@ -72,10 +72,10 @@ namespace test_hga_graphics {
 				}
 				if (YESNO("* 722\tswitch to HGA graphics mode and letterbox bitmap?")) {
 					hga::graphics_mode();
-					hga::graphics::select_buffer(1);
+					hga::graphics::select_display_buffer(1);
 
 					for (int i = 10; i < 20; i += 1) {
-						hga::graphics::cls(HGA_BUFFER_1, 0);
+						hga::graphics::cls(HGA_BUFFER_1);
 						hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp.raster_data, i, i, 360, 88);
 						YESNO("");
 					}
@@ -98,7 +98,7 @@ namespace test_hga_graphics {
 				}
 				if (YESNO("* 732\tclear & blit screen buffer bmp ?")) {
 					hga::graphics_mode();
-					hga::graphics::select_buffer(1);
+					hga::graphics::select_display_buffer(1);
 
 					//gfx::bmp::fill(bmp, hga::graphics::BRIGHT);
 					hga::graphics::blit_vram_bmp(HGA_BUFFER_1, bmp->raster_data);
