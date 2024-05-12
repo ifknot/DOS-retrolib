@@ -15,8 +15,6 @@
 #include "gfx.h"
 #include "../MEM/mem.h"
 
-#include "HGA/test_hga.h"
-
 namespace test_gfx {
 
 	void run() {
@@ -33,10 +31,7 @@ namespace test_gfx {
 			LOG((int)gfx::detect_adapter());
 			INFO(gfx::video_adapter_names[gfx::detect_adapter()]);
 		}
-		if (YESNO("* 430\ttest HGA functions ?")) {
-			test_hga::run();
-		}
-		if (YESNO("* 440\ttest bitmap load functions ?")) {
+		if (YESNO("* 430\ttest bitmap load functions ?")) {
 			char fpath[32] = "";	// enough for a file 2 directories deep
 			mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
 			LOG(*pool);
@@ -45,7 +40,7 @@ namespace test_gfx {
 			while (YESNO("test file?")) {
 				INFO("enter file name : ");
 				if (scanf("%s", fpath)) {
-					gfx::bmp::pbm::load_file(pool, bmp, fpath);
+					gfx::bmp::load_file(pool, bmp, fpath);
 					LOG(*pool);
 				}
 				LOG(bmp);

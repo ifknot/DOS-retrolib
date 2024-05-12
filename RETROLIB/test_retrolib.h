@@ -16,10 +16,10 @@
 //#include "DOS/test_dos.h"							// 100
 //#include "MEM/test_mem.h"							// 200
 //#include "BIOS/test_bios.h"						// 300
-//#include "GFX/test_gfx.h"							// 400
+#include "GFX/test_gfx.h"							// 400
 //#include "FILE/test_file.h"						// 500
 //#include "STR/test_toolbox.h"						// 600
-#include "GFX/HGA/GRAPHICS/test_hga_graphics.h"	// 700
+//#include "GFX/HGA/test_hga_graphics.h"	// 700
 //#include "KBD/test_kbd.h"							// 800
 
 namespace test_retrolib {
@@ -31,10 +31,10 @@ namespace test_retrolib {
 		//if (YESNO("* 100\ttest DOS ?")) test_dos::run();
 		//if (YESNO("* 200\ttest MEM ?")) test_mem::run();
 		//if (YESNO("* 300\ttest BIOS ?")) test_bios::run();
-		//if (YESNO("* 400\ttest GFX ?")) test_gfx::run();
+		if (YESNO("* 400\ttest GFX ?")) test_gfx::run();
 		//if (YESNO("* 500\ttest FILE ?")) test_file::run();
 		//if (YESNO("* 600\ttest STR ?")) test_toolbox::run();
-		if (YESNO("* 700\ttest HGA::graphics ?")) test_hga_graphics::run();
+		//if (YESNO("* 700\ttest HGA::graphics ?")) test_hga_graphics::run();
 		//if (YESNO("* 800\ttest KBD ?")) test_kbd::run();
 
 	}

@@ -12,26 +12,6 @@
 
 namespace hga {
 
-	void cls(char character, char attribute) {
-		__asm {
-			.8086
-			push	bp
-			pushf
-
-			mov     ax, HGA_VIDEO_RAM_SEGMENT
-			mov     es, ax; ES:DI will point to x, y screen byte
-			xor di, di
-			mov     ah, attribute
-			mov     al, character
-			mov     cx, HGA_CHARS_PER_SCREEN; 80 columns x 25 rows = 2000 characters per screen
-			cld; increment mode
-			rep     stosw; fill screen with atrribute : ascii word
-
-			popf
-			pop		bp
-		}
-	}
-
 	void video_mode(const uint8_t* presets, uint8_t flags_config, uint8_t flags_ctrl) {
 		__asm {
 			.8086
@@ -68,5 +48,47 @@ namespace hga {
 			pop		bp
 		}
 	}
+
+    void fill_vram_buffer(uint16_t vram_segment, uint8_t byte_pattern) {
+			__asm {
+				.8086
+				push	bp
+				pushf
+
+				mov     ax, vram_segment
+				mov     es, ax                      ; ES:DI will point to x, y screen word
+				xor     di, di	
+
+				cld									; increment ES:DI
+				mov		al, byte_pattern
+				mov		ah, al						; duplicate byte pattern into AX word
+				mov		cx, HGA_WORDS_PER_SCREEN	; set counter to full screen
+				rep		stosw						; chain store byte pattern word to VRAM
+
+				popf 
+				pop		bp
+			}
+		}
+
+		void select_display_buffer(uint8_t select) {
+			__asm {
+				.8086
+				push	bp
+				pushf 
+
+				mov     dx, HGA_CONTROL_REGISTER
+				mov		al, select 
+				and		al, 00000001b
+				jz      J0                          
+				mov     al, 10001010b               ; screen on buffer 1 second display page buffer B000 : 800
+				jmp     J1
+		J0:     mov     al, 00001010b               ; screen on buffer 0 default display page buffer B000 : 000
+		J1:     out     dx, al
+    
+				popf
+				pop		bp
+
+			}
+		}
 
 }

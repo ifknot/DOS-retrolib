@@ -73,13 +73,15 @@ namespace gfx {
         /**
         * @brief helper function to create a new 'blank' (uninitialised) memory bitmap 
         */
+        /*
         bitmap_t* new_bitmap(
             mem::arena::arena_t* pool,
             uint16_t width = 0,
             uint16_t height = 0,
             uint8_t bit_depth = 1,
             uint8_t colour_type = 0
-        )
+        );
+        */
 
         /**
         * @brief helper function to create a new bitmap 
@@ -110,19 +112,17 @@ namespace gfx {
             fill(bmp, 0);
         }
 
-        namespace pbm {
+        
 
-            /**
-            * @brief Load a Portable BitMap .pbm monochrome image into arena memory
-            * and populate the bitmap_t descriptor correctly
-            * @note white = 0, black = 1 and, therefore, to display correctly image will need inverting
-            * this can be acheived by setting auto_invert = true, or calling bitmap::invert seperately - or preconverting the actual file data
-            *
-            * @url https://en.wikipedia.org/wiki/Netpbm
-            */
-            void load_file(mem::arena::arena_t* pool, bitmap_t* bmp, const char* file_path);
-
-        }
+        /**
+        * @brief Load a Portable BitMap .pbm monochrome image into arena memory
+        * and populate the bitmap_t descriptor correctly
+        * @note white = 0, black = 1 and, therefore, to display correctly image will need inverting
+        * this can be acheived by setting auto_invert = true, or calling bitmap::invert seperately - or preconverting the actual file data
+        *
+        * @url https://en.wikipedia.org/wiki/Netpbm
+        */
+        void load_file(mem::arena::arena_t* pool, bitmap_t* bmp, const char* file_path);
 
 	}
 
