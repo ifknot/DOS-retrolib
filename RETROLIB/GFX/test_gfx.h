@@ -40,7 +40,7 @@ namespace test_gfx {
 			while (YESNO("test file?")) {
 				INFO("enter file name : ");
 				if (scanf("%s", fpath)) {
-					gfx::bmp::load_file(pool, bmp, fpath);
+					gfx::bmp::pbm::load_file(pool, bmp, fpath);
 					LOG(*pool);
 				}
 				LOG(bmp);

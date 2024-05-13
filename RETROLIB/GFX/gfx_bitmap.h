@@ -112,18 +112,6 @@ namespace gfx {
             fill(bmp, 0);
         }
 
-        
-
-        /**
-        * @brief Load a Portable BitMap .pbm monochrome image into arena memory
-        * and populate the bitmap_t descriptor correctly
-        * @note white = 0, black = 1 and, therefore, to display correctly image will need inverting
-        * this can be acheived by setting auto_invert = true, or calling bitmap::invert seperately - or preconverting the actual file data
-        *
-        * @url https://en.wikipedia.org/wiki/Netpbm
-        */
-        void load_file(mem::arena::arena_t* pool, bitmap_t* bmp, const char* file_path);
-
 	}
 
 }

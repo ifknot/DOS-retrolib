@@ -15,5 +15,6 @@
 #include "gfx_detect_crtc.h"
 #include "gfx_detect_adapter.h"
 #include "gfx_bitmap.h"
+#include "gfx_bitmap_file_tools.h"
 
 #endif
