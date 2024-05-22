@@ -10,6 +10,9 @@
 **/
 #include "gfx_bmp_file_tools.h"
 
+#include <stdlib.h>
+#include <string.h>
+
 #include <iostream>
 
 #include "../FILE/file.h"

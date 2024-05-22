@@ -13,10 +13,10 @@
 #include "../../TEST/debug_macros.h"
 
 #include "hga.h"
-#include "../gfx_bitmap.h"
+#include "../gfx.h"
 #include "../../MEM/mem.h"
 
-namespace test_hga_graphics {
+namespace test_hga {
 
 	void run() {
 		INFO("* testing lib HGA graphics routines");
@@ -26,7 +26,7 @@ namespace test_hga_graphics {
 			
 			if (YESNO("* 710\tswitch to HGA graphics mode and clear screen ?")) {
 				hga::graphics_mode();
-				hga::cls(HGA_BUFFER_0, 0xAA);
+				hga::cls();
 				if (YESNO("switch buffer ?")) {
 					hga::select_display_buffer(1);
 					hga::fill_vram_buffer(HGA_BUFFER_1, 1);
@@ -52,8 +52,7 @@ namespace test_hga_graphics {
 
 				INFO("enter file name : ");
 				if (scanf("%s", fpath)) {
-					gfx::bmp ::load_file(pool, &bmp, fpath);
-					gfx::bmp::load_file
+					gfx::bmp::pbm::load_file(pool, &bmp, fpath);
 					LOG(*pool);
 				}
 				LOG(bmp);
@@ -66,7 +65,7 @@ namespace test_hga_graphics {
 
 					if (YESNO("")) {
 						hga::text_mode();
-						hga::cls();
+						mda::cls();
 					}
 				}
 				if (YESNO("* 722\tswitch to HGA graphics mode and letterbox bitmap?")) {

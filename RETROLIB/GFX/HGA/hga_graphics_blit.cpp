@@ -10,7 +10,7 @@
  */
 #include "hga_graphics_blit.h"
 
-#include "../hga_constants.h"
+#include "hga_constants.h"
 
 namespace hga {
 

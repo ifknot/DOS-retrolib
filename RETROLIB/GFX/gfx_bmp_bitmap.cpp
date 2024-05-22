@@ -38,7 +38,7 @@ namespace gfx {
 			bmp->height = height;
 			bmp->bit_depth = bit_depth;
 			bmp->colour_type = colour_type;
-			bmp->raster_size = raster_size
+			bmp->raster_size = raster_size;
 			bmp->palette_data = palette_data;
 			bmp->palette_size = palette_size;
 			return bmp;
@@ -50,20 +50,50 @@ namespace gfx {
 			case 2: // .
 			case 4: // .
 			case 8: // .
-				return = ((uint32_t)width * (uint32_t)height) / (8 / bmp->bit_depth);
+				return ((uint32_t)width * (uint32_t)height) / (8 / bit_depth);
 			case 16:
-				return = width * height * 2;
+				return width * height * 2;
 #ifndef NDEBUG
 			default:
-				std::cout << "ERROR new_bitmap ILLEGAL bit depth " << bmp->bit_depth << std::endl;
+				std::cout << "ERROR new_bitmap ILLEGAL bit depth " << bit_depth << std::endl;
 #endif
+				return 0;
 			}
-			if (raster_data) {
-				bmp->raster_data = raster_data;
-			}
-			else {	// NULL_PTR (default) raster_data* will acquire raster_size bytes from pool
-				bmp->raster_data = (char*)mem::arena::raw_alloc(pool, bmp->raster_size);
-			}
+		}
+
+		bitmap_t* new_bitmap(
+			mem::arena::arena_t* pool,
+			uint16_t width,
+			uint16_t height,
+			uint8_t bit_depth,
+			uint8_t colour_type
+		) {
+			uint32_t raster_size = calculate_raster_size(width, height, bit_depth);
+			return new_bitmap(
+				pool, 
+				width, 
+				height, 
+				bit_depth, 
+				colour_type, 
+				(char*)mem::arena::raw_alloc(pool, raster_size),
+				raster_size,
+				NULL_PTR, 
+				0
+			);
+		}
+
+		bitmap_t* new_bitmap(mem::arena::arena_t* pool) {
+			return new_bitmap(
+				pool,
+				0,
+				0,
+				0,
+				0,
+				NULL_PTR,
+				0,
+				NULL_PTR,
+				0
+			);
 		}
 
 		void fill(gfx::bmp::bitmap_t* bmp, uint8_t fill_byte) {

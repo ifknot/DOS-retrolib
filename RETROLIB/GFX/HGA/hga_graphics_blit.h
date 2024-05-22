@@ -12,8 +12,6 @@
 
 #include <stdint.h>
 
-#include "../../gfx_rect.h"
-
 namespace hga {
 		
 	/**

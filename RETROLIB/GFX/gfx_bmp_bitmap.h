@@ -71,20 +71,7 @@ namespace gfx {
 #define OFFSET_RASTER_SIZE 10
 
         /**
-        * @brief helper function to create a new 'blank' (uninitialised) memory bitmap 
-        */
-        /*
-        bitmap_t* new_bitmap(
-            mem::arena::arena_t* pool,
-            uint16_t width = 0,
-            uint16_t height = 0,
-            uint8_t bit_depth = 1,
-            uint8_t colour_type = 0
-        );
-        */
-
-        /**
-        * @brief helper function to create a new bitmap 
+        * @brief create a new bitmap w all the trimmings
         */
         bitmap_t* new_bitmap(
             mem::arena::arena_t* pool,
@@ -102,6 +89,23 @@ namespace gfx {
         * @brief helper function to calculate_raster_size
         */
         uint32_t calculate_raster_size(uint16_t width, uint16_t height, uint8_t bit_depth);
+
+        /**
+        * @brief create a new 'blank' bitmap
+        */
+        bitmap_t* new_bitmap(
+            mem::arena::arena_t* pool,
+            uint16_t width,
+            uint16_t height,
+            uint8_t bit_depth,
+            uint8_t colour_type
+        );
+
+        /**
+        * @brief create a new bitmap with nothing allocated eg ready for loading from a file
+        */
+        bitmap_t* new_bitmap(mem::arena::arena_t* pool);
+        
 
         /**
         * @brief fill a bitmap with a repeating byte

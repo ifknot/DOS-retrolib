@@ -12,7 +12,7 @@
 
 #include "../TEST/debug_macros.h"
 
-#include "mem_arena.h"
+#include "mem.h"
 
 namespace test_mem_arena {
 

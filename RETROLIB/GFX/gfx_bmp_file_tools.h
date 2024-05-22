@@ -11,6 +11,10 @@
 #ifndef GFX_BITMAP_FILE_TOOLS_H
 #define GFX_BITMAP_FILE_TOOLS_H
 
+#include "../MEM/mem.h"
+
+#include "gfx_bmp_bitmap.h"
+
 namespace gfx {
 
     namespace bmp {
