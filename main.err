@@ -1,4 +1,4 @@
 RETROLIB\GFX\test_gfx.h(38): Error! E341: col(71) number of arguments for function 'new_bitmap' is incorrect
 RETROLIB\GFX\test_gfx.h(38): Note! N393: col(71) included from RETROLIB\test_retrolib.h(19)
 RETROLIB\GFX\test_gfx.h(38): Note! N393: col(71) included from main.cpp(3)
-RETROLIB\GFX\gfx_bitmap.h(89): Note! N392: col(19) definition: 'gfx::bmp::bitmap_t * gfx::bmp::new_bitmap( mem::arena::arena_t *, unsigned short, unsigned short, unsigned char, unsigned char, char *, unsigned long, char *, unsigned long )'
+RETROLIB\GFX\gfx_bmp_bitmap.h(89): Note! N392: col(19) definition: 'gfx::bmp::bitmap_t * gfx::bmp::new_bitmap( mem::arena::arena_t *, unsigned short, unsigned short, unsigned char, unsigned char, char *, unsigned long, char *, unsigned long )'

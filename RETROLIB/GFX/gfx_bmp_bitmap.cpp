@@ -8,13 +8,7 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#include "gfx_bitmap.h"
-
-
-//#include <string.h>
-//#include <stdlib.h>
-
-
+#include "gfx_bmp_bitmap.h"
 
 #include "../TEST/debug_macros.h"
 

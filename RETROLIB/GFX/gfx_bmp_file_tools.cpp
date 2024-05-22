@@ -8,7 +8,7 @@
     @copyright © Jeremy Thornton, 2024. All right reserved.
 
 **/
-#include "gfx_bitmap_file_tools.h"
+#include "gfx_bmp_file_tools.h"
 
 #include <iostream>
 
