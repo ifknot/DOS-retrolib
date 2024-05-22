@@ -267,8 +267,8 @@ WVList
 0
 63
 MItem
-27
-RETROLIB\GFX\gfx_bitmap.cpp
+31
+RETROLIB\GFX\gfx_bmp_bitmap.cpp
 64
 WString
 6
@@ -285,8 +285,8 @@ WVList
 0
 67
 MItem
-38
-RETROLIB\GFX\gfx_bitmap_file_tools.cpp
+35
+RETROLIB\GFX\gfx_bmp_file_tools.cpp
 68
 WString
 6
