@@ -5,7 +5,7 @@
 /**
 * @todo 
 * [x] hga::graphics:: is hga and hga is mda
-* [] btimap file tools separate
+* [x] btimap file tools separate
 * [] bmp_x_offsets_t
 * [] make_bmp_x_offsets(gfx::bitmap_t* bmp, bmp_x_offsets_t* bmpoff)
 * 

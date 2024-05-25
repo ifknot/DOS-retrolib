@@ -24,7 +24,7 @@ namespace test_mda {
 
 	void run() {
 		INFO("* testing MDA card toolbox...");
-		LOG(gfx::detect_CRTC_at_port(gfx::crtc_port_MDA));
+		if(gfx::detect_CRTC_at_port(gfx::crtc_port_MDA));
 		LOG(gfx::detect_CRTC_at_port(gfx::crtc_port_CGA));
 		if (YESNO("* 811\ttest fill VRAM functions ?")) {
 			

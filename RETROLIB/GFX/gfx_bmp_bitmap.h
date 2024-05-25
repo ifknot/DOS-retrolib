@@ -106,7 +106,6 @@ namespace gfx {
         */
         bitmap_t* new_bitmap(mem::arena::arena_t* pool);
         
-
         /**
         * @brief fill a bitmap with a repeating byte
         */

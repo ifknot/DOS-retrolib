@@ -97,7 +97,6 @@ namespace gfx {
 		}
 
 		void fill(gfx::bmp::bitmap_t* bmp, uint8_t fill_byte) {
-
 			__asm {
 				.8086
 				push bp

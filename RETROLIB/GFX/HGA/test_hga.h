@@ -39,7 +39,6 @@ namespace test_hga {
 				
 				if (YESNO("")) {
 					hga::text_mode();
-					hga::cls();
 				}
 			}
 			
@@ -65,7 +64,6 @@ namespace test_hga {
 
 					if (YESNO("")) {
 						hga::text_mode();
-						mda::cls();
 					}
 				}
 				if (YESNO("* 722\tswitch to HGA graphics mode and letterbox bitmap?")) {
@@ -80,7 +78,6 @@ namespace test_hga {
 
 					if (YESNO("")) {
 						hga::text_mode();
-						hga::cls();
 					}
 				}
 				mem::arena::delete_dos_arena(pool);
