@@ -8,7 +8,7 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#include "hga_graphics_blit.h"
+#include "hga_blit.h"
 
 #include "hga_constants.h"
 

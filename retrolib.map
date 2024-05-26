@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Nov 25 2023 01:55:44 (64-bit)
 Copyright (c) 2002-2023 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       24/05/26 14:55:25
+Created on:       24/05/26 15:01:25
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -37,8 +37,8 @@ gfx_bmp_bitmap_TEXT    CODE           AUTO           0000:1e24       0000076c
 gfx_bmp_file_tools_TEXT CODE          AUTO           0000:2590       000003fd
 gfx_detect_adapter_TEXT CODE          AUTO           0000:298d       000000e7
 gfx_detect_crtc_TEXT   CODE           AUTO           0000:2a74       00000068
-hga_detect_adapter_TEXT CODE          AUTO           0000:2adc       00000087
-hga_graphics_blit_TEXT CODE           AUTO           0000:2b63       0000018b
+hga_blit_TEXT          CODE           AUTO           0000:2adc       0000018b
+hga_detect_adapter_TEXT CODE          AUTO           0000:2c67       00000087
 hga_toolbox_TEXT       CODE           AUTO           0000:2cee       000000cf
 mda_toolbox_TEXT       CODE           AUTO           0000:2dbd       000000ad
 vga_detect_adapter_TEXT CODE          AUTO           0000:2e6a       0000004d
@@ -321,12 +321,12 @@ Module: gfx_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX
 0000:2a11+     char unsigned __far gfx::detect_adapter()
 Module: gfx_detect_crtc.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_crtc.cpp)
 0000:2a74      bool __far gfx::detect_CRTC_at_port( short unsigned )
+Module: hga_blit.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_blit.cpp)
+0000:2adc      void __far hga::blit_vram_bmp( short unsigned, char __far * )
+0000:2b40      void __far hga::blit_vram_bmp( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned )
+0000:2c3d+     void __far hga::blit_bmp_bmp( char __far *, char __far *, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned )
 Module: hga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp)
-0000:2adc      char unsigned __far hga::detect_adapter()
-Module: hga_graphics_blit.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_graphics_blit.cpp)
-0000:2b63      void __far hga::blit_vram_bmp( short unsigned, char __far * )
-0000:2bc7      void __far hga::blit_vram_bmp( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned )
-0000:2cc4+     void __far hga::blit_bmp_bmp( char __far *, char __far *, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned )
+0000:2c67      char unsigned __far hga::detect_adapter()
 Module: hga_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_toolbox.cpp)
 0000:2cee      void __far hga::video_mode( char unsigned const __far *, char unsigned, char unsigned )
 0000:2d43      void __far hga::fill_vram_buffer( short unsigned, char unsigned )
@@ -875,4 +875,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  000181d0 (98768.)
 Entry point address: 0000:470c
-Link time: 00:00.22
+Link time: 00:00.23

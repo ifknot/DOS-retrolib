@@ -7,8 +7,8 @@
  *  @copyright © Jeremy Thornton, 2024. All right reserved.
  *
  */
-#ifndef HGA_GRAPHICS_PALETTE_H
-#define HGA_GRAPHICS_PALETTE_H
+#ifndef HGA_PALETTE_H
+#define HGA_PALETTE_H
 
 namespace hga {
 

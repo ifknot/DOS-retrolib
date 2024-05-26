@@ -7,8 +7,8 @@
  *  @copyright © Jeremy Thornton, 2023. All right reserved.
  *
  */
-#ifndef HGA_GRPAHICS_BLIT_H
-#define	HGA_GRPAHICS_BLIT_H
+#ifndef HGA_BLIT_H
+#define	HGA_BLIT_H
 
 #include <stdint.h>
 
