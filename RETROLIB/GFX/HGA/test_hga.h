@@ -95,7 +95,7 @@ namespace test_hga {
 					hga::graphics_mode();
 					hga::select_display_buffer(1);
 
-					//gfx::bmp::fill(bmp, hga::BRIGHT);
+					gfx::bmp::fill(bmp, hga::BRIGHT);
 					hga::blit_vram_bmp(HGA_BUFFER_1, bmp->raster_data);
 
 					if (YESNO("")) {

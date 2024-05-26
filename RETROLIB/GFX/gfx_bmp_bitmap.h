@@ -80,15 +80,16 @@ namespace gfx {
             uint8_t bit_depth,
             uint8_t colour_type,
             char* raster_data,  
-            uint32_t raster_size,
+            uint16_t raster_size,   // @note this limits bitmap size to 64K
             char* palette_data,
-            uint32_t palette_size
+            uint16_t palette_size  
         );
 
         /**
         * @brief helper function to calculate_raster_size
+        * @note retrolib bitmap_t are limited to 64K 
         */
-        uint32_t calculate_raster_size(uint16_t width, uint16_t height, uint8_t bit_depth);
+        uint16_t calculate_raster_size(uint16_t width, uint16_t height, uint8_t bit_depth);
 
         /**
         * @brief create a new 'blank' bitmap
