@@ -14,6 +14,49 @@
 
 namespace hga {
 
+/* TEST *****************************************************************************************/
+
+	// MOVSW wallpaper
+	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, unint16_t h) {
+		__asm {
+			.8086
+			push	bp
+			pushf 
+
+			// 1. setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
+			mov		ax, vram_segment
+			mov		es, ax
+			mov		ax, y						; AX = (y div 4)
+			shr		ax, 1						;	.
+			shr		ax, 1						;	.	
+			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
+			mul		cx							; AX = (y div 4) * 90
+			mov		bx, x						; BX = (x div 8)
+			shr		bx, 1						;	.
+			shr		bx, 1						;	.
+			shr		bx, 1						;	.
+			add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
+			mov		di, ax						; ES:DI point to VRAM destination
+
+			// 2. setup RAM source pointer DS:SI = (y * 90) + (x div 8)
+			lds		si, raster_data
+			mov		ax, y
+			mul		cx							; AX = (y * 90) (CX extant = 90)
+			add		ax, bx						; AX = (y * 90) + (x div 8)
+			add		si, ax						; DS:SI point to pixel data source
+
+			// 3. width defaults to 16bits 1 word 
+
+			// 4. 
+
+			popf
+			pop		bp 
+		}
+	}
+
+/******************************************************************************************/
+
+	// word blit fullscreen raster 32K to VRAM
 	void blit_vram_bmp(uint16_t vram_segment, char* raster_data) {
 		__asm {
 			.8086
@@ -53,6 +96,7 @@ namespace hga {
 		}
 	}
 
+	// byte blit rectangle x,y,w,h from fullscreen raster to VRAM 
 	void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 		__asm {
 			.8086								; NB clock cycle comments refer to 8086
@@ -168,69 +212,5 @@ namespace hga {
 		}
 	}
 
-	void blit_bmp_bmp(char* raster_destination, char* raster_source, uint16_t xx, uint16_t yy, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
-		__asm {
-			/*
-			.8086
-			pushf
-			push 	bp
-
-			//setup destination ES:DI and source DS:SI bitmap raster memory = (yy * 90) + (xx div 8)
-			les 	di, raster_destination
-			mov		ax, yy
-			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
-			mul		cx							; AX = (yy * 90)
-			mov		bx, xx						; BX = (xx div 8)
-			shr		bx, 1
-			shr		bx, 1
-			shr		bx, 1
-			add		ax, bx						; AX = (yy * 90) + (xx div 8)
-			mov		di, ax						; ES:DI points to bitmap destination
-
-
-			lds 	si, raster_source
-			mov		ax, y
-			mul		cx							; AX = (y * 90) (extant CX)
-			mov		dx, x						; DX = (x div 8)
-			shr		dx, 1
-			shr		dx, 1
-			shr		dx, 1
-			add		ax, dx						; AX = (y * 90) + (x div 8)
-			mov		si, ax						; DS:SI points to bitmap source
-
-			// select xshifted source
-			mov		cx,
-
-			// calculate w = (w div 8) + ((w mod 8) != 0 ? 1 : 0)
-			mov		ax, w
-			mov		cx, ax						; copy w(2 clocks)
-			shr		ax, 1						; AX = (w div 8)
-			shr		ax, 1
-			shr		ax, 1
-			and		cx, 7						; mod 8 != 0 ? (4 clocks vs test w, 7 mem, imm 11 clocks)
-			jz		SKIP						; zero so no remainder
-			inc		ax							; increment byte width - partial byte overlap
-	SKIP:	mov		w, ax						; w = (w div 8)
-
-			// calculate next line offset AX = 90 - (w div 8)
-			mov		cx, HGA_BYTES_PER_LINE		; 90
-			sub		cx, ax						; 90 - (w div 8)
-			mov		ax, cx						; AX = 90 - (w div 8)
-
-			add		si, dx
-			add		di, bx
-			mov		cx, w
-			rep		movsb
-			add		si, ax
-			sub		si, dx
-			add		di, ax
-			sub		di, bx
-
-
-	END:	pop 	bp
-			popf
-			*/
-		}
-	}
 
 }
