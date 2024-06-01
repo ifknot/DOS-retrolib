@@ -47,6 +47,9 @@ namespace hga {
 			shr		bx, 1						;	.
 			shr		bx, 1						;	.
 			shr		bx, 1						;	.
+
+			//mov		bx,1
+
 			add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
 			mov		di, ax						; ES:DI point to VRAM destination
 
@@ -54,12 +57,11 @@ namespace hga {
 			// width defaults to 16bits 1 word 
 
 			// 4. set up the registers 
-			// 4.1 AX = next line offset HGA_BYTES_PER_LINE - (w div 16) - (x div 8) 
-			mov		cx, HGA_BYTES_PER_LINE		; 90
-			sub		cx, 2						; 90 - (w div 16)
-			sub		cx, bx						; 90 - (w div 16) - (x div 8)
-			mov		ax, cx						; AX = 90 - (w div 16) - (x div 8) 
-			// 4.2 BX = (x div 16) 
+			// 4.1 AX = next VRAM line offset HGA_BYTES_PER_LINE - (w div 8) - (x div 8) 
+			mov		ax, HGA_BYTES_PER_LINE		; 90
+			sub		ax, 2						; 90 - (w div 8)
+			sub		ax, bx						; 90 - (w div 8) - (x div 8)
+			// 4.2 BX = next BMP line offset HGA_BYTES_PER_LINE - (w div 8) - (x div 8)  
 			shr		bx, 1						; BX = (x div 16)
 			// 4.3 CX = y mod 3 to select the start VRAM bank
 			mov		cx, y
