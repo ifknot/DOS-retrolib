@@ -64,7 +64,7 @@ namespace hga {
 			// 4.3 CX = y mod 3 to select the start VRAM bank
 			mov		cx, y
 			and		cx, 3						; mask y lower 3 bits i.e. 0..3
-			// 4.4 DX = height, i.e. number of raster lines
+			// 4.4 DX = height div 4, i.e. number of raster lines
 			mov		dx, h
 			// 4.5 BP = (a div 16) safe to use BP as all args using [BP + ] no longer needed to access		
 			pop		bp
@@ -93,11 +93,26 @@ namespace hga {
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 
-	BANK1:
+	BANK1:	movsw								; copy source rect line to vram line bank 0
+			dec		dx							; dec line count 
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 		
-	BANK2:
+	BANK2:	movsw								; copy source rect line to vram line bank 0
+			dec		dx							; dec line count 
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 			
-	BANK3:
+	BANK3:	movsw								; copy source rect line to vram line bank 0
+			dec		dx							; dec line count 
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
 
 			jmp		BANK0						; loop around until all lines drawn
 

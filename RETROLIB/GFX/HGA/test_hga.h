@@ -80,6 +80,19 @@ namespace test_hga {
 						hga::text_mode();
 					}
 				}
+				if (YESNO("* 722\tswitch to HGA graphics mode and wallpaper bitmap?")) {
+					hga::graphics_mode();
+					hga::select_display_buffer(1);
+
+					
+					hga::cls(HGA_BUFFER_1);
+					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 0, 0, 0, 320);
+						
+
+					if (YESNO("")) {
+						hga::text_mode();
+					}
+				}
 				mem::arena::delete_dos_arena(pool);
 			}
 			if (YESNO("* 730\ttest blit bmp->bmp blit bmp->vram ?")) {
@@ -103,10 +116,10 @@ namespace test_hga {
 						LOG(sizeof(*bmp));
 					}
 				}
-				if (YESNO("* 733\tload sprite bmp ?")) {
-				}
-				if (YESNO("* 734\tblit sprite to buffer & blit screen buffer bmp ?")) {
-				}
+				//if (YESNO("* 733\tload sprite bmp ?")) {
+				//}
+				//if (YESNO("* 734\tblit sprite to buffer & blit screen buffer bmp ?")) {
+				//}
 				mem::arena::delete_dos_arena(pool);
 			}
 		}
