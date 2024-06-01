@@ -17,7 +17,7 @@ namespace hga {
 /* TEST *****************************************************************************************/
 
 	//wallpaper an 16 bit wide strip to vram x, y, from bmp a, b of height h)
-	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, unint16_t h);
+	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t h);
 		
 /******************************************************************************************/
 

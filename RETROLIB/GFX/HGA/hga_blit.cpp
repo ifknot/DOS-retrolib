@@ -17,19 +17,31 @@ namespace hga {
 /* TEST *****************************************************************************************/
 
 	// MOVSW wallpaper
-	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, unint16_t h) {
+	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t h) {
 		__asm {
 			.8086
 			push	bp
 			pushf 
 
-			// 1. setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
+			// 1. setup RAM source pointer DS:SI = (y * 90) + (x div 8)
+			lds		si, raster_data
+			mov		ax, b
+			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
+			mul		cx							; AX = (b * 90) 
+			mov		bx, a						; BX = (a div 8)
+			shr		bx, 1						;	.
+			shr		bx, 1						;	.
+			shr		bx, 1						;	.
+			push	bx							; save (a div 8) see section 4.5
+			add		ax, bx						; AX = (b * 90) + (a div 8)
+			add		si, ax						; DS:SI point to pixel data source
+
+			// 2. setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
 			mov		ax, vram_segment
 			mov		es, ax
 			mov		ax, y						; AX = (y div 4)
 			shr		ax, 1						;	.
 			shr		ax, 1						;	.	
-			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
 			mul		cx							; AX = (y div 4) * 90
 			mov		bx, x						; BX = (x div 8)
 			shr		bx, 1						;	.
@@ -38,16 +50,58 @@ namespace hga {
 			add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
 			mov		di, ax						; ES:DI point to VRAM destination
 
-			// 2. setup RAM source pointer DS:SI = (y * 90) + (x div 8)
-			lds		si, raster_data
-			mov		ax, y
-			mul		cx							; AX = (y * 90) (CX extant = 90)
-			add		ax, bx						; AX = (y * 90) + (x div 8)
-			add		si, ax						; DS:SI point to pixel data source
+			// 3. calculate w = (w div 8) + ((w mod 8) != 0 ? 1 : 0)
+			// width defaults to 16bits 1 word 
 
-			// 3. width defaults to 16bits 1 word 
+			// 4. set up the registers 
+			// 4.1 AX = next line offset HGA_BYTES_PER_LINE - (w div 16) - (x div 8) 
+			mov		cx, HGA_BYTES_PER_LINE		; 90
+			sub		cx, 2						; 90 - (w div 16)
+			sub		cx, bx						; 90 - (w div 16) - (x div 8)
+			mov		ax, cx						; AX = 90 - (w div 16) - (x div 8) 
+			// 4.2 BX = (x div 16) 
+			shr		bx, 1						; BX = (x div 16)
+			// 4.3 CX = y mod 3 to select the start VRAM bank
+			mov		cx, y
+			and		cx, 3						; mask y lower 3 bits i.e. 0..3
+			// 4.4 DX = height, i.e. number of raster lines
+			mov		dx, h
+			// 4.5 BP = (a div 16) safe to use BP as all args using [BP + ] no longer needed to access		
+			pop		bp
+			shr		bp, 1
 
-			// 4. 
+			// 5. jump to the correct starting bank 
+	CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
+			jne		CASE2 
+			add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
+			jmp		BANK3						; start on 4th bank 
+	CASE2:  cmp		cx, 2
+			jne		CASE1 
+			add		di, HGA_BANK_OFFSET * 2		; 3rd bank offset
+			jmp		BANK2						; start on 3rd bank
+	CASE1:  cmp		cx, 1
+			jne		CASE0
+			add		di, HGA_BANK_OFFSET			; 2nd bank offset
+			jmp		BANK1						; start on 2nd bank 
+	CASE0:										; fall through to zero offset 1st bank
+
+			// 6. move the raster data in 2 byte blocks 
+	BANK0:	movsw								; copy source rect line to vram line bank 0
+			dec		dx							; dec line count 
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
+
+	BANK1:
+		
+	BANK2:
+			
+	BANK3:
+
+			jmp		BANK0						; loop around until all lines drawn
+
+	END:
 
 			popf
 			pop		bp 
@@ -69,9 +123,9 @@ namespace hga {
 			lds		si, raster_data				; DS:SI point to pixel data source
 
 			mov		cx, HGA_SCREEN_Y_MAX / 4	; HGA uses 4 banks of memory
-	LINES: mov		bx, cx						; copy of lines per bank count
+	LINES:	mov		bx, cx						; copy of lines per bank count
 
-	BANK0: mov		cx, HGA_WORDS_PER_LINE		; 45 16it words per line
+	BANK0:	mov		cx, HGA_WORDS_PER_LINE		; 45 16it words per line
 			rep		movsw						; copy source rect line to vram line bank 0
 
 	BANK1:	add		di, 1FA6h					; bank 1 = DI + (2000h - 90)
@@ -211,6 +265,5 @@ namespace hga {
 			pop		bp
 		}
 	}
-
 
 }
