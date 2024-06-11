@@ -23,7 +23,7 @@ namespace hga {
 			push	bp
 			pushf 
 
-			// 1. setup RAM source pointer DS:SI = (y * 90) + (x div 8)
+			// 1. setup RAM source pointer DS:SI = (b * 90) + (a div 8)
 			lds		si, raster_data
 			mov		ax, b
 			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
@@ -32,7 +32,7 @@ namespace hga {
 			shr		bx, 1						;	.
 			shr		bx, 1						;	.
 			shr		bx, 1						;	.
-			push	bx							; save (a div 8)
+			mov		dx, bx							; save (a div 8)
 			add		ax, bx						; AX = (b * 90) + (a div 8)
 			add		si, ax						; DS:SI point to pixel data source
 
@@ -55,20 +55,18 @@ namespace hga {
 			shr		cx, 1
 			shr		cx, 1
 			shr		cx, 1
-			mov		dx, cx						; DX = copy (w div 8)
 			// 4. set up the registers and (w div 16)
 			// 4.1 AX = next VRAM line offset HGA_BYTES_PER_LINE - (w div 8) - (x div 8) 
 			mov		ax, HGA_BYTES_PER_LINE		; 90
 			sub		ax, cx						; 90 - (w div 8)
 			sub		ax, bx						; 90 - (w div 8) - (x div 8)
-			// 4.2 calculate (w div 16)
+			// 4.2 BX = next BMP line offset HGA_BYTES_PER_LINE - (w div 8) - (a div 8)  
+			mov		bx, HGA_BYTES_PER_LINE		; 90
+			sub		bx, cx						; 90 - (w div 8)
+			sub		bx, dx						; 90 - (w div 8) - (a div 8)
+			// 4.3 calculate (w div 16)
 			shr		cx, 1
 			mov		w, cx // is push faster?
-			// 4.3 BX = next BMP line offset HGA_BYTES_PER_LINE - (w div 8) - (a div 8)  
-			mov		bx, HGA_BYTES_PER_LINE		; 90
-			sub		bx, dx						; 90 - (w div 8)
-			pop		cx							; retrieve (a div 8)
-			sub		bx, cx						; 90 - (w div 8) - (a div 8)
 			// 4.4 CX = y mod 3 to select the start VRAM bank
 			mov		cx, y
 			and		cx, 3						; mask y lower 3 bits i.e. 0..3
