@@ -28,14 +28,12 @@ namespace hga {
 			mov		ax, b
 			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
 			mul		cx							; AX = (b * 90) 
-			mov		bx, a						; BX = (a div 8)
-			shr		bx, 1						;	.
-			shr		bx, 1						;	.
-			shr		bx, 1						;	.
-			mov		dx, bx							; save (a div 8)
-			add		ax, bx						; AX = (b * 90) + (a div 8)
+			mov		dx, a						; DX = (a div 8)
+			shr		dx, 1						;	.
+			shr		dx, 1						;	.
+			shr		dx, 1						;	.
+			add		ax, dx						; AX = (b * 90) + (a div 8)
 			add		si, ax						; DS:SI point to pixel data source
-
 			// 2. setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
 			mov		ax, vram_segment
 			mov		es, ax
@@ -49,7 +47,6 @@ namespace hga {
 			shr		bx, 1						;	.
 			add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
 			mov		di, ax						; ES:DI point to VRAM destination
-
 			// 3. calculate (w div 8)
 			mov		cx, w 
 			shr		cx, 1
@@ -74,7 +71,6 @@ namespace hga {
 			mov		dx, h
 			// 4.6 BP = w (safe to use BP as all args using [BP + ] no longer needed to access)
 			mov		bp, w // is pop faster?
-
 			// 5. jump to the correct starting bank 
 	CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 			jne		CASE2 
