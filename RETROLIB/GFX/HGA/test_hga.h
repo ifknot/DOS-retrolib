@@ -86,8 +86,7 @@ namespace test_hga {
 
 					
 					hga::cls(HGA_BUFFER_1);
-					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 5, 0, 10, 16, 320);
-					
+					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 5, 0, 10, 48, 280);
 
 					if (YESNO("")) {
 						hga::text_mode();

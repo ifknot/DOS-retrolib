@@ -75,7 +75,7 @@ namespace hga {
 			// 4.5 DX = height div 4, i.e. number of raster lines
 			mov		dx, h
 			// 4.6 BP = w (safe to use BP as all args using [BP + ] no longer needed to access)
-			mov		bp, cx
+			mov		bp, w
 
 			// 5. jump to the correct starting bank 
 	CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
