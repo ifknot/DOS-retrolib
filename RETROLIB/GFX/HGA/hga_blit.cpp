@@ -20,19 +20,19 @@ namespace hga {
 	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w, uint16_t h) {
 		__asm {
 			.8086
-			push	bp
-			pushf 
+			//push	bp
+			pushf								; preserve flags on entry
 
 			// 1. setup RAM source pointer DS:SI = (b * 90) + (a div 8)
 			lds		si, raster_data
 			mov		ax, b
 			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
 			mul		cx							; AX = (b * 90) 
-			mov		dx, a						; DX = (a div 8)
-			shr		dx, 1						;	.
-			shr		dx, 1						;	.
-			shr		dx, 1						;	.
-			add		ax, dx						; AX = (b * 90) + (a div 8)
+			mov		bx, a						; BX = (a div 8)
+			shr		bx, 1						;	.
+			shr		bx, 1						;	.
+			shr		bx, 1						;	.
+			add		ax, bx						; AX = (b * 90) + (a div 8)
 			add		si, ax						; DS:SI point to pixel data source
 			// 2. setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
 			mov		ax, vram_segment
@@ -47,29 +47,24 @@ namespace hga {
 			shr		bx, 1						;	.
 			add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
 			mov		di, ax						; ES:DI point to VRAM destination
-			// 3. calculate (w div 8)
-			mov		cx, w 
-			shr		cx, 1
-			shr		cx, 1
-			shr		cx, 1
 			// 4. set up the registers
-			// 4.1 AX = next VRAM line offset HGA_BYTES_PER_LINE - (w div 8)
+			// 4.0 clear the direction flag so that SI and DI will be incremented by chain instructions
+			cld
+			// 4.1 BX = (w div 8) because HGA bit depth is 8 pixels per byte
+			mov		bx, w
+			shr		bx, 1
+			shr		bx, 1
+			shr		bx, 1
+			// 4.2 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
 			mov		ax, HGA_BYTES_PER_LINE		; 90
-			sub		ax, cx						; 90 - (w div 8)
-			// 4.2 BX = next BMP line offset HGA_BYTES_PER_LINE - (w div 8) - (a div 8)  
-			mov		bx, HGA_BYTES_PER_LINE		; 90
-			sub		bx, cx						; 90 - (w div 8)
-			sub		bx, dx						; 90 - (w div 8) - (a div 8)
-			// 4.3 calculate (w div 16)
-			shr		cx, 1
-			mov		w, cx // is push faster?
+			sub		ax, bx						; 90 - (w div 8)
+			// 4.3 BX = (w div 16) to count the words to MOVSW
+			shr		bx, 1
 			// 4.4 CX = y mod 3 to select the start VRAM bank
 			mov		cx, y
 			and		cx, 3						; mask y lower 3 bits i.e. 0..3
-			// 4.5 DX = height div 4, i.e. number of raster lines
+			// 4.5 DX = height i.e. number of raster lines
 			mov		dx, h
-			// 4.6 BP = w (safe to use BP as all args using [BP + ] no longer needed to access)
-			mov		bp, w // is pop faster?
 			// 5. jump to the correct starting bank 
 	CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
 			jne		CASE2 
@@ -84,37 +79,36 @@ namespace hga {
 			add		di, HGA_BANK_OFFSET			; 2nd bank offset
 			jmp		BANK1						; start on 2nd bank 
 	CASE0:										; fall through to zero offset 1st bank
-
 			// 6. move the raster data in 2 byte blocks 
-BANK0:		mov		cx, bp						; copy (w div 16) into CX
+	BANK0:	mov		cx, bx						; copy (w div 16) into CX
 			rep movsw							; copy source rect line to vram line bank 0
 			dec		dx							; dec line count 
 			jz		END							; DX = 0 all done
-			add		si, bx						; RAM source next line
+			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 
-	BANK1:	mov		cx, bp						; copy (w div 16) into CX
+	BANK1:	mov		cx, bx						; copy (w div 16) into CX
 			rep movsw							; copy source rect line to vram line bank 0
 			dec		dx							; dec line count 
 			jz		END							; DX = 0 all done
-			add		si, bx						; RAM source next line
+			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 		
-	BANK2:	mov		cx, bp						; copy (w div 16) into CX
+	BANK2:	mov		cx, bx						; copy (w div 16) into CX
 			rep movsw							; copy source rect line to vram line bank 0
 			dec		dx							; dec line count 
 			jz		END							; DX = 0 all done
-			add		si, bx						; RAM source next line
+			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 			
-	BANK3:	mov		cx, bp						; copy (w div 16) into CX
+	BANK3:	mov		cx, bx						; copy (w div 16) into CX
 			rep movsw							; copy source rect line to vram line bank 0
 			dec		dx							; dec line count 
 			jz		END							; DX = 0 all done
-			add		si, bx						; RAM source next line
+			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
 
@@ -122,8 +116,8 @@ BANK0:		mov		cx, bp						; copy (w div 16) into CX
 
 	END:
 
-			popf
-			pop		bp 
+			popf								; restore flags on exit 
+			//pop		bp 
 		}
 	}
 

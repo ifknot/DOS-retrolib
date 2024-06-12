@@ -84,12 +84,16 @@ namespace test_hga {
 					hga::graphics_mode();
 					hga::select_display_buffer(1);
 
-					
 					hga::cls(HGA_BUFFER_1);
 					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 0, 102, 90, 64, 48);
 					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 328, 0, 102, 90, 64, 48);
+					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 0, 102, 90, 64, 48);
 					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 150, 102, 90, 64, 48);
 					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 328, 150, 102, 90, 64, 48);
+					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 150, 102, 90, 64, 48);
+					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 348 - 48, 102, 90, 64, 48);
+					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 328, 348 - 48, 102, 90, 64, 48);
+					hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 348 - 48, 102, 90, 64, 48);
 
 					if (YESNO("")) {
 						hga::text_mode();
