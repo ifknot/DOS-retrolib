@@ -52,11 +52,10 @@ namespace hga {
 			shr		cx, 1
 			shr		cx, 1
 			shr		cx, 1
-			// 4. set up the registers and (w div 16)
-			// 4.1 AX = next VRAM line offset HGA_BYTES_PER_LINE - (w div 8) - (x div 8) 
+			// 4. set up the registers
+			// 4.1 AX = next VRAM line offset HGA_BYTES_PER_LINE - (w div 8)
 			mov		ax, HGA_BYTES_PER_LINE		; 90
 			sub		ax, cx						; 90 - (w div 8)
-			sub		ax, bx						; 90 - (w div 8) - (x div 8)
 			// 4.2 BX = next BMP line offset HGA_BYTES_PER_LINE - (w div 8) - (a div 8)  
 			mov		bx, HGA_BYTES_PER_LINE		; 90
 			sub		bx, cx						; 90 - (w div 8)

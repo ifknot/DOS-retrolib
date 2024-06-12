@@ -17,6 +17,7 @@ namespace hga {
 /* TEST *****************************************************************************************/
 
 	//hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 10, 0, 10, 16, 320);
+	//source must be same dimensions as screen (faster) 
 	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w,  uint16_t h);
 		
 /******************************************************************************************/
