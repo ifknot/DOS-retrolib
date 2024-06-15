@@ -16,23 +16,31 @@ namespace hga {
 
 /* TEST *****************************************************************************************/
 
-	//hga::wallpaper16(HGA_BUFFER_1, bmp.raster_data, 0, 10, 0, 10, 16, 320);
-	//source must be same dimensions as screen (faster) 
-	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w,  uint16_t h);
-		
-/******************************************************************************************/
-
 	/**
-	* @brief fast raster bit block transfer 32768 bytes from bitmap memory to the 4 banks of a VRAM buffer 
-	* @note hard coded HGA screen rectangle (0,0,720,480)
+	* @brief fast raster bit block transfer 32768 bytes from bitmap memory to the 4 banks of a VRAM buffer
+	* @details used for e.g. painting entire background image
+	* @note BOTH source bitmap and HGA screen rectangle (0,0,720,348) hardcoded ie 31,320 bytes each
 	*/
 	void blit_vram_bmp(uint16_t vram_segment, char* raster_data);
 
 	/**
 	* @brief fast rectangular block (x,y,w,h) transfer raster bytes from bitmap memory to the same location in 4 banks of a VRAM buffer
-	* @note x and w values are truncated to the enclosing byte boundry 
+	* @details used for e.g. patching background bitmap
+	* copies a bitmap rectangle(x,y,w,h) to VRAM rectangle(x,y,w,h)
+	* @note 1. BOTH source bitmap and HGA screen rectangle (0,0,720,348) hardcoded ie 31,320 bytes each
+	* @note 2. x and w values are truncated to the enclosing byte boundry
 	*/
 	void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h);
+
+	/**
+	* @brief fast rectangular block (x,y,w,h) transfer raster bytes from bitmap memory to new location in 4 banks of a VRAM buffer
+	* @details used for e.g. patching background bitmap
+	* copies a bitmap rectangle(a,b,w,h) to VRAM rectangle(x,y,w,h)
+	* @note 1. BOTH source bitmap and HGA screen rectangle (0,0,720,348) hardcoded ie 31,320 bytes each
+	* @note 2. a, x and w values are truncated to the enclosing byte boundry
+	*/
+	void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w,  uint16_t h);
+
 }
 
 

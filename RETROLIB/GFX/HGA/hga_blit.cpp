@@ -14,114 +14,6 @@
 
 namespace hga {
 
-/* TEST *****************************************************************************************/
-
-	// MOVSW wallpaper
-	void wallpaper16(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w, uint16_t h) {
-		__asm {
-			.8086
-			//push	bp
-			pushf								; preserve flags on entry
-
-			// 1. setup RAM source pointer DS:SI = (b * 90) + (a div 8)
-			lds		si, raster_data
-			mov		ax, b
-			mov		cx, HGA_BYTES_PER_LINE		; CX = 90
-			mul		cx							; AX = (b * 90) 
-			mov		bx, a						; BX = (a div 8)
-			shr		bx, 1						;	.
-			shr		bx, 1						;	.
-			shr		bx, 1						;	.
-			add		ax, bx						; AX = (b * 90) + (a div 8)
-			add		si, ax						; DS:SI point to pixel data source
-			// 2. setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
-			mov		ax, vram_segment
-			mov		es, ax
-			mov		ax, y						; AX = (y div 4)
-			shr		ax, 1						;	.
-			shr		ax, 1						;	.	
-			mul		cx							; AX = (y div 4) * 90
-			mov		bx, x						; BX = (x div 8)
-			shr		bx, 1						;	.
-			shr		bx, 1						;	.
-			shr		bx, 1						;	.
-			add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
-			mov		di, ax						; ES:DI point to VRAM destination
-			// 4. set up the registers
-			// 4.0 clear the direction flag so that SI and DI will be incremented by chain instructions
-			cld
-			// 4.1 BX = (w div 8) because HGA bit depth is 8 pixels per byte
-			mov		bx, w
-			shr		bx, 1
-			shr		bx, 1
-			shr		bx, 1
-			// 4.2 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
-			mov		ax, HGA_BYTES_PER_LINE		; 90
-			sub		ax, bx						; 90 - (w div 8)
-			// 4.3 BX = (w div 16) to count the words to MOVSW
-			shr		bx, 1
-			// 4.4 CX = y mod 3 to select the start VRAM bank
-			mov		cx, y
-			and		cx, 3						; mask y lower 3 bits i.e. 0..3
-			// 4.5 DX = height i.e. number of raster lines
-			mov		dx, h
-			// 5. jump to the correct starting bank 
-	CASE3:  cmp		cx, 3						; select starting bank and initial DI offset
-			jne		CASE2 
-			add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
-			jmp		BANK3						; start on 4th bank 
-	CASE2:  cmp		cx, 2
-			jne		CASE1 
-			add		di, HGA_BANK_OFFSET * 2		; 3rd bank offset
-			jmp		BANK2						; start on 3rd bank
-	CASE1:  cmp		cx, 1
-			jne		CASE0
-			add		di, HGA_BANK_OFFSET			; 2nd bank offset
-			jmp		BANK1						; start on 2nd bank 
-	CASE0:										; fall through to zero offset 1st bank
-			// 6. move the raster data in 2 byte blocks 
-	BANK0:	mov		cx, bx						; copy (w div 16) into CX
-			rep movsw							; copy source rect line to vram line bank 0
-			dec		dx							; dec line count 
-			jz		END							; DX = 0 all done
-			add		si, ax						; RAM source next line
-			add		di, ax						; VRAM next line
-			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
-
-	BANK1:	mov		cx, bx						; copy (w div 16) into CX
-			rep movsw							; copy source rect line to vram line bank 0
-			dec		dx							; dec line count 
-			jz		END							; DX = 0 all done
-			add		si, ax						; RAM source next line
-			add		di, ax						; VRAM next line
-			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
-		
-	BANK2:	mov		cx, bx						; copy (w div 16) into CX
-			rep movsw							; copy source rect line to vram line bank 0
-			dec		dx							; dec line count 
-			jz		END							; DX = 0 all done
-			add		si, ax						; RAM source next line
-			add		di, ax						; VRAM next line
-			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
-			
-	BANK3:	mov		cx, bx						; copy (w div 16) into CX
-			rep movsw							; copy source rect line to vram line bank 0
-			dec		dx							; dec line count 
-			jz		END							; DX = 0 all done
-			add		si, ax						; RAM source next line
-			add		di, ax						; VRAM next line
-			sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
-
-			jmp		BANK0						; loop around until all lines drawn
-
-	END:
-
-			popf								; restore flags on exit 
-			//pop		bp 
-		}
-	}
-
-/******************************************************************************************/
 
 	// word blit fullscreen raster 32K to VRAM
 	void blit_vram_bmp(uint16_t vram_segment, char* raster_data) {
@@ -163,7 +55,7 @@ namespace hga {
 		}
 	}
 
-	// byte blit rectangle x,y,w,h from fullscreen raster to VRAM 
+	// byte blit rectangle(x,y,w,h) to VRAM rectangle(x,y,w,h)
 	void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 		__asm {
 			.8086								; NB clock cycle comments refer to 8086
@@ -276,6 +168,111 @@ namespace hga {
 
 	END:	popf
 			pop		bp
+		}
+	}
+
+	// word blit rectangle(a,b,w,h) to VRAM rectangle(x,y,w,h)
+	void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w, uint16_t h) {
+		__asm {
+			.8086
+			//push	bp
+			pushf; preserve flags on entry
+
+			// 1. setup RAM source pointer DS:SI = (b * 90) + (a div 8)
+			lds		si, raster_data
+			mov		ax, b
+			mov		cx, HGA_BYTES_PER_LINE; CX = 90
+			mul		cx; AX = (b * 90)
+			mov		bx, a; BX = (a div 8)
+			shr		bx, 1;	.
+			shr		bx, 1;	.
+			shr		bx, 1;	.
+			add		ax, bx; AX = (b * 90) + (a div 8)
+			add		si, ax; DS:SI point to pixel data source
+			// 2. setup HGA quad bank VRAM destination pointer ES:DI = ((y div 4) * 90) + (x div 8)
+			mov		ax, vram_segment
+			mov		es, ax
+			mov		ax, y; AX = (y div 4)
+			shr		ax, 1;	.
+			shr		ax, 1;	.
+			mul		cx; AX = (y div 4) * 90
+			mov		bx, x; BX = (x div 8)
+			shr		bx, 1;	.
+			shr		bx, 1;	.
+			shr		bx, 1;	.
+			add		ax, bx; AX = (y div 4) * 90) + (x div 8)
+			mov		di, ax; ES:DI point to VRAM destination
+			// 4. set up the registers
+			// 4.0 clear the direction flag so that SI and DI will be incremented by chain instructions
+			cld
+			// 4.1 BX = (w div 8) because HGA bit depth is 8 pixels per byte
+			mov		bx, w
+			shr		bx, 1
+			shr		bx, 1
+			shr		bx, 1
+			// 4.2 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
+			mov		ax, HGA_BYTES_PER_LINE; 90
+			sub		ax, bx; 90 - (w div 8)
+			// 4.3 BX = (w div 16) to count the words to MOVSW
+			shr		bx, 1
+			// 4.4 CX = y mod 3 to select the start VRAM bank
+			mov		cx, y
+			and cx, 3; mask y lower 3 bits i.e. 0..3
+			// 4.5 DX = height i.e. number of raster lines
+			mov		dx, h
+			// 5. jump to the correct starting bank 
+			CASE3 : cmp		cx, 3; select starting bankand initial DI offset
+			jne		CASE2
+			add		di, HGA_BANK_OFFSET * 3; 4th bank offset
+			jmp		BANK3; start on 4th bank
+			CASE2 : cmp		cx, 2
+			jne		CASE1
+			add		di, HGA_BANK_OFFSET * 2; 3rd bank offset
+			jmp		BANK2; start on 3rd bank
+			CASE1 : cmp		cx, 1
+			jne		CASE0
+			add		di, HGA_BANK_OFFSET; 2nd bank offset
+			jmp		BANK1; start on 2nd bank
+			CASE0 : ; fall through to zero offset 1st bank
+			// 6. move the raster data in 2 byte blocks 
+			BANK0 : mov		cx, bx; copy(w div 16) into CX
+			rep movsw; copy source rect line to vram line bank 0
+			dec		dx; dec line count
+			jz		END; DX = 0 all done
+			add		si, ax; RAM source next line
+			add		di, ax; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE; bank 1 = DI + (2000h - 90)
+
+			BANK1:	mov		cx, bx; copy(w div 16) into CX
+			rep movsw; copy source rect line to vram line bank 0
+			dec		dx; dec line count
+			jz		END; DX = 0 all done
+			add		si, ax; RAM source next line
+			add		di, ax; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE; bank 1 = DI + (2000h - 90)
+
+			BANK2:	mov		cx, bx; copy(w div 16) into CX
+			rep movsw; copy source rect line to vram line bank 0
+			dec		dx; dec line count
+			jz		END; DX = 0 all done
+			add		si, ax; RAM source next line
+			add		di, ax; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE; bank 1 = DI + (2000h - 90)
+
+			BANK3:	mov		cx, bx; copy(w div 16) into CX
+			rep movsw; copy source rect line to vram line bank 0
+			dec		dx; dec line count
+			jz		END; DX = 0 all done
+			add		si, ax; RAM source next line
+			add		di, ax; VRAM next line
+			sub		di, HGA_BANK_OFFSET * 3; bank 0 next line = DI - 6000h
+
+			jmp		BANK0; loop around until all lines drawn
+
+			END :
+
+			popf; restore flags on exit
+				//pop		bp 
 		}
 	}
 
