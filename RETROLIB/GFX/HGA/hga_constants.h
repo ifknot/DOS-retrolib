@@ -29,8 +29,8 @@
 #define HGA_PIXELS_PER_BYTE     8
 #define HGA_BYTES_PER_LINE      90
 #define HGA_WORDS_PER_LINE      45
-#define HGA_BYTES_PER_SCREEN  31320             // not 32768 as last 2 lines not visible
-#define HGA_WORDS_PER_SCREEN  15660
+#define HGA_BYTES_PER_SCREEN  32768           
+#define HGA_WORDS_PER_SCREEN  16384
 #define HGA_CHARS_PER_SCREEN  2000
 
 #define HGA_BUFFER_0        0xB000
