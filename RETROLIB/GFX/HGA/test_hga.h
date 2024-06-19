@@ -105,7 +105,7 @@ namespace test_hga {
 
 					hga::cls(HGA_BUFFER_1);
 					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 0, 0, 0, 32, 40, 32);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 328, 0, 102, 90, 64, 48);
+					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 328, 0, 0, 32, 32, 32);
 					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 0, 102, 90, 64, 48);
 					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 0, 150, 102, 90, 64, 48);
 					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 328, 150, 102, 90, 64, 48);
