@@ -1,7 +1,7 @@
 Open Watcom Linker Version 2.0 beta Nov 25 2023 01:55:44 (64-bit)
 Copyright (c) 2002-2023 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       24/06/19 19:11:10
+Created on:       24/06/19 19:51:36
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -37,17 +37,17 @@ gfx_bmp_bitmap_TEXT    CODE           AUTO           0000:21ba       0000076c
 gfx_bmp_file_tools_TEXT CODE          AUTO           0000:2926       000003fd
 gfx_detect_adapter_TEXT CODE          AUTO           0000:2d23       000000e7
 gfx_detect_crtc_TEXT   CODE           AUTO           0000:2e0a       00000068
-hga_blit_TEXT          CODE           AUTO           0000:2e72       00000393
-hga_detect_adapter_TEXT CODE          AUTO           0000:3205       00000087
-hga_toolbox_TEXT       CODE           AUTO           0000:328c       000000c7
-mda_toolbox_TEXT       CODE           AUTO           0000:3353       000000ad
-vga_detect_adapter_TEXT CODE          AUTO           0000:3400       0000004d
-kbd_interupt_routines_TEXT CODE       AUTO           0000:344d       0000010a
-mem_address_TEXT       CODE           AUTO           0000:3557       0000021f
-mem_arena_TEXT         CODE           AUTO           0000:3776       000005c4
-mem_segoff_TEXT        CODE           AUTO           0000:3d3a       000002da
-mem_toolbox_TEXT       CODE           AUTO           0000:4014       00000825
-str_toolbox_TEXT       CODE           AUTO           0000:4839       00000371
+hga_blit_TEXT          CODE           AUTO           0000:2e72       00000392
+hga_detect_adapter_TEXT CODE          AUTO           0000:3204       00000087
+hga_toolbox_TEXT       CODE           AUTO           0000:328b       000000c7
+mda_toolbox_TEXT       CODE           AUTO           0000:3352       000000ad
+vga_detect_adapter_TEXT CODE          AUTO           0000:33ff       0000004d
+kbd_interupt_routines_TEXT CODE       AUTO           0000:344c       0000010a
+mem_address_TEXT       CODE           AUTO           0000:3556       0000021f
+mem_arena_TEXT         CODE           AUTO           0000:3775       000005c4
+mem_segoff_TEXT        CODE           AUTO           0000:3d39       000002da
+mem_toolbox_TEXT       CODE           AUTO           0000:4013       00000825
+str_toolbox_TEXT       CODE           AUTO           0000:4838       00000371
 _TEXT                  CODE           AUTO           0000:4bb0       00004894
 manendl_TEXT           CODE           AUTO           0000:9444       00000020
 ioicout_TEXT           CODE           AUTO           0000:9464       0000008b
@@ -323,57 +323,57 @@ Module: gfx_detect_crtc.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gf
 0000:2e0a      bool __far gfx::detect_CRTC_at_port( short unsigned )
 Module: hga_blit.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_blit.cpp)
 0000:2e72      void __far hga::test_blit( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned )
-0000:2fc1      void __far hga::word_blit_byte_aligned_vram_bmp( short unsigned, char __far * )
-0000:3024      void __far hga::byte_blit_byte_aligned_vram_bmp( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned )
-0000:3121      void __far hga::word_blit_byte_aligned_vram_bmp( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned )
+0000:2fc0      void __far hga::word_blit_byte_aligned_vram_bmp( short unsigned, char __far * )
+0000:3023      void __far hga::byte_blit_byte_aligned_vram_bmp( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned )
+0000:3120      void __far hga::word_blit_byte_aligned_vram_bmp( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned )
 Module: hga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp)
-0000:3205      char unsigned __far hga::detect_adapter()
+0000:3204      char unsigned __far hga::detect_adapter()
 Module: hga_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_toolbox.cpp)
-0000:328c      void __far hga::video_mode( char unsigned const __far *, char unsigned, char unsigned )
-0000:32df      void __far hga::fill_vram_buffer( short unsigned, char unsigned )
-0000:331b      void __far hga::select_display_buffer( char unsigned )
+0000:328b      void __far hga::video_mode( char unsigned const __far *, char unsigned, char unsigned )
+0000:32de      void __far hga::fill_vram_buffer( short unsigned, char unsigned )
+0000:331a      void __far hga::select_display_buffer( char unsigned )
 Module: mda_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\MDA\mda_toolbox.cpp)
-0000:3353+     void __far mda::fill_vram_buffer( char, char unsigned )
-0000:3390+     void __far mda::fill_vram_attributes( char unsigned )
-0000:33c8+     void __far mda::fill_vram_characters( char )
+0000:3352+     void __far mda::fill_vram_buffer( char, char unsigned )
+0000:338f+     void __far mda::fill_vram_attributes( char unsigned )
+0000:33c7+     void __far mda::fill_vram_characters( char )
 Module: vga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\VGA\vga_detect_adapter.cpp)
-0000:3400      char unsigned __far vga::detect_adapter()
+0000:33ff      char unsigned __far vga::detect_adapter()
 Module: kbd_interupt_routines.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\KBD\kbd_interupt_routines.cpp)
 0e2b:98f0+     char unsigned volatile __far kbd::key_pressed[]
 0e2b:99f0+     char unsigned volatile __far kbd::key_states[]
-0000:344d+     void __far kbd::xt::scan_code_set_1_interrupt_handler()
-0000:3491+     void __far kbd::clear_key_pressed_array()
-0000:34cb+     void __far kbd::install_keyboard_interrupt_handler( void __far * )
-0000:3524+     void __far kbd::restore_keyboard_interupt_handler()
+0000:344c+     void __far kbd::xt::scan_code_set_1_interrupt_handler()
+0000:3490+     void __far kbd::clear_key_pressed_array()
+0000:34ca+     void __far kbd::install_keyboard_interrupt_handler( void __far * )
+0000:3523+     void __far kbd::restore_keyboard_interupt_handler()
 Module: mem_address.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_address.cpp)
-0000:370d      std::ostream __far & __far operator <<int __far ><( std::ostream __far &, smanip<int __far > const __far & )
-0000:3557+     std::ostream __far & __far operator <<( std::ostream __far &, mem::address_t const __far & )
+0000:370c      std::ostream __far & __far operator <<int __far ><( std::ostream __far &, smanip<int __far > const __far & )
+0000:3556+     std::ostream __far & __far operator <<( std::ostream __far &, mem::address_t const __far & )
 Module: mem_arena.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_arena.cpp)
-0000:3776      mem::arena::arena_t __far * __far mem::arena::new_dos_arena( long unsigned )
-0000:38c0      long unsigned __far mem::arena::delete_dos_arena( mem::arena::arena_t __far * )
-0000:3922      long unsigned __far mem::arena::size( mem::arena::arena_t __far * )
-0000:3960+     long unsigned __far mem::arena::capacity( mem::arena::arena_t __far * )
-0000:399e      char __far * __far mem::arena::raw_alloc( mem::arena::arena_t __far *, long unsigned )
-0000:3ae6      char __far * __far mem::arena::raw_dealloc( mem::arena::arena_t __far *, long unsigned )
-0000:3c2e      std::ostream __far & __far operator <<( std::ostream __far &, mem::arena::arena_t const __far & )
+0000:3775      mem::arena::arena_t __far * __far mem::arena::new_dos_arena( long unsigned )
+0000:38bf      long unsigned __far mem::arena::delete_dos_arena( mem::arena::arena_t __far * )
+0000:3921      long unsigned __far mem::arena::size( mem::arena::arena_t __far * )
+0000:395f+     long unsigned __far mem::arena::capacity( mem::arena::arena_t __far * )
+0000:399d      char __far * __far mem::arena::raw_alloc( mem::arena::arena_t __far *, long unsigned )
+0000:3ae5      char __far * __far mem::arena::raw_dealloc( mem::arena::arena_t __far *, long unsigned )
+0000:3c2d      std::ostream __far & __far operator <<( std::ostream __far &, mem::arena::arena_t const __far & )
 Module: mem_segoff.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_segoff.cpp)
-0000:3d3a      std::ostream __far & __far operator <<( std::ostream __far &, mem::segoff_t const __far & )
+0000:3d39      std::ostream __far & __far operator <<( std::ostream __far &, mem::segoff_t const __far & )
 Module: mem_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_toolbox.cpp)
-0000:4014+     long unsigned __far mem::available_low_memory_bytes()
-0000:40ae+     mem::address_t __far mem::dump( mem::address_t, long unsigned )
-0000:410b+     mem::address_t __far mem::dump_ostream( std::ostream __far &, mem::address_t, short unsigned )
-0000:41b0+     mem::address_t __far mem::dump_paragraph_ostream( std::ostream __far &, mem::address_t )
-0000:4656+     long unsigned __far mem::load_from_file( char const __far *, mem::address_t, short unsigned )
-0000:46ca      long unsigned __far mem::load_from_file_using_handle( short unsigned, mem::address_t, short unsigned )
-0000:4739+     long unsigned __far mem::save_to_file( char const __far *, mem::address_t, short unsigned )
-0000:47c5+     long unsigned __far mem::write_ostream( std::ostream __far &, mem::address_t, short unsigned )
+0000:4013+     long unsigned __far mem::available_low_memory_bytes()
+0000:40ad+     mem::address_t __far mem::dump( mem::address_t, long unsigned )
+0000:410a+     mem::address_t __far mem::dump_ostream( std::ostream __far &, mem::address_t, short unsigned )
+0000:41af+     mem::address_t __far mem::dump_paragraph_ostream( std::ostream __far &, mem::address_t )
+0000:4655+     long unsigned __far mem::load_from_file( char const __far *, mem::address_t, short unsigned )
+0000:46c9      long unsigned __far mem::load_from_file_using_handle( short unsigned, mem::address_t, short unsigned )
+0000:4738+     long unsigned __far mem::save_to_file( char const __far *, mem::address_t, short unsigned )
+0000:47c4+     long unsigned __far mem::write_ostream( std::ostream __far &, mem::address_t, short unsigned )
 Module: str_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\STR\str_toolbox.cpp)
-0000:4839      int __far str::ignore_token( char const __far *, char, int )
-0000:4890+     int __far str::skip_chars( char const __far *, char const __far *, int )
-0000:4908+     int __far str::in_place_to_upper( char __far *, int, int )
-0000:4984+     int __far str::in_place_to_lower( char __far *, int, int )
-0000:4a00      int __far str::copy_convert_to_upper( char const __far *, char __far *, int, int )
-0000:4ad5+     int __far str::copy_convert_to_lower( char const __far *, char __far *, int, int )
+0000:4838      int __far str::ignore_token( char const __far *, char, int )
+0000:488f+     int __far str::skip_chars( char const __far *, char const __far *, int )
+0000:4907+     int __far str::in_place_to_upper( char __far *, int, int )
+0000:4983+     int __far str::in_place_to_lower( char __far *, int, int )
+0000:49ff      int __far str::copy_convert_to_upper( char const __far *, char __far *, int, int )
+0000:4ad4+     int __far str::copy_convert_to_lower( char const __far *, char __far *, int, int )
 Module: C:\WATCOM\lib286\dos\clibl.lib(stk086.asm)
 0000:4bb5      __STK
 0000:4bd5*     __STKOVERFLOW_
@@ -876,4 +876,4 @@ C:\WATCOM\lib286\dos\clibl.lib
 Stack size:  0800 (2048.)
 Memory size:  00018770 (100208.)
 Entry point address: 0000:4c9c
-Link time: 00:00.26
+Link time: 00:00.23

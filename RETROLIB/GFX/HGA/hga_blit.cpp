@@ -58,13 +58,12 @@ namespace hga {
 			shr		bx, 1
 			// 3.5 test if width is even?
 			test	bx, 1
-			je		WORDS						; skip copying single byte strip
-			// 3a.6 AX = next line offset HGA_BYTES_PER_LINE - (w div 8) i.e. in this case 1 
-			mov		ax, HGA_BYTES_PER_LINE - 1 
-			dec		bx							; BX = (w div 8) - 1 
-			// 3a.7 preserve DS:SI and ES:DI
+			jz		WORDS
+			// 3a.6 preserve registers
 			push	si
 			push	di
+			// 3a.7 AX = next line offset HGA_BYTES_PER_LINE - (w div 8) i.e. in this case 1 
+			mov		ax, HGA_BYTES_PER_LINE - 1
 			// 4a. jump to the correct starting bank 
 	ACASE3: cmp		cx, 3						; select starting bankand initial DI offset
 			jne		ACASE2
@@ -84,41 +83,41 @@ namespace hga {
 			// 5a.1 bank 0
 	ABANK0: movsb								; copy single byte 
 			dec		dx							; dec line count
-			jz		WORDS						; DX = 0 all done
+			jz		BREAK						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 			// 5a.2 bank 1
 	ABANK1:	movsb								; copy single byte 
 			dec		dx							; dec line count
-			jz		WORDS						; DX = 0 all done
+			jz		BREAK						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 			// 5a.3 bank 2
 	ABANK2:	movsb								; copy single byte 
 			dec		dx							; dec line count
-			jz		WORDS						; DX = 0 all done
+			jz		BREAK						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
 			// 5a.4 bank 3
 	ABANK3:	movsb								; copy single byte 
 			dec		dx							; dec line count
-			jz		WORDS						; DX = 0 all done
+			jz		BREAK						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
 			// 6a. until all raster lines done i.e. height(h)
 			jmp		ABANK0						; loop around until all lines drawn
-			// 8. if the width is only 1 byte then done 
-			cmp		bx, 0						; see 3a.6
-			je		END
-			// 9. restore DS:SI and ES:DI and x adjust each
+			// 8. restore registers
+	BREAK:	dec		bx							; BX = (w div 8) - 1
+			//jz		END							; width was only 1 byte
 			pop		di
 			pop		si
-			inc		di							
+			inc		di
 			inc		si
+			mov		dx, h
 	WORDS:	// 3b. continue setting up registers 
 			// 3b.1 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
 			mov		ax, HGA_BYTES_PER_LINE		; 90
