@@ -56,14 +56,13 @@ namespace hga {
 			shr		bx, 1
 			shr		bx, 1
 			shr		bx, 1
-			// 3.5 AX = next line offset HGA_BYTES_PER_LINE - (w div 8) 
-			mov		ax, HGA_BYTES_PER_LINE; 90
-			// 3.5a if width is even skip copying single byte strip
+			// 3.5 test if width is even?
 			test	bx, 1
-			je		WORDS	
-			// 3.5b AX = next line offset HGA_BYTES_PER_LINE - (w div 8) i.e. in this case 1 
-			dec		ax							
-			// 4. jump to the correct starting bank 
+			je		WORDS						; skip copying single byte strip
+			// 3.6 AX = next line offset HGA_BYTES_PER_LINE - (w div 8) i.e. in this case 1 
+			mov		ax, HGA_BYTES_PER_LINE - 1 
+			dec		bx							; BX = (w div 8) - 1 
+			// 4b. jump to the correct starting bank 
 	CASE3B: cmp		cx, 3						; select starting bankand initial DI offset
 			jne		CASE2B
 			add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
@@ -77,40 +76,97 @@ namespace hga {
 			add		di, HGA_BANK_OFFSET			; 2nd bank offset
 			jmp		BANK1B						; start on 2nd bank
 	CASE0B:										; fall through to zero offset 1st bank
-			// 5. The width is an odd number of bytes - move the raster data in single vertical height(h) byte width strip
+			// 5b. The width is an odd number of bytes - move the raster data in single vertical height(h) byte width strip
 			// TODO: wait for vertical blank interval
-			// 5.1 bank 0
+			// 5b.1 bank 0
 	BANK0B: movsb								; copy single byte 
 			dec		dx							; dec line count
 			jz		WORDS						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
-			// 5.2 bank 1
+			// 5b.2 bank 1
 	BANK1B:	movsb								; copy single byte 
 			dec		dx							; dec line count
 			jz		WORDS						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
-			// 5.3 bank 2
+			// 5b.3 bank 2
 	BANK2B:	movsb								; copy single byte 
 			dec		dx							; dec line count
 			jz		WORDS						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
-			// 5.4 bank 3
+			// 5b.4 bank 3
 	BANK3B:	movsb								; copy single byte 
 			dec		dx							; dec line count
 			jz		WORDS						; DX = 0 all done
 			add		si, ax						; RAM source next line
 			add		di, ax						; VRAM next line
 			sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
-			// 6. until all raster lines done i.e. height(h)
+			// 6b. until all raster lines done i.e. height(h)
 			jmp		BANK0B						; loop around until all lines drawn
-			// 7. break out of loop and proceed to move any remaining raster data in word chunks
-	WORDS:
+			// 7b. break out of loop and proceed to move any remaining raster data in word chunks
+	WORDS:	// 3a. continue setting up registers 
+			// 3a.1 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
+			mov		ax, HGA_BYTES_PER_LINE		; 90
+			sub		ax, bx						; 90 - (w div 8)
+			// 3a.2 BX = (w div 16) to count the words to MOVSW
+			shr		bx, 1
+			// 4a. jump to the correct starting bank 
+	CASE3:  cmp		cx, 3						; select starting bankand initial DI offset
+			jne		CASE2
+			add		di, HGA_BANK_OFFSET * 3		; 4th bank offset
+			jmp		BANK3						; start on 4th bank
+	CASE2:  cmp		cx, 2
+			jne		CASE1
+			add		di, HGA_BANK_OFFSET * 2		; 3rd bank offset
+			jmp		BANK2						; start on 3rd bank
+	CASE1:  cmp		cx, 1
+			jne		CASE0
+			add		di, HGA_BANK_OFFSET			; 2nd bank offset
+			jmp		BANK1						; start on 2nd bank
+	CASE0:										; fall through to zero offset 1st bank
+			// 5a. move the raster data in 2 byte blocks 
+			// TODO: wait for vertical blank interval
+			// 5a.1 bank 0
+	BANK0:  mov		cx, bx						; copy(w div 16) into CX
+			rep		movsw						; copy source rect line to vram line bank 0
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
+			// 5a.2 bank 1
+	BANK1:	mov		cx, bx						; copy(w div 16) into CX
+			rep		movsw						; copy source rect line to vram line bank 0
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
+			// 5a.3 bank 2
+	BANK2:	mov		cx, bx						; copy(w div 16) into CX
+			rep		movsw						; copy source rect line to vram line bank 0
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
+			// 5a.4 bank 3
+	BANK3:	mov		cx, bx						; copy(w div 16) into CX
+			rep		movsw						; copy source rect line to vram line bank 0
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
+			// 6a. until all raster lines done i.e. height(h)
+			jmp		BANK0						; loop around until all lines drawn
+			// 7a. break out of loop
+	END:
 			popf								; restore flags on exit
 		}
 
