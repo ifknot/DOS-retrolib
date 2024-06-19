@@ -56,14 +56,13 @@ namespace hga {
 			shr		bx, 1
 			shr		bx, 1
 			shr		bx, 1
-			// 3.5 test if width is even?
+			// 3.5 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
+			mov		ax, HGA_BYTES_PER_LINE		; 90
+			sub		ax, bx						; 90 - (w div 8)
+			// 3.6 test if width is even?
 			test	bx, 1
 			jz		EVEN
-			// 3a. continue setting up registers 
-			// 3a.1 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
-			mov		ax, HGA_BYTES_PER_LINE; 90
-			sub		ax, bx; 90 - (w div 8)
-			// 3a.2 BX = (w div 16) to count the words to MOVSW
+			// 3a.7 BX = (w div 16) to count the words to MOVSW
 			shr		bx, 1
 			// 4a. jump to the correct starting bank 
 	ACASE3: cmp		cx, 3						; select starting bankand initial DI offset
@@ -123,11 +122,7 @@ namespace hga {
 			// 8. restore registers
 	BREAK:	jmp		END
 
-	EVEN:	// 3b. continue setting up registers 
-			// 3b.1 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
-			mov		ax, HGA_BYTES_PER_LINE		; 90
-			sub		ax, bx						; 90 - (w div 8)
-			// 3b.2 BX = (w div 16) to count the words to MOVSW
+	EVEN:	// 3b.7 BX = (w div 16) to count the words to MOVSW
 			shr		bx, 1
 			// 4b. jump to the correct starting bank 
 	CASE3:  cmp		cx, 3						; select starting bankand initial DI offset
