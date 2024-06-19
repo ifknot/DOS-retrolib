@@ -15,7 +15,8 @@
 namespace hga {
 
 	void test_blit(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w, uint16_t h) {
-		.8086
+		__asm {
+			.8086
 			pushf								; preserve flags on entry (direction flag used)
 
 			// 1. setup RAM source pointer DS:SI = (b * 90) + (a div 8)
@@ -42,8 +43,6 @@ namespace hga {
 			shr		bx, 1						;	.
 			add		ax, bx						; AX = (y div 4) * 90) + (x div 8)
 			mov		di, ax						; ES:DI point to VRAM destination
-			// 3. reserved for 8bit strip select
-			
 			// 4. set up the registers
 			// 4.0 clear the direction flag so that SI and DI will be incremented by chain instructions
 			cld
@@ -54,9 +53,11 @@ namespace hga {
 			shr		bx, 1
 			// 4.2 AX = next line offset HGA_BYTES_PER_LINE - (w div 8)
 			mov		ax, HGA_BYTES_PER_LINE		; 90
-			sub		ax, bx						; 90 - (w div 8)
+			sub		ax, 1//bx						; 90 - (w div 8)
+
 			// 4.3 BX = (w div 16) to count the words to MOVSW
-			shr		bx, 1
+			//shr		bx, 1
+			
 			// 4.4 CX = y mod 3 to select the start VRAM bank
 			mov		cx, y
 			and		cx, 3						; mask y lower 3 bits i.e. 0..3
@@ -76,13 +77,49 @@ namespace hga {
 			add		di, HGA_BANK_OFFSET			; 2nd bank offset
 			jmp		BANK1						; start on 2nd bank
 	CASE0:										; fall through to zero offset 1st bank
+			// 6. move the raster data in single byte x h height blocks 
+			// TODO: wait for vertical blank interval
+			// 6.1 bank 0
+	BANK0:  movsb								; copy single byte 
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
+			// 6.2 bank 1
+	BANK1:	movsb								; copy single byte 
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
+			// 6.3 bank 2
+	BANK2:	movsb								; copy single byte 
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			add		di, HGA_BANK_OFFSET - HGA_BYTES_PER_LINE	; bank 1 = DI + (2000h - 90)
+			// 6.4 bank 3
+	BANK3:	movsb								; copy single byte 
+			dec		dx							; dec line count
+			jz		END							; DX = 0 all done
+			add		si, ax						; RAM source next line
+			add		di, ax						; VRAM next line
+			sub		di, HGA_BANK_OFFSET * 3		; bank 0 next line = DI - 6000h
+			// 7. until all raster lines done i.e. height(h)
+			jmp		BANK0						; loop around until all lines drawn
+			// 8. break out of loop
+	END:
 
+			popf								; restore flags on exit
+		}
 
 	}
 
 
 	// word blit fullscreen bitmap to VRAM
-	void blit_vram_bmp(uint16_t vram_segment, char* raster_data) {
+	void word_blit_byte_aligned_vram_bmp(uint16_t vram_segment, char* raster_data) {
 		__asm {
 			.8086
 			pushf								; preserve flags on entry (direction flag used)
@@ -125,7 +162,7 @@ namespace hga {
 	}
 
 	// byte blit fullscreen bitmap rectangle(x,y,w,h) to VRAM rectangle(x,y,w,h)
-	void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
+	void byte_blit_byte_aligned_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 		__asm {
 			.8086								; NB clock cycle comments refer to 8086
 			push	bp
@@ -241,7 +278,7 @@ namespace hga {
 	}
 
 	// word blit fullscreen bitmap rectangle(a,b,w,h) to VRAM rectangle(x,y,w,h)
-	void blit_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w, uint16_t h) {
+	void word_blit_byte_aligned_vram_bmp(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w, uint16_t h) {
 		__asm {
 			.8086
 			pushf								; preserve flags on entry (direction flag used)
