@@ -13,9 +13,9 @@
 #include "hga_attributes.h"
 #include "hga_constants.h"
 #include "hga_detect_adapter.h"
-#include "hga_blit.h"
 #include "hga_palette.h"
 #include "hga_toolbox.h"
+#include "hga_vblt.h"
 #include "hga_video_mode_presets.h"
 
 #endif

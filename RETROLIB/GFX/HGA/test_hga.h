@@ -55,65 +55,53 @@ namespace test_hga {
 					LOG(*pool);
 				}
 				LOG(bmp);
-				if (YESNO("* 721\tswitch to HGA graphics mode and display bitmap?")) {
+				if (YESNO("* 721\tswitch to HGA graphics mode and buffer fullscreen rect (0,0,720,348) to VRAM rect fullscreen ?")) {
 					hga::graphics_mode();
 					hga::select_display_buffer(1);
 					
 					hga::cls(HGA_BUFFER_1);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data);
 
 					if (YESNO("")) {
 						hga::text_mode();
 					}
 				}
-				if (YESNO("* 722\tswitch to HGA graphics mode and letterbox bitmap?")) {
-					hga::graphics_mode();
-					hga::select_display_buffer(1);
-
-					for (int i = 10; i < 30; i += 1) {
-						hga::cls(HGA_BUFFER_1);
-						hga::byte_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, i, i, 360, 88);
-						//YESNO("");
-					}
-
-					if (YESNO("")) {
-						hga::text_mode();
-					}
-				}
-				if (YESNO("* 722\tswitch to HGA graphics mode and rectangle copy bitmap?")) {
+				if (YESNO("* 722\tswitch to HGA graphics mode blt buffer rect (x,y,w,h) to corresponding VRAM rect (x,y,w,h) ?")) {
 					hga::graphics_mode();
 					hga::select_display_buffer(1);
 
 					hga::cls(HGA_BUFFER_1);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 0, 0, 0, 32, 32, 32);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 328, 0, 102, 90, 64, 48);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 0, 102, 90, 64, 48);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 0, 150, 102, 90, 64, 48);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 328, 150, 102, 90, 64, 48);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 150, 102, 90, 64, 48);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 0, 348 - 48, 102, 90, 64, 48);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 328, 348 - 48, 102, 90, 64, 48);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 348 - 48, 102, 90, 64, 48);
-
+					hga::cls(HGA_BUFFER_1);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 0, 0, 40, 32);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 328, 0, 32, 32);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 0, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 0, 150, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 328, 150, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 150, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 0, 348 - 48, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 328, 348 - 48, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 348 - 48, 64, 48);
+					
 					if (YESNO("")) {
 						hga::text_mode();
 					}
 				}
-				if (YESNO("* 723\tswitch to HGA graphics mode and test blit?")) {
+				if (YESNO("* 722\tswitch to HGA graphics mode and blt buffer rect (a,b,w,h) to VRAM rect (x,y,w,h) ?")) {
 					hga::graphics_mode();
 					hga::select_display_buffer(1);
 
 					hga::cls(HGA_BUFFER_1);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 0, 0, 0, 32, 40, 32);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 328, 0, 0, 32, 32, 32);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 0, 102, 90, 64, 48);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 0, 150, 102, 90, 64, 48);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 328, 150, 102, 90, 64, 48);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 150, 102, 90, 64, 48);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 0, 348 - 48, 102, 90, 64, 48);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 328, 348 - 48, 102, 90, 64, 48);
-					hga::test_blit(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 348 - 48, 102, 90, 64, 48);
-				
+					hga::cls(HGA_BUFFER_1);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 0, 0, 0, 32, 40, 32);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 328, 0, 0, 32, 32, 32);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 0, 102, 90, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 0, 150, 102, 90, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 328, 150, 102, 90, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 150, 102, 90, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 0, 348 - 48, 102, 90, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 328, 348 - 48, 102, 90, 64, 48);
+					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 348 - 48, 102, 90, 64, 48);
+
 					if (YESNO("")) {
 						hga::text_mode();
 					}
@@ -134,17 +122,13 @@ namespace test_hga {
 					hga::select_display_buffer(1);
 
 					gfx::bmp::fill(bmp, hga::BRIGHT);
-					hga::word_blit_byte_aligned_vram_bmp(HGA_BUFFER_1, bmp->raster_data);
+					hga::vblt(HGA_BUFFER_1, bmp->raster_data);
 
 					if (YESNO("")) {
 						hga::text_mode();
 						LOG(sizeof(*bmp));
 					}
 				}
-				//if (YESNO("* 733\tload sprite bmp ?")) {
-				//}
-				//if (YESNO("* 734\tblit sprite to buffer & blit screen buffer bmp ?")) {
-				//}
 				mem::arena::delete_dos_arena(pool);
 			}
 		}

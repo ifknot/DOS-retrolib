@@ -339,8 +339,8 @@ WVList
 0
 79
 MItem
-29
-RETROLIB\GFX\HGA\hga_blit.cpp
+39
+RETROLIB\GFX\HGA\hga_detect_adapter.cpp
 80
 WString
 6
@@ -357,8 +357,8 @@ WVList
 0
 83
 MItem
-39
-RETROLIB\GFX\HGA\hga_detect_adapter.cpp
+32
+RETROLIB\GFX\HGA\hga_toolbox.cpp
 84
 WString
 6
@@ -375,8 +375,8 @@ WVList
 0
 87
 MItem
-32
-RETROLIB\GFX\HGA\hga_toolbox.cpp
+29
+RETROLIB\GFX\HGA\hga_vblt.cpp
 88
 WString
 6
