@@ -14,7 +14,7 @@
 
 namespace hga {
 
-	// blit fullscreen raster data to VRAM
+	// vblt fullscreen raster data to VRAM
 	void vblt(uint16_t vram_segment, char* raster_data) {
 		__asm {
 			.8086
@@ -57,7 +57,7 @@ namespace hga {
 		}
 	}
 
-	// blit raster data rectangle(x,y,w,h) to VRAM rectangle(x,y,w,h)
+	// vblt raster data rectangle(x,y,w,h) to VRAM rectangle(x,y,w,h)
 	void vblt(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t w, uint16_t h) {
 		__asm {
 			.8086								
@@ -219,7 +219,7 @@ namespace hga {
 		}
 	}
 
-	// blit raster data rectangle(a,b,w,h) to VRAM rectangle(x,y,w,h)
+	// vblt raster data rectangle(a,b,w,h) to VRAM rectangle(x,y,w,h)
 	void vblt(uint16_t vram_segment, char* raster_data, uint16_t x, uint16_t y, uint16_t a, uint16_t b, uint16_t w, uint16_t h) {
 		__asm {
 			.8086								

@@ -21,9 +21,9 @@ namespace test_hga {
 	void run() {
 		INFO("* testing lib HGA graphics routines");
 		uint8_t hga = hga::detect_adapter();
-		if(hga) {
+		if (hga) {
 			INFO(hga::video_adapter_names[hga]);
-			
+			/*
 			if (YESNO("* 710\tswitch to HGA graphics mode and clear screen ?")) {
 				hga::graphics_mode();
 				hga::cls();
@@ -36,13 +36,13 @@ namespace test_hga {
 					hga::select_display_buffer(0);
 					hga::fill_vram_buffer(HGA_BUFFER_0, 0xEE);
 				}
-				
+
 				if (YESNO("")) {
 					hga::text_mode();
 				}
 			}
-			
-			
+
+
 			if (YESNO("* 720 load fullscreen bitmap ?")) {
 				char fpath[13] = "";
 				mem::arena::arena_t* pool = mem::arena::new_dos_arena(65536);
@@ -58,7 +58,7 @@ namespace test_hga {
 				if (YESNO("* 721\tswitch to HGA graphics mode and buffer fullscreen rect (0,0,720,348) to VRAM rect fullscreen ?")) {
 					hga::graphics_mode();
 					hga::select_display_buffer(1);
-					
+
 					hga::cls(HGA_BUFFER_1);
 					hga::vblt(HGA_BUFFER_1, bmp.raster_data);
 
@@ -81,7 +81,7 @@ namespace test_hga {
 					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 0, 348 - 48, 64, 48);
 					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 328, 348 - 48, 64, 48);
 					hga::vblt(HGA_BUFFER_1, bmp.raster_data, 720 - 64, 348 - 48, 64, 48);
-					
+
 					if (YESNO("")) {
 						hga::text_mode();
 					}
@@ -130,6 +130,9 @@ namespace test_hga {
 					}
 				}
 				mem::arena::delete_dos_arena(pool);
+			}
+			*/
+			if (YESNO("* 740\ttest pixel functions ?")) {
 			}
 		}
 		else {
