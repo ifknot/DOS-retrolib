@@ -12,12 +12,23 @@
 
 #include "../TEST/debug_macros.h"
 
+#include "fxp.h"
+
+#include <stdio.h>
+
 namespace test_fxp {
 
 	void run() {
 		INFO("* testing lib HGA graphics routines");
 		if (YESNO("* 110\t Test fixed point maths ?")) {
-
+			fxp::ufixed_t x;
+			float f;
+			while (YESNO("convert a float?")) {
+				scanf("%f", &f);
+				LOG(x);
+				fxp::as_float(&f, x);
+				LOG(f);
+			}
 		}
 	}
 
