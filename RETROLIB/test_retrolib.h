@@ -19,9 +19,10 @@
 //#include "GFX/test_gfx.h"							// 400
 //#include "FILE/test_file.h"						// 500
 //#include "STR/test_toolbox.h"						// 600
-#include "GFX/HGA/test_hga.h"						// 700
+//#include "GFX/HGA/test_hga.h"						// 700
 //#include "GFX/MDA/test_mda.h"						// 800
 //#include "KBD/test_kbd.h"							// 900
+#include "FXP/testfxp.h"
 
 namespace test_retrolib {
 
@@ -35,9 +36,10 @@ namespace test_retrolib {
 		//if (YESNO("* 400\ttest GFX ?")) test_gfx::run();
 		//if (YESNO("* 500\ttest FILE ?")) test_file::run();
 		//if (YESNO("* 600\ttest STR ?")) test_toolbox::run();
-		if (YESNO("* 700\ttest HGA ?")) test_hga::run();
+		//if (YESNO("* 700\ttest HGA ?")) test_hga::run();
 		//if (YESNO("* 800\ttest MDA ?")) test_mda::run();
 		//if (YESNO("* 900\ttest KBD ?")) test_kbd::run();
+		if (YESNO("* 100\ttest FXP ?")) test_fxp::run();
 
 	}
 
