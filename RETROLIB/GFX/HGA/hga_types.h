@@ -14,12 +14,8 @@
 
 namespace hga {
 
-	typedef colour_t uint8_t;
+	typedef uint8_t colour_t;
 
-	enum colours {
-		BLACK,
-		WHITE 
-	};
 }
 
 #endif

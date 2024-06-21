@@ -97,6 +97,13 @@ C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_adapter.obj : C:\Users\ifkno&
  *wpp RETROLIB\GFX\HGA\hga_detect_adapter.cpp -i="C:\WATCOM/h" -w0 -e25 -zq &
 -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
+C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_pixel.obj : C:\Users\ifkno\DOSBOX\D&
+OS16\RETROLIB\RETROLIB\GFX\HGA\hga_pixel.cpp .AUTODEPEND
+ @C:
+ cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ *wpp RETROLIB\GFX\HGA\hga_pixel.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -&
+bt=dos -fo=.obj -ml -xs -xr
+
 C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_toolbox.obj : C:\Users\ifkno\DOSBOX&
 \DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_toolbox.cpp .AUTODEPEND
  @C:
@@ -178,23 +185,24 @@ TROLIB\ega_detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_bmp_b&
 itmap.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_bmp_file_tools.obj C:\Use&
 rs\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_adapter.obj C:\Users\ifkno\DOSBOX\&
 DOS16\RETROLIB\gfx_detect_crtc.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_&
-detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_toolbox.obj C:\U&
-sers\ifkno\DOSBOX\DOS16\RETROLIB\hga_vblt.obj C:\Users\ifkno\DOSBOX\DOS16\RE&
-TROLIB\mda_toolbox.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\vga_detect_adapt&
-er.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\kbd_interupt_routines.obj C:\Use&
-rs\ifkno\DOSBOX\DOS16\RETROLIB\mem_address.obj C:\Users\ifkno\DOSBOX\DOS16\R&
-ETROLIB\mem_arena.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj C:&
-\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_toolbox.obj C:\Users\ifkno\DOSBOX\DOS&
-16\RETROLIB\str_toolbox.obj .AUTODEPEND
+detect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_pixel.obj C:\Use&
+rs\ifkno\DOSBOX\DOS16\RETROLIB\hga_toolbox.obj C:\Users\ifkno\DOSBOX\DOS16\R&
+ETROLIB\hga_vblt.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mda_toolbox.obj C:&
+\Users\ifkno\DOSBOX\DOS16\RETROLIB\vga_detect_adapter.obj C:\Users\ifkno\DOS&
+BOX\DOS16\RETROLIB\kbd_interupt_routines.obj C:\Users\ifkno\DOSBOX\DOS16\RET&
+ROLIB\mem_address.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_arena.obj C:\&
+Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj C:\Users\ifkno\DOSBOX\DOS16&
+\RETROLIB\mem_toolbox.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\str_toolbox.o&
+bj .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
  @%write retrolib.lk1 FIL main.obj,bios_memory_size.obj,bios_video_services.&
 obj,dos_services.obj,dos_services_3x.obj,dos_services_files.obj,file_toolbox&
 .obj,cga_detect_adapter.obj,ega_detect_adapter.obj,gfx_bmp_bitmap.obj,gfx_bm&
 p_file_tools.obj,gfx_detect_adapter.obj,gfx_detect_crtc.obj,hga_detect_adapt&
-er.obj,hga_toolbox.obj,hga_vblt.obj,mda_toolbox.obj,vga_detect_adapter.obj,k&
-bd_interupt_routines.obj,mem_address.obj,mem_arena.obj,mem_segoff.obj,mem_to&
-olbox.obj,str_toolbox.obj
+er.obj,hga_pixel.obj,hga_toolbox.obj,hga_vblt.obj,mda_toolbox.obj,vga_detect&
+_adapter.obj,kbd_interupt_routines.obj,mem_address.obj,mem_arena.obj,mem_seg&
+off.obj,mem_toolbox.obj,str_toolbox.obj
  @%append retrolib.lk1 
  *wlink name retrolib d all sys dos op m op maxe=25 op q op symf @retrolib.l&
 k1

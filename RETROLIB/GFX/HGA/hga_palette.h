@@ -13,11 +13,11 @@
 namespace hga {
 
 	/**
-	* @brief black or 'bright' - depending on the monitor colour - i.e. whatever colour the CRT phosphor is
+	* @brief black or 'white' - depending on the monitor colour - i.e. whatever colour the CRT phosphor is
 	*/
-	enum colours_t {
+	enum colours {
 		BLACK,
-		BRIGHT = 0xFFFF	// retrolib gfx uses 16-bit high colours
+		WHITE
 	};
 
 }

@@ -133,6 +133,22 @@ namespace test_hga {
 			}
 			*/
 			if (YESNO("* 740\ttest pixel functions ?")) {
+				hga::graphics_mode();
+				hga::select_display_buffer(1);
+
+				hga::cls(HGA_BUFFER_1);
+				uint16_t x, y;
+				x = y = 0;
+				for (int i = 0; i < 200; ++i) {
+					//for (int j = 0; j < 348; ++j) {
+						hga::plot_pixel(HGA_BUFFER_1, x++, y++, hga::WHITE);
+					//}
+				}
+				
+
+				if (YESNO("")) {
+					hga::text_mode();
+				}
 			}
 		}
 		else {

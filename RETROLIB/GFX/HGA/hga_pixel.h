@@ -14,11 +14,11 @@
 
 namespace hga {
 
-	void plot_pixel(uint16_t x, uint16_t y, colour_t c);
+	void plot_pixel(uint16_t vram_segment, uint16_t x, uint16_t y, colour_t c);
 
-	void hsync_plot_pixel(uint16_t x, uint16_t y, colour_t c);
+	void hsync_plot_pixel(uint16_t vram_segment, uint16_t x, uint16_t y, colour_t c);
 
-	colour_t read_pixel(uint16_t x, uint16_t y);
+	colour_t read_pixel(uint16_t vram_segment, uint16_t x, uint16_t y);
 
 }
 
