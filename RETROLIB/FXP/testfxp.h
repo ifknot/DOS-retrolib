@@ -25,6 +25,7 @@ namespace test_fxp {
 			float f;
 			while (YESNO("convert a float?")) {
 				scanf("%f", &f);
+				fxp::as_ufixed_t(&x, f);
 				LOG(x);
 				fxp::as_float(&f, x);
 				LOG(f);

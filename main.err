@@ -1,3 +1,0 @@
-RETROLIB\FXP\testfxp.h(28): Error! E926: col(76) syntax error: 'fxp::strferror' has not been declared as a member
-RETROLIB\FXP\testfxp.h(28): Note! N393: col(76) included from RETROLIB\test_retrolib.h(25)
-RETROLIB\FXP\testfxp.h(28): Note! N393: col(76) included from main.cpp(3)
