@@ -22,6 +22,11 @@ namespace fxp {
 
 	void round_to_uint16_t(uint16_t* i, ufixed_t x);
 
+	
+	void round_to_fixed_t(fixed_t* x, float f);
+
+	void convert_to_float(float* f, fixed_t x);
+
 }
 
 #endif

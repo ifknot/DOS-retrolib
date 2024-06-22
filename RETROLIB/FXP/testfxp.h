@@ -22,9 +22,10 @@ namespace test_fxp {
 		INFO("* testing lib HGA graphics routines");
 		if (YESNO("* 110\t Test fixed point maths ?")) {
 			fxp::ufixed_t x;
+			fxp::fixed_t y;
 			float f;
 			uint16_t i;
-			while (YESNO("convert a float?")) {
+			while (YESNO("unsigned convert a float?")) {
 				scanf("%f", &f);
 				fxp::round_to_ufixed_t(&x, f);
 				LOG(x);
@@ -34,6 +35,19 @@ namespace test_fxp {
 				LOG(i);
 				fxp::round_to_uint16_t(&i, x);
 				LOG(i);
+			}
+			while (YESNO("signed convert a float?")) {
+				scanf("%f", &f);
+				fxp::round_to_fixed_t(&y, f);
+				LOG(y);
+				INFO("**********");
+				fxp::convert_to_float(&f, y);
+				LOG(f);
+				/*fxp::truncate_to_uint16_t(&i, x);
+				LOG(i);
+				fxp::round_to_uint16_t(&i, x);
+				LOG(i);
+				*/
 			}
 		}
 	}
