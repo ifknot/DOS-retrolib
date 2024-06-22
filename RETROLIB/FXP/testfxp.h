@@ -23,12 +23,17 @@ namespace test_fxp {
 		if (YESNO("* 110\t Test fixed point maths ?")) {
 			fxp::ufixed_t x;
 			float f;
+			uint16_t i;
 			while (YESNO("convert a float?")) {
 				scanf("%f", &f);
-				fxp::as_ufixed_t(&x, f);
+				fxp::round_to_ufixed_t(&x, f);
 				LOG(x);
-				fxp::as_float(&f, x);
+				fxp::convert_to_float(&f, x);
 				LOG(f);
+				fxp::truncate_to_uint16_t(&i, x);
+				LOG(i);
+				fxp::round_to_uint16_t(&i, x);
+				LOG(i);
 			}
 		}
 	}

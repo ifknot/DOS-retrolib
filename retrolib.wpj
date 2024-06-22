@@ -28,10 +28,10 @@ WVList
 VComponent
 8
 WRect
-240
-227
+176
+-9
 6432
-5044
+5034
 0
 0
 9
@@ -39,5 +39,5 @@ WFileName
 12
 retrolib.tgt
 0
-15
+10
 7
