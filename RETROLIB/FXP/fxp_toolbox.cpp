@@ -59,10 +59,18 @@ namespace fxp {
 
 	void convert_to_float(float* f, fixed_t x) {
 		*f = (x & FXP_DENOMINATOR);					// mask off integer part
-		LOG(*f);
 		*f /= FXP_DENOMINATOR;						// convert to fraction
-		LOG(*f);
 		*f += (x >> FXP_FRACTIONAL_BITS);			// add integral part
+	}
+
+	void truncate_to_int16_t(int16_t* i, fixed_t x) {
+		*i = x >> FXP_FRACTIONAL_BITS;
+	}
+
+	void round_to_int16_t(int16_t* i, fixed_t x) {
+		*i = x >> FXP_FRACTIONAL_BITS;
+		x &= FXP_DENOMINATOR;
+		if (x >= 32) *i += 1;
 	}
 
 }

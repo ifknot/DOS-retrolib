@@ -25,6 +25,7 @@ namespace test_fxp {
 			fxp::fixed_t y;
 			float f;
 			uint16_t i;
+			int16_t j;
 			while (YESNO("unsigned convert a float?")) {
 				scanf("%f", &f);
 				fxp::round_to_ufixed_t(&x, f);
@@ -40,14 +41,13 @@ namespace test_fxp {
 				scanf("%f", &f);
 				fxp::round_to_fixed_t(&y, f);
 				LOG(y);
-				INFO("**********");
 				fxp::convert_to_float(&f, y);
 				LOG(f);
-				/*fxp::truncate_to_uint16_t(&i, x);
-				LOG(i);
-				fxp::round_to_uint16_t(&i, x);
-				LOG(i);
-				*/
+				fxp::truncate_to_int16_t(&j, y);
+				LOG(j);
+				INFO("**********");
+				fxp::round_to_int16_t(&j, y);
+				LOG(j);
 			}
 		}
 	}

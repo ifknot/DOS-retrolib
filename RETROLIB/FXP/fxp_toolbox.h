@@ -27,6 +27,10 @@ namespace fxp {
 
 	void convert_to_float(float* f, fixed_t x);
 
+	void truncate_to_int16_t(int16_t* i, fixed_t x);
+
+	void round_to_int16_t(int16_t* i, fixed_t x);
+
 }
 
 #endif
