@@ -14,6 +14,8 @@
 
 namespace fxp {
 
+	void umul(ufixed_t* x, ufixed_t y);
+
 	void round_to_ufixed_t(ufixed_t* x, float f);
 
 	void convert_to_float(float* f, ufixed_t x);
@@ -30,6 +32,8 @@ namespace fxp {
 	void truncate_to_int16_t(int16_t* i, fixed_t x);
 
 	void round_to_int16_t(int16_t* i, fixed_t x);
+
+	
 
 }
 

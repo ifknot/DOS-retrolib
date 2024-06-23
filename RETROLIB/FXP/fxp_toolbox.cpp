@@ -19,6 +19,24 @@
 
 namespace fxp {
 
+	void umul(ufixed_t* x, ufixed_t y) {
+		__asm {
+			.8086
+			pushf 
+
+			lds		si, x							; DS:[SI] points to x
+			mov		ax, [si]						; AX = x
+			mov		bx, y							; BX = y
+			mul		bx								; DX:AX = AX * BX
+			mov		cx, FXP_FRACTIONAL_BITS 
+	_SHRD:	shr		dx, 1							; shift right DX:AX as 32 bits
+			rcr		ax, 1	
+			loop	_SHRD							; emulate the SHRD instruction 
+			mov		[si], ax
+			popf 
+		}
+	}
+
 	void round_to_ufixed_t(ufixed_t* x, float f) {
 		uint16_t i = (uint16_t)f;
 		assert(i <= FXP_INTEGER_UNSIGNED_MAX);
@@ -70,7 +88,7 @@ namespace fxp {
 	void round_to_int16_t(int16_t* i, fixed_t x) {
 		*i = x >> FXP_FRACTIONAL_BITS;
 		x &= FXP_DENOMINATOR;
-		if (x >= 32) *i += 1;
+		if (x > 31) *i += 1;
 	}
 
 }
