@@ -20,7 +20,7 @@ namespace fxp {
 
 	void udiv(ufixed_t* x, ufixed_t y);
 
-	//void div(fixed_t* x, fixed_t y);
+	void div(fixed_t* x, fixed_t y);
 
 
 }

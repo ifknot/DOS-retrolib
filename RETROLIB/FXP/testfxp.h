@@ -53,6 +53,34 @@ namespace test_fxp {
 				fxp::convert_to_float(&f, x);
 				LOG(f);
 			}
+			while (YESNO("unsigned division?")) {
+				printf("? ");
+				scanf("%f", &f);
+				printf("? ");
+				scanf("%f", &g);
+				fxp::round_to_ufixed_t(&a, f);
+				fxp::round_to_ufixed_t(&b, g);
+				LOG(a);
+				LOG(b);
+				fxp::udiv(&a, b);
+				LOG(a);
+				fxp::uconvert_to_float(&f, a);
+				LOG(f);
+			}
+			while (YESNO("signed division?")) {
+				printf("? ");
+				scanf("%f", &f);
+				printf("? ");
+				scanf("%f", &g);
+				fxp::round_to_fixed_t(&x, f);
+				fxp::round_to_fixed_t(&y, g);
+				LOG(x);
+				LOG(y);
+				fxp::div(&x, y);
+				LOG(x);
+				fxp::convert_to_float(&f, x);
+				LOG(f);
+			}
 		}
 		if (YESNO("* 110\t Test fixed point conversions ?")) {
 			fxp::ufixed_t a, b;
