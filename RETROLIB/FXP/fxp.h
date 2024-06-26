@@ -11,7 +11,8 @@
 #define FXP_H
 
 #include "fxp_constants.h"
-#include "fxp_toolbox.h"
 #include "fxp_types.h"
+#include "fxp_conversions.h"
+#include "fxp_mul_div.h"
 
 #endif
