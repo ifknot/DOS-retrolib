@@ -21,8 +21,7 @@ namespace fxp {
 
 	void umul(ufixed_t* x, ufixed_t y) {
 		__asm {
-			.8086
-			pushf 
+			.8086 
 
 			lds		si, x							; DS:[SI] points to x
 			mov		ax, [si]						; AX = x
@@ -33,7 +32,24 @@ namespace fxp {
 			rcr		ax, 1	
 			loop	_SHRD							; emulate the SHRD instruction 
 			mov		[si], ax
-			popf 
+			
+		}
+	}
+
+	void mul(fixed_t* x, fixed_t y) {
+		__asm {
+			.8086 
+
+			lds		si, x							; DS:[SI] points to x
+			mov		ax, [si]						; AX = x
+			mov		bx, y							; BX = y
+			imul		bx							; DX:AX = AX * BX sign 
+			mov		cx, FXP_FRACTIONAL_BITS 
+	_SHRD:	sar		dx, 1							; shift right DX:AX as 32 bits
+			rcr		ax, 1							; ...
+			loop	_SHRD							; emulate the SHRD instruction 
+			mov		[si], ax
+			
 		}
 	}
 
@@ -47,7 +63,7 @@ namespace fxp {
 		*x |= (uint16_t)round(f * FXP_DENOMINATOR); // OR in the lower 5 bit fractional part as rounded 
 	}
 
-	void convert_to_float(float* f, ufixed_t x) {
+	void uconvert_to_float(float* f, ufixed_t x) {
 		*f = (x & FXP_DENOMINATOR);					// mask off integer part
 		*f /= FXP_DENOMINATOR;						// convert to fraction
 		*f += (x >> FXP_FRACTIONAL_BITS);			// add integral part
