@@ -8,7 +8,8 @@
 * [] hga::vram_buffer.h (cls etc) 
 * 	
 * [] hga::mem_buffer
-* 	[] 
+* 	[] draw_bitmap*raster, x, y, w, h)
+*	[] draw_bitmap(*raster, *mask, x, y, w, h)
 * [x] video block transfer (vblt) functions RAM -> VRAM
 *	[x] fullscreen rect 
 *	[x] RAM rect A to VRAM A
@@ -21,9 +22,13 @@
 * [] vline (fast)
 * [] draw_rectangle (fast)
 * [] fill_rectangle (hline x height)
-* [] line (bresenham)
-* [] circle
-* [] elipse
+* [] draw_line (bresenham)
+* [] draw_polygon(*x, *y, n)
+* [] fill_polygon
+* [] draw_circle
+* [] fill_circle 
+* [] draw_elipse
+* [] fill_elipse
 */
 
 int main() {
