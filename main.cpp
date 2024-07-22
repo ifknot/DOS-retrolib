@@ -4,6 +4,11 @@
 
 /**
 * @todo 
+* [] hga::video_modes.h 
+* [] hga::vram_buffer.h (cls etc) 
+* 	
+* [] hga::mem_buffer
+* 	[] 
 * [x] video block transfer (vblt) functions RAM -> VRAM
 *	[x] fullscreen rect 
 *	[x] RAM rect A to VRAM A
@@ -14,7 +19,8 @@
 * [] read_pixel
 * [] hline (fast)
 * [] vline (fast)
-* [] rectangle (fast)
+* [] draw_rectangle (fast)
+* [] fill_rectangle (hline x height)
 * [] line (bresenham)
 * [] circle
 * [] elipse
