@@ -48,20 +48,6 @@ DOS-retrolib\RETROLIB\FILE\file_toolbox.cpp .AUTODEPEND
  *wpp RETROLIB\FILE\file_toolbox.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -&
 bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSDEV\DOS-retrolib\fxp_conversions.obj : C:\Users\ifkno\DOSD&
-EV\DOS-retrolib\RETROLIB\FXP\fxp_conversions.cpp .AUTODEPEND
- @C:
- cd C:\Users\ifkno\DOSDEV\DOS-retrolib
- *wpp RETROLIB\FXP\fxp_conversions.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2&
- -bt=dos -fo=.obj -ml -xs -xr
-
-C:\Users\ifkno\DOSDEV\DOS-retrolib\fxp_mul_div.obj : C:\Users\ifkno\DOSDEV\D&
-OS-retrolib\RETROLIB\FXP\fxp_mul_div.cpp .AUTODEPEND
- @C:
- cd C:\Users\ifkno\DOSDEV\DOS-retrolib
- *wpp RETROLIB\FXP\fxp_mul_div.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt&
-=dos -fo=.obj -ml -xs -xr
-
 C:\Users\ifkno\DOSDEV\DOS-retrolib\cga_detect_adapter.obj : C:\Users\ifkno\D&
 OSDEV\DOS-retrolib\RETROLIB\GFX\CGA\cga_detect_adapter.cpp .AUTODEPEND
  @C:
@@ -194,29 +180,28 @@ retrolib\main.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\bios_memory_size.obj C:&
 EV\DOS-retrolib\dos_services.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\dos_serv&
 ices_3x.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\dos_services_files.obj C:\Use&
 rs\ifkno\DOSDEV\DOS-retrolib\file_toolbox.obj C:\Users\ifkno\DOSDEV\DOS-retr&
-olib\fxp_conversions.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\fxp_mul_div.obj &
-C:\Users\ifkno\DOSDEV\DOS-retrolib\cga_detect_adapter.obj C:\Users\ifkno\DOS&
-DEV\DOS-retrolib\ega_detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\g&
-fx_bmp_bitmap.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_bmp_file_tools.obj &
-C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_detect_adapter.obj C:\Users\ifkno\DOS&
-DEV\DOS-retrolib\gfx_detect_crtc.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_&
-detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_pixel.obj C:\Users&
-\ifkno\DOSDEV\DOS-retrolib\hga_toolbox.obj C:\Users\ifkno\DOSDEV\DOS-retroli&
-b\hga_vblt.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mda_toolbox.obj C:\Users\i&
-fkno\DOSDEV\DOS-retrolib\vga_detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-re&
-trolib\kbd_interupt_routines.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_addr&
-ess.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_arena.obj C:\Users\ifkno\DOSD&
-EV\DOS-retrolib\mem_segoff.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_toolbo&
-x.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\str_toolbox.obj .AUTODEPEND
+olib\cga_detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\ega_detect_ad&
+apter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_bmp_bitmap.obj C:\Users\ifk&
+no\DOSDEV\DOS-retrolib\gfx_bmp_file_tools.obj C:\Users\ifkno\DOSDEV\DOS-retr&
+olib\gfx_detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_detect_cr&
+tc.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_detect_adapter.obj C:\Users\if&
+kno\DOSDEV\DOS-retrolib\hga_pixel.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\hga&
+_toolbox.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_vblt.obj C:\Users\ifkno\&
+DOSDEV\DOS-retrolib\mda_toolbox.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\vga_d&
+etect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\kbd_interupt_routines.o&
+bj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_address.obj C:\Users\ifkno\DOSDEV\&
+DOS-retrolib\mem_arena.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_segoff.obj&
+ C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_toolbox.obj C:\Users\ifkno\DOSDEV\DO&
+S-retrolib\str_toolbox.obj .AUTODEPEND
  @C:
  cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  @%write retrolib.lk1 FIL main.obj,bios_memory_size.obj,bios_video_services.&
 obj,dos_services.obj,dos_services_3x.obj,dos_services_files.obj,file_toolbox&
-.obj,fxp_conversions.obj,fxp_mul_div.obj,cga_detect_adapter.obj,ega_detect_a&
-dapter.obj,gfx_bmp_bitmap.obj,gfx_bmp_file_tools.obj,gfx_detect_adapter.obj,&
-gfx_detect_crtc.obj,hga_detect_adapter.obj,hga_pixel.obj,hga_toolbox.obj,hga&
-_vblt.obj,mda_toolbox.obj,vga_detect_adapter.obj,kbd_interupt_routines.obj,m&
-em_address.obj,mem_arena.obj,mem_segoff.obj,mem_toolbox.obj,str_toolbox.obj
+.obj,cga_detect_adapter.obj,ega_detect_adapter.obj,gfx_bmp_bitmap.obj,gfx_bm&
+p_file_tools.obj,gfx_detect_adapter.obj,gfx_detect_crtc.obj,hga_detect_adapt&
+er.obj,hga_pixel.obj,hga_toolbox.obj,hga_vblt.obj,mda_toolbox.obj,vga_detect&
+_adapter.obj,kbd_interupt_routines.obj,mem_address.obj,mem_arena.obj,mem_seg&
+off.obj,mem_toolbox.obj,str_toolbox.obj
  @%append retrolib.lk1 
  *wlink name retrolib d all sys dos op m op maxe=25 op q op symf @retrolib.l&
 k1

@@ -22,7 +22,7 @@
 //#include "GFX/HGA/test_hga.h"						// 700
 //#include "GFX/MDA/test_mda.h"						// 800
 //#include "KBD/test_kbd.h"							// 900
-//#include "FXP/testfxp.h"
+#include "MATH/FIXED/test_fixed.h"
 
 namespace test_retrolib {
 
@@ -39,7 +39,7 @@ namespace test_retrolib {
 		//if (YESNO("* 700\ttest HGA ?")) test_hga::run();
 		//if (YESNO("* 800\ttest MDA ?")) test_mda::run();
 		//if (YESNO("* 900\ttest KBD ?")) test_kbd::run();
-		if (YESNO("* 100\ttest FXP ?")) test_fxp::run();
+		if (YESNO("* 800\ttest FXP ?")) test_fixed::run();
 
 	}
 
