@@ -1,216 +1,215 @@
 !define BLANK ""
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.obj : C:\Users\ifkno\DOSBOX\DOS16\&
-RETROLIB\main.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\main.obj : C:\Users\ifkno\DOSDEV\DOS-retr&
+olib\main.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp main.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt=dos -fo=.obj -ml -x&
 s -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_memory_size.obj : C:\Users\ifkno\D&
-OSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_memory_size.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\bios_memory_size.obj : C:\Users\ifkno\DOS&
+DEV\DOS-retrolib\RETROLIB\BIOS\bios_memory_size.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\BIOS\bios_memory_size.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -&
 d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_video_services.obj : C:\Users\ifkn&
-o\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_video_services.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\bios_video_services.obj : C:\Users\ifkno\&
+DOSDEV\DOS-retrolib\RETROLIB\BIOS\bios_video_services.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\BIOS\bios_video_services.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -o&
 d -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services.obj : C:\Users\ifkno\DOSBO&
-X\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\dos_services.obj : C:\Users\ifkno\DOSDEV\&
+DOS-retrolib\RETROLIB\DOS\dos_services.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\DOS\dos_services.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -b&
 t=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_3x.obj : C:\Users\ifkno\DO&
-SBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\dos_services_3x.obj : C:\Users\ifkno\DOSD&
+EV\DOS-retrolib\RETROLIB\DOS\dos_services_3x.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\DOS\dos_services_3x.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2&
  -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_files.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\dos_services_files.obj : C:\Users\ifkno\D&
+OSDEV\DOS-retrolib\RETROLIB\DOS\dos_services_files.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\DOS\dos_services_files.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od &
 -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\file_toolbox.obj : C:\Users\ifkno\DOSBO&
-X\DOS16\RETROLIB\RETROLIB\FILE\file_toolbox.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\file_toolbox.obj : C:\Users\ifkno\DOSDEV\&
+DOS-retrolib\RETROLIB\FILE\file_toolbox.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\FILE\file_toolbox.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -&
 bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\fxp_conversions.obj : C:\Users\ifkno\DO&
-SBOX\DOS16\RETROLIB\RETROLIB\FXP\fxp_conversions.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\fxp_conversions.obj : C:\Users\ifkno\DOSD&
+EV\DOS-retrolib\RETROLIB\FXP\fxp_conversions.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\FXP\fxp_conversions.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2&
  -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\fxp_mul_div.obj : C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\RETROLIB\FXP\fxp_mul_div.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\fxp_mul_div.obj : C:\Users\ifkno\DOSDEV\D&
+OS-retrolib\RETROLIB\FXP\fxp_mul_div.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\FXP\fxp_mul_div.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt&
 =dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\cga_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\CGA\cga_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\cga_detect_adapter.obj : C:\Users\ifkno\D&
+OSDEV\DOS-retrolib\RETROLIB\GFX\CGA\cga_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\CGA\cga_detect_adapter.cpp -i="C:\WATCOM/h" -w0 -e25 -zq &
 -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\ega_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\EGA\ega_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\ega_detect_adapter.obj : C:\Users\ifkno\D&
+OSDEV\DOS-retrolib\RETROLIB\GFX\EGA\ega_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\EGA\ega_detect_adapter.cpp -i="C:\WATCOM/h" -w0 -e25 -zq &
 -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_bmp_bitmap.obj : C:\Users\ifkno\DOS&
-BOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_bmp_bitmap.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_bmp_bitmap.obj : C:\Users\ifkno\DOSDE&
+V\DOS-retrolib\RETROLIB\GFX\gfx_bmp_bitmap.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\gfx_bmp_bitmap.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 &
 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_bmp_file_tools.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_bmp_file_tools.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_bmp_file_tools.obj : C:\Users\ifkno\D&
+OSDEV\DOS-retrolib\RETROLIB\GFX\gfx_bmp_file_tools.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\gfx_bmp_file_tools.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od &
 -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_detect_adapter.obj : C:\Users\ifkno\D&
+OSDEV\DOS-retrolib\RETROLIB\GFX\gfx_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\gfx_detect_adapter.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od &
 -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_crtc.obj : C:\Users\ifkno\DO&
-SBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_crtc.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_detect_crtc.obj : C:\Users\ifkno\DOSD&
+EV\DOS-retrolib\RETROLIB\GFX\gfx_detect_crtc.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\gfx_detect_crtc.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2&
  -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_detect_adapter.obj : C:\Users\ifkno\D&
+OSDEV\DOS-retrolib\RETROLIB\GFX\HGA\hga_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\HGA\hga_detect_adapter.cpp -i="C:\WATCOM/h" -w0 -e25 -zq &
 -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_pixel.obj : C:\Users\ifkno\DOSBOX\D&
-OS16\RETROLIB\RETROLIB\GFX\HGA\hga_pixel.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_pixel.obj : C:\Users\ifkno\DOSDEV\DOS&
+-retrolib\RETROLIB\GFX\HGA\hga_pixel.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\HGA\hga_pixel.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -&
 bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_toolbox.obj : C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_toolbox.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_toolbox.obj : C:\Users\ifkno\DOSDEV\D&
+OS-retrolib\RETROLIB\GFX\HGA\hga_toolbox.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\HGA\hga_toolbox.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2&
  -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_vblt.obj : C:\Users\ifkno\DOSBOX\DO&
-S16\RETROLIB\RETROLIB\GFX\HGA\hga_vblt.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_vblt.obj : C:\Users\ifkno\DOSDEV\DOS-&
+retrolib\RETROLIB\GFX\HGA\hga_vblt.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\HGA\hga_vblt.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -b&
 t=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mda_toolbox.obj : C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\RETROLIB\GFX\MDA\mda_toolbox.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\mda_toolbox.obj : C:\Users\ifkno\DOSDEV\D&
+OS-retrolib\RETROLIB\GFX\MDA\mda_toolbox.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\MDA\mda_toolbox.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2&
  -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\vga_detect_adapter.obj : C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\VGA\vga_detect_adapter.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\vga_detect_adapter.obj : C:\Users\ifkno\D&
+OSDEV\DOS-retrolib\RETROLIB\GFX\VGA\vga_detect_adapter.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\GFX\VGA\vga_detect_adapter.cpp -i="C:\WATCOM/h" -w0 -e25 -zq &
 -od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\kbd_interupt_routines.obj : C:\Users\if&
-kno\DOSBOX\DOS16\RETROLIB\RETROLIB\KBD\kbd_interupt_routines.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\kbd_interupt_routines.obj : C:\Users\ifkn&
+o\DOSDEV\DOS-retrolib\RETROLIB\KBD\kbd_interupt_routines.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\KBD\kbd_interupt_routines.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -&
 od -d2 -bt=dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_address.obj : C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\RETROLIB\MEM\mem_address.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_address.obj : C:\Users\ifkno\DOSDEV\D&
+OS-retrolib\RETROLIB\MEM\mem_address.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\MEM\mem_address.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt&
 =dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_arena.obj : C:\Users\ifkno\DOSBOX\D&
-OS16\RETROLIB\RETROLIB\MEM\mem_arena.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_arena.obj : C:\Users\ifkno\DOSDEV\DOS&
+-retrolib\RETROLIB\MEM\mem_arena.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\MEM\mem_arena.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt=d&
 os -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_segoff.obj : C:\Users\ifkno\DOSBOX\&
-DOS16\RETROLIB\RETROLIB\MEM\mem_segoff.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_segoff.obj : C:\Users\ifkno\DOSDEV\DO&
+S-retrolib\RETROLIB\MEM\mem_segoff.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\MEM\mem_segoff.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt=&
 dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_toolbox.obj : C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\RETROLIB\MEM\mem_toolbox.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_toolbox.obj : C:\Users\ifkno\DOSDEV\D&
+OS-retrolib\RETROLIB\MEM\mem_toolbox.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\MEM\mem_toolbox.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt&
 =dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\str_toolbox.obj : C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\RETROLIB\STR\str_toolbox.cpp .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\str_toolbox.obj : C:\Users\ifkno\DOSDEV\D&
+OS-retrolib\RETROLIB\STR\str_toolbox.cpp .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  *wpp RETROLIB\STR\str_toolbox.cpp -i="C:\WATCOM/h" -w0 -e25 -zq -od -d2 -bt&
 =dos -fo=.obj -ml -xs -xr
 
-C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\retrolib.exe : C:\Users\ifkno\DOSBOX\DO&
-S16\RETROLIB\main.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_memory_size.&
-obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\bios_video_services.obj C:\Users\if&
-kno\DOSBOX\DOS16\RETROLIB\dos_services.obj C:\Users\ifkno\DOSBOX\DOS16\RETRO&
-LIB\dos_services_3x.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\dos_services_fi&
-les.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\file_toolbox.obj C:\Users\ifkno&
-\DOSBOX\DOS16\RETROLIB\fxp_conversions.obj C:\Users\ifkno\DOSBOX\DOS16\RETRO&
-LIB\fxp_mul_div.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\cga_detect_adapter.&
-obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\ega_detect_adapter.obj C:\Users\ifk&
-no\DOSBOX\DOS16\RETROLIB\gfx_bmp_bitmap.obj C:\Users\ifkno\DOSBOX\DOS16\RETR&
-OLIB\gfx_bmp_file_tools.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_&
-adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\gfx_detect_crtc.obj C:\User&
-s\ifkno\DOSBOX\DOS16\RETROLIB\hga_detect_adapter.obj C:\Users\ifkno\DOSBOX\D&
-OS16\RETROLIB\hga_pixel.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_toolbox&
-.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\hga_vblt.obj C:\Users\ifkno\DOSBOX&
-\DOS16\RETROLIB\mda_toolbox.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\vga_det&
-ect_adapter.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\kbd_interupt_routines.o&
-bj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_address.obj C:\Users\ifkno\DOSBO&
-X\DOS16\RETROLIB\mem_arena.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_sego&
-ff.obj C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\mem_toolbox.obj C:\Users\ifkno\D&
-OSBOX\DOS16\RETROLIB\str_toolbox.obj .AUTODEPEND
+C:\Users\ifkno\DOSDEV\DOS-retrolib\retrolib.exe : C:\Users\ifkno\DOSDEV\DOS-&
+retrolib\main.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\bios_memory_size.obj C:&
+\Users\ifkno\DOSDEV\DOS-retrolib\bios_video_services.obj C:\Users\ifkno\DOSD&
+EV\DOS-retrolib\dos_services.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\dos_serv&
+ices_3x.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\dos_services_files.obj C:\Use&
+rs\ifkno\DOSDEV\DOS-retrolib\file_toolbox.obj C:\Users\ifkno\DOSDEV\DOS-retr&
+olib\fxp_conversions.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\fxp_mul_div.obj &
+C:\Users\ifkno\DOSDEV\DOS-retrolib\cga_detect_adapter.obj C:\Users\ifkno\DOS&
+DEV\DOS-retrolib\ega_detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\g&
+fx_bmp_bitmap.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_bmp_file_tools.obj &
+C:\Users\ifkno\DOSDEV\DOS-retrolib\gfx_detect_adapter.obj C:\Users\ifkno\DOS&
+DEV\DOS-retrolib\gfx_detect_crtc.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_&
+detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\hga_pixel.obj C:\Users&
+\ifkno\DOSDEV\DOS-retrolib\hga_toolbox.obj C:\Users\ifkno\DOSDEV\DOS-retroli&
+b\hga_vblt.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mda_toolbox.obj C:\Users\i&
+fkno\DOSDEV\DOS-retrolib\vga_detect_adapter.obj C:\Users\ifkno\DOSDEV\DOS-re&
+trolib\kbd_interupt_routines.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_addr&
+ess.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_arena.obj C:\Users\ifkno\DOSD&
+EV\DOS-retrolib\mem_segoff.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\mem_toolbo&
+x.obj C:\Users\ifkno\DOSDEV\DOS-retrolib\str_toolbox.obj .AUTODEPEND
  @C:
- cd C:\Users\ifkno\DOSBOX\DOS16\RETROLIB
+ cd C:\Users\ifkno\DOSDEV\DOS-retrolib
  @%write retrolib.lk1 FIL main.obj,bios_memory_size.obj,bios_video_services.&
 obj,dos_services.obj,dos_services_3x.obj,dos_services_files.obj,file_toolbox&
 .obj,fxp_conversions.obj,fxp_mul_div.obj,cga_detect_adapter.obj,ega_detect_a&

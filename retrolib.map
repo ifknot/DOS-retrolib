@@ -1,7 +1,7 @@
-Open Watcom Linker Version 2.0 beta Nov 25 2023 01:55:44 (64-bit)
-Copyright (c) 2002-2023 The Open Watcom Contributors. All Rights Reserved.
+Open Watcom Linker Version 2.0 beta Jul 27 2024 01:57:36 (32-bit)
+Copyright (c) 2002-2024 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       24/06/26 18:42:31
+Created on:       24/07/27 13:49:43
 Executable Image: retrolib.exe
 creating a DOS executable
 
@@ -13,7 +13,7 @@ creating a DOS executable
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          1462:0000            0000a870
+DGROUP                          14b0:0000            0000a870
 
 
 
@@ -51,219 +51,218 @@ mem_arena_TEXT         CODE           AUTO           0000:46b7       000005c4
 mem_segoff_TEXT        CODE           AUTO           0000:4c7b       000002da
 mem_toolbox_TEXT       CODE           AUTO           0000:4f55       00000825
 str_toolbox_TEXT       CODE           AUTO           0000:577a       00000371
-_TEXT                  CODE           AUTO           0000:5af0       000098da
-manendl_TEXT           CODE           AUTO           0000:f3ca       00000020
-ioicout_TEXT           CODE           AUTO           0000:f3ea       0000008b
-ostincch_TEXT          CODE           AUTO           0000:f475       000000b0
-ostinomn_TEXT          CODE           AUTO           0000:f525       00000013
-mandec_TEXT            CODE           AUTO           0000:f538       0000000f
-ostincha_TEXT          CODE           AUTO           0000:f547       000000f2
-ostiniom_TEXT          CODE           AUTO           0000:f639       00000028
-ostinulo_TEXT          CODE           AUTO           0000:f661       00000171
-iofoutfl_TEXT          CODE           AUTO           0000:f7d2       000002d5
-ostinslo_TEXT          CODE           AUTO           0000:faa7       00000133
-iofefg_TEXT            CODE           AUTO           0000:fbda       00000036
-cppdata_TEXT           CODE           AUTO           0000:fc10       00000000
-fsroot_TEXT            CODE           AUTO           0000:fc10       0000000b
-manhex_TEXT            CODE           AUTO           0000:fc1b       0000000f
-fsregist_TEXT          CODE           AUTO           0000:fc2a       00000384
-opdel_TEXT             CODE           AUTO           0000:ffae       0000000e
-opnew_TEXT             CODE           AUTO           0ffb:000c       00000078
-undefmbd_TEXT          CODE           AUTO           0ffb:0084       00000000
-mansetw_TEXT           CODE           AUTO           0ffb:0084       0000001c
-mansfill_TEXT          CODE           AUTO           0ffb:00a0       0000001c
-ostput_TEXT            CODE           AUTO           0ffb:00bc       000000d2
-ostflush_TEXT          CODE           AUTO           0ffb:018e       00000051
-undefed_TEXT           CODE           AUTO           0ffb:01df       00000010
-sdfconfp_TEXT          CODE           AUTO           0ffb:01ef       0000001e
-stablcl_TEXT           CODE           AUTO           0ffb:020d       00000005
-ostconsf_TEXT          CODE           AUTO           0ffb:0212       000000e8
-ostdestr_TEXT          CODE           AUTO           0ffb:02fa       000000f2
-sdfdestr_TEXT          CODE           AUTO           0ffb:03ec       000000e9
-moddtorr_TEXT          CODE           AUTO           0ffb:04d5       00000000
-ostopfx_TEXT           CODE           AUTO           0ffb:04d5       0000006f
-iouwrtit_TEXT          CODE           AUTO           0ffb:0544       0000038a
-iossetst_TEXT          CODE           AUTO           0ffb:08ce       0000004a
-pure_err_TEXT          CODE           AUTO           0ffb:0918       00000024
-ostdlshf_TEXT          CODE           AUTO           0ffb:093c       00000047
-ioufgtba_TEXT          CODE           AUTO           0ffb:0983       0000001e
-ostadpre_TEXT          CODE           AUTO           0ffb:09a1       0000006c
-iofnoefg_TEXT          CODE           AUTO           0ffb:0a0d       00000010
-opnewarr_TEXT          CODE           AUTO           0ffb:0a1d       00000005
-opdelarr_TEXT          CODE           AUTO           0ffb:0a22       00000005
-stabdtor_TEXT          CODE           AUTO           0ffb:0a27       00000368
-stabdisp_TEXT          CODE           AUTO           0ffb:0d8f       0000033f
-vfun_err_TEXT          CODE           AUTO           0ffb:10ce       00000024
-fatalerr_TEXT          CODE           AUTO           0ffb:10f2       0000001d
-stfdsgtn_TEXT          CODE           AUTO           0ffb:110f       000000a0
-stfdspun_TEXT          CODE           AUTO           0ffb:11af       000000e2
-stfpbfai_TEXT          CODE           AUTO           0ffb:1291       00000004
-sdfoverf_TEXT          CODE           AUTO           0ffb:1295       000001e2
-sdfundrf_TEXT          CODE           AUTO           0ffb:1477       0000017c
-stfsbuf_TEXT           CODE           AUTO           0ffb:15f3       00000077
-stfseeko_TEXT          CODE           AUTO           0ffb:166a       0000000c
-stfseekp_TEXT          CODE           AUTO           0ffb:1676       00000021
-sdfsync_TEXT           CODE           AUTO           0ffb:1697       0000002c
-stfdoall_TEXT          CODE           AUTO           0ffb:16c3       0000003d
-stfconde_TEXT          CODE           AUTO           0ffb:1700       0000006e
-stabmod_TEXT           CODE           AUTO           0ffb:176e       00000076
-iosinit_TEXT           CODE           AUTO           0ffb:17e4       0000005b
-iosconde_TEXT          CODE           AUTO           0ffb:183f       00000011
-iosdestr_TEXT          CODE           AUTO           0ffb:1850       000000a8
-dtorarst_TEXT          CODE           AUTO           0ffb:18f8       00000029
-stfdestr_TEXT          CODE           AUTO           0ffb:1921       0000002a
-iosfail_TEXT           CODE           AUTO           0ffb:194b       00000009
-stabthrw_TEXT          CODE           AUTO           0ffb:1954       00000c39
-prwdata_TEXT           CODE           AUTO           0ffb:258d       00000000
-stabtrav_TEXT          CODE           AUTO           0ffb:258d       000001e9
-callterm_TEXT          CODE           AUTO           0ffb:2776       00000032
-allocexc_TEXT          CODE           AUTO           0ffb:27a8       000004c3
-stabadt_TEXT           CODE           AUTO           0ffb:2c6b       00000114
-tsequiv_TEXT           CODE           AUTO           0ffb:2d7f       00000194
-stfsetb_TEXT           CODE           AUTO           0ffb:2f13       00000083
-ioufrxal_TEXT          CODE           AUTO           0ffb:2f96       0000002d
-exc_pr_TEXT            CODE           AUTO           0ffb:2fc3       000001ab
-unexpect_TEXT          CODE           AUTO           0ffb:316e       0000008d
-stabinit_TEXT          CODE           AUTO           0ffb:31fb       0000010f
-ljmpinit_TEXT          CODE           AUTO           0ffb:330a       00000016
-bittest_TEXT           CODE           AUTO           0ffb:3320       00000044
-termnate_TEXT          CODE           AUTO           0ffb:3364       00000049
-areaexc_TEXT           CODE           AUTO           0ffb:33ad       00000000
-tssize_TEXT            CODE           AUTO           0ffb:33ad       0000004d
-ljmpdtor_TEXT          CODE           AUTO           0ffb:33fa       000000b2
-stfsync_TEXT           CODE           AUTO           0ffb:34ac       00000022
-main_DATA1             FAR_CONST      AUTO           1347:000e       00000152
-dos_services_DATA1     FAR_CONST      AUTO           135d:0000       00000038
-dos_services_DATA2     FAR_CONST      AUTO           1360:0008       00000032
-dos_services_3x_DATA1  FAR_CONST      AUTO           1364:0000       00000038
-dos_services_files_DATA1 FAR_CONST    AUTO           1364:0040       00000038
-dos_services_files_DATA2 FAR_CONST    AUTO           136b:0008       00000079
-fxp_conversions_DATA1  FAR_CONST      AUTO           136b:0081       000001c6
-gfx_bmp_bitmap_DATA1   FAR_CONST      AUTO           136b:0247       0000008a
-gfx_bmp_file_tools_DATA1 FAR_CONST    AUTO           136b:02d1       000000f0
-mem_arena_DATA1        FAR_CONST      AUTO           13a8:0000       00000038
-mem_arena_DATA2        FAR_CONST      AUTO           13ab:0008       000000f5
-mem_toolbox_DATA1      FAR_CONST      AUTO           13ab:00fd       00000060
-manendl_DATA1          FAR_CONST      AUTO           13c0:000e       00000000
-ioicout_DATA1          FAR_CONST      AUTO           13c1:0000       00000096
-ostincch_DATA1         FAR_CONST      AUTO           13ca:0006       00000000
-ostinomn_DATA1         FAR_CONST      AUTO           13ca:0006       00000000
-mandec_DATA1           FAR_CONST      AUTO           13ca:0006       00000000
-ostincha_DATA1         FAR_CONST      AUTO           13ca:0006       00000000
-ostiniom_DATA1         FAR_CONST      AUTO           13ca:0006       00000000
-ostinulo_DATA1         FAR_CONST      AUTO           13ca:0006       00000000
-iofoutfl_DATA1         FAR_CONST      AUTO           13ca:0006       00000000
-ostinslo_DATA1         FAR_CONST      AUTO           13ca:0006       00000000
-iofefg_DATA1           FAR_CONST      AUTO           13ca:0006       00000000
-cppdata_DATA1          FAR_CONST      AUTO           13cb:0000       00000000
-fsroot_DATA1           FAR_CONST      AUTO           13cb:0000       00000000
-manhex_DATA1           FAR_CONST      AUTO           13cb:0000       00000000
-fsregist_DATA1         FAR_CONST      AUTO           13cb:0000       00000000
-opdel_DATA1            FAR_CONST      AUTO           13cb:0000       00000000
-opnew_DATA1            FAR_CONST      AUTO           13cb:0000       00000000
-undefmbd_DATA1         FAR_CONST      AUTO           13cb:0000       00000000
-mansetw_DATA1          FAR_CONST      AUTO           13cb:0000       00000000
-mansfill_DATA1         FAR_CONST      AUTO           13cb:0000       00000000
-ostput_DATA1           FAR_CONST      AUTO           13cb:0000       00000000
-ostflush_DATA1         FAR_CONST      AUTO           13cb:0000       00000000
-undefed_DATA1          FAR_CONST      AUTO           13cb:0000       00000000
-undefed_DATA1          FAR_CONST      AUTO           13cb:0000       0000002c
-sdfconfp_DATA1         FAR_CONST      AUTO           13cd:000c       00000044
-stablcl_DATA1          FAR_CONST      AUTO           13d2:0000       00000000
-ostconsf_DATA1         FAR_CONST      AUTO           13d2:0000       00000048
-ostdestr_DATA1         FAR_CONST      AUTO           13d7:0000       00000044
-sdfdestr_DATA1         FAR_CONST      AUTO           13d7:0050       00000034
-moddtorr_DATA1         FAR_CONST      AUTO           13d7:0090       00000000
-ostopfx_DATA1          FAR_CONST      AUTO           13e0:0000       00000000
-iouwrtit_DATA1         FAR_CONST      AUTO           13e0:0000       00000000
-iossetst_DATA1         FAR_CONST      AUTO           13e0:0000       00000056
-pure_err_DATA1         FAR_CONST      AUTO           13e0:0060       00000000
-pure_err_DATA1         FAR_CONST      AUTO           13e6:0000       0000001e
-ostdlshf_DATA1         FAR_CONST      AUTO           13e7:000e       00000000
-ioufgtba_DATA1         FAR_CONST      AUTO           13e7:000e       00000000
-ostadpre_DATA1         FAR_CONST      AUTO           13e7:000e       00000000
-iofnoefg_DATA1         FAR_CONST      AUTO           13e7:000e       00000000
-iofnoefg_DATA1         FAR_CONST      AUTO           13e7:000e       00000026
-opnewarr_DATA1         FAR_CONST      AUTO           13eb:0000       00000000
-opdelarr_DATA1         FAR_CONST      AUTO           13eb:0000       00000000
-stabdtor_DATA1         FAR_CONST      AUTO           13eb:0000       00000000
-stabdisp_DATA1         FAR_CONST      AUTO           13eb:0000       00000000
-vfun_err_DATA1         FAR_CONST      AUTO           13eb:0000       00000000
-vfun_err_DATA1         FAR_CONST      AUTO           13eb:0000       00000032
-fatalerr_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-stfdsgtn_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-stfdspun_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-stfpbfai_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-sdfoverf_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-sdfundrf_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-stfsbuf_DATA1          FAR_CONST      AUTO           13ef:0000       00000000
-stfseeko_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-stfseekp_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-sdfsync_DATA1          FAR_CONST      AUTO           13ef:0000       00000000
-stfdoall_DATA1         FAR_CONST      AUTO           13ef:0000       00000000
-stfconde_DATA1         FAR_CONST      AUTO           13ef:0000       0000003a
-stabmod_DATA1          FAR_CONST      AUTO           13f3:0000       00000000
-iosinit_DATA1          FAR_CONST      AUTO           13f3:0000       00000000
-iosconde_DATA1         FAR_CONST      AUTO           13f3:0000       00000012
-iosdestr_DATA1         FAR_CONST      AUTO           13f5:0000       00000036
-dtorarst_DATA1         FAR_CONST      AUTO           13f5:0040       00000000
-stfdestr_DATA1         FAR_CONST      AUTO           13f9:0000       00000000
-iosfail_DATA1          FAR_CONST      AUTO           13f9:0000       00000000
-stabthrw_DATA1         FAR_CONST      AUTO           13f9:0000       0000026a
-stabthrw_DATA1         FAR_CONST      AUTO           141f:000a       000001a4
-stabtrav_DATA1         FAR_CONST      AUTO           143a:0000       00000000
-callterm_DATA1         FAR_CONST      AUTO           143a:0000       00000000
-callterm_DATA1         FAR_CONST      AUTO           143a:0000       0000001f
-allocexc_DATA1         FAR_CONST      AUTO           143c:0000       00000034
-allocexc_DATA1         FAR_CONST      AUTO           143f:0004       0000002b
-stabadt_DATA1          FAR_CONST      AUTO           1442:0000       00000036
-tsequiv_DATA1          FAR_CONST      AUTO           1442:0040       00000000
-stfsetb_DATA1          FAR_CONST      AUTO           1446:0000       00000000
-ioufrxal_DATA1         FAR_CONST      AUTO           1446:0000       00000000
-exc_pr_DATA1           FAR_CONST      AUTO           1446:0000       00000000
-unexpect_DATA1         FAR_CONST      AUTO           1446:0000       00000012
-unexpect_DATA1         FAR_CONST      AUTO           1447:0002       00000023
-stabinit_DATA1         FAR_CONST      AUTO           144a:0000       00000000
-ljmpinit_DATA1         FAR_CONST      AUTO           144a:0000       00000000
-bittest_DATA1          FAR_CONST      AUTO           144a:0000       00000000
-termnate_DATA1         FAR_CONST      AUTO           144a:0000       00000000
-termnate_DATA1         FAR_CONST      AUTO           144a:0000       00000022
-areaexc_DATA1          FAR_CONST      AUTO           144d:0000       00000000
-tssize_DATA1           FAR_CONST      AUTO           144d:0000       00000000
-ljmpdtor_DATA1         FAR_CONST      AUTO           144d:0000       00000000
-stfsync_DATA1          FAR_CONST      AUTO           144d:0000       00000000
-ioicout_DATA1          FAR_DATA       AUTO           144d:0000       00000063
-FAR_DATA               FAR_DATA       AUTO           144d:0063       00000000
-sdfconfp_DATA1         FAR_DATA       AUTO           144d:0063       00000016
-ostconsf_DATA1         FAR_DATA       AUTO           144d:0079       00000010
-ostdestr_DATA1         FAR_DATA       AUTO           144d:0089       00000000
-sdfdestr_DATA1         FAR_DATA       AUTO           144d:0089       00000000
-iossetst_DATA1         FAR_DATA       AUTO           144d:0089       00000033
-stfconde_DATA1         FAR_DATA       AUTO           144d:00bc       00000000
-iosconde_DATA1         FAR_DATA       AUTO           144d:00bc       00000000
-iosdestr_DATA1         FAR_DATA       AUTO           144d:00bc       00000000
-stfdestr_DATA1         FAR_DATA       AUTO           144d:00bc       00000000
-stabthrw_DATA2         FAR_DATA       AUTO           144d:00bc       0000007c
-allocexc_DATA2         FAR_DATA       AUTO           144d:0138       00000000
-stabadt_DATA1          FAR_DATA       AUTO           144d:0138       00000011
-unexpect_DATA2         FAR_DATA       AUTO           144d:0149       00000000
-_NULL                  BEGDATA        DGROUP         1462:0000       00000020
-_AFTERNULL             BEGDATA        DGROUP         1464:0000       00000002
-CONST                  DATA           DGROUP         1464:0002       000001d0
-CONST2                 DATA           DGROUP         1482:0000       00008408
-_DATA                  DATA           DGROUP         1cc3:0000       00001416
-XIB                    DATA           DGROUP         1e04:0006       00000000
-XI                     DATA           DGROUP         1e04:0006       0000004e
-XIE                    DATA           DGROUP         1e09:0004       00000000
-YIB                    DATA           DGROUP         1e09:0004       00000000
-YI                     DATA           DGROUP         1e09:0004       00000012
-YIE                    DATA           DGROUP         1e0a:0006       00000000
-STRINGS                DATA           DGROUP         1e0a:0006       00000000
-DATA                   DATA           DGROUP         1e0a:0006       00000000
-_emu_init_start        EMU            DGROUP         1e0a:0006       00000000
-_emu_init_end          EMU            DGROUP         1e0a:0006       00000000
-_BSS                   BSS            DGROUP         1e0b:0000       000005dc
-STACK                  STACK          DGROUP         1e69:0000       00000800
+_TEXT                  CODE           AUTO           0000:5af0       00009c3a
+manendl_TEXT           CODE           AUTO           0000:f72a       00000020
+ioicout_TEXT           CODE           AUTO           0000:f74a       0000008b
+ostincch_TEXT          CODE           AUTO           0000:f7d5       000000b0
+ostinomn_TEXT          CODE           AUTO           0000:f885       00000013
+mandec_TEXT            CODE           AUTO           0000:f898       0000000f
+ostincha_TEXT          CODE           AUTO           0000:f8a7       000000f2
+ostiniom_TEXT          CODE           AUTO           0000:f999       00000028
+ostinulo_TEXT          CODE           AUTO           0000:f9c1       00000171
+iofoutfl_TEXT          CODE           AUTO           0000:fb32       000002d5
+ostinslo_TEXT          CODE           AUTO           0000:fe07       00000133
+iofefg_TEXT            CODE           AUTO           0000:ff3a       00000036
+cppdata_TEXT           CODE           AUTO           0000:ff70       00000000
+fsroot_TEXT            CODE           AUTO           0000:ff70       0000000b
+manhex_TEXT            CODE           AUTO           0000:ff7b       0000000f
+fsregist_TEXT          CODE           AUTO           0ff8:000a       0000039c
+opdel_TEXT             CODE           AUTO           0ff8:03a6       0000000e
+opnew_TEXT             CODE           AUTO           0ff8:03b4       00000078
+undefmbd_TEXT          CODE           AUTO           0ff8:042c       00000000
+mansetw_TEXT           CODE           AUTO           0ff8:042c       0000001c
+mansfill_TEXT          CODE           AUTO           0ff8:0448       0000001c
+ostput_TEXT            CODE           AUTO           0ff8:0464       000000d2
+ostflush_TEXT          CODE           AUTO           0ff8:0536       00000051
+undefed_TEXT           CODE           AUTO           0ff8:0587       00000010
+sdfconfp_TEXT          CODE           AUTO           0ff8:0597       0000001e
+stablcl_TEXT           CODE           AUTO           0ff8:05b5       00000005
+ostconsf_TEXT          CODE           AUTO           0ff8:05ba       000000e8
+ostdestr_TEXT          CODE           AUTO           0ff8:06a2       000000f2
+sdfdestr_TEXT          CODE           AUTO           0ff8:0794       000000e9
+moddtorr_TEXT          CODE           AUTO           0ff8:087d       00000000
+ostopfx_TEXT           CODE           AUTO           0ff8:087d       0000006f
+iouwrtit_TEXT          CODE           AUTO           0ff8:08ec       0000038a
+iossetst_TEXT          CODE           AUTO           0ff8:0c76       0000004a
+pure_err_TEXT          CODE           AUTO           0ff8:0cc0       00000024
+ostdlshf_TEXT          CODE           AUTO           0ff8:0ce4       00000047
+ioufgtba_TEXT          CODE           AUTO           0ff8:0d2b       0000001e
+ostadpre_TEXT          CODE           AUTO           0ff8:0d49       0000006c
+iofnoefg_TEXT          CODE           AUTO           0ff8:0db5       00000010
+opnewarr_TEXT          CODE           AUTO           0ff8:0dc5       00000005
+opdelarr_TEXT          CODE           AUTO           0ff8:0dca       00000005
+stabdtor_TEXT          CODE           AUTO           0ff8:0dcf       0000036b
+stabdisp_TEXT          CODE           AUTO           0ff8:113a       0000030a
+vfun_err_TEXT          CODE           AUTO           0ff8:1444       00000024
+fatalerr_TEXT          CODE           AUTO           0ff8:1468       0000001d
+stfdsgtn_TEXT          CODE           AUTO           0ff8:1485       000000a0
+stfdspun_TEXT          CODE           AUTO           0ff8:1525       000000e2
+stfpbfai_TEXT          CODE           AUTO           0ff8:1607       00000004
+sdfoverf_TEXT          CODE           AUTO           0ff8:160b       000001e2
+sdfundrf_TEXT          CODE           AUTO           0ff8:17ed       0000017c
+stfsbuf_TEXT           CODE           AUTO           0ff8:1969       00000077
+stfseeko_TEXT          CODE           AUTO           0ff8:19e0       0000000c
+stfseekp_TEXT          CODE           AUTO           0ff8:19ec       00000021
+sdfsync_TEXT           CODE           AUTO           0ff8:1a0d       0000002c
+stfdoall_TEXT          CODE           AUTO           0ff8:1a39       0000003d
+stfconde_TEXT          CODE           AUTO           0ff8:1a76       0000006e
+stabmod_TEXT           CODE           AUTO           0ff8:1ae4       00000076
+iosinit_TEXT           CODE           AUTO           0ff8:1b5a       0000005b
+iosconde_TEXT          CODE           AUTO           0ff8:1bb5       00000011
+iosdestr_TEXT          CODE           AUTO           0ff8:1bc6       000000a8
+dtorarst_TEXT          CODE           AUTO           0ff8:1c6e       00000029
+stfdestr_TEXT          CODE           AUTO           0ff8:1c97       0000002a
+iosfail_TEXT           CODE           AUTO           0ff8:1cc1       00000009
+stabthrw_TEXT          CODE           AUTO           0ff8:1cca       00000c17
+prwdata_TEXT           CODE           AUTO           0ff8:28e1       00000000
+stabtrav_TEXT          CODE           AUTO           0ff8:28e1       000001e9
+callterm_TEXT          CODE           AUTO           0ff8:2aca       00000058
+stabadt_TEXT           CODE           AUTO           0ff8:2b22       00000114
+allocexc_TEXT          CODE           AUTO           0ff8:2c36       00000518
+tsequiv_TEXT           CODE           AUTO           0ff8:314e       00000194
+stfsetb_TEXT           CODE           AUTO           0ff8:32e2       00000083
+ioufrxal_TEXT          CODE           AUTO           0ff8:3365       0000002d
+exc_pr_TEXT            CODE           AUTO           0ff8:3392       000002e3
+unexpect_TEXT          CODE           AUTO           0ff8:3675       0000008d
+stabinit_TEXT          CODE           AUTO           0ff8:3702       0000010f
+ljmpinit_TEXT          CODE           AUTO           0ff8:3811       00000016
+bittest_TEXT           CODE           AUTO           0ff8:3827       00000044
+termnate_TEXT          CODE           AUTO           0ff8:386b       00000049
+areaexc_TEXT           CODE           AUTO           0ff8:38b4       00000000
+tssize_TEXT            CODE           AUTO           0ff8:38b4       0000004d
+ljmpdtor_TEXT          CODE           AUTO           0ff8:3901       000000b2
+stfsync_TEXT           CODE           AUTO           0ff8:39b3       00000022
+main_DATA1             FAR_CONST      AUTO           1395:0005       00000152
+dos_services_DATA1     FAR_CONST      AUTO           13ab:0000       00000038
+dos_services_DATA2     FAR_CONST      AUTO           13ae:0008       00000032
+dos_services_3x_DATA1  FAR_CONST      AUTO           13b2:0000       00000038
+dos_services_files_DATA1 FAR_CONST    AUTO           13b2:0040       00000038
+dos_services_files_DATA2 FAR_CONST    AUTO           13b9:0008       00000079
+fxp_conversions_DATA1  FAR_CONST      AUTO           13b9:0081       000001c6
+gfx_bmp_bitmap_DATA1   FAR_CONST      AUTO           13b9:0247       0000008a
+gfx_bmp_file_tools_DATA1 FAR_CONST    AUTO           13b9:02d1       000000f0
+mem_arena_DATA1        FAR_CONST      AUTO           13f6:0000       00000038
+mem_arena_DATA2        FAR_CONST      AUTO           13f9:0008       000000f5
+mem_toolbox_DATA1      FAR_CONST      AUTO           13f9:00fd       00000060
+manendl_DATA1          FAR_CONST      AUTO           140e:000e       00000000
+ioicout_DATA1          FAR_CONST      AUTO           140f:0000       00000096
+ostincch_DATA1         FAR_CONST      AUTO           1418:0006       00000000
+ostinomn_DATA1         FAR_CONST      AUTO           1418:0006       00000000
+mandec_DATA1           FAR_CONST      AUTO           1418:0006       00000000
+ostincha_DATA1         FAR_CONST      AUTO           1418:0006       00000000
+ostiniom_DATA1         FAR_CONST      AUTO           1418:0006       00000000
+ostinulo_DATA1         FAR_CONST      AUTO           1418:0006       00000000
+iofoutfl_DATA1         FAR_CONST      AUTO           1418:0006       00000000
+ostinslo_DATA1         FAR_CONST      AUTO           1418:0006       00000000
+iofefg_DATA1           FAR_CONST      AUTO           1418:0006       00000000
+cppdata_DATA1          FAR_CONST      AUTO           1419:0000       00000000
+fsroot_DATA1           FAR_CONST      AUTO           1419:0000       00000000
+manhex_DATA1           FAR_CONST      AUTO           1419:0000       00000000
+fsregist_DATA1         FAR_CONST      AUTO           1419:0000       00000000
+opdel_DATA1            FAR_CONST      AUTO           1419:0000       00000000
+opnew_DATA1            FAR_CONST      AUTO           1419:0000       00000000
+undefmbd_DATA1         FAR_CONST      AUTO           1419:0000       00000000
+mansetw_DATA1          FAR_CONST      AUTO           1419:0000       00000000
+mansfill_DATA1         FAR_CONST      AUTO           1419:0000       00000000
+ostput_DATA1           FAR_CONST      AUTO           1419:0000       00000000
+ostflush_DATA1         FAR_CONST      AUTO           1419:0000       00000000
+undefed_DATA1          FAR_CONST      AUTO           1419:0000       00000000
+undefed_DATA1          FAR_CONST      AUTO           1419:0000       0000002c
+sdfconfp_DATA1         FAR_CONST      AUTO           141b:000c       00000044
+stablcl_DATA1          FAR_CONST      AUTO           1420:0000       00000000
+ostconsf_DATA1         FAR_CONST      AUTO           1420:0000       00000048
+ostdestr_DATA1         FAR_CONST      AUTO           1425:0000       00000044
+sdfdestr_DATA1         FAR_CONST      AUTO           1425:0050       00000034
+moddtorr_DATA1         FAR_CONST      AUTO           1425:0090       00000000
+ostopfx_DATA1          FAR_CONST      AUTO           142e:0000       00000000
+iouwrtit_DATA1         FAR_CONST      AUTO           142e:0000       00000000
+iossetst_DATA1         FAR_CONST      AUTO           142e:0000       00000056
+pure_err_DATA1         FAR_CONST      AUTO           142e:0060       00000000
+pure_err_DATA1         FAR_CONST      AUTO           1434:0000       0000001e
+ostdlshf_DATA1         FAR_CONST      AUTO           1435:000e       00000000
+ioufgtba_DATA1         FAR_CONST      AUTO           1435:000e       00000000
+ostadpre_DATA1         FAR_CONST      AUTO           1435:000e       00000000
+iofnoefg_DATA1         FAR_CONST      AUTO           1435:000e       00000000
+iofnoefg_DATA1         FAR_CONST      AUTO           1435:000e       00000026
+opnewarr_DATA1         FAR_CONST      AUTO           1439:0000       00000000
+opdelarr_DATA1         FAR_CONST      AUTO           1439:0000       00000000
+stabdtor_DATA1         FAR_CONST      AUTO           1439:0000       00000000
+stabdisp_DATA1         FAR_CONST      AUTO           1439:0000       00000000
+vfun_err_DATA1         FAR_CONST      AUTO           1439:0000       00000000
+vfun_err_DATA1         FAR_CONST      AUTO           1439:0000       00000032
+fatalerr_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+stfdsgtn_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+stfdspun_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+stfpbfai_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+sdfoverf_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+sdfundrf_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+stfsbuf_DATA1          FAR_CONST      AUTO           143d:0000       00000000
+stfseeko_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+stfseekp_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+sdfsync_DATA1          FAR_CONST      AUTO           143d:0000       00000000
+stfdoall_DATA1         FAR_CONST      AUTO           143d:0000       00000000
+stfconde_DATA1         FAR_CONST      AUTO           143d:0000       0000003a
+stabmod_DATA1          FAR_CONST      AUTO           1441:0000       00000000
+iosinit_DATA1          FAR_CONST      AUTO           1441:0000       00000000
+iosconde_DATA1         FAR_CONST      AUTO           1441:0000       00000012
+iosdestr_DATA1         FAR_CONST      AUTO           1443:0000       00000036
+dtorarst_DATA1         FAR_CONST      AUTO           1443:0040       00000000
+stfdestr_DATA1         FAR_CONST      AUTO           1447:0000       00000000
+iosfail_DATA1          FAR_CONST      AUTO           1447:0000       00000000
+stabthrw_DATA1         FAR_CONST      AUTO           1447:0000       0000026a
+stabthrw_DATA1         FAR_CONST      AUTO           146d:000a       000001a4
+stabtrav_DATA1         FAR_CONST      AUTO           1488:0000       00000000
+callterm_DATA1         FAR_CONST      AUTO           1488:0000       00000000
+callterm_DATA1         FAR_CONST      AUTO           1488:0000       0000001f
+stabadt_DATA1          FAR_CONST      AUTO           148a:0000       00000036
+allocexc_DATA1         FAR_CONST      AUTO           148a:0040       00000034
+allocexc_DATA1         FAR_CONST      AUTO           1491:0004       0000002b
+tsequiv_DATA1          FAR_CONST      AUTO           1494:0000       00000000
+stfsetb_DATA1          FAR_CONST      AUTO           1494:0000       00000000
+ioufrxal_DATA1         FAR_CONST      AUTO           1494:0000       00000000
+exc_pr_DATA1           FAR_CONST      AUTO           1494:0000       00000000
+unexpect_DATA1         FAR_CONST      AUTO           1494:0000       00000012
+unexpect_DATA1         FAR_CONST      AUTO           1495:0002       00000023
+stabinit_DATA1         FAR_CONST      AUTO           1498:0000       00000000
+ljmpinit_DATA1         FAR_CONST      AUTO           1498:0000       00000000
+bittest_DATA1          FAR_CONST      AUTO           1498:0000       00000000
+termnate_DATA1         FAR_CONST      AUTO           1498:0000       00000000
+termnate_DATA1         FAR_CONST      AUTO           1498:0000       00000022
+areaexc_DATA1          FAR_CONST      AUTO           149b:0000       00000000
+tssize_DATA1           FAR_CONST      AUTO           149b:0000       00000000
+ljmpdtor_DATA1         FAR_CONST      AUTO           149b:0000       00000000
+stfsync_DATA1          FAR_CONST      AUTO           149b:0000       00000000
+ioicout_DATA1          FAR_DATA       AUTO           149b:0000       00000063
+FAR_DATA               FAR_DATA       AUTO           149b:0063       00000000
+sdfconfp_DATA1         FAR_DATA       AUTO           149b:0063       00000016
+ostconsf_DATA1         FAR_DATA       AUTO           149b:0079       00000010
+ostdestr_DATA1         FAR_DATA       AUTO           149b:0089       00000000
+sdfdestr_DATA1         FAR_DATA       AUTO           149b:0089       00000000
+iossetst_DATA1         FAR_DATA       AUTO           149b:0089       00000033
+stfconde_DATA1         FAR_DATA       AUTO           149b:00bc       00000000
+iosconde_DATA1         FAR_DATA       AUTO           149b:00bc       00000000
+iosdestr_DATA1         FAR_DATA       AUTO           149b:00bc       00000000
+stfdestr_DATA1         FAR_DATA       AUTO           149b:00bc       00000000
+stabthrw_DATA2         FAR_DATA       AUTO           149b:00bc       0000007c
+stabadt_DATA1          FAR_DATA       AUTO           149b:0138       00000011
+allocexc_DATA2         FAR_DATA       AUTO           149b:0149       00000000
+unexpect_DATA2         FAR_DATA       AUTO           149b:0149       00000000
+_NULL                  BEGDATA        DGROUP         14b0:0000       00000020
+_AFTERNULL             BEGDATA        DGROUP         14b2:0000       00000002
+CONST                  DATA           DGROUP         14b2:0002       000001d0
+CONST2                 DATA           DGROUP         14d0:0000       00008468
+_DATA                  DATA           DGROUP         1d17:0000       000013b6
+XIB                    DATA           DGROUP         1e52:0006       00000000
+XI                     DATA           DGROUP         1e52:0006       0000004e
+XIE                    DATA           DGROUP         1e57:0004       00000000
+YIB                    DATA           DGROUP         1e57:0004       00000000
+YI                     DATA           DGROUP         1e57:0004       00000012
+YIE                    DATA           DGROUP         1e58:0006       00000000
+DATA                   DATA           DGROUP         1e58:0006       00000000
+_emu_init_start        EMU            DGROUP         1e58:0006       00000000
+_emu_init_end          EMU            DGROUP         1e58:0006       00000000
+_BSS                   BSS            DGROUP         1e59:0000       000005dc
+STACK                  STACK          DGROUP         1eb7:0000       00000800
 
 
                         +----------------+
@@ -276,29 +275,29 @@ STACK                  STACK          DGROUP         1e69:0000       00000800
 Address        Symbol
 =======        ======
 
-Module: main.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\main.cpp)
+Module: main.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\main.cpp)
 0000:00b6+     void __far test_fxp::run()
 0000:1749+     void __far test_retrolib::run()
 0000:17b8      main_
-Module: bios_memory_size.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_memory_size.cpp)
+Module: bios_memory_size.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\BIOS\bios_memory_size.cpp)
 0000:17e4+     short unsigned __far bios::memory_size_KiB()
-Module: bios_video_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\BIOS\bios_video_services.cpp)
+Module: bios_video_services.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\BIOS\bios_video_services.cpp)
 0000:1813+     void __far bios::set_video_mode( char unsigned )
 0000:1840+     void __far bios::get_video_state( bios::video_state_t __far * )
 0000:1876      char unsigned __far bios::video_subsystem_configuration( char unsigned, char unsigned, bios::video_subsystem_config_t __far * )
-Module: dos_services.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services.cpp)
+Module: dos_services.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\DOS\dos_services.cpp)
 0000:1c45      __far std::allocator<char __far >::~allocator()
 0000:1c7e      __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::basic_string( std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far > const __far & )
 0000:1deb      __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::~basic_string()
-1462:23d0      int unsigned const __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::npos
+14b0:23d0      int unsigned const __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::npos
 0000:1eec      char __far * __far std::basic_string<char __far,std::char_traits<char __far > __far,std::allocator<char __far > __far >::alloc( int unsigned, int unsigned __far & )
 0000:198a      void __far dos::set_interrupt_vector( char unsigned, mem::address_t )
 0000:19c4      mem::address_t __far dos::get_interrupt_vector( char unsigned )
 0000:1a0c      short unsigned __far dos::allocate_memory_blocks( short unsigned )
 0000:1b58      short unsigned __far dos::free_allocated_memory_blocks( short unsigned )
-Module: dos_services_3x.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_3x.cpp)
+Module: dos_services_3x.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\DOS\dos_services_3x.cpp)
 0000:1f81+     void __far dos3x::get_extended_error_information( dos3x::extended_error_information_t __far * )
-Module: dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS\dos_services_files.cpp)
+Module: dos_services_files.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\DOS\dos_services_files.cpp)
 0000:2041+     void __far dos::get_disk_free_space( char unsigned, dos::file::disk_space_info_t __far * )
 0000:2135+     short unsigned __far dos::create_file_using_handle( char const __far *, short unsigned )
 0000:2213      short unsigned __far dos::open_file_using_handle( char const __far *, char unsigned )
@@ -309,13 +308,13 @@ Module: dos_services_files.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\DOS
 0000:26bf      long __far dos::move_file_pointer_using_handle( short unsigned, char unsigned, long )
 0000:27d3+     short unsigned __far dos::get_file_attributes( char __far * )
 0000:28b0+     short unsigned __far dos::set_file_attributes( char __far *, short unsigned )
-Module: file_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\FILE\file_toolbox.cpp)
+Module: file_toolbox.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\FILE\file_toolbox.cpp)
 0000:298a      char const __far * __far file::get_extension_ptr( char const __far * )
 0000:2a18+     long unsigned __far file::get_size( char const __far * )
 0000:2a87      long unsigned __far file::get_size( short unsigned )
 0000:2aeb+     long unsigned __far file::skip_white_space( short unsigned, char const __far * )
 0000:2b20+     long unsigned __far file::skip_line( short unsigned )
-Module: fxp_conversions.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\FXP\fxp_conversions.cpp)
+Module: fxp_conversions.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\FXP\fxp_conversions.cpp)
 0000:2b53      void __far fxp::round_to_ufixed_t( short unsigned __far *, float )
 0000:2c8c      void __far fxp::uconvert_to_float( float __far *, short unsigned )
 0000:2cfc      void __far fxp::truncate_to_uint16_t( short unsigned __far *, short unsigned )
@@ -324,61 +323,61 @@ Module: fxp_conversions.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\FXP\fx
 0000:2e6b      void __far fxp::convert_to_float( float __far *, short )
 0000:2ed1      void __far fxp::truncate_to_int16_t( short __far *, short )
 0000:2f04      void __far fxp::round_to_int16_t( short __far *, short )
-Module: fxp_mul_div.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\FXP\fxp_mul_div.cpp)
+Module: fxp_mul_div.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\FXP\fxp_mul_div.cpp)
 0000:2f48      void __far fxp::umul( short unsigned __far *, short unsigned )
 0000:2f86      void __far fxp::mul( short __far *, short )
 0000:2fc4      void __far fxp::udiv( short unsigned __far *, short unsigned )
 0000:3004      void __far fxp::div( short __far *, short )
-Module: cga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\CGA\cga_detect_adapter.cpp)
+Module: cga_detect_adapter.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\CGA\cga_detect_adapter.cpp)
 0000:3044      char unsigned __far cga::detect_adapter()
-Module: ega_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\EGA\ega_detect_adapter.cpp)
+Module: ega_detect_adapter.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\EGA\ega_detect_adapter.cpp)
 0000:3083      char unsigned __far ega::detect_adapter()
-Module: gfx_bmp_bitmap.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_bmp_bitmap.cpp)
+Module: gfx_bmp_bitmap.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\gfx_bmp_bitmap.cpp)
 0000:30d5+     gfx::bmp::bitmap_t __far * __far gfx::bmp::new_bitmap( mem::arena::arena_t __far *, short unsigned, short unsigned, char unsigned, char unsigned, char __far *, short unsigned, char __far *, short unsigned )
 0000:3266+     short unsigned __far gfx::bmp::calculate_raster_size( short unsigned, short unsigned, char unsigned )
 0000:33aa+     gfx::bmp::bitmap_t __far * __far gfx::bmp::new_bitmap( mem::arena::arena_t __far *, short unsigned, short unsigned, char unsigned, char unsigned )
 0000:3460+     gfx::bmp::bitmap_t __far * __far gfx::bmp::new_bitmap( mem::arena::arena_t __far * )
 0000:34be+     void __far gfx::bmp::fill( gfx::bmp::bitmap_t __far *, char unsigned )
 0000:34fe+     std::ostream __far & __far operator <<( std::ostream __far &, gfx::bmp::bitmap_t const __far & )
-Module: gfx_bmp_file_tools.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_bmp_file_tools.cpp)
+Module: gfx_bmp_file_tools.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\gfx_bmp_file_tools.cpp)
 0000:3841+     void __far gfx::bmp::pbm::load_file( mem::arena::arena_t __far *, gfx::bmp::bitmap_t __far *, char const __far * )
-Module: gfx_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_adapter.cpp)
+Module: gfx_detect_adapter.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\gfx_detect_adapter.cpp)
 0000:3c3e+     char unsigned __far gfx::detect_monochrome_adapter()
 0000:3c69+     char unsigned __far gfx::detect_colour_adapter()
 0000:3cc2+     char unsigned __far gfx::detect_adapter()
-Module: gfx_detect_crtc.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\gfx_detect_crtc.cpp)
+Module: gfx_detect_crtc.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\gfx_detect_crtc.cpp)
 0000:3d25      bool __far gfx::detect_CRTC_at_port( short unsigned )
-Module: hga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_detect_adapter.cpp)
+Module: hga_detect_adapter.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\HGA\hga_detect_adapter.cpp)
 0000:3d8d      char unsigned __far hga::detect_adapter()
-Module: hga_pixel.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_pixel.cpp)
+Module: hga_pixel.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\HGA\hga_pixel.cpp)
 0000:3e14+     void __far hga::plot_pixel( short unsigned, short unsigned, short unsigned, char unsigned )
 0000:3e74+     void __far hga::hsync_plot_pixel( short unsigned, short unsigned, short unsigned, char unsigned )
 0000:3e9c+     char unsigned __far hga::read_pixel( short unsigned, short unsigned, short unsigned )
-Module: hga_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_toolbox.cpp)
+Module: hga_toolbox.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\HGA\hga_toolbox.cpp)
 0000:3eca+     void __far hga::video_mode( char unsigned const __far *, char unsigned, char unsigned )
 0000:3f1d+     void __far hga::fill_vram_buffer( short unsigned, char unsigned )
 0000:3f59+     void __far hga::select_display_buffer( char unsigned )
-Module: hga_vblt.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\HGA\hga_vblt.cpp)
+Module: hga_vblt.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\HGA\hga_vblt.cpp)
 0000:3f91+     void __far hga::vblt( short unsigned, char __far * )
 0000:3ff4+     void __far hga::vblt( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned )
 0000:413f+     void __far hga::vblt( short unsigned, char __far *, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned, short unsigned )
-Module: mda_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\MDA\mda_toolbox.cpp)
+Module: mda_toolbox.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\MDA\mda_toolbox.cpp)
 0000:4294+     void __far mda::fill_vram_buffer( char, char unsigned )
 0000:42d1+     void __far mda::fill_vram_attributes( char unsigned )
 0000:4309+     void __far mda::fill_vram_characters( char )
-Module: vga_detect_adapter.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\GFX\VGA\vga_detect_adapter.cpp)
+Module: vga_detect_adapter.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\GFX\VGA\vga_detect_adapter.cpp)
 0000:4341      char unsigned __far vga::detect_adapter()
-Module: kbd_interupt_routines.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\KBD\kbd_interupt_routines.cpp)
-1462:9aa0+     char unsigned volatile __far kbd::key_pressed[]
-1462:9ba0+     char unsigned volatile __far kbd::key_states[]
+Module: kbd_interupt_routines.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\KBD\kbd_interupt_routines.cpp)
+14b0:9aa0+     char unsigned volatile __far kbd::key_pressed[]
+14b0:9ba0+     char unsigned volatile __far kbd::key_states[]
 0000:438e+     void __far kbd::xt::scan_code_set_1_interrupt_handler()
 0000:43d2+     void __far kbd::clear_key_pressed_array()
 0000:440c+     void __far kbd::install_keyboard_interrupt_handler( void __far * )
 0000:4465+     void __far kbd::restore_keyboard_interupt_handler()
-Module: mem_address.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_address.cpp)
+Module: mem_address.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\MEM\mem_address.cpp)
 0000:464e      std::ostream __far & __far operator <<int __far ><( std::ostream __far &, smanip<int __far > const __far & )
 0000:4498+     std::ostream __far & __far operator <<( std::ostream __far &, mem::address_t const __far & )
-Module: mem_arena.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_arena.cpp)
+Module: mem_arena.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\MEM\mem_arena.cpp)
 0000:46b7+     mem::arena::arena_t __far * __far mem::arena::new_dos_arena( long unsigned )
 0000:4801+     long unsigned __far mem::arena::delete_dos_arena( mem::arena::arena_t __far * )
 0000:4863      long unsigned __far mem::arena::size( mem::arena::arena_t __far * )
@@ -386,9 +385,9 @@ Module: mem_arena.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_aren
 0000:48df      char __far * __far mem::arena::raw_alloc( mem::arena::arena_t __far *, long unsigned )
 0000:4a27      char __far * __far mem::arena::raw_dealloc( mem::arena::arena_t __far *, long unsigned )
 0000:4b6f+     std::ostream __far & __far operator <<( std::ostream __far &, mem::arena::arena_t const __far & )
-Module: mem_segoff.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_segoff.cpp)
+Module: mem_segoff.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\MEM\mem_segoff.cpp)
 0000:4c7b      std::ostream __far & __far operator <<( std::ostream __far &, mem::segoff_t const __far & )
-Module: mem_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_toolbox.cpp)
+Module: mem_toolbox.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\MEM\mem_toolbox.cpp)
 0000:4f55+     long unsigned __far mem::available_low_memory_bytes()
 0000:4fef+     mem::address_t __far mem::dump( mem::address_t, long unsigned )
 0000:504c+     mem::address_t __far mem::dump_ostream( std::ostream __far &, mem::address_t, short unsigned )
@@ -397,7 +396,7 @@ Module: mem_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\MEM\mem_to
 0000:560b      long unsigned __far mem::load_from_file_using_handle( short unsigned, mem::address_t, short unsigned )
 0000:567a+     long unsigned __far mem::save_to_file( char const __far *, mem::address_t, short unsigned )
 0000:5706+     long unsigned __far mem::write_ostream( std::ostream __far &, mem::address_t, short unsigned )
-Module: str_toolbox.obj(C:\Users\ifkno\DOSBOX\DOS16\RETROLIB\RETROLIB\STR\str_toolbox.cpp)
+Module: str_toolbox.obj(C:\Users\ifkno\DOSDEV\DOS-retrolib\RETROLIB\STR\str_toolbox.cpp)
 0000:577a      int __far str::ignore_token( char const __far *, char, int )
 0000:57d1+     int __far str::skip_chars( char const __far *, char const __far *, int )
 0000:5849+     int __far str::in_place_to_upper( char __far *, int, int )
@@ -408,15 +407,15 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(stk086.asm)
 0000:5af5      __STK
 0000:5b15*     __STKOVERFLOW_
 Module: C:\WATCOM\lib286\plbxl.lib(manendl.cpp)
-0000:f3ca      std::ostream __far & __far std::endl( std::ostream __far & )
+0000:f72a      std::ostream __far & __far std::endl( std::ostream __far & )
 Module: C:\WATCOM\lib286\plbxl.lib(ioicout.cpp)
-1462:9ce8      std::ostream __near std::cout
-0000:f448+     __far cout_initfini::cout_initfini()
-0000:f455+     __far cout_initfini::~cout_initfini()
+14b0:9ce8      std::ostream __near std::cout
+0000:f7a8+     __far cout_initfini::cout_initfini()
+0000:f7b5+     __far cout_initfini::~cout_initfini()
 Module: C:\WATCOM\lib286\plbxl.lib(ostincch.cpp)
-0000:f475      std::ostream __far & __far std::ostream::operator <<( char const __far * )
+0000:f7d5      std::ostream __far & __far std::ostream::operator <<( char const __far * )
 Module: C:\WATCOM\lib286\plbxl.lib(ostinomn.cpp)
-0000:f525      std::ostream __far & __far std::ostream::operator <<( std::ostream __far & (__far *)())
+0000:f885      std::ostream __far & __far std::ostream::operator <<( std::ostream __far & (__far *)())
 Module: C:\WATCOM\lib286\dos\clibl.lib(scanf.c)
 0000:5b94+     vscanf_
 0000:5bc2      scanf_
@@ -435,57 +434,57 @@ Module: C:\WATCOM\lib286\dos\emu87.lib(initemu.asm)
 0000:5c36      __init_87_emulator
 0000:5cc9*     __fini_87_emulator
 Module: C:\WATCOM\lib286\plbxl.lib(mandec.cpp)
-0000:f538      std::ios __far & __far std::dec( std::ios __far & )
+0000:f898      std::ios __far & __far std::dec( std::ios __far & )
 Module: C:\WATCOM\lib286\plbxl.lib(ostincha.cpp)
-0000:f547      std::ostream __far & __far std::ostream::operator <<( char )
+0000:f8a7      std::ostream __far & __far std::ostream::operator <<( char )
 Module: C:\WATCOM\lib286\plbxl.lib(ostiniom.cpp)
-0000:f639      std::ostream __far & __far std::ostream::operator <<( std::ios __far & (__far *)())
+0000:f999      std::ostream __far & __far std::ostream::operator <<( std::ios __far & (__far *)())
 Module: C:\WATCOM\lib286\plbxl.lib(ostinulo.cpp)
-0000:f661      std::ostream __far & __far std::ostream::operator <<( long unsigned )
+0000:f9c1      std::ostream __far & __far std::ostream::operator <<( long unsigned )
 Module: C:\WATCOM\lib286\plbxl.lib(iofoutfl.cpp)
-0000:f7d2      std::ostream __far & __far std::ostream::__outfloat( long double const __far & )
+0000:fb32      std::ostream __far & __far std::ostream::__outfloat( long double const __far & )
 Module: C:\WATCOM\lib286\plbxl.lib(ostinslo.cpp)
-0000:faa7      std::ostream __far & __far std::ostream::operator <<( long )
+0000:fe07      std::ostream __far & __far std::ostream::operator <<( long )
 Module: C:\WATCOM\lib286\dos\clibl.lib(cstart)
-1462:0000*     __nullarea
-1462:924a*     __ovlflag
-1462:924b*     __intno
-1462:924c*     __ovlvec
+14b0:0000*     __nullarea
+14b0:92aa*     __ovlflag
+14b0:92ab*     __intno
+14b0:92ac*     __ovlvec
 0000:5d40      _cstart_
 0000:5ef1      __exit_
 0000:5f0e      __do_exit_with_msg_
 0000:5fed      __GETDS
 Module: C:\WATCOM\lib286\dos\clibl.lib(fltused.c)
-1462:9250      _fltused_
+14b0:92b0      _fltused_
 Module: C:\WATCOM\lib286\plbxl.lib(iofefg.cpp)
-1462:9a3e      __ppfltused_
+14b0:9a3e      __ppfltused_
 Module: C:\WATCOM\lib286\dos\clibl.lib(cmodel.asm)
 0000:5ff8      _big_code_
 0000:5ff8*     CodeModelMismatch
 Module: C:\WATCOM\lib286\dos\clibl.lib(_8087086.asm)
-1462:9252      __8087
-1462:9253      __real87
-1462:9254      __dos87emucall
-1462:9256      __dos87real
+14b0:92b2      __8087
+14b0:92b3      __real87
+14b0:92b4      __dos87emucall
+14b0:92b6      __dos87real
 Module: C:\WATCOM\lib286\plbxl.lib(cppdata.cpp)
-1462:9d16      __wint_thread_data
-1462:9d3a      __compiled_under_generic
+14b0:9d16      __wint_thread_data
+14b0:9d3a      __compiled_under_generic
 Module: C:\WATCOM\lib286\plbxl.lib(fsroot.cpp)
-1462:9a4a      ___wcpp_4_data_init_fs_root_
+14b0:9a4a      ___wcpp_4_data_init_fs_root_
 Module: C:\WATCOM\lib286\plbxl.lib(manhex.cpp)
-0000:fc1b      std::ios __far & __far std::hex( std::ios __far & )
+0000:ff7b      std::ios __far & __far std::hex( std::ios __far & )
 Module: C:\WATCOM\lib286\plbxl.lib(fsregist.cpp)
-0000:fc2a+     __wcpp_4_dispatch_dummy__
-0000:fc63      __wcpp_4_fs_lookup__
-0000:fd72      __wcpp_4_fs_handler_rtn__
-0000:fee0      __wcpp_4_unwind_global__
-0000:ff59      __wcpp_4_raise_exception__
+0ff8:000a*     __wcpp_4_dispatch_dummy__
+0ff8:0043      __wcpp_4_fs_lookup__
+0ff8:016a      __wcpp_4_fs_handler_rtn__
+0ff8:02d8      __wcpp_4_unwind_global__
+0ff8:0351      __wcpp_4_raise_exception__
 Module: C:\WATCOM\lib286\dos\clibl.lib(memcpy.c)
 0000:5ff8      memcpy_
 Module: C:\WATCOM\lib286\plbxl.lib(opdel.cpp)
-0000:ffae      void __far operator delete( void __far * )
+0ff8:03a6      void __far operator delete( void __far * )
 Module: C:\WATCOM\lib286\plbxl.lib(opnew.cpp)
-0ffb:000c      void __far * __far operator new( int unsigned )
+0ff8:03b4      void __far * __far operator new( int unsigned )
 Module: C:\WATCOM\lib286\dos\clibl.lib(strrchr.c)
 0000:601a      strrchr_
 Module: C:\WATCOM\lib286\math87l.lib(fchop87.asm)
@@ -502,15 +501,15 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(i4d.asm)
 0000:6376      __I4D
 0000:63c5      __U4D
 Module: C:\WATCOM\lib286\plbxl.lib(undefmbd.cpp)
-1462:9d3c      ___wcpp_4_data_undefined_member_data_
+14b0:9d3c      ___wcpp_4_data_undefined_member_data_
 Module: C:\WATCOM\lib286\dos\clibl.lib(strcmp.c)
 0000:6449      strcmp_
 Module: C:\WATCOM\lib286\dos\clibl.lib(atoi.c)
 0000:6471      atoi_
 Module: C:\WATCOM\lib286\plbxl.lib(mansetw.cpp)
-1462:9d3e      sapp<int __far > __near std::setw
+14b0:9d3e      sapp<int __far > __near std::setw
 Module: C:\WATCOM\lib286\plbxl.lib(mansfill.cpp)
-1462:9d42      sapp<int __far > __near std::setfill
+14b0:9d42      sapp<int __far > __near std::setfill
 Module: C:\WATCOM\lib286\dos\clibl.lib(strchr.c)
 0000:64e1      strchr_
 Module: C:\WATCOM\lib286\dos\clibl.lib(strlen.c)
@@ -523,509 +522,512 @@ Module: C:\WATCOM\lib286\dos\clibl.lib(xmsg.c)
 0000:6531      __exit_with_msg_
 0000:6536      __fatal_runtime_error_
 Module: C:\WATCOM\lib286\dos\clibl.lib(crwdata)
-1462:925a      __curbrk
-1462:9262      __STACKLOW
-1462:9264      __STACKTOP
-1462:9266      __cbyte
-1462:9268      __child
-1462:926a      __no87
-1462:9277      ___FPE_handler
-1462:925c      __psp
-1462:926b      __get_ovl_stack
-1462:926f      __restore_ovl_stack
-1462:9273      __close_ovl_file
-1462:927b      __LpCmdLine
-1462:927f      __LpPgmName
-1462:925e      __osmajor
-1462:925f      __osminor
-1462:9260      __osmode
-1462:9261      __HShift
+14b0:92ba      __curbrk
+14b0:92c2      __STACKLOW
+14b0:92c4      __STACKTOP
+14b0:92c6      __cbyte
+14b0:92c8      __child
+14b0:92ca      __no87
+14b0:92d7      ___FPE_handler
+14b0:92bc      __psp
+14b0:92cb      __get_ovl_stack
+14b0:92cf      __restore_ovl_stack
+14b0:92d3      __close_ovl_file
+14b0:92db      __LpCmdLine
+14b0:92df      __LpPgmName
+14b0:92be      __osmajor
+14b0:92bf      __osminor
+14b0:92c0      __osmode
+14b0:92c1      __HShift
 Module: C:\WATCOM\lib286\plbxl.lib(ostput.cpp)
-0ffb:00bc      std::ostream __far & __far std::ostream::put( char )
+0ff8:0464      std::ostream __far & __far std::ostream::put( char )
 Module: C:\WATCOM\lib286\plbxl.lib(ostflush.cpp)
-0ffb:018e      std::ostream __far & __far std::ostream::flush()
+0ff8:0536      std::ostream __far & __far std::ostream::flush()
 Module: C:\WATCOM\lib286\plbxl.lib(undefed.cpp)
-0ffb:01df      __wcpp_4_undefed_cdtor__
+0ff8:0587      __wcpp_4_undefed_cdtor__
 Module: C:\WATCOM\lib286\dos\clibl.lib(iobaddr.c)
 0000:6550      __get_std_stream_
 0000:6550*     __get_std_file_
 Module: C:\WATCOM\lib286\plbxl.lib(sdfconfp.cpp)
-0ffb:01ef      __far stdiobuf::stdiobuf( __iobuf __far * )
+0ff8:0597      __far stdiobuf::stdiobuf( __iobuf __far * )
 Module: C:\WATCOM\lib286\plbxl.lib(stablcl.cpp)
-0ffb:020d      __wcpp_4_lcl_register__
+0ff8:05b5      __wcpp_4_lcl_register__
 Module: C:\WATCOM\lib286\plbxl.lib(ostconsf.cpp)
-0ffb:0212      __far std::ostream::ostream( std::streambuf __far * )
+0ff8:05ba      __far std::ostream::ostream( std::streambuf __far * )
 Module: C:\WATCOM\lib286\plbxl.lib(ostdestr.cpp)
-0ffb:02fa      __far std::ostream::~ostream()
+0ff8:06a2      __far std::ostream::~ostream()
 Module: C:\WATCOM\lib286\plbxl.lib(sdfdestr.cpp)
-0ffb:03ec      __far stdiobuf::~stdiobuf()
+0ff8:0794      __far stdiobuf::~stdiobuf()
 Module: C:\WATCOM\lib286\plbxl.lib(moddtorr.cpp)
-1462:9a7a      ___wcpp_4_data_module_dtor_ref_
+14b0:9a7a      ___wcpp_4_data_module_dtor_ref_
 Module: C:\WATCOM\lib286\plbxl.lib(ostopfx.cpp)
-0ffb:04d5      int __far std::ostream::do_opfx()
+0ff8:087d      int __far std::ostream::do_opfx()
 Module: C:\WATCOM\lib286\plbxl.lib(iouwrtit.cpp)
-0ffb:0544      int __far __WATCOM_ios::writeitem( std::ostream __far &, char const __far *, int, int )
+0ff8:08ec      int __far __WATCOM_ios::writeitem( std::ostream __far &, char const __far *, int, int )
 Module: C:\WATCOM\lib286\plbxl.lib(iossetst.cpp)
-0ffb:0907+     __far std::ios::failure::failure( std::ios::failure const __far & )
-0ffb:0915+     __far std::ios::failure::~failure()
-0ffb:0916+     __far __WATCOM_exception::__WATCOM_exception( __WATCOM_exception const __far & )
-0ffb:0917+     __far __WATCOM_exception::~__WATCOM_exception()
-0ffb:08ce      void __far std::ios::setstate( int )
+0ff8:0caf+     __far std::ios::failure::failure( std::ios::failure const __far & )
+0ff8:0cbd+     __far std::ios::failure::~failure()
+0ff8:0cbe+     __far __WATCOM_exception::__WATCOM_exception( __WATCOM_exception const __far & )
+0ff8:0cbf+     __far __WATCOM_exception::~__WATCOM_exception()
+0ff8:0c76      void __far std::ios::setstate( int )
 Module: C:\WATCOM\lib286\dos\clibl.lib(iob.c)
-1462:9284      ___iob
-1462:9d46      ___OpenStreams
-1462:9d4a      ___ClosedStreams
+14b0:92e4      ___iob
+14b0:9d46      ___OpenStreams
+14b0:9d4a      ___ClosedStreams
 Module: C:\WATCOM\lib286\dos\clibl.lib(fgetc.c)
 0000:656e+     __fill_buffer_
 0000:6663      fgetc_
 Module: C:\WATCOM\lib286\dos\clibl.lib(ungetc.c)
 0000:670d      ungetc_
 Module: C:\WATCOM\lib286\dos\clibl.lib(scnf.c)
-0000:75fc      __scnf_
+0000:7607      __scnf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(fprtf.c)
-0000:787f      __fprtf_
+0000:788a      __fprtf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(ini87086.asm)
-0000:794a      __init_8087_emu
-0000:7950      __x87id
+0000:7956      __init_8087_emu
+0000:795c      __x87id
 Module: C:\WATCOM\lib286\dos\emu87.lib(emu8087.asm)
-0000:7ac3      __int34
-0000:7b00      __int3c
+0000:7acf      __int34
+0000:7b0c      __int3c
 Module: C:\WATCOM\lib286\dos\emu87.lib(dosinit.asm)
-0000:a426      ___dos87emucall
+0000:a432      ___dos87emucall
 Module: C:\WATCOM\lib286\plbxl.lib(pure_err.cpp)
-0ffb:0918      __wcpp_4_pure_error__
+0ff8:0cc0      __wcpp_4_pure_error__
 Module: C:\WATCOM\lib286\plbxl.lib(ostdlshf.cpp)
-0ffb:093c      std::ostream __far & __far std::ostream::do_lshift( char )
+0ff8:0ce4      std::ostream __far & __far std::ostream::do_lshift( char )
 Module: C:\WATCOM\lib286\plbxl.lib(ioufgtba.cpp)
-0ffb:0983      int __far __FlagsToBase( long )
+0ff8:0d2b      int __far __FlagsToBase( long )
 Module: C:\WATCOM\lib286\plbxl.lib(ostadpre.cpp)
-0ffb:09a1      void __far __AddPrefix( char, char __far *, int __far &, int, long )
+0ff8:0d49      void __far __AddPrefix( char, char __far *, int __far &, int, long )
 Module: C:\WATCOM\lib286\dos\clibl.lib(ltoa.c)
-0000:a464      ultoa_
-0000:a4d3      ltoa_
+0000:a470      ultoa_
+0000:a4df      ltoa_
 Module: C:\WATCOM\lib286\dos\clibl.lib(_istrupr.gas)
-0000:a502      strupr_
+0000:a50e      strupr_
 Module: C:\WATCOM\lib286\plbxl.lib(iofnoefg.cpp)
-1462:9456      ___EFG_cnvs2d
-1462:945a      ___EFG_cnvd2f
-1462:945e      ___EFG_cvtld
-1462:9462      ___EFG_cnvd2ld
+14b0:94b6      ___EFG_cnvs2d
+14b0:94ba      ___EFG_cnvd2f
+14b0:94be      ___EFG_cvtld
+14b0:94c2      ___EFG_cnvd2ld
 Module: C:\WATCOM\lib286\plbxl.lib(opnewarr.cpp)
-0ffb:0a1d      void __far * __far operator new []( int unsigned )
+0ff8:0dc5      void __far * __far operator new []( int unsigned )
 Module: C:\WATCOM\lib286\plbxl.lib(opdelarr.cpp)
-0ffb:0a22      void __far operator delete []( void __far * )
+0ff8:0dca      void __far operator delete []( void __far * )
 Module: C:\WATCOM\lib286\dos\clibl.lib(cmain086.c)
-0000:a507      __CMain
+0000:a513      __CMain
 Module: C:\WATCOM\lib286\dos\clibl.lib(initrtns.c)
-0000:a559      __InitRtns
-0000:a559*     __FInitRtns
-0000:a5b0      __FiniRtns
-0000:a5b0*     __FFiniRtns
+0000:a565      __InitRtns
+0000:a565*     __FInitRtns
+0000:a5bc      __FiniRtns
+0000:a5bc*     __FFiniRtns
 Module: C:\WATCOM\lib286\dos\clibl.lib(uselfn.c)
-1462:9466      ___uselfn
+14b0:94c6      ___uselfn
 Module: C:\WATCOM\lib286\dos\clibl.lib(dosseg)
-0000:a610      __DOSseg__
+0000:a61c      __DOSseg__
 Module: C:\WATCOM\lib286\dos\clibl.lib(setefg.c)
-0000:a611      __setEFGfmt_
+0000:a61d      __setEFGfmt_
 Module: C:\WATCOM\lib286\math87l.lib(cnvs2d.c)
-0000:a62f      __cnvs2d_
+0000:a63b      __cnvs2d_
 Module: C:\WATCOM\lib286\math87l.lib(cnvd2f.c)
-0000:a66e      __cnvd2f_
+0000:a67a      __cnvd2f_
 Module: C:\WATCOM\lib286\math87l.lib(ldcvt.c)
-0000:a846      _LDScale10x_
-0000:ada9      __cvtld_
-0000:b2df      __LDcvt_
+0000:a852      _LDScale10x_
+0000:adab      __cvtld_
+0000:b5d2      __LDcvt_
 Module: C:\WATCOM\lib286\math87l.lib(cnvd2ld.c)
-0000:b2f0      __cnvd2ld_
+0000:b5e3      __cnvd2ld_
 Module: C:\WATCOM\lib286\dos\clibl.lib(chk8087.c)
-0000:b31f*     _fpreset_
-0000:b34a      __init_8087_
-0000:b3c9      __chk8087_
+0000:b612*     _fpreset_
+0000:b63d      __init_8087_
+0000:b6bc      __chk8087_
 Module: C:\WATCOM\lib286\plbxl.lib(stabdtor.cpp)
-0ffb:0d42      __wcpp_4_destruct_internal__
-0ffb:0d60*     __wcpp_4_destruct_all__
-0ffb:0d62*     __wcpp_4_destruct__
+0ff8:10c9      __wcpp_4_destruct_internal__
+0ff8:10e7*     __wcpp_4_destruct_all__
+0ff8:1114*     __wcpp_4_destruct__
 Module: C:\WATCOM\lib286\plbxl.lib(stabdisp.cpp)
-0ffb:1053      __wcpp_4_dispatchable__
+0ff8:1222      __wcpp_4_dispatchable__
 Module: C:\WATCOM\lib286\dos\clibl.lib(ffree.c)
-0000:b439*     _ffree_
-0000:b439      free_
+0000:b72c*     _ffree_
+0000:b72c      free_
 Module: C:\WATCOM\lib286\dos\clibl.lib(fmalloc.c)
-0000:b481*     _fmalloc_
-0000:b481      malloc_
-1462:9512+     ___fheapbeg
-1462:9514      ___fheapRover
-1462:9516      ___LargestSizeB4Rover
+0000:b774*     _fmalloc_
+0000:b774      malloc_
+14b0:9572+     ___fheapbeg
+14b0:9574      ___fheapRover
+14b0:9576      ___LargestSizeB4Rover
 Module: C:\WATCOM\lib286\dos\clibl.lib(_snprint.c)
-0000:b5c3+     _vsnprintf_
-0000:b628      _snprintf_
+0000:b8b6+     _vsnprintf_
+0000:b91b      _snprintf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(enterdb.c)
-0000:b649      __EnterWVIDEO_
-1462:9518      __WD_Present
+0000:b93c      __EnterWVIDEO_
+14b0:9578      __WD_Present
 Module: C:\WATCOM\lib286\dos\clibl.lib(stack086.c)
-0000:b66d      stackavail_
+0000:b960      stackavail_
 Module: C:\WATCOM\lib286\dos\clibl.lib(sprintf.c)
-0000:b681      sprintf_
+0000:b974      sprintf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(rterrmsg.c)
-0000:b6a2      __rterr_msg_
+0000:b995      __rterr_msg_
 Module: C:\WATCOM\lib286\dos\clibl.lib(abort.c)
-0000:b6d5      abort_
-0000:b6ed*     __terminate_
-1462:951a+     ___abort
+0000:b9c8      abort_
+0000:b9e0*     __terminate_
+14b0:957a+     ___abort
 Module: C:\WATCOM\lib286\math87l.lib(fdclass.c)
-0000:b6fb      _FDClass_
+0000:b9ee      _FDClass_
 Module: C:\WATCOM\lib286\math87l.lib(_matherr.c)
-0000:b772*     _set_matherr_
-0000:b781+     __rterrmsg_
-0000:b7e7*     __rtmathfuncname_
-0000:b7fd*     _matherr_
-0000:b866+     __reporterrorsimple_
-0000:b8de      __reporterror_
+0000:ba65*     _set_matherr_
+0000:ba74+     __rterrmsg_
+0000:bada*     __rtmathfuncname_
+0000:baf0*     _matherr_
+0000:bb59+     __reporterrorsimple_
+0000:bbd1      __reporterror_
 Module: C:\WATCOM\lib286\math87l.lib(floor.c)
-0000:b980      floor_
+0000:bc73      floor_
 Module: C:\WATCOM\lib286\math87l.lib(copysign.c)
-0000:b9d1      copysign_
+0000:bcc4      copysign_
 Module: C:\WATCOM\lib286\dos\clibl.lib(istable.c)
-1462:84c0      __IsTable
+14b0:8520      __IsTable
 Module: C:\WATCOM\lib286\plbxl.lib(vfun_err.cpp)
-0ffb:10ce      __wcpp_4_undef_vfun__
+0ff8:1444      __wcpp_4_undef_vfun__
 Module: C:\WATCOM\lib286\plbxl.lib(fatalerr.cpp)
-0ffb:10f2      __wcpp_4_fatal_runtime_error__
+0ff8:1468      __wcpp_4_fatal_runtime_error__
 Module: C:\WATCOM\lib286\plbxl.lib(stfdsgtn.cpp)
-0ffb:110f      int __far std::streambuf::do_sgetn( char __far *, int )
+0ff8:1485      int __far std::streambuf::do_sgetn( char __far *, int )
 Module: C:\WATCOM\lib286\plbxl.lib(stfdspun.cpp)
-0ffb:11af      int __far std::streambuf::do_sputn( char const __far *, int )
+0ff8:1525      int __far std::streambuf::do_sputn( char const __far *, int )
 Module: C:\WATCOM\lib286\plbxl.lib(stfpbfai.cpp)
-0ffb:1291      int __far std::streambuf::pbackfail( int )
+0ff8:1607      int __far std::streambuf::pbackfail( int )
 Module: C:\WATCOM\lib286\plbxl.lib(sdfoverf.cpp)
-0ffb:1295      int __far stdiobuf::overflow( int )
+0ff8:160b      int __far stdiobuf::overflow( int )
 Module: C:\WATCOM\lib286\plbxl.lib(sdfundrf.cpp)
-0ffb:1477      int __far stdiobuf::underflow()
+0ff8:17ed      int __far stdiobuf::underflow()
 Module: C:\WATCOM\lib286\plbxl.lib(stfsbuf.cpp)
-0ffb:15f3      std::streambuf __far * __far std::streambuf::setbuf( char __far *, int )
+0ff8:1969      std::streambuf __far * __far std::streambuf::setbuf( char __far *, int )
 Module: C:\WATCOM\lib286\plbxl.lib(stfseeko.cpp)
-0ffb:166a      long __far std::streambuf::seekoff( long, int, int )
+0ff8:19e0      long __far std::streambuf::seekoff( long, int, int )
 Module: C:\WATCOM\lib286\plbxl.lib(stfseekp.cpp)
-0ffb:1676      long __far std::streambuf::seekpos( long, int )
+0ff8:19ec      long __far std::streambuf::seekpos( long, int )
 Module: C:\WATCOM\lib286\plbxl.lib(sdfsync.cpp)
-0ffb:1697      int __far stdiobuf::sync()
+0ff8:1a0d      int __far stdiobuf::sync()
 Module: C:\WATCOM\lib286\plbxl.lib(stfdoall.cpp)
-0ffb:16c3      int __far std::streambuf::doallocate()
+0ff8:1a39      int __far std::streambuf::doallocate()
 Module: C:\WATCOM\lib286\plbxl.lib(stfconde.cpp)
-0ffb:1700      __far std::streambuf::streambuf()
+0ff8:1a76      __far std::streambuf::streambuf()
 Module: C:\WATCOM\lib286\plbxl.lib(stabmod.cpp)
-0ffb:176e      __wcpp_4_module_dtor__
-0ffb:17c0      __wcpp_4_mod_register__
+0ff8:1ae4      __wcpp_4_module_dtor__
+0ff8:1b36      __wcpp_4_mod_register__
 Module: C:\WATCOM\lib286\plbxl.lib(iosinit.cpp)
-0ffb:17e4      void __far std::ios::init( std::streambuf __far * )
+0ff8:1b5a      void __far std::ios::init( std::streambuf __far * )
 Module: C:\WATCOM\lib286\plbxl.lib(iosconde.cpp)
-0ffb:183f      __far std::ios::ios()
+0ff8:1bb5      __far std::ios::ios()
 Module: C:\WATCOM\lib286\plbxl.lib(iosdestr.cpp)
-0ffb:1850      __far std::ios::~ios()
+0ff8:1bc6      __far std::ios::~ios()
 Module: C:\WATCOM\lib286\plbxl.lib(dtorarst.cpp)
-0ffb:18f8      __wcpp_4_dtor_array_store__
+0ff8:1c6e      __wcpp_4_dtor_array_store__
 Module: C:\WATCOM\lib286\plbxl.lib(stfdestr.cpp)
-0ffb:1921      __far std::streambuf::~streambuf()
+0ff8:1c97      __far std::streambuf::~streambuf()
 Module: C:\WATCOM\lib286\dos\clibl.lib(flush.c)
-0000:ba2a      __flush_
+0000:bd1d      __flush_
 Module: C:\WATCOM\lib286\plbxl.lib(iosfail.cpp)
-0ffb:194b      __far std::ios::failure::failure( int )
+0ff8:1cc1      __far std::ios::failure::failure( int )
 Module: C:\WATCOM\lib286\plbxl.lib(stabthrw.cpp)
-0ffb:21cf+     __far std::exception::exception()
-0ffb:2225+     __far std::exception::exception( std::exception const __far & )
-0ffb:22a0+     __far std::exception::exception( char const __far * )
-0ffb:22fb+     __far std::exception::~exception()
-0ffb:2395+     char const __far * __far std::exception::what() const
-0ffb:23f9+     __far std::bad_exception::bad_exception()
-0ffb:246c+     __far std::bad_exception::bad_exception( std::bad_exception const __far & )
-0ffb:24ca+     __far std::bad_exception::~bad_exception()
-0ffb:2043*     __wcpp_4_catch_done__
-0ffb:20d4      __wcpp_4_throw__
-0ffb:2130*     __wcpp_4_throw_zero__
-0ffb:2170*     __wcpp_4_rethrow__
+0ff8:2523+     __far std::exception::exception()
+0ff8:2579+     __far std::exception::exception( std::exception const __far & )
+0ff8:25f4+     __far std::exception::exception( char const __far * )
+0ff8:264f+     __far std::exception::~exception()
+0ff8:26e9+     char const __far * __far std::exception::what() const
+0ff8:274d+     __far std::bad_exception::bad_exception()
+0ff8:27c0+     __far std::bad_exception::bad_exception( std::bad_exception const __far & )
+0ff8:281e+     __far std::bad_exception::~bad_exception()
+0ff8:2397*     __wcpp_4_catch_done__
+0ff8:2428      __wcpp_4_throw__
+0ff8:2484*     __wcpp_4_throw_zero__
+0ff8:24c4*     __wcpp_4_rethrow__
 Module: C:\WATCOM\lib286\dos\clibl.lib(initfile.c)
-0000:bb62      __InitFiles_
+0000:be55      __InitFiles_
 Module: C:\WATCOM\lib286\dos\clibl.lib(ioexit.c)
-0000:bcbd*     fcloseall_
-0000:bcc4      __full_io_exit_
+0000:bfb0*     fcloseall_
+0000:bfb7      __full_io_exit_
 Module: C:\WATCOM\lib286\dos\clibl.lib(flushall.c)
-0000:bcce      __flushall_
-0000:bd2b*     flushall_
+0000:bfc1      __flushall_
+0000:c01e*     flushall_
 Module: C:\WATCOM\lib286\dos\clibl.lib(gtche.c)
-0000:bd30      getche_
+0000:c023      getche_
 Module: C:\WATCOM\lib286\dos\clibl.lib(ioalloc.c)
-0000:bd4a      __ioalloc_
+0000:c03d      __ioalloc_
 Module: C:\WATCOM\lib286\dos\clibl.lib(qread.c)
-0000:bde4      __qread_
+0000:c0d7      __qread_
 Module: C:\WATCOM\lib286\dos\clibl.lib(errno.c)
-0000:be04      __get_errno_ptr_
-1462:9d4e+     _errno
+0000:c0f7      __get_errno_ptr_
+14b0:9d4e+     _errno
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbisdbcs.c)
-1462:9582      ___IsDBCS
+14b0:9582      ___IsDBCS
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbislead.c)
-0000:be0b*     _ismbblead_
-1462:9d50      ___MBCSIsTable
+0000:c0fe*     _ismbblead_
+14b0:9d50      ___MBCSIsTable
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbtowc.c)
-0000:be27      mbtowc_
+0000:c11a      mbtowc_
 Module: C:\WATCOM\lib286\dos\clibl.lib(bits.c)
-1462:85c2      __Bits
+14b0:8622      __Bits
 Module: C:\WATCOM\lib286\dos\clibl.lib(fdfs086.asm)
-0000:bf2a      __FDFS
+0000:c21c      __FDFS
 Module: C:\WATCOM\lib286\dos\clibl.lib(noefgfmt.c)
-1462:9584      ___EFG_printf
-1462:9588      ___EFG_scanf
+14b0:9584      ___EFG_printf
+14b0:9588      ___EFG_scanf
 Module: C:\WATCOM\lib286\dos\clibl.lib(i8m086.asm)
-0000:bf9d*     __I8M
-0000:bf9d      __U8M
-0000:bf82*     __I8ME
-0000:bf82*     __U8ME
+0000:c28f*     __I8M
+0000:c28f      __U8M
+0000:c274*     __I8ME
+0000:c274*     __U8ME
 Module: C:\WATCOM\lib286\dos\clibl.lib(fputc.c)
-0000:c0e7      fputc_
+0000:c3d9      fputc_
 Module: C:\WATCOM\lib286\dos\clibl.lib(prtf.c)
-0000:cd0d      __prtf_
+0000:d001      __prtf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(8087cw.c)
-1462:958c      __8087cw
+14b0:958c      __8087cw
 Module: C:\WATCOM\lib286\dos\clibl.lib(fpexcept.c)
-0000:cf45      __FPE_exception_
+0000:d239      __FPE_exception_
 Module: C:\WATCOM\lib286\plbxl.lib(prwdata.cpp)
-1462:9e52      __wint_pure_error_flag
-1462:9e54      __wint_undef_vfun_flag
-1462:9e56      __wint_module_init
+14b0:9e52      __wint_pure_error_flag
+14b0:9e54      __wint_undef_vfun_flag
+14b0:9e56      __wint_module_init
 Module: C:\WATCOM\lib286\dos\clibl.lib(alphabet.c)
-0000:cf51      ___Alphabet
+0000:d245      ___Alphabet
 Module: C:\WATCOM\lib286\dos\clibl.lib(strupr.c)
-0000:cf76      _strupr_
+0000:d26a      _strupr_
 Module: C:\WATCOM\lib286\dos\clibl.lib(___argc.c)
-1462:9e5a      ____Argv
-1462:9e5e      ____Argc
+14b0:9e5a      ____Argv
+14b0:9e5e      ____Argc
 Module: C:\WATCOM\lib286\dos\clibl.lib(exit.c)
-0000:cf98+     __null_int23_exit_
-0000:cf99      exit_
-0000:cfc8*     _exit_
-1462:958e+     ___int23_exit
-1462:9592      ___FPE_handler_exit
+0000:d28c+     __null_int23_exit_
+0000:d28d      exit_
+0000:d2bc*     _exit_
+14b0:958e+     ___int23_exit
+14b0:9592      ___FPE_handler_exit
 Module: C:\WATCOM\lib286\dos\clibl.lib(sgdef086)
-1462:9a26      __Start_XI
-1462:9a74      __End_XI
-1462:9a74      __Start_YI
-1462:9a86      __End_YI
+14b0:9a26      __Start_XI
+14b0:9a74      __End_XI
+14b0:9a74      __Start_YI
+14b0:9a86      __End_YI
 Module: C:\WATCOM\lib286\math87l.lib(efgfmt.c)
-0000:cfe0      _EFG_Format_
+0000:d2d4      _EFG_Format_
 Module: C:\WATCOM\lib286\math87l.lib(strtod.c)
-0000:d4ee+     __Strtold_
-0000:d678      strtod_
+0000:d83d+     __Strtold_
+0000:d9c7      strtod_
 Module: C:\WATCOM\lib286\math87l.lib(ldclass.c)
-0000:d81a      __LDClass_
-0000:d868*     _FLClass_
+0000:db69      __LDClass_
+0000:dbb7*     _FLClass_
+Module: C:\WATCOM\lib286\dos\clibl.lib(i8ls086.asm)
+0000:dbcc*     __I8LS
+0000:dbcc      __U8LS
 Module: C:\WATCOM\lib286\dos\clibl.lib(save8087.c)
-1462:9596      ___Save8087
-1462:959a      ___Rest8087
+14b0:9596      ___Save8087
+14b0:959a      ___Rest8087
 Module: C:\WATCOM\lib286\dos\clibl.lib(grabfp87.c)
-0000:d87d      __GrabFP87_
+0000:dbdd      __GrabFP87_
 Module: C:\WATCOM\lib286\plbxl.lib(stabtrav.cpp)
-0ffb:258d      __wcpp_4_stab_entry__
-0ffb:25a6*     __wcpp_4_stab_trav_comp__
-0ffb:26c3      __wcpp_4_stab_trav_init__
-0ffb:26f1      __wcpp_4_stab_trav_next__
-0ffb:2767      __wcpp_4_stab_trav_move__
+0ff8:28e1      __wcpp_4_stab_entry__
+0ff8:28fa*     __wcpp_4_stab_trav_comp__
+0ff8:2a17      __wcpp_4_stab_trav_init__
+0ff8:2a45      __wcpp_4_stab_trav_next__
+0ff8:2abb      __wcpp_4_stab_trav_move__
 Module: C:\WATCOM\lib286\plbxl.lib(callterm.cpp)
-0ffb:2776      __wcpp_4_corrupted_stack__
-0ffb:2782      __wcpp_4_call_terminate__
-Module: C:\WATCOM\lib286\plbxl.lib(allocexc.cpp)
-0ffb:27ba      __wcpp_4_alloc_exc__
-0ffb:2a9c      __wcpp_4_free_exc__
-0ffb:2b05      __wcpp_4_find_active__
-0ffb:2b64      __wcpp_4_dtor_free_exc__
+0ff8:2aca      __wcpp_4_corrupted_stack__
+0ff8:2aff      __wcpp_4_call_terminate__
 Module: C:\WATCOM\lib286\plbxl.lib(stabadt.cpp)
-0ffb:2c6b+     void __far * __far dtor_the_array( _RTARCTOR __far * )
-0ffb:2ccd+     __far _RTARCTOR::~_RTARCTOR()
-0ffb:2ce8      __wcpp_4_dtor_array__
+0ff8:2b22+     void __far * __far dtor_the_array( _RTARCTOR __far * )
+0ff8:2b84+     __far _RTARCTOR::~_RTARCTOR()
+0ff8:2b9f      __wcpp_4_dtor_array__
+Module: C:\WATCOM\lib286\plbxl.lib(allocexc.cpp)
+0ff8:2c48      __wcpp_4_alloc_exc__
+0ff8:2f2a      __wcpp_4_free_exc__
+0ff8:2f93      __wcpp_4_find_active__
+0ff8:2ff2      __wcpp_4_dtor_free_exc__
 Module: C:\WATCOM\lib286\plbxl.lib(tsequiv.cpp)
-0ffb:2d7f      __wcpp_4_ts_refed__
-0ffb:2d9d+     __wcpp_4_ts_pnted__
-0ffb:2db7      __wcpp_4_ts_equiv__
+0ff8:314e      __wcpp_4_ts_refed__
+0ff8:316c+     __wcpp_4_ts_pnted__
+0ff8:3186      __wcpp_4_ts_equiv__
 Module: C:\WATCOM\lib286\dos\clibl.lib(nmalloc.c)
-0000:d8af      _nmalloc_
-1462:959e      ___nheapbeg
-1462:95a0      ___MiniHeapRover
-1462:95a2      ___LargestSizeB4MiniHeapRover
+0000:dc0f      _nmalloc_
+14b0:959e      ___nheapbeg
+14b0:95a0      ___MiniHeapRover
+14b0:95a2      ___LargestSizeB4MiniHeapRover
 Module: C:\WATCOM\lib286\dos\clibl.lib(mem.c)
-0000:d990      __MemAllocator
-0000:da56      __MemFree
+0000:dcf0      __MemAllocator
+0000:ddb6      __MemFree
 Module: C:\WATCOM\lib286\dos\clibl.lib(nfree.c)
-0000:dbcd      _nfree_
-1462:9e60+     ___MiniHeapFreeRover
+0000:df2d      _nfree_
+14b0:9e60+     ___MiniHeapFreeRover
 Module: C:\WATCOM\lib286\dos\clibl.lib(growseg.c)
-0000:dcca      __GrowSeg_
+0000:e02a      __GrowSeg_
 Module: C:\WATCOM\lib286\dos\clibl.lib(allocseg.c)
-0000:dd99      __AllocSeg_
+0000:e0f9      __AllocSeg_
 Module: C:\WATCOM\lib286\dos\clibl.lib(fmemneed.c)
-0000:de38      __fmemneed_
+0000:e198      __fmemneed_
 Module: C:\WATCOM\lib286\dos\clibl.lib(heapgrow.c)
-0000:de3b*     _heapgrow_
-0000:de3b*     _fheapgrow_
-0000:de3c      _nheapgrow_
+0000:e19b*     _heapgrow_
+0000:e19b*     _fheapgrow_
+0000:e19c      _nheapgrow_
 Module: C:\WATCOM\lib286\dos\clibl.lib(vsprintf.c)
-0000:decc      vsprintf_
+0000:e22c      vsprintf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(fputs.c)
-0000:def7      fputs_
+0000:e257      fputs_
 Module: C:\WATCOM\lib286\math87l.lib(matherr.c)
-0000:df96      matherr_
+0000:e2f6      matherr_
 Module: C:\WATCOM\lib286\dos\clibl.lib(seterrno.c)
-0000:df99      __set_EDOM_
-0000:dfab      __set_ERANGE_
-0000:dfbd*     __set_EINVAL_
+0000:e2f9      __set_EDOM_
+0000:e30b      __set_ERANGE_
+0000:e31d*     __set_EINVAL_
 Module: C:\WATCOM\lib286\math87l.lib(mathint.c)
-1462:95a4*     _signgam
-1462:95a6      ___math_errhandling_flag
+14b0:95a4*     _signgam
+14b0:95a6      ___math_errhandling_flag
 Module: C:\WATCOM\lib286\dos\clibl.lib(fenv.c)
-0000:dfd2*     feclearexcept_
-0000:dffb+     fegetexceptflag_
-0000:e022      feraiseexcept_
-0000:e049*     feenableexcept_
-0000:e070*     fedisableexcept_
-0000:e095*     fesetexceptflag_
-0000:e0c6*     fetestexcept_
-0000:e0e2*     fegetround_
-0000:e0ff*     fesetround_
-0000:e141*     fegetenv_
-0000:e14d*     feholdexcept_
-0000:e179*     fesetenv_
-0000:e183*     feupdateenv_
-1462:85ca*     ___fenv_h_default_environment
+0000:e332*     feclearexcept_
+0000:e35b+     fegetexceptflag_
+0000:e382      feraiseexcept_
+0000:e3a9*     feenableexcept_
+0000:e3d0*     fedisableexcept_
+0000:e3f5*     fesetexceptflag_
+0000:e426*     fetestexcept_
+0000:e442*     fegetround_
+0000:e45f*     fesetround_
+0000:e4a1*     fegetenv_
+0000:e4ad*     feholdexcept_
+0000:e4d9*     fesetenv_
+0000:e4e3*     feupdateenv_
+14b0:862a*     ___fenv_h_default_environment
 Module: C:\WATCOM\lib286\math87l.lib(modf87.asm)
-0000:e1aa      modf_
+0000:e50a      modf_
 Module: C:\WATCOM\lib286\dos\clibl.lib(fwrite.c)
-0000:e1cc      fwrite_
+0000:e52c      fwrite_
 Module: C:\WATCOM\lib286\dos\clibl.lib(memmove.c)
-0000:e3ca      memmove_
+0000:e72a      memmove_
 Module: C:\WATCOM\lib286\plbxl.lib(stfsetb.cpp)
-0ffb:2f13      void __far std::streambuf::setb( char __far *, char __far *, int )
+0ff8:32e2      void __far std::streambuf::setb( char __far *, char __far *, int )
 Module: C:\WATCOM\lib286\dos\clibl.lib(liballoc.c)
-0000:e440      _plib_malloc_
-0000:e445      _plib_free_
+0000:e7a0      _plib_malloc_
+0000:e7a5      _plib_free_
 Module: C:\WATCOM\lib286\plbxl.lib(ioufrxal.cpp)
-0ffb:2f96      void __far __WATCOM_ios::free_xalloc_storage( std::ios __far * )
+0ff8:3365      void __far __WATCOM_ios::free_xalloc_storage( std::ios __far * )
 Module: C:\WATCOM\lib286\dos\clibl.lib(__lseek.c)
-0000:e44a      __lseek_
+0000:e7aa      __lseek_
 Module: C:\WATCOM\lib286\dos\clibl.lib(qwrit.c)
-0000:e484      __qwrite_
+0000:e7e4      __qwrite_
 Module: C:\WATCOM\lib286\dos\clibl.lib(fsync.c)
-0000:e4e6      fsync_
+0000:e846      fsync_
 Module: C:\WATCOM\lib286\plbxl.lib(exc_pr.cpp)
-0ffb:2fc3      __far _EXC_PR::_EXC_PR( _RTCTL __far *, RW_DTREG __far *, EXCSTATE )
-0ffb:303c      __far _EXC_PR::~_EXC_PR()
-0ffb:305b      __far _EXC_PR_FREE::_EXC_PR_FREE( _RTCTL __far *, RW_DTREG __far *, EXCSTATE, ACTIVE_EXC __far * )
-0ffb:3089      __far _EXC_PR_FREE::~_EXC_PR_FREE()
-0ffb:30ca      __far _EXC_PR_DTOR::_EXC_PR_DTOR( _RTCTL __far *, RW_DTREG __far *, EXCSTATE, ACTIVE_EXC __far * )
-0ffb:30e9      __far _EXC_PR_FNEXC::_EXC_PR_FNEXC( _RTCTL __far *, RW_DTREG __far *, RW_DTREG __far *, ACTIVE_EXC __far * )
-0ffb:3137      __far _EXC_PR_FNEXC::~_EXC_PR_FNEXC()
-0ffb:313a      __far _EXC_PR_DTOR::~_EXC_PR_DTOR()
+0ff8:3392      __far _EXC_PR::_EXC_PR( _RTCTL __far *, RW_DTREG __far *, EXCSTATE )
+0ff8:340b      __far _EXC_PR::~_EXC_PR()
+0ff8:342a      __far _EXC_PR_FREE::_EXC_PR_FREE( _RTCTL __far *, RW_DTREG __far *, EXCSTATE, ACTIVE_EXC __far * )
+0ff8:34b8      __far _EXC_PR_FREE::~_EXC_PR_FREE()
+0ff8:34f9      __far _EXC_PR_DTOR::_EXC_PR_DTOR( _RTCTL __far *, RW_DTREG __far *, EXCSTATE, ACTIVE_EXC __far * )
+0ff8:3587      __far _EXC_PR_FNEXC::_EXC_PR_FNEXC( _RTCTL __far *, RW_DTREG __far *, RW_DTREG __far *, ACTIVE_EXC __far * )
+0ff8:363e      __far _EXC_PR_FNEXC::~_EXC_PR_FNEXC()
+0ff8:3641      __far _EXC_PR_DTOR::~_EXC_PR_DTOR()
 Module: C:\WATCOM\lib286\plbxl.lib(unexpect.cpp)
-0ffb:316e      void __far std::unexpected()
-Module: C:\WATCOM\lib286\dos\clibl.lib(stjmp086.asm)
-0000:e4ec*     _setjmp_
-0000:e541      longjmp_
+0ff8:3675      void __far std::unexpected()
 Module: C:\WATCOM\lib286\plbxl.lib(stabinit.cpp)
-0ffb:31fb      __wcpp_4_exc_setup__
+0ff8:3702      __wcpp_4_exc_setup__
+Module: C:\WATCOM\lib286\dos\clibl.lib(stjmp086.asm)
+0000:e84c*     _setjmp_
+0000:e8a1      longjmp_
 Module: C:\WATCOM\lib286\plbxl.lib(ljmpinit.cpp)
-1462:9a6e      ___wcpp_4_data_init_longjmp_
+14b0:9a6e      ___wcpp_4_data_init_longjmp_
 Module: C:\WATCOM\lib286\dos\clibl.lib(fclose.c)
-0000:e59e+     __doclose_
-0000:e662      __shutdown_stream_
-0000:e67c*     fclose_
-1462:9e62+     ___RmTmpFileFn
+0000:e8fe+     __doclose_
+0000:e9c2      __shutdown_stream_
+0000:e9dc*     fclose_
+14b0:9e62+     ___RmTmpFileFn
 Module: C:\WATCOM\lib286\dos\clibl.lib(freefp.c)
-0000:e6c7      __freefp_
-0000:e73c      __purgefp_
+0000:ea27      __freefp_
+0000:ea9c      __purgefp_
 Module: C:\WATCOM\lib286\dos\clibl.lib(chktty.c)
-0000:e778      __chktty_
+0000:ead8      __chktty_
 Module: C:\WATCOM\lib286\dos\clibl.lib(dosret.c)
-0000:e7a3      __set_errno_dos_
-0000:e82f*     __set_errno_dos_reterr_
+0000:eb03      __set_errno_dos_
+0000:eb8f*     __set_errno_dos_reterr_
 Module: C:\WATCOM\lib286\dos\clibl.lib(mbinit.c)
-0000:e89f      __mbinit_
-1462:95bc+     ___MBCodePage
+0000:ebff      __mbinit_
+14b0:95bc+     ___MBCodePage
 Module: C:\WATCOM\lib286\dos\clibl.lib(wctomb.c)
-0000:e914      wctomb_
+0000:ec74      wctomb_
 Module: C:\WATCOM\lib286\dos\clibl.lib(itoa.c)
-0000:e93d+     utoa_
-0000:e99a      itoa_
+0000:ec9d+     utoa_
+0000:ecfa      itoa_
 Module: C:\WATCOM\lib286\dos\clibl.lib(lltoa.c)
-0000:e9be      ulltoa_
-0000:eaa2*     lltoa_
+0000:ed1e      ulltoa_
+0000:ee02*     lltoa_
 Module: C:\WATCOM\lib286\dos\clibl.lib(rtcntrl.c)
-0000:eb04*     _SetLD64bit_
-0000:eb0f*     _SetLD80bit_
-0000:eb1a      _LDisDouble_
+0000:ee64*     _SetLD64bit_
+0000:ee6f*     _SetLD80bit_
+0000:ee7a      _LDisDouble_
 Module: C:\WATCOM\lib286\math87l.lib(zbuf2ld.c)
-0000:eb51      __ZXBuf2LD_
+0000:eeb1      __ZXBuf2LD_
 Module: C:\WATCOM\lib286\math87l.lib(bufld086.asm)
-0000:ec66      __ZBuf2LD
+0000:efc6      __ZBuf2LD
 Module: C:\WATCOM\lib286\math87l.lib(inf_nan.c)
-1462:85d8*     ___f_infinity
-1462:85dc*     ___f_posqnan
-1462:85e0      ___d_infinity
-1462:85e8      ___d_posqnan
-1462:85f0*     ___ld_infinity
-1462:85f8*     ___ld_posqnan
+14b0:8638*     ___f_infinity
+14b0:863c*     ___f_posqnan
+14b0:8640      ___d_infinity
+14b0:8648      ___d_posqnan
+14b0:8650*     ___ld_infinity
+14b0:8658*     ___ld_posqnan
 Module: C:\WATCOM\lib286\dos\clibl.lib(hugeval.c)
-1462:8600      __HugeValue
+14b0:8660      __HugeValue
 Module: C:\WATCOM\lib286\dos\clibl.lib(fpe87.asm)
-0000:ed32      __Init_FPE_handler_
-0000:ed69      __Fini_FPE_handler_
-0000:ed9f*     __FPEHandler
+0000:f092      __Init_FPE_handler_
+0000:f0c9      __Fini_FPE_handler_
+0000:f0ff*     __FPEHandler
 Module: C:\WATCOM\lib286\plbxl.lib(bittest.cpp)
-0ffb:3320      __wcpp_4_bit_test__
-0ffb:3343      __wcpp_4_bit_off__
+0ff8:3827      __wcpp_4_bit_test__
+0ff8:384a      __wcpp_4_bit_off__
 Module: C:\WATCOM\lib286\plbxl.lib(termnate.cpp)
-0ffb:3364      void __far std::terminate()
+0ff8:386b      void __far std::terminate()
 Module: C:\WATCOM\lib286\plbxl.lib(areaexc.cpp)
-1462:95f0      ___EXC_AREA
+14b0:95f0      ___EXC_AREA
 Module: C:\WATCOM\lib286\plbxl.lib(tssize.cpp)
-0ffb:33bf      __wcpp_4_ts_size__
+0ff8:38c6      __wcpp_4_ts_size__
 Module: C:\WATCOM\lib286\dos\clibl.lib(nmemneed.c)
-0000:f031      __nmemneed_
+0000:f391      __nmemneed_
 Module: C:\WATCOM\lib286\dos\clibl.lib(grownear.c)
-0000:f0b3      __LastFree_
-0000:f12b      __ExpandDGROUP_
+0000:f413      __LastFree_
+0000:f48b      __ExpandDGROUP_
 Module: C:\WATCOM\lib286\dos\clibl.lib(heapen.c)
-0000:f230*     _heapenable_
-1462:99f0      ___heap_enabled
+0000:f590*     _heapenable_
+14b0:99f0      ___heap_enabled
 Module: C:\WATCOM\lib286\dos\clibl.lib(amblksiz.c)
-1462:99f2      __amblksiz
+14b0:99f2      __amblksiz
 Module: C:\WATCOM\lib286\dos\clibl.lib(iomode.c)
-0000:f241      __GetIOMode_
-0000:f266      __SetIOMode_nogrow_
-1462:99f4+     ___NFiles
-1462:99f6+     ___init_mode
-1462:9a1e+     ___io_mode
+0000:f5a1      __GetIOMode_
+0000:f5c6      __SetIOMode_nogrow_
+14b0:99f4+     ___NFiles
+14b0:99f6+     ___init_mode
+14b0:9a1e+     ___io_mode
 Module: C:\WATCOM\lib286\dos\clibl.lib(filedos.c)
-0000:f289*     _dos_close_
-0000:f297      _dos_commit_
+0000:f5e9*     _dos_close_
+0000:f5f7      _dos_commit_
 Module: C:\WATCOM\lib286\dos\clibl.lib(ljmphdl.c)
-1462:9a22      ___longjmp_handler
+14b0:9a22      ___longjmp_handler
 Module: C:\WATCOM\lib286\plbxl.lib(ljmpdtor.cpp)
-0ffb:34a5      __wcpp_4_lj_handler__
+0ff8:39ac      __wcpp_4_lj_handler__
 Module: C:\WATCOM\lib286\dos\clibl.lib(_clse.c)
-0000:f2a7      __close_
+0000:f607      __close_
 Module: C:\WATCOM\lib286\dos\clibl.lib(isatt.c)
-0000:f2df      isatty_
+0000:f63f      isatty_
 Module: C:\WATCOM\lib286\dos\clibl.lib(doserrno.c)
-0000:f2fb      __get_doserrno_ptr_
-1462:a06a+     __doserrno
+0000:f65b      __get_doserrno_ptr_
+14b0:a06a+     __doserrno
 Module: C:\WATCOM\lib286\dos\clibl.lib(getltdos.c)
-0000:f302      dos_get_dbcs_lead_table_
+0000:f662      dos_get_dbcs_lead_table_
 Module: C:\WATCOM\lib286\dos\clibl.lib(getcpdos.c)
-0000:f32b      dos_get_code_page_
+0000:f68b      dos_get_code_page_
 Module: C:\WATCOM\lib286\dos\clibl.lib(sbrk.c)
-0000:f33b      __brk_
-0000:f3a0*     sbrk_
+0000:f69b      __brk_
+0000:f700*     sbrk_
 Module: C:\WATCOM\lib286\dos\clibl.lib(error086.asm)
-0000:f3b0      __doserror_
-0000:f3be*     __doserror1_
+0000:f710      __doserror_
+0000:f71e*     __doserror1_
 Module: C:\WATCOM\lib286\plbxl.lib(stfsync.cpp)
-0ffb:34ac      int __far std::streambuf::sync()
+0ff8:39b3      int __far std::streambuf::sync()
 
 
                         +--------------------+
@@ -1043,6 +1045,6 @@ C:\WATCOM\lib286\dos\clibl.lib
                         +-----------------------+
 
 Stack size:  0800 (2048.)
-Memory size:  0001ee90 (126608.)
+Memory size:  0001f370 (127856.)
 Entry point address: 0000:5d40
-Link time: 00:00.28
+Link time: 00:00.94

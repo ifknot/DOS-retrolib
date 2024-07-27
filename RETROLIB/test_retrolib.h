@@ -22,7 +22,7 @@
 //#include "GFX/HGA/test_hga.h"						// 700
 //#include "GFX/MDA/test_mda.h"						// 800
 //#include "KBD/test_kbd.h"							// 900
-#include "FXP/testfxp.h"
+//#include "FXP/testfxp.h"
 
 namespace test_retrolib {
 
