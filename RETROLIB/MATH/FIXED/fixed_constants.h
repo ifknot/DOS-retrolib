@@ -10,24 +10,11 @@
 #ifndef FIXED_CONSTANTS_H
 #define FIXED_CONSTANTS_H
 
-#include "fixed_types.h"
-
-#define FIXED_INTEGRAL_BITS			10
-#define FIXED_FRACTIONAL_BITS		6
-#define FIXED_DENOMINATOR			0x3F
-#define FIXED_INTEGER_UNSIGNED_MAX	1023
-#define FIXED_INTEGER_SIGNED_MAX	511
-#define FIXED_INTEGER_SIGNED_MIN	-512
-#define FIXED_FRACTIONAL_MIN		0.015873
-
-namespace math {
-
-	namespace fixed {
-
-		const Q10_6_t PI = 201; // this is 3.14 as 10:6 fixed point notation
-
-	}
-
-}
+#define Q_INTEGRAL_BITS		10
+#define Q_FRACTIONAL_BITS	6
+#define Q_INTEGER_UMAX		1023
+#define Q_INTEGER_MAX		511
+#define Q_INTEGER_MIN		-512
+#define Q_FRACTIONAL_MIN	0.015873
 
 #endif
