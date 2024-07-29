@@ -18,6 +18,7 @@ UQ10_6_t operator + (UQ10_6_t lhs, UQ10_6_t rhs) {
 	UQ10_6_t result;
 	__asm {
 		mov 	ax, lhs
+		clc
 		add 	ax, rhs 
 		bcc 	END
 		mov 	ax, UQ_SATURATE
@@ -37,10 +38,9 @@ Q10_6_t operator + (Q10_6_t lhs, Q10_6_t rhs) {
 	FZ = FX = FN = FO = 0;
 	__asm {
 		mov 	ax, lhs
+		clc
 		add 	ax, rhs 
-		//jno 	END
-		lahf  
-		mov 	flags, AH
+		
 END:		mov 	result, ax
 	}
 	LOG(((int)flags);
