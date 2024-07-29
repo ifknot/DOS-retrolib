@@ -1,0 +1,3 @@
+RETROLIB\test_retrolib.h(42): Error! E241: col(61) class or namespace 'test_fixed' has not been declared
+RETROLIB\test_retrolib.h(42): Note! N393: col(61) included from main.cpp(3)
+RETROLIB\test_retrolib.h(42): Error! E926: col(61) syntax error: 'test_fixed::run' has not been declared as a member

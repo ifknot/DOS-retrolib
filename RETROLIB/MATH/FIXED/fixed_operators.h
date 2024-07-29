@@ -11,6 +11,7 @@
 #define FIXED_OPERATORS_H
 
 #include "fixed_types.h"
+#include "fixed_constants.h"
 
 using namespace math::fixed;
 
@@ -23,8 +24,8 @@ UQ10_6_t operator + (UQ10_6_t lhs, UQ10_6_t rhs) {
 		clc
 		add 	ax, rhs 
 		bcc 	END
-		mov 	ax, UQ_SATURATE
-END:		mov 	result, ax
+		mov 	ax, UQ_INFINITY
+END:	mov 	result, ax
 
 		popf
 	}
@@ -37,15 +38,21 @@ END:		mov 	result, ax
 * For addends of different sign (3) + (-2) overflow doesn't happen.
 */
 Q10_6_t operator + (Q10_6_t lhs, Q10_6_t rhs) {
-	Q10_6_t result;FO = 0;
+	Q10_6_t result;
 	__asm {
 		pushf
 		
 		mov 	ax, lhs
 		clc
-		add 	ax, rhs 
-		
-END:		mov 	result, ax
+		add 	ax, rhs					; -8000h < AX < 7FFF ?
+		jz		END						; zero result
+		jno		NOVF					; fit in 16bits?
+		mov		ax, Q_INFINITY			; clamp upper bound
+		js		END						; sign flag set
+NOVF:	cmp		ax, Q_NINFINITY			
+		jge		END						; -8000h < AX
+		mov		ax, Q_NINFINITY			; clamp lower bound 
+END:	mov 	result, ax
 
 		popf
 	}
