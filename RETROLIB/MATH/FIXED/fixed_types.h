@@ -45,6 +45,7 @@ namespace math {
 
 }
 
-
+TODO:
+// << and >> 
 
 #endif // !FIXED_TYPES_H

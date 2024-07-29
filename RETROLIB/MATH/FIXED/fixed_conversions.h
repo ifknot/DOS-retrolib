@@ -1,7 +1,9 @@
 /*!
  *  @file fixed_conversions.h
  *  @brief Declares the fixed conversions.
- *  @details ~
+ *  @details
+ *  + Saturation arithmetic avoids the dangers of modular wrap around by clamping storage size overflows to maximum or minimum representation of the storage size i.e. a local +infinity and -infinity.
+ *  @note Further additions to a maximum or subtractions from a minimum will not change the result.
  *  @author Jeremy Thornton
  *  @date 2024-07-27
  *  @copyright © Jeremy Thornton. All right reserved.
