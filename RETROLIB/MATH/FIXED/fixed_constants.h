@@ -4,7 +4,7 @@
  *  @details ~
  *  @author Jeremy Thornton
  *  @date 2024-07-27
- *  @copyright © Jeremy Thornton. All right reserved.
+ *  @copyright Â© Jeremy Thornton. All right reserved.
  *  
  */
 #ifndef FIXED_CONSTANTS_H
@@ -16,5 +16,10 @@
 #define Q_INTEGER_MAX		511
 #define Q_INTEGER_MIN		-512
 #define Q_FRACTIONAL_MIN	0.015873
+
+#define UQ_SATURATE   0xFFFF
+#define Q_SATURATE    0x7FFF
+#define Q_MAX         0x7FFF
+#define Q_MIN         0x8000
 
 #endif
